@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Flashlight.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Interact.gd" type="Script" id=3]
+[ext_resource path="res://3DModels/viewCone/viewCone.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.975834
+height = 3.35366
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.9
+mid_height = 3.5
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -1, -1, 0, -0.980814, -1, -0.195184, -0.980814, -1, 0.194988, 0, 2.29679, 0, -0.924041, -1, -0.382733, -0.924041, -1, 0.382537, 1, -1, 0, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041, 0.194988, -1, -0.980814, 0, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, 0, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988 )
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.93536
+height = 1.76092
+
+[sub_resource type="BoxShape" id=4]
+
+[node name="Player" type="KinematicBody" groups=["player"]]
+collision_layer = 17
+collision_mask = 513
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+visible = false
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="Neck" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68043, 0 )
+
+[node name="Camera" type="Camera" parent="Neck"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="flashlight" parent="Neck" instance=ExtResource( 2 )]
+transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, 0 )
+
+[node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
+transform = Transform( 0.621443, 0, 0, 0, 0.689237, -0.0715165, 0, 0.0265119, 0.833662, -0.0154505, -0.83225, -0.348968 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="MeshInstance" type="MeshInstance" parent="Neck/viewCone"]
+transform = Transform( 7.0694, 0, 0, 0, -2.94398e-07, 6.73505, 0, -5.22817, -2.2853e-07, 0, 1.33106, 12.8063 )
+visible = false
+mesh = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Neck/viewCone"]
+transform = Transform( 7.0694, 0, 0, 0, -2.94398e-07, 6.73505, 0, -5.22817, -2.2853e-07, 0, 1.33106, 12.8063 )
+shape = SubResource( 5 )
+
+[node name="AreaPlayer" type="Area" parent="."]
+transform = Transform( 1.47396, 0, 0, 0, 1.72622, 0, 0, 0, 1.3795, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaPlayer"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="Interact" type="Spatial" parent="."]
+script = ExtResource( 3 )
+
+[node name="Area" type="Area" parent="Interact"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.99515 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape" type="CollisionShape" parent="Interact/Area"]
+transform = Transform( 0.634183, 0, 0, 0, 1, 0, 0, 0, 1.44355, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="Neck/viewCone" to="." method="_on_viewCone_area_entered"]
+[connection signal="area_exited" from="Neck/viewCone" to="." method="_on_viewCone_area_exited"]
+[connection signal="body_entered" from="Interact/Area" to="Interact" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Interact/Area" to="Interact" method="_on_Area_body_exited"]

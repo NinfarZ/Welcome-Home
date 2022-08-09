@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
+[ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=3]
+[ext_resource path="res://audio/monsterClose1.mp3" type="AudioStream" id=4]
+[ext_resource path="res://audio/monsterClose2.mp3" type="AudioStream" id=5]
+[ext_resource path="res://audio/monsterClose3.wav" type="AudioStream" id=6]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=7]
+[ext_resource path="res://audio/monsterstep1.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/monsterstep4.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/monsterstep2.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/monsterstep3.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/runningTowardsYou.wav" type="AudioStream" id=12]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+mid_height = 3.0
+
+[node name="invisibleEnemy" type="KinematicBody" groups=["invisibleEnemy"]]
+transform = Transform( 1, 0, 0, 0, 0.624, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 144
+collision_mask = 0
+script = ExtResource( 1 )
+speed = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+visible = false
+mesh = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="monsterSpawner" parent="." instance=ExtResource( 2 )]
+transform = Transform( 15, 0, 0, 0, 20, 0, 0, 0, 15, 0, 0, 0 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[node name="RandomAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+script = ExtResource( 3 )
+samples = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+random_strategy = 2
+random_volume_range = 0
+random_pitch_range = 0.385
+
+[node name="TimerAudio" type="Timer" parent="RandomAudioStreamPlayer"]
+wait_time = 15.0
+one_shot = true
+
+[node name="steps3D" type="AudioStreamPlayer3D" parent="."]
+unit_db = 15.0
+script = ExtResource( 7 )
+samples = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ) ]
+random_strategy = 2
+random_volume_range = 2.0
+random_pitch_range = 1.0
+
+[node name="running3D" type="AudioStreamPlayer3D" parent="."]
+unit_db = 20.513
+script = ExtResource( 7 )
+samples = [ ExtResource( 12 ) ]
+random_strategy = 2
+random_volume_range = 0
+random_pitch_range = 0.359
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
+[connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]
+[connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]
+[connection signal="camera_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_exited"]
+[connection signal="finished" from="RandomAudioStreamPlayer" to="." method="_on_RandomAudioStreamPlayer_finished"]
+[connection signal="timeout" from="RandomAudioStreamPlayer/TimerAudio" to="." method="_on_TimerAudio_timeout"]
+[connection signal="finished" from="steps3D" to="." method="_on_steps3D_finished"]
+[connection signal="finished" from="running3D" to="." method="_on_running3D_finished"]

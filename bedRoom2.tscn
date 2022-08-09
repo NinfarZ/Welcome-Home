@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=316]
+extents = Vector3( 6.88913, 1, 5.17929 )
+
+[node name="bedRoom2" type="Area"]
+transform = Transform( 1.20519, 0, 0, 0, 1.20519, 0, 0, 0, 0.78046, 22.7445, 18.2626, -5.55269 )
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.862875, 0, 0, 0, 1, 0, 0, 0, 1, -8.06608, -4.8995, -0.279715 )
+shape = SubResource( 316 )
