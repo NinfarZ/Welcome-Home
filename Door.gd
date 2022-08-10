@@ -75,7 +75,7 @@ func _on_monsterSensor_body_entered(body):
 func _on_monsterSensor_body_exited(body):
 	if body.is_in_group("invisibleEnemy"):
 		monsterWantsToOpen = false
-		$TimerMonsterOpenDoor.stop()
+		#$TimerMonsterOpenDoor.stop()
 
 
 func _on_TimerMonsterOpenDoor_timeout():

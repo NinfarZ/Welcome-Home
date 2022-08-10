@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -228,10 +228,6 @@ config/name="Peek3D"
 run/main_scene="res://House.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/fullscreen=true
-
 [editor]
 
 version_control_autoload_on_startup=true
@@ -276,7 +272,13 @@ interact={
 
 [layer_names]
 
-3d_render/layer_10="Objects"
+3d_physics/layer_1="player"
+3d_physics/layer_2="playerArea"
+3d_physics/layer_3="monster"
+3d_physics/layer_5="location"
+3d_physics/layer_6="invisibleEnemy"
+3d_physics/layer_8="door"
+3d_physics/layer_10="object"
 
 [rendering]
 

@@ -16,6 +16,7 @@ extents = Vector3( 0.505678, 2.6909, 1 )
 extents = Vector3( 0.208181, 0.284438, 0.214893 )
 
 [node name="monster" groups=["monster"] instance=ExtResource( 1 )]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="Cube" parent="." index="0"]

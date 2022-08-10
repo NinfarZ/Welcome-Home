@@ -61,84 +61,82 @@ func die():
 	$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone.monitorable = false
 
-	
-	#get_tree().change_scene("res://House.tscn")
 
 func get_current_location():
 	return currentLocation
 	
-func _on_myBedroom_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "my_bedroom"
-		print(currentLocation)
+#func _on_myBedroom_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "my_bedroom"
+#		print(currentLocation)
+#
+#
+#func _on_bedRoom2_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "my_bedroom2"
+#		print(currentLocation)
+#
+#
+#func _on_balcony_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "balcony"
+#		print(currentLocation)
+#
+#
+#func _on_corridor1_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "corridor1"
+#		print(currentLocation)
+#
+#
+#func _on_corridor2_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "corridor2"
+#		print(currentLocation)
+#
+#
+#
+#func _on_livingroom_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "livingroom"
+#		print(currentLocation)
+#
+#
+#func _on_entrance_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "entrance"
+#		print(currentLocation)
+#
+#
+#func _on_bathroom1_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "bathroom1"
+#		print(currentLocation)
+#
+#
+#func _on_kitchen_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "kitchen"
+#		print(currentLocation)
 
 
-func _on_bedRoom2_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "my_bedroom2"
-		print(currentLocation)
-
-
-func _on_balcony_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "balcony"
-		print(currentLocation)
-
-
-func _on_corridor1_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "corridor1"
-		print(currentLocation)
-
-
-func _on_corridor2_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "corridor2"
-		print(currentLocation)
+#func _on_bedRoom3_body_entered(body):
+#	if body.is_in_group("player"):
+#		currentLocation = "bedRoom3"
+		#print(currentLocation)
 	
 
 
-func _on_livingroom_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "livingroom"
-		print(currentLocation)
+#func _on_bathroom2_body_entered(body):
+	#if body.is_in_group("player"):
+		#currentLocation = "bathroom2"
+		#print(currentLocation)
 
 
-func _on_entrance_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "entrance"
-		print(currentLocation)
-
-
-func _on_bathroom1_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "bathroom1"
-		print(currentLocation)
-
-
-func _on_kitchen_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "kitchen"
-		print(currentLocation)
-
-
-func _on_bedRoom3_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "bedRoom3"
-		print(currentLocation)
-	
-
-
-func _on_bathroom2_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "bathroom2"
-		print(currentLocation)
-
-
-func _on_corridor3_body_entered(body):
-	if body.is_in_group("player"):
-		currentLocation = "corridor3"
-		print(currentLocation)
+#func _on_corridor3_body_entered(body):
+	#if body.is_in_group("player"):
+		#currentLocation = "corridor3"
+		#print(currentLocation)
 
 
 func _on_viewCone_area_entered(area):
@@ -151,6 +149,11 @@ func _on_viewCone_area_exited(area):
 		print("player can NOT see monster!")
 
 
-func _on_wardrobe_body_entered(body):
-	currentLocation = "wardrobe"
-	print(currentLocation)
+#func _on_wardrobe_body_entered(body):
+	#currentLocation = "wardrobe"
+	#print(currentLocation)
+
+
+func _on_AreaPlayer_area_entered(area):
+	currentLocation = area.name
+	print("PLAYER IS INSIDE " + area.name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
 [ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
@@ -18,10 +18,14 @@
 [sub_resource type="CapsuleMesh" id=2]
 mid_height = 3.0
 
+[sub_resource type="CapsuleShape" id=3]
+radius = 1.02713
+height = 1.33412
+
 [node name="invisibleEnemy" type="KinematicBody" groups=["invisibleEnemy"]]
 transform = Transform( 1, 0, 0, 0, 0.624, 0, 0, 0, 1, 0, 1, 0 )
-collision_layer = 144
-collision_mask = 0
+collision_layer = 32
+collision_mask = 144
 script = ExtResource( 1 )
 speed = 1
 
@@ -31,7 +35,6 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-visible = false
 mesh = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -39,6 +42,8 @@ autostart = true
 
 [node name="monsterSpawner" parent="." instance=ExtResource( 2 )]
 transform = Transform( 15, 0, 0, 0, 20, 0, 0, 0, 15, 0, 0, 0 )
+collision_mask = 4
+monitoring = false
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 
@@ -70,6 +75,15 @@ random_strategy = 2
 random_volume_range = 0
 random_pitch_range = 0.359
 
+[node name="locationSensor" type="Area" parent="."]
+collision_layer = 32
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="locationSensor"]
+transform = Transform( 1.04815, 0, 0, 0, -4.19629e-08, 1.603, 0, -1.01388, -7.4002e-08, 0.0100977, -0.0905589, -0.0137984 )
+shape = SubResource( 3 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
 [connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]
@@ -79,3 +93,4 @@ random_pitch_range = 0.359
 [connection signal="timeout" from="RandomAudioStreamPlayer/TimerAudio" to="." method="_on_TimerAudio_timeout"]
 [connection signal="finished" from="steps3D" to="." method="_on_steps3D_finished"]
 [connection signal="finished" from="running3D" to="." method="_on_running3D_finished"]
+[connection signal="area_entered" from="locationSensor" to="." method="_on_locationSensor_area_entered"]

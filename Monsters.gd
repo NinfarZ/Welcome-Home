@@ -40,7 +40,7 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			for monster in get_children():
-				if monster.isCanSpawn() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster:
+				if monster.isCanSpawn() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #
 					#monster.enableArea()
 					#print("monster can spawn")
 					add_monster_to_list(monster)
@@ -71,14 +71,7 @@ func _physics_process(delta):
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				state = ROOMCHANGE
-			#elif not get_node(currentMonster).canSeePlayer() or not get_node(currentMonster).isInView():
-				#get_parent().get_node("TimerMonsterSwitch").start()
-				#yield(get_tree().create_timer(3.0),"timeout")
-				#if not get_node(currentMonster).canSeePlayer() or not get_node(currentMonster).isInView():
-					#despawnMonster(currentMonster)
-					#state = SEARCHIN
-				#if get_node(currentMonster).canSeePlayer() and get_node(currentMonster).isFaceInView():
-					#state = KILL
+			
 			if get_node(currentMonster).canSeePlayer() and get_node(currentMonster).isFaceInView():
 				get_node(currentMonster).playerLooksAtMonster()
 					#print(get_node(currentMonster).name + " can see you")

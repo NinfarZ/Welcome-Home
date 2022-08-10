@@ -159,110 +159,110 @@ func get_current_monstersToSpawn():
 	return monstersToSpawn
 
 
-func _on_myBedroom_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "my_bedroom"
-		monstersToSpawn = "monsterMybedroom"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_bedRoom3_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "bedRoom3"
-		monstersToSpawn = "monsterBedroom3"
-		print("enemy is in " + currentLocation)
-	
-
-
-
-func _on_bathroom2_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "bathroom2"
-		monstersToSpawn = "monsterBathroom2"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_corridor1_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "corridor1"
-		monstersToSpawn = "monsterCorridor1"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_corridor3_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "corridor3"
-		monstersToSpawn = "monsterCorridor3"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_corridor2_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "corridor2"
-		monstersToSpawn = "monsterCorridor2"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_livingroom_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "livingroom"
-		monstersToSpawn = "monsterLivingroom"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_entrance_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "entrance"
-		monstersToSpawn = "monsterEntrance"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_bathroom1_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "bathroom1"
-		monstersToSpawn = "monsterBathroom1"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_kitchen_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "kitchen"
-		monstersToSpawn = "monsterKitchen"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_bedRoom2_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "my_bedroom2"
-		monstersToSpawn = "monsterBedroom2"
-		print("enemy is in " + currentLocation)
-
-
-
-
-func _on_balcony_body_entered(body):
-	if body.is_in_group("invisibleEnemy"):
-		currentLocation = "balcony"
-		monstersToSpawn = "monsterBalcony"
-		print("enemy is in " + currentLocation)
+#func _on_myBedroom_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "my_bedroom"
+#		monstersToSpawn = "monsterMybedroom"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_bedRoom3_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "bedRoom3"
+#		monstersToSpawn = "monsterBedroom3"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_bathroom2_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "bathroom2"
+#		monstersToSpawn = "monsterBathroom2"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_corridor1_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "corridor1"
+#		monstersToSpawn = "monsterCorridor1"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_corridor3_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "corridor3"
+#		monstersToSpawn = "monsterCorridor3"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_corridor2_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "corridor2"
+#		monstersToSpawn = "monsterCorridor2"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_livingroom_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "livingroom"
+#		monstersToSpawn = "monsterLivingroom"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_entrance_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "entrance"
+#		monstersToSpawn = "monsterEntrance"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_bathroom1_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "bathroom1"
+#		monstersToSpawn = "monsterBathroom1"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_kitchen_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "kitchen"
+#		monstersToSpawn = "monsterKitchen"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_bedRoom2_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "my_bedroom2"
+#		monstersToSpawn = "monsterBedroom2"
+#		print("enemy is in " + currentLocation)
+#
+#
+#
+#
+#func _on_balcony_body_entered(body):
+#	if body.is_in_group("invisibleEnemy"):
+#		currentLocation = "balcony"
+#		monstersToSpawn = "monsterBalcony"
+#		print("enemy is in " + currentLocation)
 
 
 func _on_steps3D_finished():
@@ -274,3 +274,10 @@ func _on_running3D_finished():
 	get_tree().call_group("gameMaster", "fade_out")
 	get_tree().call_group("gameMaster", "endGame")
 	queue_free()
+
+
+func _on_locationSensor_area_entered(area):
+	monstersToSpawn = "monster" + area.name
+	print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
+	currentLocation = area.name
+	print("ENEMY IS INSIDE " + area.name)
