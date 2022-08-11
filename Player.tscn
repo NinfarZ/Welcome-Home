@@ -36,7 +36,7 @@ mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
 [node name="Neck" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68043, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68043, 0.125317 )
 
 [node name="Camera" type="Camera" parent="Neck"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -45,7 +45,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, 0 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.621443, 0, 0, 0, 0.689237, -0.0715165, 0, 0.0265119, 0.833662, -0.0154505, -0.83225, -0.348968 )
+transform = Transform( 0.963509, 0, 0, 0, 0.96515, -0.0984828, 0, 0.0134582, 0.973497, -0.0154505, -1.19865, -0.747739 )
 collision_layer = 0
 collision_mask = 4
 
@@ -58,7 +58,7 @@ mesh = ExtResource( 4 )
 transform = Transform( 7.0694, 0, 0, 0, -2.94398e-07, 6.73505, 0, -5.22817, -2.2853e-07, 0, 1.33106, 12.8063 )
 shape = SubResource( 5 )
 
-[node name="AreaPlayer" type="Area" parent="."]
+[node name="AreaPlayer" type="Area" parent="." groups=["player"]]
 transform = Transform( 1.47396, 0, 0, 0, 1.72622, 0, 0, 0, 1.3795, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 16

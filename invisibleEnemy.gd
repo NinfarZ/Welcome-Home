@@ -69,6 +69,7 @@ func _physics_process(delta):
 				move_to_target()
 			if not $running3D.playing:
 				$running3D.play()
+				return
 		
 		
 
@@ -281,3 +282,6 @@ func _on_locationSensor_area_entered(area):
 	print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
 	currentLocation = area.name
 	print("ENEMY IS INSIDE " + area.name)
+	if currentLocation == "wardrobe":
+		get_tree().call_group("gameMaster", "shutDownWardrobe")
+

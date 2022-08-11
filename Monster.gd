@@ -44,7 +44,7 @@ func _physics_process(delta):
 	
 	
 func lookAtPlayer():
-	head.look_at(player.get_position() + Vector3(0,1,0), Vector3.UP)
+	head.look_at(player.get_position() + Vector3(0,2,0), Vector3.UP)
 	head.rotate_object_local(Vector3(0,1,0), 3.14)
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-70), deg2rad(70))
 	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
@@ -86,8 +86,9 @@ func set_state_hiding():
 
 func canSeePlayer():
 	for raycast in $Cube001.get_children():
-		if raycast.get_collider() == player.get_node("AreaPlayer"):
-			return true
+		if raycast.get_collider() != null:
+			if raycast.get_collider().is_in_group("player"): #== player.get_node("AreaPlayer"):
+				return true
 	return false
 
 func makeCreepySound():

@@ -50,13 +50,13 @@ func _physics_process(delta):
 					remove_monster_from_list(monster)
 			
 			if monstersInRange != []:
-				if RNGTools.pick([1,0]) == 1:
+				if RNGTools.pick([1,0,0]) == 1:
 					currentMonster = RNGTools.pick(monstersInRange)
 					spawnMonster(currentMonster)
 				else:
 					monstersInRange = []
 					state = COOLDOWN
-					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(2,5)
+					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(5,10)
 					get_parent().get_node("TimerMonsterCooldown").start()
 		STALKING:
 			print(currentMonster + " is staking hehe")

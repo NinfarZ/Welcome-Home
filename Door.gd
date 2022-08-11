@@ -11,12 +11,7 @@ var monsterWantsToOpen = false
 var monsterCollisionMask = true
 
 func _physics_process(delta):
-	if open:
-		set_collision_layer_bit(7, true)
-		set_collision_mask_bit(7, false)
-	elif !open:
-		set_collision_layer_bit(7, true)
-		set_collision_mask_bit(7, true)
+	pass
 		
 		
 func interact():
@@ -33,6 +28,7 @@ func open_and_close():
 		in_animation = true
 		$CollisionShape.disabled = true
 		tween.interpolate_property(self, "rotation_degrees", closed_angle, open_angle, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		set_collision_layer_bit(7, false)
 		
 	
 	#CASE IF OPEN
@@ -40,6 +36,7 @@ func open_and_close():
 		in_animation = true
 		$CollisionShape.disabled = true
 		tween.interpolate_property(self, "rotation_degrees", open_angle, closed_angle, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		set_collision_layer_bit(7, true)
 		
 		
 	tween.start()
@@ -61,7 +58,6 @@ func _on_Tween_tween_all_completed():
 	
 		
 
-
 func _on_monsterSensor_body_entered(body):
 	if body.is_in_group("invisibleEnemy") and not open:
 		monsterWantsToOpen = true
@@ -76,8 +72,9 @@ func _on_monsterSensor_body_exited(body):
 	if body.is_in_group("invisibleEnemy"):
 		monsterWantsToOpen = false
 		#$TimerMonsterOpenDoor.stop()
+		
 
 
 func _on_TimerMonsterOpenDoor_timeout():
 	if monsterWantsToOpen:
-		open_and_close()
+		interact()

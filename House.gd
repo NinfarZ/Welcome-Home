@@ -4,6 +4,14 @@ extends Spatial
 onready var player = $Player
 onready var monsters = $Monsters
 
+var isWardrobeDown = false
+
+func shutDownWardrobe():
+	if not isWardrobeDown:
+		$OmniLight2.visible = false
+		$Sanity.setRecoverValue(0)
+		isWardrobeDown = true
+
 
 func deathSequence():
 	player.die()

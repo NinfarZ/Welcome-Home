@@ -13,7 +13,7 @@ data = PoolVector3Array( -1.5, 3, 0.1, 1.5, 3, 0.1, -1.5, -3, 0.1, 1.5, 3, 0.1, 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.54725, 2.62441, 0.168997 )
 
-[node name="Door" type="StaticBody"]
+[node name="Door" type="StaticBody" groups=["door"]]
 collision_layer = 128
 script = ExtResource( 1 )
 
