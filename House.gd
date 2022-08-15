@@ -14,6 +14,9 @@ func shutDownWardrobe():
 
 
 func deathSequence():
+	$OmniLight.visible = false
+	$OmniLight2.visible = false
+	$OmniLight4.visible = false
 	player.die()
 	monsters.set_physics_process(false)
 	$AudioStreamPlayer.stop()
@@ -29,8 +32,5 @@ func fade_out():
 
 
 func endGame():
-	$OmniLight.visible = false
-	$OmniLight2.visible = false
-	$OmniLight4.visible = false
 	yield(get_tree().create_timer(1),"timeout")
 	get_tree().change_scene("res://House.tscn")

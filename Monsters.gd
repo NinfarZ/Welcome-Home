@@ -98,7 +98,8 @@ func _physics_process(delta):
 			print("player has been killed")
 		
 		COOLDOWN:
-			print("monster spawner is on cooldown!")
+			#print("monster spawner is on cooldown!")
+			pass
 			
 			
 			
