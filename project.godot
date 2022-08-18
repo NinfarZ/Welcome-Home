@@ -228,6 +228,10 @@ config/name="Peek3D"
 run/main_scene="res://House.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/fullscreen=true
+
 [editor]
 
 version_control_autoload_on_startup=true

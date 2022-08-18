@@ -14,7 +14,7 @@ cast_shadow = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68535, 1.40675, 0 )
 light_color = Color( 0.964706, 0.694118, 0.435294, 1 )
 light_energy = 0.216
-omni_range = 16.96
+omni_range = 6.061
 omni_attenuation = 7.99999
 
 [node name="SpotLight" type="SpotLight" parent="." index="2"]
