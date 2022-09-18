@@ -1,4 +1,4 @@
-[gd_scene load_steps=288 format=2]
+[gd_scene load_steps=289 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://drawer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Furniture.gd" type="Script" id=19]
 [ext_resource path="res://chair.tscn" type="PackedScene" id=20]
+[ext_resource path="res://spotlight.tscn" type="PackedScene" id=21]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -1686,15 +1687,6 @@ shadow_reverse_cull_face = true
 omni_range = 36.361
 omni_attenuation = 4.92457
 
-[node name="OmniLight4" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13488, 21.1132, 26.1791 )
-light_color = Color( 0.913725, 0.87451, 0.619608, 1 )
-light_energy = 0.02
-shadow_enabled = true
-shadow_reverse_cull_face = true
-omni_range = 36.361
-omni_attenuation = 4.92457
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 580 )
 
@@ -2129,6 +2121,11 @@ collision_layer = 0
 [node name="CollisionShape" type="CollisionShape" parent="windowBarrier"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19513, 0, -4.04245 )
 shape = SubResource( 581 )
+
+[node name="spotlights" type="Spatial" parent="."]
+
+[node name="spotlight" parent="spotlights" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.768713, 15.0898, 26.8199 )
 
 [connection signal="timeout" from="TimerMonsterSwitch" to="Monsters" method="_on_TimerMonsterSwitch_timeout"]
 [connection signal="body_entered" from="Houselayout/myBedroom" to="Navigation/invisibleEnemy" method="_on_myBedroom_body_entered"]

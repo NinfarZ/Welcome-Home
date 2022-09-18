@@ -14,9 +14,6 @@ func shutDownWardrobe():
 
 
 func deathSequence():
-	$OmniLight.visible = false
-	$OmniLight2.visible = false
-	$OmniLight4.visible = false
 	player.die()
 	monsters.set_physics_process(false)
 	$AudioStreamPlayer.stop()
