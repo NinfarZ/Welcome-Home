@@ -45,7 +45,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, 0 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.514446, 0, 0, 0, 0.351514, -0.00380441, 0, -0.0213682, 0.179358, -0.00204064, -0.445906, -0.429255 )
+transform = Transform( 0.514446, 0, 0, 0, 0.351514, -0.00380441, 0, -0.0213682, 0.179358, -0.00204064, -0.458146, -0.429255 )
 collision_layer = 0
 collision_mask = 4
 
@@ -61,7 +61,7 @@ shape = SubResource( 5 )
 [node name="AreaPlayer" type="Area" parent="." groups=["player"]]
 transform = Transform( 1.47396, 0, 0, 0, 1.72622, 0, 0, 0, 1.3795, 0, 0, 0 )
 collision_layer = 2
-collision_mask = 16
+collision_mask = 1040
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaPlayer"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -82,5 +82,6 @@ shape = SubResource( 4 )
 [connection signal="area_entered" from="Neck/viewCone" to="." method="_on_viewCone_area_entered"]
 [connection signal="area_exited" from="Neck/viewCone" to="." method="_on_viewCone_area_exited"]
 [connection signal="area_entered" from="AreaPlayer" to="." method="_on_AreaPlayer_area_entered"]
+[connection signal="area_exited" from="AreaPlayer" to="." method="_on_AreaPlayer_area_exited"]
 [connection signal="body_entered" from="Interact/Area" to="Interact" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Interact/Area" to="Interact" method="_on_Area_body_exited"]

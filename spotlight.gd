@@ -2,21 +2,34 @@ extends Spatial
 
 var isPlayerInside = false
 var isEnemyInside = false
+var state = OFF
+
+enum {
+	ON,
+	OFF,
+	CHANGELIGHT
+}
 
 func _physics_process(delta):
-	if isPlayerInside and isEnemyInside:
-		$Area.monitoring != false
-		$SpotLight.visible = false
-	elif isPlayerInside:
-		get_tree().call_group("sanityBar", "recoverSanity")
-	
-	
+	match state:
+		ON:
+			enableLight()
+			state = CHANGELIGHT
+		OFF:
+			disableLight()
+		CHANGELIGHT:
+			get_tree().call_group("gameMaster", "shutDownLight", self)
+			#state = OFF
+				
+		
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
 		isPlayerInside = true
+		
 	if body.is_in_group("invisibleEnemy"):
-		isEnemyInside = true
+		if self.is_in_group(body.get_current_location()):
+			isEnemyInside = true
 	
 		
 
@@ -24,5 +37,20 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("player"):
 		isPlayerInside = false
+		
 	if body.is_in_group("invisibleEnemy"):
 		isEnemyInside = false
+
+func disableLight():
+	self.get_node("Area/CollisionShape").disabled = true
+	$SpotLight.visible = false
+
+func enableLight():
+	self.get_node("Area/CollisionShape").disabled = false
+	$SpotLight.visible = true
+
+func setState(newState):
+	state = newState
+
+func getState():
+	return state

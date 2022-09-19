@@ -86,7 +86,7 @@ func _physics_process(delta):
 					state = SEARCHING
 		ANGER:
 			incrementDifficulty()
-			get_tree().call_group("sanityBar", "drainSanity")
+			get_tree().call_group("sanityBar", "drainSanity", 1.17)
 			state = CHANGING
 		ROOMCHANGE:
 			#print("rommchange, monster disappeared")
@@ -95,7 +95,7 @@ func _physics_process(delta):
 			state = SEARCHING
 		KILL:
 			get_node(currentMonster).killPlayer()
-			print("player has been killed")
+			#print("player has been killed")
 		
 		COOLDOWN:
 			#print("monster spawner is on cooldown!")
@@ -137,7 +137,7 @@ func pickRandomMonster():
 
 
 func _on_TimerMonsterSwitch_timeout():
-	print("timer ran out!")
+	#print("timer ran out!")
 	monsterCanDespawn = true
 	#else:
 		#state = SEARCHING

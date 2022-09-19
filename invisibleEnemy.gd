@@ -145,7 +145,7 @@ func _on_VisibilityNotifier_camera_exited(camera):
 
 #audio just finished playing, so it's on cooldown
 func _on_RandomAudioStreamPlayer_finished():
-	print("sound finished")
+	#print("sound finished")
 	$RandomAudioStreamPlayer/TimerAudio.start()
 
 #audio cooldown over, can play sound again
@@ -274,14 +274,13 @@ func _on_steps3D_finished():
 func _on_running3D_finished():
 	get_tree().call_group("gameMaster", "fade_out")
 	get_tree().call_group("gameMaster", "endGame")
-	queue_free()
+	#queue_free()
 
 
 func _on_locationSensor_area_entered(area):
 	monstersToSpawn = "monster" + area.name
-	print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
+	#print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
 	currentLocation = area.name
-	print("ENEMY IS INSIDE " + area.name)
-	if currentLocation == "wardrobe":
-		get_tree().call_group("gameMaster", "shutDownWardrobe")
+	#print("ENEMY IS INSIDE " + area.name)
+	#get_tree().call_group("gameMaster", "shutDownLight", currentLocation)
 

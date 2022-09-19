@@ -11,6 +11,7 @@ onready var neck: Spatial = $Neck
 var input_move: Vector3 = Vector3()
 var gravity_local: Vector3 = Vector3()
 var currentLocation = null
+var inSpotlight = false
 
 func _ready():
 	
@@ -38,7 +39,9 @@ func _physics_process(delta):
 			print(raycast.get_collider())
 	
 	#recovering sanity
-	if currentLocation == "wardrobe":
+	if not inSpotlight:
+		get_tree().call_group("sanityBar", "drainSanity", 0.03)
+	else:
 		get_tree().call_group("sanityBar", "recoverSanity")
 
 func get_input_direction() -> Vector3:
@@ -57,7 +60,7 @@ func get_position():
 
 
 func die():
-	$Neck/flashlight/SpotLight.visible = false
+	#$Neck/flashlight/OmniLight.visible = false
 	$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone.monitorable = false
 
@@ -156,4 +159,11 @@ func _on_viewCone_area_exited(area):
 
 func _on_AreaPlayer_area_entered(area):
 	currentLocation = area.name
-	print("PLAYER IS INSIDE " + area.name)
+	#print("PLAYER IS INSIDE " + area.name)
+	if area.is_in_group("spotlight"):
+		inSpotlight = true
+
+
+func _on_AreaPlayer_area_exited(area):
+	if area.is_in_group("spotlight"):
+		inSpotlight = false

@@ -165,7 +165,7 @@ func _on_headArea_area_entered(area):
 	if area.is_in_group("playerViewCone"):
 		#playerLooksAtMonster()
 		canSeeMonsterFace = true
-		print("monster head are entered")
+		#print("monster head are entered")
 			
 		
 func fadeDrainSound():
@@ -178,7 +178,7 @@ func _on_headArea_area_exited(area):
 		canSeeMonsterFace = false
 		if $stareDrainSound.playing:
 			fadeDrainSound()
-		print("monster head are exited")
+		#print("monster head are exited")
 
 
 func _on_Tween_tween_all_completed():
