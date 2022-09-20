@@ -45,12 +45,12 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, 0 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.514446, 0, 0, 0, 0.351514, -0.00380441, 0, -0.0213682, 0.179358, -0.00204064, -0.458146, -0.429255 )
+transform = Transform( 0.563513, 0, 0, 0, 0.535334, -0.0355225, 0, -0.0169957, 0.475514, -0.00204064, -0.60483, -1.28138 )
 collision_layer = 0
 collision_mask = 4
 
 [node name="MeshInstance" type="MeshInstance" parent="Neck/viewCone"]
-transform = Transform( 7.0694, 0, 0, 0, -2.90573e-07, 6.73505, 0, -5.22817, -3.57628e-07, 0, 1.33106, 12.8063 )
+transform = Transform( 7.0694, 0, 0, 0, -3.27826e-07, 6.73505, 0, -5.22817, -3.72529e-07, 0, 1.33106, 12.8063 )
 visible = false
 mesh = ExtResource( 4 )
 

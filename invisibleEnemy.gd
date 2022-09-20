@@ -274,7 +274,7 @@ func _on_steps3D_finished():
 func _on_running3D_finished():
 	get_tree().call_group("gameMaster", "fade_out")
 	get_tree().call_group("gameMaster", "endGame")
-	#queue_free()
+	
 
 
 func _on_locationSensor_area_entered(area):

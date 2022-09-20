@@ -60,9 +60,9 @@ func get_position():
 
 
 func die():
-	#$Neck/flashlight/OmniLight.visible = false
+	$Neck/flashlight/SpotLight.visible = false
 	$Neck/flashlight.tweenDownLight()
-	$Neck/viewCone.monitorable = false
+	$Neck/viewCone/CollisionShape.disabled = true
 
 
 func get_current_location():

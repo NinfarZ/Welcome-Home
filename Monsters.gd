@@ -87,6 +87,7 @@ func _physics_process(delta):
 		ANGER:
 			incrementDifficulty()
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
+			get_tree().call_group("flashlight", "flicker")
 			state = CHANGING
 		ROOMCHANGE:
 			#print("rommchange, monster disappeared")
