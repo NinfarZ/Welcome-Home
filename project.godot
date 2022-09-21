@@ -228,10 +228,6 @@ config/name="Peek3D"
 run/main_scene="res://House.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/fullscreen=true
-
 [editor]
 
 version_control_autoload_on_startup=true
@@ -283,6 +279,7 @@ interact={
 3d_physics/layer_6="invisibleEnemy"
 3d_physics/layer_8="door"
 3d_physics/layer_10="object"
+3d_physics/layer_13="item"
 
 [rendering]
 

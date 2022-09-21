@@ -1,4 +1,4 @@
-[gd_scene load_steps=289 format=2]
+[gd_scene load_steps=291 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Furniture.gd" type="Script" id=19]
 [ext_resource path="res://chair.tscn" type="PackedScene" id=20]
 [ext_resource path="res://spotlight.tscn" type="PackedScene" id=21]
+[ext_resource path="res://candy.tscn" type="PackedScene" id=22]
+[ext_resource path="res://key.tscn" type="PackedScene" id=23]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -1715,6 +1717,12 @@ transform = Transform( 0.996538, -0.0376344, -0.0741209, 0.0292893, 0.993431, -0
 [node name="yellowgirl8" parent="Monsters" groups=["bedRoom2", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( -0.0758621, -0.0419714, 0.996234, 0.550551, 0.831247, 0.0769451, -0.831347, 0.554315, -0.0399533, 1.80937, 14.1108, -3.80175 )
 
+[node name="yellowgirl52" parent="Monsters" groups=["bedRoom2", "monstercorridor2"] instance=ExtResource( 4 )]
+transform = Transform( -0.0845699, -0.996129, -0.0239367, 0.0764143, -0.0304353, 0.996611, -0.993483, 0.0824544, 0.0786917, 4.70781, 12.5428, -1.26978 )
+
+[node name="yellowgirl53" parent="Monsters" groups=["bedRoom2", "corridor1", "corridor2", "corridor3", "monstermyBedroom"] instance=ExtResource( 4 )]
+transform = Transform( -0.0845699, -0.996129, -0.0239367, 0.0764143, -0.0304353, 0.996611, -0.993483, 0.0824544, 0.0786917, 4.70781, 12.5428, 5.60931 )
+
 [node name="yellowgirl36" parent="Monsters" groups=["corridor2", "livingroom", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( -0.981526, -0.0014374, -0.191318, 0.01468, 0.996457, -0.0828018, 0.190758, -0.0840812, -0.978029, 0.140966, 17.3208, -7.68446 )
 
@@ -1768,6 +1776,9 @@ transform = Transform( -0.0464816, 0.035473, -0.998289, -0.0458545, 0.99824, 0.0
 
 [node name="yellowgirl11" parent="Monsters" groups=["corridor1", "corridor2", "monsterlivingroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.9984, -0.0439219, 0.0356097, 0.0410785, -0.996187, -0.0769713, 0.0388547, -0.0753854, 0.996397, -0.696679, 19.8393, -13.7965 )
+
+[node name="yellowgirl51" parent="Monsters" groups=["livingroom", "livingroom2", "monstercorridor2"] instance=ExtResource( 4 )]
+transform = Transform( 0.0873932, 0.109358, 0.990153, -0.995043, -0.0377716, 0.0919963, 0.0474596, -0.993285, 0.105515, 0.810669, 19.333, -10.7931 )
 
 [node name="yellowgirl17" parent="Monsters" groups=["livingroom", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.972155, -0.18582, 0.14278, -0.177751, -0.981762, -0.0674418, 0.152708, 0.0401848, -0.987454, -0.696679, 21.7602, -12.8534 )
@@ -1980,7 +1991,7 @@ autoplay = true
 [node name="Doors" type="Spatial" parent="."]
 
 [node name="Door" parent="Doors" groups=["my_bedroom2Door"] instance=ExtResource( 10 )]
-transform = Transform( -5.34894e-08, 0, -1.00001, 0, 1.12366, 0, 1.22369, 0, -4.37119e-08, 2.56617, 11.9399, -2.98225 )
+transform = Transform( -5.34894e-08, 0, -1.00001, 0, 1.019, 0, 1.22369, 0, -4.37119e-08, 2.56617, 12.5917, -2.98225 )
 collision_mask = 133
 closed_angle = Vector3( 0, -90, 0 )
 
@@ -2132,6 +2143,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7788, 15.1548, -37.863 )
 
 [node name="spotlight5" parent="spotlights" groups=["entrance"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714271, 15.2592, -37.041 )
+
+[node name="Candy" type="Spatial" parent="."]
+
+[node name="candy" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.52895, 14.2764, -20.809 )
+
+[node name="candy6" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.45055, 15.8318, -26.5827 )
+
+[node name="candy2" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.89453, 14.2764, -16.4971 )
+
+[node name="candy3" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14.6573, 13.6876, -27.6201 )
+
+[node name="candy4" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.9964, 15.3381, -28.0198 )
+
+[node name="candy5" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 23.9212, 12.1987, -28.0198 )
+
+[node name="Spatial" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 15, -19 )
 
 [connection signal="timeout" from="TimerMonsterSwitch" to="Monsters" method="_on_TimerMonsterSwitch_timeout"]
 [connection signal="body_entered" from="Houselayout/myBedroom" to="Navigation/invisibleEnemy" method="_on_myBedroom_body_entered"]
