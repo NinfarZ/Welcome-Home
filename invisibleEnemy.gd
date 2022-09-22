@@ -64,7 +64,7 @@ func _physics_process(delta):
 		STOP:
 			pass
 		KILLPLAYER:
-			speed = 6
+			speed = 10
 			if path.size() > 0:
 				move_to_target()
 			if not $running3D.playing:

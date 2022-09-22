@@ -4,6 +4,7 @@ onready var sanityBar = $ProgressBar
 
 var recoverValue = 0.05
 var playerIsDead = false
+var isMonsterDraining = false
 
 func setRecoverValue(value):
 	recoverValue = value
@@ -13,10 +14,14 @@ func drainSanity(drainValue):
 		sanityBar.value += drainValue
 	else:
 		playerIsDead = true
+		get_tree().call_group("player", "setState", 1)
 		get_tree().call_group("gameMaster", "deathSequence")
 		queue_free()
 
 func recoverSanity():
-	if not playerIsDead:
+	if not isMonsterDraining:
 		sanityBar.value -= recoverValue
+
+func setIsDraining(value):
+	isMonsterDraining = value
 	

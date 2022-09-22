@@ -1,10 +1,15 @@
 extends KinematicBody
 
+enum {
+	ALIVE,
+	DEAD
+}
 const MOUSE_SENSITIVITY: float = 0.08
 const MOVE_SPEED: float = 5.0
 const GRAVITY_ACCELERATION: float = 9.8
 
 export(NodePath) var nodePath
+export var moveSpeed = 5.0
 
 onready var neck: Spatial = $Neck
 
@@ -12,6 +17,8 @@ var input_move: Vector3 = Vector3()
 var gravity_local: Vector3 = Vector3()
 var currentLocation = null
 var inSpotlight = false
+var crouching = false
+var state = ALIVE
 
 func _ready():
 	
@@ -29,20 +36,34 @@ func _input(event):
 		
 
 func _physics_process(delta):
-	input_move = get_input_direction() * MOVE_SPEED
+	input_move = get_input_direction() * moveSpeed
 	if not is_on_floor():
 		gravity_local += GRAVITY_ACCELERATION * Vector3.DOWN * delta
 	move_and_slide(input_move + gravity_local, Vector3.UP)
 	
-	for raycast in $Neck/Camera.get_children():
-		if raycast.is_colliding():
-			print(raycast.get_collider())
+	#for raycast in $Neck/Camera.get_children():
+		#if raycast.is_colliding():
+			#print(raycast.get_collider())
+	
+	if Input.is_action_just_pressed("crouch") and not crouching:
+		$AnimationPlayer.play("crouch")
+		moveSpeed = 2.0
+		crouching = true
+	elif Input.is_action_just_pressed("crouch") and crouching:
+		if not $Neck/RayCast.is_colliding():
+			$AnimationPlayer.play_backwards("crouch")
+			moveSpeed = 5.0
+			crouching = false
 	
 	#recovering sanity
-	if not inSpotlight:
-		get_tree().call_group("sanityBar", "drainSanity", 0.03)
-	else:
-		get_tree().call_group("sanityBar", "recoverSanity")
+	match state:
+		ALIVE:
+			if not inSpotlight:
+				get_tree().call_group("sanityBar", "drainSanity", 0.03)
+			else:
+				get_tree().call_group("sanityBar", "recoverSanity")
+		DEAD:
+			pass
 
 func get_input_direction() -> Vector3:
 	#
@@ -63,6 +84,7 @@ func die():
 	$Neck/flashlight/SpotLight.visible = false
 	$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone/CollisionShape.disabled = true
+	#state = DEAD
 
 
 func get_current_location():
@@ -140,7 +162,8 @@ func get_current_location():
 	#if body.is_in_group("player"):
 		#currentLocation = "corridor3"
 		#print(currentLocation)
-
+func setState(newState):
+	state = newState
 
 func _on_viewCone_area_entered(area):
 	if area.is_in_group("monsterHead"):

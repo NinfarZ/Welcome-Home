@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Door.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
 [ext_resource path="res://audio/doorOpen1.wav" type="AudioStream" id=3]
+[ext_resource path="res://textures/lock.png" type="Texture" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 3, 6, 0.2 )
@@ -12,6 +13,120 @@ data = PoolVector3Array( -1.5, 3, 0.1, 1.5, 3, 0.1, -1.5, -3, 0.1, 1.5, 3, 0.1, 
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.54725, 2.62441, 0.168997 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.780392, 0.780392, 0.780392, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 5, 5, 5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite3D:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1.55061, 2.95539, -0.116692 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "locked"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 5, 5 ), Vector3( 7, 7, 7 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.55061, 2.95539, -0.116692 ), Vector3( 1.55061, 3.35738, -0.116692 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Door" type="StaticBody" groups=["door"]]
 collision_layer = 128
@@ -47,6 +162,16 @@ random_pitch_range = 0.5
 [node name="TimerMonsterOpenDoor" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 1.55061, 2.95539, -0.116692 )
+modulate = Color( 0.780392, 0.780392, 0.780392, 1 )
+opacity = 0.0
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/locked = SubResource( 5 )
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="body_entered" from="monsterSensor" to="." method="_on_monsterSensor_body_entered"]

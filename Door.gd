@@ -6,6 +6,7 @@ onready var tween = $Tween
 
 var in_animation = false
 export var open = false
+export var locked = false
 
 var monsterWantsToOpen = false
 var monsterCollisionMask = true
@@ -15,15 +16,19 @@ func _physics_process(delta):
 		
 		
 func interact():
-	if in_animation:
-		return
+	if not locked:
+		if in_animation:
+			return
+		else:
+			open_and_close()
 	else:
-		open_and_close()
+		$AnimationPlayer.play("locked")
 
 func open_and_close():
 	#print("trying to open/close door")
 	#NOT OPEN MEANS CLOSES
 	if not open and not in_animation:
+		$monsterSensor/CollisionShape.disabled = true
 		$openCloseSound.play()
 		in_animation = true
 		$CollisionShape.disabled = true
@@ -33,6 +38,7 @@ func open_and_close():
 	
 	#CASE IF OPEN
 	elif open and not in_animation:
+		$monsterSensor/CollisionShape.disabled = true
 		in_animation = true
 		$CollisionShape.disabled = true
 		tween.interpolate_property(self, "rotation_degrees", open_angle, closed_angle, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -52,6 +58,7 @@ func _on_Tween_tween_all_completed():
 	open = !open
 	in_animation = false
 	$CollisionShape.disabled = false
+	$monsterSensor/CollisionShape.disabled = false
 
 
 	
@@ -60,7 +67,7 @@ func _on_Tween_tween_all_completed():
 
 func _on_monsterSensor_body_entered(body):
 	if body.is_in_group("invisibleEnemy") and not open:
-		monsterWantsToOpen = true
+		#monsterWantsToOpen = true
 		print("invisibleMonster is trying to open " + self.name)
 		$TimerMonsterOpenDoor.start()
 		
@@ -70,11 +77,14 @@ func _on_monsterSensor_body_entered(body):
 
 func _on_monsterSensor_body_exited(body):
 	if body.is_in_group("invisibleEnemy"):
-		monsterWantsToOpen = false
+		#monsterWantsToOpen = false
 		$TimerMonsterOpenDoor.stop()
 		
 
 
 func _on_TimerMonsterOpenDoor_timeout():
-	if monsterWantsToOpen:
-		interact()
+	#if monsterWantsToOpen:
+	interact()
+
+func setLock(islocked):
+	locked = islocked

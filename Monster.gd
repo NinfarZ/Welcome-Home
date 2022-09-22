@@ -15,7 +15,8 @@ var state = HIDING
 var inView = false
 var canSpawn = false
 var doorOpen = false
-var monsterNearDoor = false
+export var monsterNearDoor = false
+var collidingWithDoor = false
 var canSeeMonsterFace = false
 var timesSoundPlayed = 1
 var canMakeSound = false
@@ -40,7 +41,7 @@ func _physics_process(delta):
 			visible = true
 			$headArea.monitorable = true
 			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
-			
+	
 	
 	
 func lookAtPlayer():
@@ -186,3 +187,15 @@ func _on_Tween_tween_all_completed():
 	$stareDrainSound.volume_db = 0
 	#$stareDrainSound.pitch_scale = 1
 	timesSoundPlayed = 1
+
+
+func _on_MonsterArea_body_entered(body):
+	if body.is_in_group("door"):
+		print("ich kann nicht spawn weil es eine Tur gibt")
+		collidingWithDoor = true
+
+
+func _on_MonsterArea_body_exited(body):
+	if body.is_in_group("door"):
+		print("die Tur ist jetzt weg, also kann ich nun spawn")
+		collidingWithDoor = false

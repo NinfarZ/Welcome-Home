@@ -11,7 +11,7 @@
 [ext_resource path="res://audio/monsterStareDrain2.wav" type="AudioStream" id=9]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.505678, 2.6909, 1 )
+extents = Vector3( 0.505678, 2.6909, 0.561622 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.208181, 0.284438, 0.214893 )
@@ -36,7 +36,7 @@ cast_shadow = 0
 transform = Transform( 1, -1.86265e-08, -1.48721e-07, 2.70666e-09, -4.56348e-08, 1, -1.49012e-08, -1, -4.65661e-08, -0.384012, 1.27522, -0.478338 )
 enabled = true
 cast_to = Vector3( 0, -60, 0 )
-collision_mask = 131
+collision_mask = 643
 debug_shape_custom_color = Color( 1, 0, 0, 1 )
 debug_shape_thickness = 5
 
@@ -44,7 +44,7 @@ debug_shape_thickness = 5
 transform = Transform( 1, -1.86265e-08, -1.48721e-07, 2.70666e-09, -4.56348e-08, 1, -1.49012e-08, -1, -4.65661e-08, 0.407167, 1.2762, -0.137077 )
 enabled = true
 cast_to = Vector3( 0, -60, 0 )
-collision_mask = 131
+collision_mask = 643
 debug_shape_custom_color = Color( 1, 0, 0, 1 )
 debug_shape_thickness = 5
 
@@ -52,7 +52,7 @@ debug_shape_thickness = 5
 transform = Transform( 1, -1.86265e-08, -1.48721e-07, 2.70666e-09, -4.56348e-08, 1, -1.49012e-08, -1, -4.65661e-08, -0.015329, 0.417432, -0.275697 )
 enabled = true
 cast_to = Vector3( 0, -60, 0 )
-collision_mask = 131
+collision_mask = 643
 debug_shape_custom_color = Color( 1, 0, 0, 1 )
 debug_shape_thickness = 5
 
@@ -60,7 +60,7 @@ debug_shape_thickness = 5
 transform = Transform( 1, -1.86265e-08, -1.48721e-07, 2.70666e-09, -4.56348e-08, 1, -1.49012e-08, -1, -4.65661e-08, -0.0153291, 1.90715, -0.275697 )
 enabled = true
 cast_to = Vector3( 0, -60, 0 )
-collision_mask = 131
+collision_mask = 643
 debug_shape_custom_color = Color( 1, 0, 0, 1 )
 debug_shape_thickness = 5
 
@@ -74,7 +74,7 @@ aabb = AABB( -0.906522, -2.5532, -0.534504, 1.81303, 5.10642, 1.06901 )
 
 [node name="MonsterArea" type="Area" parent="." index="6"]
 collision_layer = 12
-collision_mask = 4
+collision_mask = 132
 
 [node name="CollisionShape" type="CollisionShape" parent="MonsterArea" index="0"]
 transform = Transform( 1, 0, 0, 0, 0.922222, 0, 0, 0, 1, 0.0487475, 0.643452, 0 )
@@ -121,6 +121,8 @@ random_pitch_range = 0.29
 [connection signal="camera_exited" from="Visible" to="." method="_on_Visible_camera_exited"]
 [connection signal="area_entered" from="MonsterArea" to="." method="_on_MonsterArea_area_entered"]
 [connection signal="area_exited" from="MonsterArea" to="." method="_on_MonsterArea_area_exited"]
+[connection signal="body_entered" from="MonsterArea" to="." method="_on_MonsterArea_body_entered"]
+[connection signal="body_exited" from="MonsterArea" to="." method="_on_MonsterArea_body_exited"]
 [connection signal="camera_entered" from="headVisibility" to="." method="_on_headVisibility_camera_entered"]
 [connection signal="camera_exited" from="headVisibility" to="." method="_on_headVisibility_camera_exited"]
 [connection signal="area_entered" from="headArea" to="." method="_on_headArea_area_entered"]
