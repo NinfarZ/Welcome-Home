@@ -88,3 +88,11 @@ func _on_TimerMonsterOpenDoor_timeout():
 
 func setLock(islocked):
 	locked = islocked
+
+func isLocked():
+	return locked
+
+func unlock():
+	#animate
+	$AnimationPlayer.play("unlock")
+	locked = false

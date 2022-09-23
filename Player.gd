@@ -18,6 +18,7 @@ var gravity_local: Vector3 = Vector3()
 var currentLocation = null
 var inSpotlight = false
 var crouching = false
+var flashlightOn = true
 var state = ALIVE
 
 func _ready():
@@ -45,6 +46,7 @@ func _physics_process(delta):
 		#if raycast.is_colliding():
 			#print(raycast.get_collider())
 	
+	#crouching
 	if Input.is_action_just_pressed("crouch") and not crouching:
 		$AnimationPlayer.play("crouch")
 		moveSpeed = 2.0
@@ -54,6 +56,17 @@ func _physics_process(delta):
 			$AnimationPlayer.play_backwards("crouch")
 			moveSpeed = 5.0
 			crouching = false
+	
+	#flashlightToggle
+	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
+		$Neck/flashlight/SpotLight.visible = false
+		flashlightOn = false
+		$AnimationPlayer.play("flashlightOFF")
+	elif Input.is_action_just_pressed("flashlightToggle") and not flashlightOn:
+		$Neck/flashlight/SpotLight.visible = true
+		flashlightOn = true
+		$AnimationPlayer.play("flashlightON")
+		
 	
 	#recovering sanity
 	match state:

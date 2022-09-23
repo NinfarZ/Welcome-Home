@@ -19,7 +19,7 @@ func _physics_process(delta):
 	match state:
 		START:
 			turnAllLightsOff()
-			turnOnLight("spotlight4")
+			turnOnLight("spotlight")
 			state = GAME
 		GAME:
 			pass

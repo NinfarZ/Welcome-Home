@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Flashlight.tscn" type="PackedScene" id=2]
@@ -60,6 +60,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 3.35366 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Neck/viewCone:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.563513, 0.535604, 0.476839 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Neck/viewCone:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.00204064, -0.60483, -0.748655 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Neck/viewCone:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -5.94359, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "crouch"
@@ -89,6 +125,84 @@ tracks/1/keys = {
 "values": [ 3.35366, 0.133575 ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "flashlightOFF"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Neck/viewCone:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.563513, 0.280601, 0.174518 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Neck/viewCone:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.00204064, -0.375952, -0.471401 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Neck/viewCone:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.978302, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "flashlightON"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Neck/viewCone:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.563513, 0.535604, 0.476839 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Neck/viewCone:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.00204064, -0.64634, -1.36788 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Neck/viewCone:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 2.78441, 0, 0 ) ]
+}
+
 [node name="Player" type="KinematicBody" groups=["player"]]
 collision_mask = 529
 script = ExtResource( 1 )
@@ -98,6 +212,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+visible = false
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 
@@ -111,7 +226,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, 0 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.563513, 0, 0, 0, 0.535334, -0.0355225, 0, -0.0169957, 0.475514, -0.00204064, -0.60483, -1.28138 )
+transform = Transform( 0.563513, 0, 0, 0, 0.532724, 0.0493763, 0, -0.0554613, 0.474276, -0.00204064, -0.60483, -0.748655 )
 collision_layer = 0
 collision_mask = 4
 
@@ -124,7 +239,7 @@ mesh = ExtResource( 4 )
 transform = Transform( 7.0694, 0, 0, 0, -2.94398e-07, 6.73505, 0, -5.22817, -2.2853e-07, 0, 1.33106, 12.8063 )
 shape = SubResource( 5 )
 
-[node name="Interact" type="Spatial" parent="Neck"]
+[node name="Interact" type="Spatial" parent="Neck" groups=["interact"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.448974, -0.125317 )
 script = ExtResource( 3 )
 
@@ -154,8 +269,11 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "flashlightON"
 anims/RESET = SubResource( 6 )
 anims/crouch = SubResource( 7 )
+anims/flashlightOFF = SubResource( 8 )
+anims/flashlightON = SubResource( 9 )
 
 [connection signal="area_entered" from="Neck/viewCone" to="." method="_on_viewCone_area_entered"]
 [connection signal="area_exited" from="Neck/viewCone" to="." method="_on_viewCone_area_exited"]

@@ -69,7 +69,7 @@ func _physics_process(delta):
 				move_to_target()
 			if not $running3D.playing:
 				$running3D.play()
-				return
+				
 		
 		
 
