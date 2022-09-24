@@ -116,21 +116,7 @@ func setSpeedIncrease(increase):
 
 
 
-#player has entered the enemy range, play a random spooky sound
-#func _on_monsterSpawner_area_entered(area):
-	#if area.get_parent().is_in_group("player"):
-		#print("music should play")
-		#if not $RandomAudioStreamPlayer.playing and canPlaySound:
-			#$RandomAudioStreamPlayer.play()
-			#canPlaySound = false
 
-
-
-
-func _on_monsterSpawner_area_exited(area):
-	#if area.get_parent().is_in_group("player"):
-		#canPlaySound = false
-		pass
 
 
 func _on_VisibilityNotifier_camera_entered(camera):
@@ -284,3 +270,6 @@ func _on_locationSensor_area_entered(area):
 	#print("ENEMY IS INSIDE " + area.name)
 	#get_tree().call_group("gameMaster", "shutDownLight", currentLocation)
 
+
+func setMonsterSpawner(setSpawner):
+	$monsterSpawner.monitorable = setSpawner

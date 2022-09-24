@@ -42,8 +42,7 @@ autostart = true
 
 [node name="monsterSpawner" parent="." instance=ExtResource( 2 )]
 transform = Transform( 15, 0, 0, 0, 20, 0, 0, 0, 15, 0, 0, 0 )
-collision_mask = 4
-monitoring = false
+collision_mask = 1028
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 

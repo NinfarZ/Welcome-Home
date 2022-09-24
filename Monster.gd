@@ -20,6 +20,7 @@ var collidingWithDoor = false
 var canSeeMonsterFace = false
 var timesSoundPlayed = 1
 var canMakeSound = false
+var animationValue = 0
 
 #fade out var
 export var transition_duration = 1.00
@@ -41,6 +42,14 @@ func _physics_process(delta):
 			visible = true
 			$headArea.monitorable = true
 			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
+			
+			#animate monster face
+			if animationValue < 35:
+				$AnimationPlayer.play("neutral")
+			elif animationValue >= 35 and animationValue < 60:
+				$AnimationPlayer.play("openMouth")
+			elif animationValue >= 60:
+				$AnimationPlayer.play("crazyOpen")
 	
 	
 	
@@ -199,3 +208,6 @@ func _on_MonsterArea_body_exited(body):
 	if body.is_in_group("door"):
 		print("die Tur ist jetzt weg, also kann ich nun spawn")
 		collidingWithDoor = false
+
+func setFaceAnimation(value):
+	animationValue = value

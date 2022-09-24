@@ -12,6 +12,7 @@ func setRecoverValue(value):
 func drainSanity(drainValue):
 	if sanityBar.value < sanityBar.max_value and not playerIsDead:
 		sanityBar.value += drainValue
+		get_tree().call_group("monster", "setFaceAnimation", sanityBar.value)
 	else:
 		playerIsDead = true
 		get_tree().call_group("player", "setState", 1)
@@ -24,4 +25,7 @@ func recoverSanity():
 
 func setIsDraining(value):
 	isMonsterDraining = value
+
+func getSanityBarValue():
+	return sanityBar.value
 	

@@ -26,6 +26,7 @@ func _physics_process(delta):
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
 		isPlayerInside = true
+		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", false)
 		
 	if body.is_in_group("invisibleEnemy"):
 		if self.is_in_group(body.get_current_location()):
@@ -37,6 +38,7 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("player"):
 		isPlayerInside = false
+		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", true)
 		
 	if body.is_in_group("invisibleEnemy"):
 		isEnemyInside = false

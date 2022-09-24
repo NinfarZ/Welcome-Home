@@ -180,6 +180,7 @@ func _on_monsterSpawner_area_entered(area):
 
 func _on_monsterSpawner_area_exited(area):
 	monstersInRange = []
+	despawnMonster(currentMonster)
 
 
 func _on_TimerMonsterCooldown_timeout():
