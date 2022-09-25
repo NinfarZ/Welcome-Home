@@ -85,7 +85,7 @@ func _physics_process(delta):
 					monsterCanDespawn = false
 					state = SEARCHING
 		ANGER:
-			incrementDifficulty()
+			#incrementDifficulty()
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
 			get_tree().call_group("flashlight", "flicker")
 			state = CHANGING
@@ -163,15 +163,14 @@ func despawnMonster(chosenMonster):
 
 	
 
-func incrementDifficulty():
-	get_parent().get_node("TimerMonsterSwitch").wait_time -=0.05
-	get_parent().get_node("TimerMonsterSwitch").wait_time = clamp(get_parent().get_node("TimerMonsterSwitch").wait_time, 8, 10)
+func changeDifficulty(newSpeed, newTime):
+	get_parent().get_node("TimerMonsterSwitch").wait_time = newTime
+	#get_parent().get_node("TimerMonsterSwitch").wait_time = clamp(get_parent().get_node("TimerMonsterSwitch").wait_time, 8, 10)
 	#print(get_parent().get_node("TimerMonsterSwitch").wait_time)
-	invisibleMonster.setSpeedIncrease(0.01)
-	invisibleMonster.speed = clamp(invisibleMonster.speed, 1, 4)
+	invisibleMonster.setSpeedIncrease(newSpeed)
+	#invisibleMonster.speed = clamp(invisibleMonster.speed, 1, 4)
 	#print(invisibleMonster.speed)
-	
-	
+
 
 func _on_monsterSpawner_area_entered(area):
 	#print("there are monsters here")

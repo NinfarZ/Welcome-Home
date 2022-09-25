@@ -1672,7 +1672,7 @@ transform = Transform( 1, 0, 0, 0, 0.623604, 0, 0, 0, 1, 0, 13.1306, 0 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 580 )
 
-[node name="Monsters" type="Spatial" parent="."]
+[node name="Monsters" type="Spatial" parent="." groups=["monsterController"]]
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
@@ -1703,7 +1703,7 @@ transform = Transform( -0.142718, 0.309377, -0.940169, -0.0786578, -0.950433, -0
 [node name="yellowgirl7" parent="Monsters" groups=["monstercorridor1", "myBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.149495, -0.0819186, 0.985363, -0.542029, 0.840268, -0.0123785, -0.826955, -0.535946, -0.170019, 1.94145, 13.5931, 8.87229 )
 
-[node name="yellowgirl9" parent="Monsters" groups=["bedRoom2", "corridor1", "corridor2", "livingroom", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
+[node name="yellowgirl9" parent="Monsters" groups=["bedRoom2", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.322315, 0.114792, 0.939648, -0.1076, 0.99063, -0.0841111, -0.940496, -0.0739959, 0.331646, -2.3741, 12.4708, -1.7644 )
 
 [node name="yellowgirl50" parent="Monsters" groups=["corridor1", "monstercorridor1", "monstercorridor2", "myBedroom"] instance=ExtResource( 4 )]
@@ -1717,9 +1717,11 @@ transform = Transform( -0.0758621, -0.0419714, 0.996234, 0.550551, 0.831247, 0.0
 
 [node name="yellowgirl52" parent="Monsters" groups=["corridor1", "monsterbedRoom2", "monstercorridor1", "monstercorridor2", "myBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.0845699, -0.996129, -0.0239367, 0.986273, -0.087104, 0.140279, -0.141821, -0.0117443, 0.989822, 4.70781, 15.6002, 0.388517 )
+monsterNearDoor = true
 
 [node name="yellowgirl53" parent="Monsters" groups=["bedRoom2", "corridor2", "corridor3", "monstercorridor1", "monstercorridor2", "monstermyBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.0845699, -0.996129, -0.0239367, -0.995847, 0.0853099, -0.0317912, 0.0337094, 0.0211483, -0.999207, 4.68122, 16.8632, 4.81414 )
+monsterNearDoor = true
 
 [node name="yellowgirl36" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( -0.942665, 0.0906659, -0.321186, -0.116619, -0.991209, 0.062468, -0.312698, 0.0963433, 0.944953, 1.13253, 21.4228, -9.61263 )

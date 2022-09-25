@@ -126,7 +126,7 @@ aabb = AABB( -0.906522, -2.5532, -0.534504, 1.81303, 5.10642, 1.06901 )
 
 [node name="MonsterArea" type="Area" parent="." index="6"]
 collision_layer = 12
-collision_mask = 132
+collision_mask = 1156
 
 [node name="CollisionShape" type="CollisionShape" parent="MonsterArea" index="0"]
 transform = Transform( 1, 0, 0, 0, 0.922222, 0, 0, 0, 1, 0.0487475, 0.643452, 0 )

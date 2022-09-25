@@ -110,8 +110,9 @@ func setStateKillplayer():
 func getSpeed():
 	return speed
 
-func setSpeedIncrease(increase):
-	speed += increase
+func setSpeedIncrease(newSpeed):
+	speed = newSpeed
+	#speed += increase -- old version
 	
 
 

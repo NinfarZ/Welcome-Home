@@ -40,7 +40,8 @@ func open_and_close():
 	elif open and not in_animation:
 		$monsterSensor/CollisionShape.disabled = true
 		in_animation = true
-		$CollisionShape.disabled = true
+		$CollisionShape.disabled = false
+		set_collision_mask_bit(0, false)
 		tween.interpolate_property(self, "rotation_degrees", open_angle, closed_angle, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		set_collision_layer_bit(7, true)
 		
@@ -59,6 +60,7 @@ func _on_Tween_tween_all_completed():
 	in_animation = false
 	$CollisionShape.disabled = false
 	$monsterSensor/CollisionShape.disabled = false
+	set_collision_mask_bit(0, true)
 
 
 	

@@ -21,6 +21,7 @@ var canSeeMonsterFace = false
 var timesSoundPlayed = 1
 var canMakeSound = false
 var animationValue = 0
+var inSpotlight = false
 
 #fade out var
 export var transition_duration = 1.00
@@ -50,8 +51,10 @@ func _physics_process(delta):
 				$AnimationPlayer.play("openMouth")
 			elif animationValue >= 60:
 				$AnimationPlayer.play("crazyOpen")
-	
-	
+			
+			#disappear if colliding with door
+			if collidingWithDoor:
+				state = HIDING
 	
 func lookAtPlayer():
 	head.look_at(player.get_position() + Vector3(0,2,0), Vector3.UP)
@@ -61,10 +64,24 @@ func lookAtPlayer():
 	
 
 func isCanSpawn():
-	if not inView and canSpawn: #and canSeePlayer():
-		return true
-	else:
-		return false
+	#if not inView and canSpawn: #and canSeePlayer():
+		#return true
+	#else:
+		#return false
+	
+	match monsterNearDoor:
+		true:
+			if collidingWithDoor:
+				return false
+			elif not collidingWithDoor:
+				if not inView and canSpawn: #and canSeePlayer():
+					return true
+		false:
+			if not inView and canSpawn: #and canSeePlayer():
+				return true
+			else:
+				return false
+		
 
 func isInView():
 	if inView:
@@ -119,12 +136,17 @@ func _on_Visible_camera_entered(camera):
 
 
 func _on_MonsterArea_area_entered(area):
-	if area.get_parent().is_in_group("invisibleEnemy"):
+	if area.is_in_group("spotlight"):
+		inSpotlight = true
+		canSpawn = false
+	elif area.get_parent().is_in_group("invisibleEnemy") and not inSpotlight:
 		canSpawn = true
 
 
 func _on_MonsterArea_area_exited(area):
-	if area.get_parent().is_in_group("invisibleEnemy"):
+	if area.is_in_group("spotlight"):
+		inSpotlight = false
+	elif area.get_parent().is_in_group("invisibleEnemy"):
 		canSpawn = false
 
 func isMonsterInPlayerLocation():
@@ -199,14 +221,14 @@ func _on_Tween_tween_all_completed():
 
 
 func _on_MonsterArea_body_entered(body):
-	if body.is_in_group("door"):
-		print("ich kann nicht spawn weil es eine Tur gibt")
+	if body.is_in_group("door") and monsterNearDoor:
+		print("there's a door in the way, monster can't spawn")
 		collidingWithDoor = true
 
 
 func _on_MonsterArea_body_exited(body):
-	if body.is_in_group("door"):
-		print("die Tur ist jetzt weg, also kann ich nun spawn")
+	if body.is_in_group("door") and monsterNearDoor:
+		print("the door is out of the way, monster can now spawn")
 		collidingWithDoor = false
 
 func setFaceAnimation(value):
