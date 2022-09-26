@@ -1,16 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://3DModels/Furniture/drawer.glb" type="PackedScene" id=1]
+[ext_resource path="res://furniture.gd" type="Script" id=2]
+[ext_resource path="res://candy.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.72207, 1.59834, 1 )
 
 [node name="drawer" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="." index="4"]
+[node name="drawer" type="StaticBody" parent="." index="4"]
 collision_layer = 512
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="drawer" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0452095, 1.80122, -0.0265946 )
 shape = SubResource( 1 )
+
+[node name="Items" type="Spatial" parent="." index="5"]
+
+[node name="candy" parent="Items" index="0" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.28271, 3.50537, -0.641608 )
+
+[node name="candy2" parent="Items" index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.28271, 3.50537, 0.0991436 )
+
+[node name="candy3" parent="Items" index="2" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.28271, 3.50537, 0.854654 )
+
+[node name="candy4" parent="Items" index="3" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.437731, 3.50537, 0.854654 )
+
+[node name="candy5" parent="Items" index="4" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.437731, 3.50537, -0.0202069 )
+
+[node name="candy6" parent="Items" index="5" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.305664, 3.50537, -0.0202069 )
+
+[node name="candy7" parent="Items" index="6" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.305664, 3.50537, 0.700094 )
+
+[node name="candy8" parent="Items" index="7" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.14829, 3.50537, 0.700094 )
+
+[node name="candy9" parent="Items" index="8" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.14829, 3.50537, -0.162671 )
+
+[node name="candy10" parent="Items" index="9" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.25035, 3.50537, -0.889332 )
+
+[node name="candy11" parent="Items" index="10" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.14581, 3.50537, -0.889332 )

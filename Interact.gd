@@ -4,6 +4,7 @@ var interactables = []
 
 var items = []
 var hasKey = false
+var numberOfCandy = 0
 
 func _physics_process(delta):
 	#MUST FIX. THIS USES THE KEY ON ANY DOOR REGARDLESS IF LOCKED
@@ -15,6 +16,10 @@ func _physics_process(delta):
 	elif not interactables.empty() and interactables.front().has_method("interact"):
 		if Input.is_action_just_pressed("interact"):
 			interactables.front().interact()
+			if interactables.front().is_in_group("candy"):
+				numberOfCandy += 1
+			elif interactables.front().is_in_group("bunny"):
+				interactables.front().addCandy(numberOfCandy)
 	
 func _on_Area_body_entered(body):
 	print("FOUND " + body.name)
@@ -36,4 +41,6 @@ func addItem(newItem):
 
 func addKey():
 	hasKey = true
-	
+
+func getNumberOfCandy():
+	return numberOfCandy

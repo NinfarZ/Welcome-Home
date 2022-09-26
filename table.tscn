@@ -1,16 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://3DModels/Furniture/table.glb" type="PackedScene" id=1]
+[ext_resource path="res://table.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.33838, 0.0359611, 2.93803 )
 
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.927141, 1, 2.10676 )
+
 [node name="table" instance=ExtResource( 1 )]
 
-[node name="StaticBody" type="StaticBody" parent="." index="2"]
+[node name="table" type="StaticBody" parent="." index="2"]
 collision_layer = 512
 collision_mask = 0
+script = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="table" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81026, -1.03767 )
 shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83902, -0.86606 )
+collision_layer = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="table" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="table" method="_on_Area_body_exited"]

@@ -1,6 +1,4 @@
-extends StaticBody
+extends Spatial
 
 
-#get candy
-func interact():
-	get_parent().queue_free()
+	

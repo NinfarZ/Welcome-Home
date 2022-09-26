@@ -21,6 +21,8 @@ var currentMonster = null
 var monsterCanDespawn = false
 var lastMonster = null
 
+var cooldownValues = [5, 10]
+
 
 
 #monsters that can currently see the player (possible to be spawned)
@@ -56,7 +58,8 @@ func _physics_process(delta):
 				else:
 					monstersInRange = []
 					state = COOLDOWN
-					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(5,10)
+					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
+					print(cooldownValues)
 					get_parent().get_node("TimerMonsterCooldown").start()
 		STALKING:
 			print(currentMonster + " is staking hehe")
@@ -66,8 +69,13 @@ func _physics_process(delta):
 			invisibleMonster.setStateStop()
 			state = CHANGING
 		CHANGING:
+			#check if player has left the crouch monster's area so they can despawn
+			if get_node(currentMonster).is_in_group("crouchMonster") and not get_node(currentMonster).canCrouchMonsterAttack:
+				get_parent().get_node("TimerMonsterSwitch").stop()
+				despawnMonster(currentMonster)
+				state = ROOMCHANGE
 			#check if player still inside monsters room
-			if not get_node(currentMonster).isMonsterInPlayerLocation():
+			elif not get_node(currentMonster).isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				state = ROOMCHANGE
@@ -166,10 +174,15 @@ func despawnMonster(chosenMonster):
 func changeDifficulty(newSpeed, newTime):
 	get_parent().get_node("TimerMonsterSwitch").wait_time = newTime
 	#get_parent().get_node("TimerMonsterSwitch").wait_time = clamp(get_parent().get_node("TimerMonsterSwitch").wait_time, 8, 10)
-	#print(get_parent().get_node("TimerMonsterSwitch").wait_time)
+	print(get_parent().get_node("TimerMonsterSwitch").wait_time)
 	invisibleMonster.setSpeedIncrease(newSpeed)
 	#invisibleMonster.speed = clamp(invisibleMonster.speed, 1, 4)
-	#print(invisibleMonster.speed)
+	print(invisibleMonster.speed)
+
+func cooldown(minValue, maxValue):
+	#get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(minValue, maxValue)
+	cooldownValues = [minValue, maxValue]
+	
 
 
 func _on_monsterSpawner_area_entered(area):

@@ -7,6 +7,8 @@ onready var monsters = $Monsters
 var isWardrobeDown = false
 var state = START
 var currentOnLight = "spotlight4"
+var initialCandyRandomized = false
+var initialKeysRandomized = false
 
 enum {
 	START,
@@ -20,6 +22,12 @@ func _physics_process(delta):
 		START:
 			turnAllLightsOff()
 			turnOnLight("spotlight")
+			
+			#randomize candy on house
+			if not initialCandyRandomized:
+				randomizeCandy()
+				initialCandyRandomized = true
+			
 			state = GAME
 		GAME:
 			pass
@@ -33,6 +41,19 @@ func shutDownLight(currentLight):
 		#get_tree().call_group("LIGHT" + currentLocation, "setState", 1)
 		currentLight.setState(1)
 		pickLight()
+
+func randomizeCandy():
+	var candiesPicked = 0
+	var candyList = $Candy.get_children()
+	
+	#for candy in $Candy.get_children():
+		#candy.get_node("candy").setState(0)
+	while candiesPicked < 5:
+		var candy = RNGTools.pick(candyList)
+		candy.get_node("candy").setState(0)
+		candyList.erase(candy)
+		candiesPicked += 1
+		
 
 
 func deathSequence():

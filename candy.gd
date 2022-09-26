@@ -1,5 +1,27 @@
-extends Spatial
+extends StaticBody
 
-#get the candy
+var state = DISABLED
+
+enum {
+	ENABLED,
+	DISABLED
+}
+
+func _physics_process(delta):
+	match state:
+		ENABLED:
+			get_parent().visible = true
+			$CollisionShape.disabled = false
+		DISABLED:
+			get_parent().visible = false
+			$CollisionShape.disabled = true
+			
+#get candy
 func interact():
-	queue_free()
+	get_parent().queue_free()
+
+func getState():
+	return state
+
+func setState(newState):
+	state = newState

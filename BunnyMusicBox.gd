@@ -3,11 +3,15 @@ extends Spatial
 var currentCandyCount = 5
 
 func _ready():
-	addCandy(5)
+	pass
 
 #plays music box
 func playMusicBox():
 	$AudioStreamPlayer3D.play()
 
 func addCandy(candyToAdd):
-	$candyCountLabel.set_text(str(candyToAdd) + " / 20" )
+	get_parent().get_node("candyCountLabel").set_text(str(candyToAdd) + " / 20" )
+
+func interact():
+	#addCandy(get_tree().call_group("candy", "getNumberOfCandy"))
+	pass

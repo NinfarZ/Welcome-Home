@@ -16,6 +16,7 @@ var inView = false
 var canSpawn = false
 var doorOpen = false
 export var monsterNearDoor = false
+export var canCrouchMonsterAttack = false
 var collidingWithDoor = false
 var canSeeMonsterFace = false
 var timesSoundPlayed = 1
@@ -68,7 +69,9 @@ func isCanSpawn():
 		#return true
 	#else:
 		#return false
-	
+	if self.is_in_group("crouchMonster") and not canCrouchMonsterAttack:
+		return false
+		
 	match monsterNearDoor:
 		true:
 			if collidingWithDoor:
@@ -233,3 +236,6 @@ func _on_MonsterArea_body_exited(body):
 
 func setFaceAnimation(value):
 	animationValue = value
+
+func setCrouchMonsterSpawn(value):
+	canCrouchMonsterAttack = value
