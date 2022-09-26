@@ -5,12 +5,18 @@ enum {
 	ACTIVE
 }
 
+enum {
+	PHASE1,
+	PHASE2
+}
+
 
 var player = null
 onready var head = $Cube001
 
 #onready var player = get_node(nodePath)
 
+var monsterPhase = PHASE1
 var state = HIDING
 var inView = false
 var canSpawn = false
@@ -122,9 +128,16 @@ func canSeePlayer():
 	return false
 
 func makeCreepySound():
-	if canMakeSound and not $monsterNoise3D.playing:
-		$monsterNoise3D.play()
-		canMakeSound = false
+	
+	match monsterPhase:
+		PHASE1:
+			if canMakeSound and not $monsterNoise3D.playing:
+				$monsterNoise3D.play()
+				canMakeSound = false
+		PHASE2:
+			if canMakeSound and not $monsterNoise3D_2.playing:
+				$monsterNoise3D_2.play()
+				canMakeSound = false
 
 func get_state():
 	return state
@@ -239,3 +252,6 @@ func setFaceAnimation(value):
 
 func setCrouchMonsterSpawn(value):
 	canCrouchMonsterAttack = value
+
+func setMonsterPhase(newPhase):
+	monsterPhase = newPhase

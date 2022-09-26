@@ -7,12 +7,16 @@ var hasKey = false
 var numberOfCandy = 0
 
 func _physics_process(delta):
-	#MUST FIX. THIS USES THE KEY ON ANY DOOR REGARDLESS IF LOCKED
-	if not interactables.empty() and interactables.front().has_method("unlock") and interactables.front().isLocked():
-		if hasKey:
-			if Input.is_action_just_pressed("interact"):
+	#OPENING DOORS
+	if not interactables.empty() and interactables.front().has_method("unlock") and hasKey:
+		if Input.is_action_just_pressed("interact"):
+			if interactables.front().isLocked():
 				interactables.front().unlock()
 				hasKey = false
+			elif not interactables.front().isLocked():
+				interactables.front().interact()
+	
+	#INTERACT WITH ANYTHING ELSE
 	elif not interactables.empty() and interactables.front().has_method("interact"):
 		if Input.is_action_just_pressed("interact"):
 			interactables.front().interact()

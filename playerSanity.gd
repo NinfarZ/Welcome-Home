@@ -20,14 +20,21 @@ func _physics_process(delta):
 		get_tree().call_group("monsterController", "changeDifficulty", 2, 6)
 		get_tree().call_group("monsterController", "cooldown", 5, 6)
 		get_tree().call_group("door", "setMonsterDoorTimer", 3)
+		
+		get_tree().call_group("audioController", "stop")
 	elif sanityBar.value >= 50 and sanityBar.value < 70:
 		get_tree().call_group("monsterController", "changeDifficulty", 3, 4)
 		get_tree().call_group("monsterController", "cooldown", 4, 5)
 		get_tree().call_group("door", "setMonsterDoorTimer", 2)
+		
+		get_tree().call_group("audioController", "play", -10)
+		
 	elif sanityBar.value >= 70:
 		get_tree().call_group("monsterController", "changeDifficulty", 4, 2)
 		#get_tree().call_group("monsterController", "cooldown", 2, 5)
 		get_tree().call_group("door", "setMonsterDoorTimer", 1)
+		
+		get_tree().call_group("audioController", "play", -9)
 
 func setRecoverValue(value):
 	recoverValue = value

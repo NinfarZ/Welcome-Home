@@ -1,4 +1,4 @@
-[gd_scene load_steps=293 format=2]
+[gd_scene load_steps=296 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -25,6 +25,9 @@
 [ext_resource path="res://key.tscn" type="PackedScene" id=23]
 [ext_resource path="res://singleBed.tscn" type="PackedScene" id=24]
 [ext_resource path="res://toilet.tscn" type="PackedScene" id=25]
+[ext_resource path="res://audio/fearNoise.wav" type="AudioStream" id=26]
+[ext_resource path="res://Audio.gd" type="Script" id=27]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=28]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -2000,10 +2003,6 @@ collision_mask = 0
 [node name="mannequim" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.204342, 0, 0.9789, 0, 1, 0, -0.9789, 0, 0.204342, -1.77231, 12.2006, 26.3075 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-autoplay = true
-
 [node name="Doors" type="Spatial" parent="."]
 
 [node name="Door" parent="Doors" groups=["my_bedroom2Door"] instance=ExtResource( 10 )]
@@ -2056,11 +2055,6 @@ transform = Transform( -0.7918, 0, -0.610781, 0, 1, 0, 0.610781, 0, -0.7918, 26.
 [node name="TimerMonsterCooldown" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-
-[node name="deathMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
-
-[node name="Tween" type="Tween" parent="deathMusic"]
 
 [node name="Furniture" type="Spatial" parent="."]
 script = ExtResource( 19 )
@@ -2153,6 +2147,9 @@ shape = SubResource( 581 )
 [node name="spotlight" parent="spotlights" groups=["corridor3"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.445103, 16.5763, 24.2636 )
 
+[node name="spotlight11" parent="spotlights" groups=["bathroom2"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.445103, 16.0115, 35.527 )
+
 [node name="spotlight2" parent="spotlights" groups=["bedRoom3"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8733, 15.1548, 25.3588 )
 
@@ -2161,6 +2158,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36922, 15.1548, 13.2533 )
 
 [node name="spotlight7" parent="spotlights" groups=["bedRoom2"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8292, 15.1548, -6.349 )
+
+[node name="spotlight12" parent="spotlights" groups=["balcony", "balcony2"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3329, 13.7956, 2.3066 )
 
 [node name="spotlight8" parent="spotlights" groups=["myBedroom"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3616, 15.1548, 11.2164 )
@@ -2176,6 +2176,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7788, 15.1548, -37.863 )
 
 [node name="spotlight5" parent="spotlights" groups=["entrance"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714271, 15.2592, -37.041 )
+
+[node name="spotlight10" parent="spotlights" groups=["bathroom1"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38872, 15.5502, -54.3336 )
 
 [node name="Candy" type="Spatial" parent="."]
 
@@ -2228,6 +2231,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57514, 18.6207, 16.8219 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.0836778, 0, 0.996493, 0, 1, 0, -0.996493, 0, -0.0836778, 14.0492, 14.6545, 12.0749 )
 
+[node name="Audio" type="Spatial" parent="." groups=["audioController"]]
+script = ExtResource( 27 )
+
+[node name="BackgroundAmbience" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="deathMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 16 )
+
+[node name="Tween" type="Tween" parent="Audio/deathMusic"]
+
+[node name="fearNoise" type="AudioStreamPlayer" parent="Audio"]
+script = ExtResource( 28 )
+samples = [ ExtResource( 26 ) ]
+random_volume_range = 0
+random_pitch_range = 0.224
+
 [connection signal="timeout" from="TimerMonsterSwitch" to="Monsters" method="_on_TimerMonsterSwitch_timeout"]
 [connection signal="body_entered" from="Houselayout/myBedroom" to="Navigation/invisibleEnemy" method="_on_myBedroom_body_entered"]
 [connection signal="body_entered" from="Houselayout/bedRoom3" to="Navigation/invisibleEnemy" method="_on_bedRoom3_body_entered"]
@@ -2244,4 +2265,4 @@ transform = Transform( -0.0836778, 0, 0.996493, 0, 1, 0, -0.996493, 0, -0.083677
 [connection signal="body_entered" from="Houselayout/balcony" to="Navigation/invisibleEnemy" method="_on_balcony_body_entered"]
 [connection signal="body_entered" from="Houselayout/balcony2" to="Navigation/invisibleEnemy" method="_on_balcony_body_entered"]
 [connection signal="timeout" from="TimerMonsterCooldown" to="Monsters" method="_on_TimerMonsterCooldown_timeout"]
-[connection signal="finished" from="deathMusic" to="." method="_on_deathMusic_finished"]
+[connection signal="finished" from="Audio/deathMusic" to="." method="_on_deathMusic_finished"]

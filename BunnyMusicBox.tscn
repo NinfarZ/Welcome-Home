@@ -15,7 +15,7 @@ unit_db = 19.01
 [node name="candyCountLabel" type="Label3D" parent="." index="3"]
 transform = Transform( -4.53951, 0, 2.09591, 0, 5, 0, -2.09591, 0, -4.53951, 0, 4.54574, -0.0569725 )
 billboard = 1
-text = "0 / 5
+text = "0 / 10
 "
 
 [node name="bunny" type="StaticBody" parent="." index="4" groups=["bunny"]]

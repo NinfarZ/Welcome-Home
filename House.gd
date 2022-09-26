@@ -30,7 +30,11 @@ func _physics_process(delta):
 			
 			state = GAME
 		GAME:
-			pass
+			#PHASE1 -- under 50% fear
+			if $CanvasLayer/Sanity.getSanityBarValue() < 50:
+				get_tree().call_group("monster", "setMonsterPhase", 0)
+			elif $CanvasLayer/Sanity.getSanityBarValue() >= 50:
+				get_tree().call_group("monster", "setMonsterPhase", 1)
 		END:
 			pass
 		DEATH:
@@ -41,6 +45,8 @@ func shutDownLight(currentLight):
 		#get_tree().call_group("LIGHT" + currentLocation, "setState", 1)
 		currentLight.setState(1)
 		pickLight()
+
+
 
 func randomizeCandy():
 	var candiesPicked = 0
@@ -60,15 +66,16 @@ func deathSequence():
 	get_tree().call_group("door","setMonsterDoorTimer", 0)
 	player.die()
 	monsters.set_physics_process(false)
-	$AudioStreamPlayer.stop()
+	$Audio/BackgroundAmbience.stop()
+	$Audio/fearNoise.stop()
 	yield(get_tree().create_timer(2), "timeout")
-	$deathMusic.play()
+	$Audio/deathMusic.play()
 	yield(get_tree().create_timer(1),"timeout")
 	get_tree().call_group("invisibleEnemy", "setStateKillplayer")
 	
 func fade_out():
-	$deathMusic/Tween.interpolate_property($deathMusic, "volume_db", 0, -40, 1)
-	$deathMusic/Tween.start()
+	$Audio/deathMusic/Tween.interpolate_property($Audio/deathMusic, "volume_db", 0, -40, 1)
+	$Audio/deathMusic/Tween.start()
 
 
 
