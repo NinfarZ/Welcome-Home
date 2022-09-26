@@ -4,7 +4,7 @@
 [ext_resource path="res://toilet.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.498963, 1.0178, 0.645266 )
+extents = Vector3( 0.498963, 1.0178, 0.271445 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001

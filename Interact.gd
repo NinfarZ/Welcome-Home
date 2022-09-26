@@ -6,10 +6,12 @@ var items = []
 var hasKey = false
 
 func _physics_process(delta):
-	if not interactables.empty() and interactables.front().has_method("unlock") and hasKey:
-		if Input.is_action_just_pressed("interact"):
-			interactables.front().unlock()
-			hasKey = false
+	#MUST FIX. THIS USES THE KEY ON ANY DOOR REGARDLESS IF LOCKED
+	if not interactables.empty() and interactables.front().has_method("unlock") and interactables.front().isLocked():
+		if hasKey:
+			if Input.is_action_just_pressed("interact"):
+				interactables.front().unlock()
+				hasKey = false
 	elif not interactables.empty() and interactables.front().has_method("interact"):
 		if Input.is_action_just_pressed("interact"):
 			interactables.front().interact()

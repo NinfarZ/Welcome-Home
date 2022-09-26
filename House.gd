@@ -36,6 +36,7 @@ func shutDownLight(currentLight):
 
 
 func deathSequence():
+	get_tree().call_group("door","setMonsterDoorTimer", 0)
 	player.die()
 	monsters.set_physics_process(false)
 	$AudioStreamPlayer.stop()

@@ -144,11 +144,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127207, 3.13542, 0.0395068 )
 aabb = AABB( -0.204448, -0.226886, -0.282064, 0.408896, 0.305334, 0.564128 )
 
 [node name="monsterNoise3D" type="AudioStreamPlayer3D" parent="." index="9"]
-unit_db = 2.0
+unit_db = 3.5
+unit_size = 2.0
 script = ExtResource( 5 )
 samples = [ ExtResource( 6 ), ExtResource( 7 ) ]
 random_strategy = 2
-random_volume_range = 0.5
+random_volume_range = 1.0
 random_pitch_range = 1.0
 
 [node name="headArea" type="Area" parent="." index="10" groups=["monsterHead"]]

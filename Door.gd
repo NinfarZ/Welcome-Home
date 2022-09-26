@@ -88,6 +88,9 @@ func _on_TimerMonsterOpenDoor_timeout():
 	#if monsterWantsToOpen:
 	interact()
 
+func setMonsterDoorTimer(newTime):
+	$TimerMonsterOpenDoor.wait_time = newTime
+
 func setLock(islocked):
 	locked = islocked
 
