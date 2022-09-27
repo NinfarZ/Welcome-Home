@@ -50,9 +50,14 @@ func disableLight():
 func enableLight():
 	self.get_node("Area/CollisionShape").disabled = false
 	$SpotLight.visible = true
+	$changeTimer.start()
 
 func setState(newState):
 	state = newState
 
 func getState():
 	return state
+
+
+func _on_changeTimer_timeout():
+	state = CHANGELIGHT

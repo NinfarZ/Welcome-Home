@@ -9,7 +9,13 @@ enum {
 	KILLPLAYER
 }
 
+enum {
+	PHASE1
+	PHASE2
+}
+
 var state = FOLLOWPLAYER
+var phase = PHASE1
 
 var path = []
 var current_path_idx = 0
@@ -41,10 +47,15 @@ func _physics_process(delta):
 				move_to_target()
 			if RNGTools.pick([1,0]) == 1:
 				if currentLocation != null and currentLocation == target.get_current_location():
-					if not $RandomAudioStreamPlayer.playing and canPlaySound:
-						$RandomAudioStreamPlayer.play()
-						$RandomAudioStreamPlayer/TimerAudio.start()
-						canPlaySound = false
+					match phase:
+						PHASE1:
+							if not $RandomAudioStreamPlayer.playing and canPlaySound:
+								$RandomAudioStreamPlayer.play()
+								$RandomAudioStreamPlayer/TimerAudio.start()
+								canPlaySound = false
+						PHASE2:
+							pass
+						
 						#timesSoundPlayed -= 1
 				#elif currentLocation != target.get_current_location():
 					#timesSoundPlayed = 1
@@ -57,6 +68,10 @@ func _physics_process(delta):
 						$steps3D.play()
 						timeFootstepPlayed -= 1
 						yield(get_tree().create_timer(1.0),"timeout")
+					match phase:
+						PHASE2:
+							if not $monsterBreath.playing:
+								$monsterBreath.play()
 					#else:
 						#print("rng failed!")
 						#yield(get_tree().create_timer(5.0),"timeout")
@@ -67,8 +82,8 @@ func _physics_process(delta):
 			speed = 10
 			if path.size() > 0:
 				move_to_target()
-			if not $running3D.playing:
-				$running3D.play()
+			#if not $running3D.playing:
+				#$running3D.play()
 				
 		
 		
@@ -274,3 +289,10 @@ func _on_locationSensor_area_entered(area):
 
 func setMonsterSpawner(setSpawner):
 	$monsterSpawner.monitorable = setSpawner
+
+func setInvisibleEnemyPhase(newPhase):
+	phase = newPhase
+
+func playRunningAudio():
+	yield(get_tree().create_timer(2.0), "timeout")
+	$running3D.play()

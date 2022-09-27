@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
 [ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://audio/monsterstep2.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/monsterstep3.wav" type="AudioStream" id=11]
 [ext_resource path="res://audio/runningTowardsYou.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/monsterBreath.wav" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -83,6 +84,14 @@ monitorable = false
 [node name="CollisionShape" type="CollisionShape" parent="locationSensor"]
 transform = Transform( 1.04815, 0, 0, 0, -4.19629e-08, 1.603, 0, -1.01388, -7.4002e-08, 0.0100977, -0.0905589, -0.0137984 )
 shape = SubResource( 3 )
+
+[node name="monsterBreath" type="AudioStreamPlayer3D" parent="."]
+unit_db = 5.5
+unit_size = 2.0
+script = ExtResource( 7 )
+samples = [ ExtResource( 13 ) ]
+random_volume_range = 0
+random_pitch_range = 0.277
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]

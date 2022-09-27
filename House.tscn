@@ -1707,7 +1707,7 @@ transform = Transform( -0.142718, 0.309377, -0.940169, -0.0786578, -0.950433, -0
 transform = Transform( -0.149495, -0.0819186, 0.985363, -0.542029, 0.840268, -0.0123785, -0.826955, -0.535946, -0.170019, 1.94145, 13.5931, 8.87229 )
 
 [node name="yellowgirl9" parent="Monsters" groups=["bedRoom2", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
-transform = Transform( 0.322315, 0.114792, 0.939648, -0.1076, 0.99063, -0.0841111, -0.940496, -0.0739959, 0.331646, -2.3741, 12.4708, -1.7644 )
+transform = Transform( 0.322315, 0.114792, 0.939648, -0.1076, 0.99063, -0.0841111, -0.940496, -0.0739959, 0.331646, -2.3741, 12.4708, -1.26861 )
 
 [node name="yellowgirl50" parent="Monsters" groups=["corridor1", "monstercorridor1", "monstercorridor2", "myBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.988819, 0.149059, 0.00416097, 0.0221763, 0.119397, 0.9926, 0.147458, 0.981593, -0.121367, -2.03059, 12.1141, 2.25108 )
@@ -2063,7 +2063,7 @@ script = ExtResource( 19 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.891, 11.83, -28.5614 )
 
 [node name="drawer2" parent="Furniture" instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61768, 11.83, -47.3976 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92368, 11.83, -47.3976 )
 
 [node name="drawer3" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.411769, 0, -0.519066, 0, 1, 0, 0.911288, 0, -0.234542, 0.662767, 11.83, -8.14231 )
@@ -2075,7 +2075,7 @@ transform = Transform( -0.999988, -0.00479926, 0, 0.00479926, -0.999988, 0, 0, 0
 transform = Transform( -2.48978e-08, 0, 0.569596, 0, 1, 0, -1, 0, -4.37114e-08, -1.20778, 11.83, -1.70245 )
 
 [node name="drawer8" parent="Furniture" instance=ExtResource( 18 )]
-transform = Transform( -2.48978e-08, 0, 0.569596, 0, 1, 0, -1, 0, -4.37114e-08, -1.20778, 15.0516, -1.70245 )
+transform = Transform( -0.379085, 0, 0.527082, 0, 1, 0, -0.925362, 0, -0.215925, -1.20778, 15.0516, -1.70245 )
 
 [node name="drawer5" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -2.48978e-08, 0, 0.569596, 0, 1, 0, -1, 0, -4.37114e-08, -1.78287, 11.83, 2.96444 )
@@ -2185,11 +2185,35 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38872, 15.5502, -54.3336 )
 [node name="candy" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.52895, 14.2764, -20.809 )
 
+[node name="candy42" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.103405, 0, 0.171194, 0, 0.2, 0, -0.171194, 0, 0.103405, 1.57073, 15.2803, -48.3392 )
+
+[node name="candy44" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.103405, 0, 0.171194, 0, 0.2, 0, -0.171194, 0, 0.103405, -0.354727, 12.1292, -41.141 )
+
+[node name="candy45" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( -0.0796186, 0, 0.183469, 0, 0.2, 0, -0.183469, 0, -0.0796186, -1.76636, 12.1292, -41.141 )
+
+[node name="candy46" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( -0.0796186, 0, 0.183469, 0, 0.2, 0, -0.183469, 0, -0.0796186, -1.27458, 12.1292, -40.7429 )
+
+[node name="candy47" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( -0.171769, 0, 0.102448, 0, 0.2, 0, -0.102448, 0, -0.171769, 3.87298, 12.1292, -38.2812 )
+
+[node name="candy43" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.103405, 0, 0.171194, 0, 0.2, 0, -0.171194, 0, 0.103405, 4.51929, 12.1304, -48.1216 )
+
+[node name="candy19" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.15257, 12.0908, -18.9313 )
+
 [node name="candy12" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.0164816, 0, 0.19932, 0, 0.2, 0, -0.19932, 0, 0.0164816, 1.91791, 12.9541, -53.1459 )
 
 [node name="candy8" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14.3757, 14.7275, 17.9374 )
+
+[node name="candy14" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.160048, 0, 0.119936, 0, 0.2, 0, -0.119936, 0, 0.160048, 22.0245, 17.7422, 17.9374 )
 
 [node name="candy9" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.0639506, 0, 0.1895, 0, 0.2, 0, -0.1895, 0, 0.0639506, 17.994, 12.0817, 17.9374 )
@@ -2197,11 +2221,26 @@ transform = Transform( 0.0639506, 0, 0.1895, 0, 0.2, 0, -0.1895, 0, 0.0639506, 1
 [node name="candy10" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.0639506, 0, 0.1895, 0, 0.2, 0, -0.1895, 0, 0.0639506, 19.7795, 13.3229, 6.97882 )
 
+[node name="candy18" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.116994, 0, 0.162211, 0, 0.2, 0, -0.162211, 0, 0.116994, 19.8724, 12.0949, 6.97882 )
+
 [node name="candy11" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.0639506, 0, 0.1895, 0, 0.2, 0, -0.1895, 0, 0.0639506, 18.0993, 18.8228, 4.61269 )
 
+[node name="candy15" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0639506, 0, 0.1895, 0, 0.2, 0, -0.1895, 0, 0.0639506, 21.6449, 14.2172, 4.61269 )
+
+[node name="candy16" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.153534, 0, 0.128169, 0, 0.2, 0, -0.128169, 0, 0.153534, 19.9194, 14.2172, 5.69202 )
+
+[node name="candy17" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.153534, 0, 0.128169, 0, 0.2, 0, -0.128169, 0, 0.153534, 16.8929, 14.2172, 6.14856 )
+
 [node name="candy6" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.45055, 15.8318, -26.5827 )
+
+[node name="candy20" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.169293, 0, 0.10649, 0, 0.2, 0, -0.10649, 0, 0.169293, -4.38639, 12.1874, -23.965 )
 
 [node name="candy2" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.89453, 14.2764, -16.4971 )
@@ -2215,8 +2254,71 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14.6573, 13.6876, -27.62
 [node name="candy7" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474, 13.5486, 13.6876, -28.1739 )
 
+[node name="candy21" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474, 10.9114, 14.2232, -27.2405 )
+
+[node name="candy22" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474, 12.4616, 12.1477, -30.005 )
+
 [node name="candy4" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.9964, 15.3381, -28.0198 )
+
+[node name="candy23" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( -0.0364643, 0, 0.196648, 0, 0.2, 0, -0.196648, 0, -0.0364643, 19.4463, 15.3381, -27.4829 )
+
+[node name="candy24" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( -0.0364643, 0, 0.196648, 0, 0.2, 0, -0.196648, 0, -0.0364643, 26.8964, 12.1055, -13.7892 )
+
+[node name="candy25" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( -0.0364643, 0, 0.196648, 0, 0.2, 0, -0.196648, 0, -0.0364643, 27.853, 13.6289, -2.34361 )
+
+[node name="candy26" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 24.9443, 15.2701, 27.3785 )
+
+[node name="candy27" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 23.9493, 15.2701, 34.9809 )
+
+[node name="candy28" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 8.75803, 15.2701, 22.627 )
+
+[node name="candy29" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -2.4895, 12.1697, 25.8533 )
+
+[node name="candy30" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -2.4895, 13.0086, 37.0391 )
+
+[node name="candy31" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -2.4895, 15.1354, 38.971 )
+
+[node name="candy32" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 1.73217, 12.5607, 38.971 )
+
+[node name="candy33" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 3.14557, 14.5615, 33.56 )
+
+[node name="candy34" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -0.108094, 18.6633, 31.2052 )
+
+[node name="candy35" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -0.315569, 12.2209, 24.1831 )
+
+[node name="candy36" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 1.12013, 12.2209, 16.7735 )
+
+[node name="candy37" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -2.04995, 12.2209, 10.8105 )
+
+[node name="candy38" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -2.04995, 15.2959, 1.94132 )
+
+[node name="candy39" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, -1.17386, 15.2959, -0.557301 )
+
+[node name="candy40" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 1.731, 12.1644, -7.26842 )
+
+[node name="candy41" parent="Candy" instance=ExtResource( 22 )]
+transform = Transform( 0.0494201, 0, 0.193798, 0, 0.2, 0, -0.193798, 0, 0.0494201, 0.287543, 15.3974, -8.51611 )
 
 [node name="candy5" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 23.9212, 12.1987, -28.0198 )

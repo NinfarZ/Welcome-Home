@@ -46,7 +46,8 @@ func drainSanity(drainValue):
 	else:
 		playerIsDead = true
 		get_tree().call_group("player", "setState", 1)
-		get_tree().call_group("gameMaster", "deathSequence")
+		get_tree().call_group("gameMaster", "setGameState", 3)
+		#get_tree().call_group("gameMaster", "deathSequence")
 		queue_free()
 
 func recoverSanity():

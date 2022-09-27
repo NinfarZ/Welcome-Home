@@ -33,12 +33,15 @@ func _physics_process(delta):
 			#PHASE1 -- under 50% fear
 			if $CanvasLayer/Sanity.getSanityBarValue() < 50:
 				get_tree().call_group("monster", "setMonsterPhase", 0)
+				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
 			elif $CanvasLayer/Sanity.getSanityBarValue() >= 50:
 				get_tree().call_group("monster", "setMonsterPhase", 1)
+				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
 		END:
 			pass
 		DEATH:
-			pass
+			deathSequence()
+			set_physics_process(false)
 			
 func shutDownLight(currentLight):
 	if $Navigation/invisibleEnemy.get_current_location() in currentLight.get_groups():
@@ -64,6 +67,7 @@ func randomizeCandy():
 
 func deathSequence():
 	get_tree().call_group("door","setMonsterDoorTimer", 0)
+	get_tree().call_group("invisibleEnemy", "playRunningAudio")
 	player.die()
 	monsters.set_physics_process(false)
 	$Audio/BackgroundAmbience.stop()
@@ -94,6 +98,9 @@ func turnOnLight(lightName):
 
 func pickLight(): 
 	RNGTools.pick($spotlights.get_children()).setState(0)
+
+func setGameState(newState):
+	state = newState
 	
 	
 	 

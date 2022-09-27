@@ -60,5 +60,10 @@ autoplay = "flicker"
 anims/RESET = SubResource( 2 )
 anims/flicker = SubResource( 3 )
 
+[node name="changeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="timeout" from="changeTimer" to="." method="_on_changeTimer_timeout"]

@@ -3,7 +3,7 @@ extends Spatial
 var currentCandyCount = 5
 
 func _ready():
-	pass
+	get_parent().get_node("candyCountLabel").set_text(str("0 / 10"))
 
 #plays music box
 func playMusicBox():

@@ -64,7 +64,7 @@ func _physics_process(delta):
 				state = HIDING
 	
 func lookAtPlayer():
-	head.look_at(player.get_position() + Vector3(0,2,0), Vector3.UP)
+	head.look_at(player.get_position() + Vector3(0,1,0), Vector3.UP)
 	head.rotate_object_local(Vector3(0,1,0), 3.14)
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-70), deg2rad(70))
 	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))

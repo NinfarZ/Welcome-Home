@@ -72,7 +72,7 @@ func _physics_process(delta):
 	match state:
 		ALIVE:
 			if not inSpotlight:
-				get_tree().call_group("sanityBar", "drainSanity", 0.03)
+				get_tree().call_group("sanityBar", "drainSanity", 0.02)
 			else:
 				get_tree().call_group("sanityBar", "recoverSanity")
 		DEAD:
