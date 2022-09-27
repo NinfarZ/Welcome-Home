@@ -3,6 +3,7 @@ extends Spatial
 var isPlayerInside = false
 var isEnemyInside = false
 var state = OFF
+var timerOver = false
 
 enum {
 	ON,
@@ -17,8 +18,9 @@ func _physics_process(delta):
 			state = CHANGELIGHT
 		OFF:
 			disableLight()
+			timerOver = false
 		CHANGELIGHT:
-			get_tree().call_group("gameMaster", "shutDownLight", self)
+			get_tree().call_group("gameMaster", "shutDownLight", self, timerOver)
 			#state = OFF
 				
 		
@@ -60,4 +62,8 @@ func getState():
 
 
 func _on_changeTimer_timeout():
-	state = CHANGELIGHT
+	print("light timer time out")
+	timerOver = true
+	
+	#state = CHANGELIGHT
+	

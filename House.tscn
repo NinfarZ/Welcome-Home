@@ -1924,7 +1924,7 @@ transform = Transform( 0.688374, 0, 0, 0, 1, 0, 0, 0, 1, -7.78739, -4.89951, -0.
 shape = SubResource( 316 )
 
 [node name="livingroom" type="Area" parent="Houselayout"]
-transform = Transform( 0.167967, 0, 0, 0, 1, 0, 0, 0, 1.52728, 5.03872, 18.2626, -23.9645 )
+transform = Transform( 0.137057, 0, 0, 0, 1, 0, 0, 0, 1.52728, 4.80976, 18.2626, -23.9645 )
 collision_layer = 16
 collision_mask = 16
 
@@ -1942,7 +1942,7 @@ transform = Transform( 5.16037, 0, 0, 0, 1, 0, 0, 0, 0.954209, -5.32559, -4.8995
 shape = SubResource( 316 )
 
 [node name="entrance" type="Area" parent="Houselayout"]
-transform = Transform( 0.399772, 0, 0, 0, 1, 0, 0, 0, 1.72489, 3.4809, 18.2626, -40.6963 )
+transform = Transform( 0.359822, 0, 0, 0, 1, 0, 0, 0, 1.34753, 2.81377, 18.2626, -40.6963 )
 collision_layer = 16
 collision_mask = 16
 

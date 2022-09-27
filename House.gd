@@ -11,6 +11,7 @@ var initialCandyRandomized = false
 var initialKeysRandomized = false
 
 enum {
+	INTRO,
 	START,
 	GAME,
 	END,
@@ -19,13 +20,15 @@ enum {
 
 func _physics_process(delta):
 	match state:
+		INTRO:
+			pass
 		START:
 			turnAllLightsOff()
 			turnOnLight("spotlight")
 			
 			#randomize candy on house
 			if not initialCandyRandomized:
-				randomizeCandy()
+				randomizeCandy(10)
 				initialCandyRandomized = true
 			
 			state = GAME
@@ -43,21 +46,24 @@ func _physics_process(delta):
 			deathSequence()
 			set_physics_process(false)
 			
-func shutDownLight(currentLight):
-	if $Navigation/invisibleEnemy.get_current_location() in currentLight.get_groups():
+func shutDownLight(currentLight, isTimeOver):
+	if isTimeOver:
+		currentLight.setState(1)
+		pickLight()
+	elif $Navigation/invisibleEnemy.get_current_location() in currentLight.get_groups():
 		#get_tree().call_group("LIGHT" + currentLocation, "setState", 1)
 		currentLight.setState(1)
 		pickLight()
 
 
 
-func randomizeCandy():
+func randomizeCandy(amount):
 	var candiesPicked = 0
 	var candyList = $Candy.get_children()
 	
 	#for candy in $Candy.get_children():
 		#candy.get_node("candy").setState(0)
-	while candiesPicked < 5:
+	while candiesPicked < amount:
 		var candy = RNGTools.pick(candyList)
 		candy.get_node("candy").setState(0)
 		candyList.erase(candy)

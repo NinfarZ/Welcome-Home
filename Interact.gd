@@ -5,6 +5,7 @@ var interactables = []
 var items = []
 var hasKey = false
 var numberOfCandy = 0
+export var candyLimit = 15
 
 func _physics_process(delta):
 	#OPENING DOORS
@@ -21,9 +22,16 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("interact"):
 			interactables.front().interact()
 			if interactables.front().is_in_group("candy"):
-				numberOfCandy += 1
+				if numberOfCandy < candyLimit:
+					numberOfCandy += 1
 			elif interactables.front().is_in_group("bunny"):
-				interactables.front().addCandy(numberOfCandy)
+				if numberOfCandy != 0:
+					interactables.front().addCandy(numberOfCandy)
+					if numberOfCandy > interactables.front().getTotalCandy():
+						numberOfCandy -= interactables.front().getTotalCandy()
+					else:
+						numberOfCandy = 0
+				
 	
 func _on_Area_body_entered(body):
 	print("FOUND " + body.name)
