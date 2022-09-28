@@ -1,8 +1,8 @@
 extends KinematicBody
 
 enum {
-	ALIVE,
-	DEAD
+	DEFAULT,
+	SEEMONSTER
 }
 const MOUSE_SENSITIVITY: float = 0.08
 const MOVE_SPEED: float = 5.0
@@ -19,7 +19,7 @@ var currentLocation = null
 var inSpotlight = false
 var crouching = false
 var flashlightOn = true
-var state = ALIVE
+var state = DEFAULT
 
 func _ready():
 	
@@ -70,12 +70,12 @@ func _physics_process(delta):
 	
 	#recovering sanity
 	match state:
-		ALIVE:
+		DEFAULT:
 			if not inSpotlight:
 				get_tree().call_group("sanityBar", "drainSanity", 0.02)
 			else:
 				get_tree().call_group("sanityBar", "recoverSanity")
-		DEAD:
+		SEEMONSTER:
 			pass
 
 func get_input_direction() -> Vector3:

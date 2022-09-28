@@ -4,6 +4,7 @@ extends Spatial
 #or if a target is not yet picked
 
 enum {
+	IDLE
 	SEARCHING
 	STALKING
 	CHANGING
@@ -16,7 +17,7 @@ enum {
 export(NodePath) var invisibleMonsterPath
 onready var invisibleMonster = get_node(invisibleMonsterPath)
 
-var state = SEARCHING
+var state = IDLE
 var currentMonster = null
 var monsterCanDespawn = false
 var lastMonster = null
@@ -35,6 +36,8 @@ func _ready():
 func _physics_process(delta):
 	
 	match state:
+		IDLE:
+			invisibleMonster.setStateFollow()
 		SEARCHING:
 			#print("monster is searching")
 			#for monster in get_children():
@@ -196,4 +199,9 @@ func _on_monsterSpawner_area_exited(area):
 
 
 func _on_TimerMonsterCooldown_timeout():
+	state = SEARCHING
+
+func setStateIdle():
+	state = IDLE
+func setStateSearching():
 	state = SEARCHING

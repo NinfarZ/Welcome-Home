@@ -12,6 +12,7 @@ enum {
 enum {
 	PHASE1
 	PHASE2
+	PHASE3
 }
 
 var state = FOLLOWPLAYER
@@ -49,11 +50,13 @@ func _physics_process(delta):
 				if currentLocation != null and currentLocation == target.get_current_location():
 					match phase:
 						PHASE1:
+							pass
+						PHASE2:
 							if not $RandomAudioStreamPlayer.playing and canPlaySound:
 								$RandomAudioStreamPlayer.play()
 								$RandomAudioStreamPlayer/TimerAudio.start()
 								canPlaySound = false
-						PHASE2:
+						PHASE3:
 							pass
 						
 						#timesSoundPlayed -= 1
@@ -69,7 +72,7 @@ func _physics_process(delta):
 						timeFootstepPlayed -= 1
 						yield(get_tree().create_timer(1.0),"timeout")
 					match phase:
-						PHASE2:
+						PHASE3:
 							if not $monsterBreath.playing:
 								$monsterBreath.play()
 					#else:

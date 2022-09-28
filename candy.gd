@@ -18,7 +18,7 @@ func _physics_process(delta):
 			
 #get candy
 func interact():
-	get_parent().queue_free()
+	state = DISABLED
 
 func getState():
 	return state
