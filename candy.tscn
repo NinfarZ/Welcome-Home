@@ -4,7 +4,11 @@
 [ext_resource path="res://candy.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.921569, 0.666667, 0.12549, 1 )
+albedo_color = Color( 0.364706, 0.890196, 0.196078, 1 )
+roughness = 0.16
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.56
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 0.376545, 1 )

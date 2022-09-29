@@ -5,7 +5,7 @@ var interactables = []
 var items = []
 var hasKey = false
 var numberOfCandy = 0
-export var candyLimit = 15
+export var candyLimit = 20
 
 func _physics_process(delta):
 	#OPENING DOORS

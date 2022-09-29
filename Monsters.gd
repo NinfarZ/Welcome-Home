@@ -38,6 +38,7 @@ func _physics_process(delta):
 	match state:
 		IDLE:
 			invisibleMonster.setStateFollow()
+			
 		SEARCHING:
 			#print("monster is searching")
 			#for monster in get_children():

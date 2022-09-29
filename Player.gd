@@ -57,6 +57,12 @@ func _physics_process(delta):
 			moveSpeed = 5.0
 			crouching = false
 	
+	#running
+	if Input.is_action_pressed("run") and not crouching:
+		moveSpeed = 8.0
+	elif Input.is_action_just_released("run"):
+		moveSpeed = 5.0
+	
 	#flashlightToggle
 	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
 		$Neck/flashlight/SpotLight.visible = false
@@ -74,7 +80,7 @@ func _physics_process(delta):
 			if not inSpotlight:
 				get_tree().call_group("sanityBar", "drainSanity", 0.02)
 			else:
-				get_tree().call_group("sanityBar", "recoverSanity")
+				get_tree().call_group("sanityBar", "recoverSanity", 0.02)
 		SEEMONSTER:
 			pass
 

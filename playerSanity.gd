@@ -50,13 +50,16 @@ func drainSanity(drainValue):
 		#get_tree().call_group("gameMaster", "deathSequence")
 		#queue_free()
 
-func recoverSanity():
+func recoverSanity(value):
 	if not isMonsterDraining:
-		sanityBar.value -= recoverValue
+		sanityBar.value -= value
 
 func setIsDraining(value):
 	isMonsterDraining = value
 
 func getSanityBarValue():
 	return sanityBar.value
+
+func resetSanity():
+	sanityBar.value = 0
 	

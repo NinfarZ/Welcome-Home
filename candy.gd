@@ -2,6 +2,7 @@ extends StaticBody
 
 var state = DISABLED
 
+
 enum {
 	ENABLED,
 	DISABLED
@@ -10,6 +11,7 @@ enum {
 func _physics_process(delta):
 	match state:
 		ENABLED:
+			
 			get_parent().visible = true
 			$CollisionShape.disabled = false
 		DISABLED:
@@ -19,9 +21,12 @@ func _physics_process(delta):
 #get candy
 func interact():
 	state = DISABLED
+	#get_tree().call_group("sanityBar", "recoverSanity", 2)
 
 func getState():
 	return state
 
 func setState(newState):
 	state = newState
+
+		

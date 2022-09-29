@@ -57,24 +57,25 @@ func _physics_process(delta):
 								$RandomAudioStreamPlayer/TimerAudio.start()
 								canPlaySound = false
 						PHASE3:
-							pass
+							if not $RandomAudioStreamPlayer.playing and canPlaySound:
+								$RandomAudioStreamPlayer.play()
+								$RandomAudioStreamPlayer/TimerAudio.start()
+								canPlaySound = false
 						
 						#timesSoundPlayed -= 1
 				#elif currentLocation != target.get_current_location():
 					#timesSoundPlayed = 1
 			if currentLocation != target.get_current_location():
-				if not $steps3D.playing and timeFootstepPlayed > 0:
-					var randomNumber = RNGTools.pick([1,0])
-					#print("random number is " + str(randomNumber))
-					if randomNumber == 1:
-						#print("sound is playing!")
-						$steps3D.play()
-						timeFootstepPlayed -= 1
-						yield(get_tree().create_timer(1.0),"timeout")
-					match phase:
-						PHASE3:
-							if not $monsterBreath.playing:
-								$monsterBreath.play()
+				
+				match phase:
+					PHASE1:
+						pass
+					PHASE2:
+						playFootStep()
+					PHASE3:
+						playFootStep()
+						if not $monsterBreath.playing:
+							$monsterBreath.play()
 					#else:
 						#print("rng failed!")
 						#yield(get_tree().create_timer(5.0),"timeout")
@@ -109,6 +110,15 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	current_path_idx = 0
 
+func playFootStep():
+	if not $steps3D.playing and timeFootstepPlayed > 0:
+		var randomNumber = RNGTools.pick([1,0])
+		#print("random number is " + str(randomNumber))
+		if randomNumber == 1:
+			#print("sound is playing!")
+			$steps3D.play()
+			timeFootstepPlayed -= 1
+			yield(get_tree().create_timer(1.0),"timeout")
 	
 	
 
