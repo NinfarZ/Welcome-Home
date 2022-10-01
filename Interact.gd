@@ -24,7 +24,7 @@ func _physics_process(delta):
 			if interactables.front().is_in_group("candy"):
 				if numberOfCandy < candyLimit:
 					numberOfCandy += 1
-			elif interactables.front().is_in_group("bunny"):
+			elif interactables.front().is_in_group("basket"):
 				if numberOfCandy != 0:
 					interactables.front().addCandy(numberOfCandy)
 					if numberOfCandy > interactables.front().getTotalCandy():

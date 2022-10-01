@@ -41,114 +41,122 @@ func _physics_process(delta):
 			turnAllLightsOff()
 			turnOnLight("spotlight")
 			
+			
 			#randomize candy on house
 			
 			state = GAME
 		GAME:
-			#PHASE1 -- under 50% fear
-			
+			#if not $Audio/BackgroundAmbience.playing:
+				#$Audio/BackgroundAmbience.play()
+				
 			match phase:
 				PHASE0:
 					#MONSTERS CAN NOT SPAWN
+					
 					difficultySet(1)
 					if not CandyRandomized:
-						randomizeCandy(7)
+					
+						$bunnySpawnTimer.start()
+						randomizeCandy(10)
 						get_tree().call_group("monsterController", "setStateIdle")
 						CandyRandomized = true
-						currentBunny = pickBunny()
-						spawnBunny(currentBunny, 5)
-						bunnyActive = true
-					
+						$candyBasket/basket.displayText(5)
+
+					elif $candyBasket/basket.getIsBasketFull():
+						print("done")
+						CandyRandomized = false
 						
-					elif bunnyActive:
-						if currentBunny.get_node("bunny").getIsBasketFull():
-							despawnBunny(currentBunny)
-							CandyRandomized = false
+						
+						
 							
 							
 							
 							#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
-							phase = PHASE1
+						phase = PHASE1
 				PHASE1:
 					#MONSTERS CAN SPAWN, EASY DIFFUCLTY
 					
 					difficultySet(2)
 					if not CandyRandomized:
-						$CanvasLayer/Sanity.resetSanity()
-						randomizeCandy(17)
+						
+						randomizeCandy(25)
 						get_tree().call_group("monsterController", "setStateSearching")
-						
 						CandyRandomized = true
-						
-					elif $CanvasLayer/Sanity.getSanityBarValue() > 50 and not bunnyActive:
 						currentBunny = pickBunny()
-						spawnBunny(currentBunny, 15)
-						bunnyActive = true
 						
-					elif bunnyActive:
-						if currentBunny.get_node("bunny").getIsBasketFull():
-							despawnBunny(currentBunny)
-							CandyRandomized = false
+						
+						$candyBasket/basket.displayText(15)
+						#currentBunny = pickBunny()
+						#spawnBunny(currentBunny, 5)
+						#bunnyActive = true
+					
+						
+					elif $candyBasket/basket.getIsBasketFull():
+						print("done")
+						CandyRandomized = false
+						
 							
-							phase = PHASE2
+							
+							
+							#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
+						phase = PHASE2
 				PHASE2:
 					#MEDIUM DIFFICULTY
 					
 					difficultySet(3)
 					if not CandyRandomized:
-						$CanvasLayer/Sanity.resetSanity()
-						randomizeCandy(22)
+						randomizeCandy(28)
+						
 						CandyRandomized = true
+						$candyBasket/basket.displayText(20)
+						#currentBunny = pickBunny()
+						#spawnBunny(currentBunny, 5)
+						#bunnyActive = true
+					
 						
-					elif $CanvasLayer/Sanity.getSanityBarValue() > 50 and not bunnyActive:
-						currentBunny = pickBunny()
-						spawnBunny(currentBunny, 20)
-						bunnyActive = true
+					elif $candyBasket/basket.getIsBasketFull():
+						print("done")
+						CandyRandomized = false
 						
-					elif bunnyActive:
-						if currentBunny.get_node("bunny").getIsBasketFull():
-							despawnBunny(currentBunny)
-							CandyRandomized = false
-							
-							phase = PHASE3
+						phase = PHASE3
+						
 				PHASE3:
 					
 					difficultySet(4)
 					if not CandyRandomized:
-						$CanvasLayer/Sanity.resetSanity()
-						randomizeCandy(27)
+						randomizeCandy(33)
+						
 						CandyRandomized = true
+						$candyBasket/basket.displayText(25)
+						#currentBunny = pickBunny()
+						#spawnBunny(currentBunny, 5)
+						#bunnyActive = true
+					
 						
-					elif $CanvasLayer/Sanity.getSanityBarValue() > 50 and not bunnyActive:
-						currentBunny = pickBunny()
-						spawnBunny(currentBunny, 25)
-						bunnyActive = true
+					elif $candyBasket/basket.getIsBasketFull():
+						print("done")
+						CandyRandomized = false
 						
-					elif bunnyActive:
-						if currentBunny.get_node("bunny").getIsBasketFull():
-							despawnBunny(currentBunny)
-							CandyRandomized = false
-							
-							phase = PHASE4
+						phase = PHASE4
 				PHASE4:
 					
 					difficultySet(5)
 					if not CandyRandomized:
-						$CanvasLayer/Sanity.resetSanity()
-						randomizeCandy(32)
+						$Audio/phaseTransition.play()
+						randomizeCandy(40)
+						
 						CandyRandomized = true
+						$candyBasket/basket.displayText(30)
+						#currentBunny = pickBunny()
+						#spawnBunny(currentBunny, 5)
+						#bunnyActive = true
+					
 						
-					elif $CanvasLayer/Sanity.getSanityBarValue() > 50 and not bunnyActive:
-						currentBunny = pickBunny()
-						spawnBunny(currentBunny, 30)
-						bunnyActive = true
+					elif $candyBasket/basket.getIsBasketFull():
+						print("done")
+						CandyRandomized = false
 						
-					elif bunnyActive:
-						if currentBunny.get_node("bunny").getIsBasketFull():
-							despawnBunny(currentBunny)
-							CandyRandomized = false
-							
-							phase = PHASE5
+						phase = PHASE5
 				PHASE5:
 					pass
 					
@@ -215,6 +223,10 @@ func turnAllLightsOff():
 	for light in $spotlights.get_children():
 		light.disableLight()
 
+func turnAllLightsOn():
+	for light in $spotlights.get_children():
+		light.setState(0)
+
 func turnOnLight(lightName):
 	for light in $spotlights.get_children():
 		if light.name == lightName:
@@ -227,11 +239,12 @@ func setGameState(newState):
 	state = newState
 	
 	
-	 
+func startBunnyTimer():
+	$bunnySpawnTimer.wait_time = RNGTools.randi_range(30, 60)
+	$bunnySpawnTimer.start()
 
 
-func _on_bunnySpawnTimer_timeout():
-	bunnyCanSpawn = true
+	
 	
 
 func pickBunny():
@@ -241,11 +254,11 @@ func pickBunny():
 	#bunnyList.erase(bunny)
 	return bunny
 
-func spawnBunny(currentBunny, candyAmount):
+func spawnBunny(currentBunny):
 	bunnyActive = true
 	currentBunny.get_node("bunny").setState(0)
-	currentBunny.get_node("bunny").displayText(candyAmount)
-	#currentBunny.get_node("bunny").playMusicBox()
+	#currentBunny.get_node("bunny").displayText(candyAmount)
+	currentBunny.get_node("bunny").playMusicBox()
 
 func despawnBunny(currentBunny):
 	bunnyActive = false
@@ -257,7 +270,7 @@ func difficultySet(difficulty):
 	match difficulty:
 		1:
 			
-			get_tree().call_group("monsterController", "changeDifficulty", 1, 10)
+			get_tree().call_group("monsterController", "changeDifficulty", 2, 10)
 			get_tree().call_group("monsterController", "cooldown", 5, 10)
 			get_tree().call_group("door", "setMonsterDoorTimer", 5)
 			
@@ -273,9 +286,7 @@ func difficultySet(difficulty):
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
 				
 		2:
-			#get_tree().call_group("monsterController", "changeDifficulty", 1, 10)
-			#get_tree().call_group("monsterController", "cooldown", 5, 10)
-			#get_tree().call_group("door", "setMonsterDoorTimer", 5)
+			
 			
 			
 			#if not bunnyActive:
@@ -284,9 +295,15 @@ func difficultySet(difficulty):
 				#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
+				get_tree().call_group("monsterController", "changeDifficulty", 2, 8)
+				get_tree().call_group("monsterController", "cooldown", 5, 8)
+				get_tree().call_group("door", "setMonsterDoorTimer", 4)
 				
-				get_tree().call_group("audioController", "play", -10)
+				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
+				get_tree().call_group("monsterController", "changeDifficulty", 1.5, 10)
+				get_tree().call_group("monsterController", "cooldown", 5, 10)
+				get_tree().call_group("door", "setMonsterDoorTimer", 5)
 				
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
 				
@@ -298,38 +315,59 @@ func difficultySet(difficulty):
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 1.5, 8)
-				get_tree().call_group("monsterController", "cooldown", 5, 8)
-				get_tree().call_group("door", "setMonsterDoorTimer", 4)
+				get_tree().call_group("monsterController", "changeDifficulty", 3, 6)
+				get_tree().call_group("monsterController", "cooldown", 4, 6)
+				get_tree().call_group("door", "setMonsterDoorTimer", 3)
 				
-				get_tree().call_group("audioController", "play", -10)
+				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 1, 10)
-				get_tree().call_group("monsterController", "cooldown", 5, 10)
-				get_tree().call_group("door", "setMonsterDoorTimer", 5)
+				get_tree().call_group("monsterController", "changeDifficulty", 2, 8)
+				get_tree().call_group("monsterController", "cooldown", 5, 8)
+				get_tree().call_group("door", "setMonsterDoorTimer", 4)
 		4:
 			
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
 				get_tree().call_group("monster", "setMonsterPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 6)
-				get_tree().call_group("monsterController", "cooldown", 5, 6)
-				get_tree().call_group("door", "setMonsterDoorTimer", 3)
+				get_tree().call_group("monsterController", "changeDifficulty", 4, 4)
+				get_tree().call_group("monsterController", "cooldown", 2, 5)
+				get_tree().call_group("door", "setMonsterDoorTimer", 2)
 				
-				get_tree().call_group("audioController", "play", -10)
+				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("monster", "setMonsterPhase", 0)
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 1.5, 8)
-				get_tree().call_group("monsterController", "cooldown", 5, 8)
-				get_tree().call_group("door", "setMonsterDoorTimer", 4)
+				get_tree().call_group("monsterController", "changeDifficulty", 3, 6)
+				get_tree().call_group("monsterController", "cooldown", 4, 6)
+				get_tree().call_group("door", "setMonsterDoorTimer", 3)
 			
 			
 			#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
 		5:
-			get_tree().call_group("monsterController", "changeDifficulty", 3, 4)
-			get_tree().call_group("monsterController", "cooldown", 4, 5)
-			get_tree().call_group("door", "setMonsterDoorTimer", 2)
-			get_tree().call_group("monster", "setMonsterPhase", 1)
+			#get_tree().call_group("monsterController", "changeDifficulty", 3, 4)
+			#get_tree().call_group("monsterController", "cooldown", 4, 5)
+			#get_tree().call_group("door", "setMonsterDoorTimer", 2)
+			#get_tree().call_group("monster", "setMonsterPhase", 1)
+			
+			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
+				get_tree().call_group("monster", "setMonsterPhase", 1)
+				get_tree().call_group("monsterController", "changeDifficulty", 5, 3)
+				get_tree().call_group("monsterController", "cooldown", 1, 3)
+				get_tree().call_group("door", "setMonsterDoorTimer", 1)
+				
+				
+			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
+				get_tree().call_group("monster", "setMonsterPhase", 1)
+				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
+				get_tree().call_group("monsterController", "changeDifficulty", 4, 4)
+				get_tree().call_group("monsterController", "cooldown", 2, 5)
+				get_tree().call_group("door", "setMonsterDoorTimer", 2)
+
+
+func _on_bunnySpawnTimer_timeout():
+	var bunnyList = $Bunnies.get_children()
+	currentBunny = RNGTools.pick(bunnyList)
+	currentBunny.get_node("bunny").setState(0)
+	currentBunny.get_node("bunny").playMusicBox()

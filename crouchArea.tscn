@@ -1,11 +1,12 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.927141, 1, 2.10676 )
+extents = Vector3( 0.927141, 2.26715, 2.10676 )
 
 [node name="Area" type="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83902, -0.86606 )
 collision_layer = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690552, 0 )
 shape = SubResource( 2 )

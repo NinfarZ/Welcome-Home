@@ -13,6 +13,8 @@ params_billboard_mode = 1
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
 albedo_texture = ExtResource( 1 )
+metallic = 0.45
+roughness = 0.39
 
 [node name="Key" type="StaticBody"]
 collision_layer = 4096

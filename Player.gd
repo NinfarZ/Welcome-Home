@@ -80,7 +80,7 @@ func _physics_process(delta):
 			if not inSpotlight:
 				get_tree().call_group("sanityBar", "drainSanity", 0.02)
 			else:
-				get_tree().call_group("sanityBar", "recoverSanity", 0.02)
+				get_tree().call_group("sanityBar", "recoverSanity", 0.06)
 		SEEMONSTER:
 			pass
 

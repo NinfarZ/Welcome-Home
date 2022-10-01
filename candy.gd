@@ -21,7 +21,7 @@ func _physics_process(delta):
 #get candy
 func interact():
 	state = DISABLED
-	#get_tree().call_group("sanityBar", "recoverSanity", 2)
+	get_tree().call_group("sanityBar", "recoverSanity", 2)
 
 func getState():
 	return state
