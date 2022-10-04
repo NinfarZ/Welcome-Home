@@ -46,7 +46,7 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			for monster in get_children():
-				if monster.isCanSpawn() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #
+				if monster.isCanSpawn() and monster.canSeePlayer() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 					#monster.enableArea()
 					#print("monster can spawn")
 					add_monster_to_list(monster)
@@ -63,7 +63,7 @@ func _physics_process(delta):
 					monstersInRange = []
 					state = COOLDOWN
 					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
-					print(cooldownValues)
+					#print(cooldownValues)
 					get_parent().get_node("TimerMonsterCooldown").start()
 		STALKING:
 			print(currentMonster + " is staking hehe")
@@ -74,15 +74,16 @@ func _physics_process(delta):
 			state = CHANGING
 		CHANGING:
 			#check if player has left the crouch monster's area so they can despawn
-			if get_node(currentMonster).is_in_group("crouchMonster") and not get_node(currentMonster).canCrouchMonsterAttack:
-				get_parent().get_node("TimerMonsterSwitch").stop()
-				despawnMonster(currentMonster)
-				state = ROOMCHANGE
+#			if get_node(currentMonster).is_in_group("crouchMonster") and not get_node(currentMonster).canCrouchMonsterAttack:
+#				get_parent().get_node("TimerMonsterSwitch").stop()
+#				despawnMonster(currentMonster)
+#				state = ROOMCHANGE
+
 			#check if player still inside monsters room
-			elif not get_node(currentMonster).isMonsterInPlayerLocation():
-				get_parent().get_node("TimerMonsterSwitch").stop()
-				despawnMonster(currentMonster)
-				state = ROOMCHANGE
+			#elif not get_node(currentMonster).isMonsterInPlayerLocation():
+				#get_parent().get_node("TimerMonsterSwitch").stop()
+				#despawnMonster(currentMonster)
+				#state = ROOMCHANGE
 			
 			if get_node(currentMonster).canSeePlayer() and get_node(currentMonster).isFaceInView():
 				get_node(currentMonster).playerLooksAtMonster()
@@ -91,10 +92,20 @@ func _physics_process(delta):
 				state = ANGER
 				#else:
 					#invisibleMonster.setStateStop()
+			
+			elif not get_node(currentMonster).canSeePlayer():
+					despawnMonster(currentMonster)
+					print("monster can't see play so was removed")
+					get_parent().get_node("TimerMonsterSwitch").stop()
+					monsterCanDespawn = false
+					
+					state = SEARCHING
 			elif monsterCanDespawn:
-				if not get_node(currentMonster).canSeePlayer() or not get_node(currentMonster).isInView():
+				if not get_node(currentMonster).isInView():
+					print("monster cooldown over so can despawn")
 					despawnMonster(currentMonster)
 					monsterCanDespawn = false
+					
 					state = SEARCHING
 		ANGER:
 			#incrementDifficulty()
@@ -141,7 +152,8 @@ func player_in_range(raycast):
 func pickRandomMonster():
 	var chosenMonster
 	
-	chosenMonster = monstersInRange[randi() % monstersInRange.size()]
+	#chosenMonster = monstersInRange[randi() % monstersInRange.size()]
+	chosenMonster = RNGTools.pick(monstersInRange)
 	print(chosenMonster)
 	#get_node(chosenMonster).set_state_active()
 	#state = STALKING
@@ -161,7 +173,7 @@ func _on_TimerMonsterSwitch_timeout():
 func spawnMonster(chosenMonster):
 	#if RNGTools.randi_range(-10,10) < 0:
 	get_node(chosenMonster).set_state_active()
-	get_node(chosenMonster).makeCreepySound()
+	#get_node(chosenMonster).makeCreepySound()
 	lastMonster = get_node(currentMonster)
 	state = STALKING
 	#else:

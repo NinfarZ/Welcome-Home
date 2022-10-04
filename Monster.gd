@@ -50,24 +50,19 @@ func _physics_process(delta):
 			visible = true
 			$headArea.monitorable = true
 			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
+			makeCreepySound()
 			
-			#animate monster face
-			if animationValue < 35:
-				$AnimationPlayer.play("neutral")
-			elif animationValue >= 35 and animationValue < 60:
-				$AnimationPlayer.play("openMouth")
-			elif animationValue >= 60:
-				$AnimationPlayer.play("crazyOpen")
 			
 			#disappear if colliding with door
 			if collidingWithDoor:
 				state = HIDING
 	
 func lookAtPlayer():
-	head.look_at(player.get_position() + Vector3(0,1,0), Vector3.UP)
+	head.look_at(player.get_node("Neck").global_transform.origin + Vector3(0,1,0), Vector3.UP)
 	head.rotate_object_local(Vector3(0,1,0), 3.14)
-	head.rotation.x = clamp(head.rotation.x, deg2rad(-70), deg2rad(70))
+	head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
 	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
+	head.rotation.y = clamp(head.rotation.y, deg2rad(-20), deg2rad(20))
 	
 
 func isCanSpawn():
@@ -111,6 +106,15 @@ func get_monster_position():
 func set_state_active():
 	state = ACTIVE
 	disableArea()
+	var randomFace = RNGTools.pick([1,2,3])
+			
+		#animate monster face
+	if randomFace == 1:
+		$AnimationPlayer.play("neutral")
+	elif randomFace == 2:
+		$AnimationPlayer.play("openMouth")
+	elif randomFace == 3:
+		$AnimationPlayer.play("crazyOpen")
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = true
 
@@ -238,13 +242,13 @@ func _on_Tween_tween_all_completed():
 
 func _on_MonsterArea_body_entered(body):
 	if body.is_in_group("door") and monsterNearDoor:
-		print("there's a door in the way, monster can't spawn")
+		#print("there's a door in the way, monster can't spawn")
 		collidingWithDoor = true
 
 
 func _on_MonsterArea_body_exited(body):
 	if body.is_in_group("door") and monsterNearDoor:
-		print("the door is out of the way, monster can now spawn")
+		#print("the door is out of the way, monster can now spawn")
 		collidingWithDoor = false
 
 func setFaceAnimation(value):

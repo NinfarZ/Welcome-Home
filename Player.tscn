@@ -83,7 +83,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( -0.00204064, -0.60483, -0.748655 ) ]
+"values": [ Vector3( -0.00204064, -0.847383, -1.23644 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Neck/viewCone:rotation_degrees")
@@ -224,10 +224,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68043, 0.125317 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="flashlight" parent="Neck" instance=ExtResource( 2 )]
-transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, 0 )
+transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, -0.716641 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.563513, 0, 0, 0, 0.532725, 0.0493763, 0, -0.0554614, 0.474276, -0.00204064, -0.60483, -0.748655 )
+transform = Transform( 0.563513, 0, 0, 0, 0.532725, 0.0493763, 0, -0.0554614, 0.474276, -0.00204064, -0.847383, -1.23644 )
 collision_layer = 0
 collision_mask = 4
 

@@ -44,11 +44,11 @@ func drainSanity(drainValue):
 		sanityBar.value += drainValue
 		get_tree().call_group("monster", "setFaceAnimation", sanityBar.value)
 	else:
-		playerIsDead = true
-		#get_tree().call_group("player", "setState", 1)
-		get_tree().call_group("gameMaster", "setGameState", 4)
-		#get_tree().call_group("gameMaster", "deathSequence")
-		#queue_free()
+		pass
+		#playerIsDead = true
+		
+		#get_tree().call_group("gameMaster", "setGameState", 4)
+		
 
 func recoverSanity(value):
 	if not isMonsterDraining:
