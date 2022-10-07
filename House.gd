@@ -296,13 +296,13 @@ func difficultySet(difficulty):
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
 				get_tree().call_group("monsterController", "changeDifficulty", 2, 8)
-				get_tree().call_group("monsterController", "cooldown", 5, 8)
+				get_tree().call_group("monsterController", "cooldown", 7, 10)
 				get_tree().call_group("door", "setMonsterDoorTimer", 4)
 				
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("monsterController", "changeDifficulty", 1.5, 10)
-				get_tree().call_group("monsterController", "cooldown", 5, 10)
+				get_tree().call_group("monsterController", "cooldown", 8, 10)
 				get_tree().call_group("door", "setMonsterDoorTimer", 5)
 				
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
@@ -316,14 +316,14 @@ func difficultySet(difficulty):
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
 				get_tree().call_group("monsterController", "changeDifficulty", 3, 6)
-				get_tree().call_group("monsterController", "cooldown", 4, 6)
+				get_tree().call_group("monsterController", "cooldown", 6, 10)
 				get_tree().call_group("door", "setMonsterDoorTimer", 3)
 				
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
 				get_tree().call_group("monsterController", "changeDifficulty", 2, 8)
-				get_tree().call_group("monsterController", "cooldown", 5, 8)
+				get_tree().call_group("monsterController", "cooldown", 7, 10)
 				get_tree().call_group("door", "setMonsterDoorTimer", 4)
 		4:
 			
@@ -332,7 +332,7 @@ func difficultySet(difficulty):
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
 				get_tree().call_group("monster", "setMonsterPhase", 1)
 				get_tree().call_group("monsterController", "changeDifficulty", 4, 4)
-				get_tree().call_group("monsterController", "cooldown", 2, 5)
+				get_tree().call_group("monsterController", "cooldown", 5, 8)
 				get_tree().call_group("door", "setMonsterDoorTimer", 2)
 				
 				
@@ -340,7 +340,7 @@ func difficultySet(difficulty):
 				get_tree().call_group("monster", "setMonsterPhase", 0)
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
 				get_tree().call_group("monsterController", "changeDifficulty", 3, 6)
-				get_tree().call_group("monsterController", "cooldown", 4, 6)
+				get_tree().call_group("monsterController", "cooldown", 6, 10)
 				get_tree().call_group("door", "setMonsterDoorTimer", 3)
 			
 			
@@ -353,16 +353,16 @@ func difficultySet(difficulty):
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("monster", "setMonsterPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 5, 3)
-				get_tree().call_group("monsterController", "cooldown", 1, 3)
+				get_tree().call_group("monsterController", "changeDifficulty", 5, 5)
+				get_tree().call_group("monsterController", "cooldown", 2, 8)
 				get_tree().call_group("door", "setMonsterDoorTimer", 1)
 				
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("monster", "setMonsterPhase", 1)
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 4, 4)
-				get_tree().call_group("monsterController", "cooldown", 2, 5)
+				get_tree().call_group("monsterController", "changeDifficulty", 4, 5)
+				get_tree().call_group("monsterController", "cooldown", 5, 8)
 				get_tree().call_group("door", "setMonsterDoorTimer", 2)
 
 

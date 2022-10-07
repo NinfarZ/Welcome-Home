@@ -46,7 +46,7 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			for monster in get_children():
-				if monster.isCanSpawn() and monster.canSeePlayer() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
+				if monster.isCanSpawn() and monster.canSeePlayer() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 					#monster.enableArea()
 					#print("monster can spawn")
 					add_monster_to_list(monster)
@@ -58,12 +58,13 @@ func _physics_process(delta):
 			if monstersInRange != []:
 				if RNGTools.pick([1,0,0]) == 1:
 					currentMonster = RNGTools.pick(monstersInRange)
+					get_node(currentMonster).makeCreepySound()
 					spawnMonster(currentMonster)
 				else:
 					monstersInRange = []
 					state = COOLDOWN
 					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
-					#print(cooldownValues)
+					print(get_parent().get_node("TimerMonsterCooldown").wait_time)
 					get_parent().get_node("TimerMonsterCooldown").start()
 		STALKING:
 			print(currentMonster + " is staking hehe")
@@ -79,11 +80,6 @@ func _physics_process(delta):
 #				despawnMonster(currentMonster)
 #				state = ROOMCHANGE
 
-			#check if player still inside monsters room
-			#elif not get_node(currentMonster).isMonsterInPlayerLocation():
-				#get_parent().get_node("TimerMonsterSwitch").stop()
-				#despawnMonster(currentMonster)
-				#state = ROOMCHANGE
 			
 			if get_node(currentMonster).canSeePlayer() and get_node(currentMonster).isFaceInView():
 				get_node(currentMonster).playerLooksAtMonster()
@@ -92,21 +88,27 @@ func _physics_process(delta):
 				state = ANGER
 				#else:
 					#invisibleMonster.setStateStop()
-			
+			elif not get_node(currentMonster).isMonsterInPlayerLocation():
+				get_parent().get_node("TimerMonsterSwitch").stop()
+				despawnMonster(currentMonster)
+				get_parent().get_node("TimerMonsterCooldown").start()
+				state = COOLDOWN
+				
 			elif not get_node(currentMonster).canSeePlayer():
 					despawnMonster(currentMonster)
-					print("monster can't see play so was removed")
+					#print("monster can't see play so was removed")
 					get_parent().get_node("TimerMonsterSwitch").stop()
-					monsterCanDespawn = false
+					#monsterCanDespawn = false
+					get_parent().get_node("TimerMonsterCooldown").start()
+					state = COOLDOWN
 					
-					state = SEARCHING
 			elif monsterCanDespawn:
 				if not get_node(currentMonster).isInView():
 					print("monster cooldown over so can despawn")
 					despawnMonster(currentMonster)
 					monsterCanDespawn = false
-					
-					state = SEARCHING
+					get_parent().get_node("TimerMonsterCooldown").start()
+					state = COOLDOWN
 		ANGER:
 			#incrementDifficulty()
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
@@ -116,7 +118,10 @@ func _physics_process(delta):
 			#print("rommchange, monster disappeared")
 			#if get_parent().get_node("TimerMonsterSwitch").get_time_left() == 0:
 			#yield(get_tree().create_timer(5.0),"timeout")
-			state = SEARCHING
+			#state = SEARCHING
+			get_parent().get_node("TimerMonsterSwitch").start()
+			if monsterCanDespawn:
+				state = SEARCHING
 		KILL:
 			get_node(currentMonster).killPlayer()
 			#print("player has been killed")
@@ -164,6 +169,7 @@ func pickRandomMonster():
 func _on_TimerMonsterSwitch_timeout():
 	#print("timer ran out!")
 	monsterCanDespawn = true
+	
 	#else:
 		#state = SEARCHING
 	#if get_node(currentMonster).canSeePlayer() == false or get_node(currentMonster).isInView() == false:

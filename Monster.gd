@@ -50,7 +50,7 @@ func _physics_process(delta):
 			visible = true
 			$headArea.monitorable = true
 			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
-			makeCreepySound()
+			#makeCreepySound()
 			
 			
 			#disappear if colliding with door
@@ -58,11 +58,11 @@ func _physics_process(delta):
 				state = HIDING
 	
 func lookAtPlayer():
-	head.look_at(player.get_node("Neck").global_transform.origin + Vector3(0,1,0), Vector3.UP)
+	head.look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
 	head.rotate_object_local(Vector3(0,1,0), 3.14)
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
 	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
-	head.rotation.y = clamp(head.rotation.y, deg2rad(-20), deg2rad(20))
+	head.rotation.y = clamp(head.rotation.y, deg2rad(-40), deg2rad(40))
 	
 
 func isCanSpawn():
