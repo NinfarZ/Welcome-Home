@@ -12,12 +12,11 @@ enum {
 
 
 var player = null
-onready var head = $Head
 
 #onready var player = get_node(nodePath)
 
 var monsterPhase = PHASE1
-var state = ACTIVE
+var state = HIDING
 var inView = false
 var canSpawn = false
 var doorOpen = false
@@ -30,9 +29,6 @@ var canMakeSound = false
 var animationValue = 0
 var inSpotlight = false
 
-export var backbreak = false
-
-
 #fade out var
 export var transition_duration = 1.00
 export var transition_type = 1 # TRANS_SINE
@@ -40,8 +36,6 @@ export var transition_type = 1 # TRANS_SINE
 func _ready():
 	yield(owner, "ready")
 	player = owner.player
-	if backbreak:
-		$AnimationPlayer.play("backbreak")
 
 func _physics_process(delta):
 	lookAtPlayer()
@@ -63,11 +57,11 @@ func _physics_process(delta):
 				state = HIDING
 	
 func lookAtPlayer():
-	head.look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
-	head.rotate_object_local(Vector3(0,1,0), 3.14)
-	head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
-	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
-	head.rotation.y = clamp(head.rotation.y, deg2rad(-40), deg2rad(40))
+	look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
+	#rotate_object_local(Vector3(0,1,0), 3.14)
+	#rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
+	#rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
+	#rotation.y = clamp(head.rotation.y, deg2rad(-40), deg2rad(40))
 	
 
 func isCanSpawn():
@@ -113,15 +107,7 @@ func set_state_active():
 	disableArea()
 	var randomFace = RNGTools.pick([1,2,3])
 			
-		#animate monster face
-	if randomFace == 1:
-		$AnimationPlayer.play("neutral")
-	elif randomFace == 2:
-		$AnimationPlayer.play("openMouth")
-	elif randomFace == 3:
-		$AnimationPlayer.play("crazyOpen")
-	#for raycast in $Cube001.get_children():
-		#raycast.enabled = true
+	
 
 func set_state_hiding():
 	state = HIDING
@@ -130,7 +116,7 @@ func set_state_hiding():
 		#raycast.enabled = false
 
 func canSeePlayer():
-	for raycast in $Head/head/raycasts.get_children():
+	for raycast in $Cube001.get_children():
 		if not raycast.is_in_group("eyes"):
 			if raycast.get_collider() != null:
 				if raycast.get_collider().is_in_group("player"): #== player.get_node("AreaPlayer"):
