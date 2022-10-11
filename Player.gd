@@ -10,6 +10,7 @@ const GRAVITY_ACCELERATION: float = 9.8
 
 export(NodePath) var nodePath
 export var moveSpeed = 5.0
+export var sprintSpeed = 5.0
 
 onready var neck: Spatial = $Neck
 
@@ -49,19 +50,19 @@ func _physics_process(delta):
 	#crouching
 	if Input.is_action_just_pressed("crouch") and not crouching:
 		$AnimationPlayer.play("crouch")
-		moveSpeed = 2.0
+		moveSpeed = 1.5
 		crouching = true
 	elif Input.is_action_just_pressed("crouch") and crouching:
 		if not $Neck/RayCast.is_colliding():
 			$AnimationPlayer.play_backwards("crouch")
-			moveSpeed = 5.0
+			moveSpeed = 3.5
 			crouching = false
 	
 	#running
 	if Input.is_action_pressed("run") and not crouching:
-		moveSpeed = 8.0
-	elif Input.is_action_just_released("run"):
-		moveSpeed = 5.0
+		moveSpeed = sprintSpeed
+	elif Input.is_action_just_released("run") and not crouching:
+		moveSpeed = 3.5
 	
 	#flashlightToggle
 	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:

@@ -22,6 +22,8 @@ var currentMonster = null
 var monsterCanDespawn = false
 var lastMonster = null
 
+var playerStaringAtMonster = false
+
 var cooldownValues = [5, 10]
 
 

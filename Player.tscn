@@ -207,6 +207,8 @@ tracks/2/keys = {
 [node name="Player" type="KinematicBody" groups=["player"]]
 collision_mask = 529
 script = ExtResource( 1 )
+moveSpeed = 3.5
+sprintSpeed = 6.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

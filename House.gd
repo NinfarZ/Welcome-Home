@@ -56,7 +56,7 @@ func _physics_process(delta):
 					difficultySet(1)
 					if not CandyRandomized:
 					
-						$bunnySpawnTimer.start()
+						
 						randomizeCandy(10)
 						get_tree().call_group("monsterController", "setStateIdle")
 						CandyRandomized = true
@@ -106,6 +106,7 @@ func _physics_process(delta):
 					difficultySet(3)
 					if not CandyRandomized:
 						randomizeCandy(28)
+						$bunnySpawnTimer.start()
 						
 						CandyRandomized = true
 						$candyBasket/basket.displayText(20)
@@ -174,11 +175,15 @@ func _physics_process(delta):
 func shutDownLight(currentLight, isTimeOver):
 	if isTimeOver:
 		currentLight.setState(1)
-		pickLight()
+		$lightCoolDown.wait_time = RNGTools.randi_range(10, 20)
+		$lightCoolDown.start()
+		#pickLight()
 	elif $Navigation/invisibleEnemy.get_current_location() in currentLight.get_groups():
 		#get_tree().call_group("LIGHT" + currentLocation, "setState", 1)
 		currentLight.setState(1)
-		pickLight()
+		$lightCoolDown.wait_time = RNGTools.randi_range(10, 20)
+		$lightCoolDown.start()
+		#pickLight()
 
 
 
@@ -371,3 +376,7 @@ func _on_bunnySpawnTimer_timeout():
 	currentBunny = RNGTools.pick(bunnyList)
 	currentBunny.get_node("bunny").setState(0)
 	currentBunny.get_node("bunny").playMusicBox()
+
+
+func _on_lightCoolDown_timeout():
+	pickLight()

@@ -17,7 +17,7 @@ onready var head = $Head
 #onready var player = get_node(nodePath)
 
 var monsterPhase = PHASE1
-var state = ACTIVE
+var state = HIDING
 var inView = false
 var canSpawn = false
 var doorOpen = false
@@ -221,8 +221,8 @@ func disableArea():
 
 func _on_headArea_area_entered(area):
 	if area.is_in_group("playerViewCone"):
-		#playerLooksAtMonster()
-		canSeeMonsterFace = true
+		$faceStareDelay.start()
+		
 		#print("monster head are entered")
 			
 		
@@ -234,6 +234,7 @@ func fadeDrainSound():
 func _on_headArea_area_exited(area):
 	if area.is_in_group("playerViewCone"):
 		canSeeMonsterFace = false
+		$faceStareDelay.stop()
 		if $stareDrainSound.playing:
 			fadeDrainSound()
 		#print("monster head are exited")
@@ -265,3 +266,7 @@ func setCrouchMonsterSpawn(value):
 
 func setMonsterPhase(newPhase):
 	monsterPhase = newPhase
+
+
+func _on_faceStareDelay_timeout():
+	canSeeMonsterFace = true

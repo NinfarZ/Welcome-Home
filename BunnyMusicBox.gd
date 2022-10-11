@@ -31,7 +31,7 @@ func interact():
 	#animate and add sound
 	stopMusicBox()
 	state = INACTIVE
-	get_tree().call_group("gameManager", "bunnySpawnTimer")
+	get_tree().call_group("gameMaster", "startBunnyTimer")
 
 func setState(newState):
 	state = newState
