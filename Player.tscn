@@ -6,7 +6,7 @@
 [ext_resource path="res://3DModels/viewCone/viewCone.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="CapsuleShape" id=2]
-radius = 0.975834
+radius = 0.718534
 height = 3.35366
 
 [sub_resource type="CapsuleMesh" id=1]
@@ -256,10 +256,10 @@ transform = Transform( 0.634183, 0, 0, 0, 1, 0, 0, 0, 1.44355, 0, 0, -0.316107 )
 shape = SubResource( 4 )
 
 [node name="RayCast" type="RayCast" parent="Neck"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.68043, -0.125317 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127075, -0.125317 )
 enabled = true
-cast_to = Vector3( 0, 5, 0 )
-collision_mask = 512
+cast_to = Vector3( 0, 2, 0 )
+collision_mask = 513
 debug_shape_custom_color = Color( 1, 0, 0, 1 )
 
 [node name="AreaPlayer" type="Area" parent="." groups=["player"]]

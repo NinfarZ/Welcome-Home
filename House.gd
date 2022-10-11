@@ -22,6 +22,7 @@ enum {
 	GAME,
 	END,
 	DEATH
+	PUNISHMENT
 }
 
 enum {
@@ -171,6 +172,12 @@ func _physics_process(delta):
 			$CanvasLayer/Sanity.queue_free()
 			deathSequence()
 			set_physics_process(false)
+		PUNISHMENT:
+			pass
+			turnAllLightsOff()
+			get_tree().call_group("player", "toggleFlashlight", false)
+			$punishmentTimer.start()
+			state = GAME
 			
 func shutDownLight(currentLight, isTimeOver):
 	if isTimeOver:
@@ -181,7 +188,7 @@ func shutDownLight(currentLight, isTimeOver):
 	elif $Navigation/invisibleEnemy.get_current_location() in currentLight.get_groups():
 		#get_tree().call_group("LIGHT" + currentLocation, "setState", 1)
 		currentLight.setState(1)
-		$lightCoolDown.wait_time = RNGTools.randi_range(10, 20)
+		$lightCoolDown.wait_time = RNGTools.randi_range(5, 10)
 		$lightCoolDown.start()
 		#pickLight()
 
@@ -380,3 +387,11 @@ func _on_bunnySpawnTimer_timeout():
 
 func _on_lightCoolDown_timeout():
 	pickLight()
+
+
+func _on_punishmentTimer_timeout():
+	get_tree().call_group("player", "toggleFlashlight", true)
+	pickLight()
+
+func setPunishmentTimer(time):
+	$punishmentTimer.wait_time = time

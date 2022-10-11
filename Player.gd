@@ -66,13 +66,9 @@ func _physics_process(delta):
 	
 	#flashlightToggle
 	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
-		$Neck/flashlight/SpotLight.visible = false
-		flashlightOn = false
-		$AnimationPlayer.play("flashlightOFF")
+		toggleFlashlight(false)
 	elif Input.is_action_just_pressed("flashlightToggle") and not flashlightOn:
-		$Neck/flashlight/SpotLight.visible = true
-		flashlightOn = true
-		$AnimationPlayer.play("flashlightON")
+		toggleFlashlight(true)
 		
 	
 	#recovering sanity
@@ -99,7 +95,16 @@ func get_input_direction() -> Vector3:
 func get_position():
 	return global_transform.origin
 
-
+func toggleFlashlight(power):
+	if not power:
+		$Neck/flashlight/SpotLight.visible = false
+		flashlightOn = false
+		$AnimationPlayer.play("flashlightOFF")
+	elif power:
+		$Neck/flashlight/SpotLight.visible = true
+		flashlightOn = true
+		$AnimationPlayer.play("flashlightON")
+	
 func die():
 	$Neck/flashlight/SpotLight.visible = false
 	$Neck/flashlight.tweenDownLight()

@@ -2489,6 +2489,10 @@ one_shot = true
 [node name="lightCoolDown" type="Timer" parent="."]
 one_shot = true
 
+[node name="punishmentTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
 [connection signal="timeout" from="TimerMonsterSwitch" to="Monsters" method="_on_TimerMonsterSwitch_timeout"]
 [connection signal="body_entered" from="Houselayout/myBedroom" to="Navigation/invisibleEnemy" method="_on_myBedroom_body_entered"]
 [connection signal="body_entered" from="Houselayout/bedRoom3" to="Navigation/invisibleEnemy" method="_on_bedRoom3_body_entered"]
@@ -2508,3 +2512,4 @@ one_shot = true
 [connection signal="finished" from="Audio/deathMusic" to="." method="_on_deathMusic_finished"]
 [connection signal="timeout" from="bunnySpawnTimer" to="." method="_on_bunnySpawnTimer_timeout"]
 [connection signal="timeout" from="lightCoolDown" to="." method="_on_lightCoolDown_timeout"]
+[connection signal="timeout" from="punishmentTimer" to="." method="_on_punishmentTimer_timeout"]

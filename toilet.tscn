@@ -4,7 +4,7 @@
 [ext_resource path="res://toilet.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.498963, 1.0178, 0.271445 )
+extents = Vector3( 0.498963, 0.0734327, 0.61411 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -19,6 +19,42 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("toilet/CollisionShape:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.17207, 1.81715 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("toilet/CollisionShape:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("toilet/CollisionShape:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.498963, 0.0734327, 0.61411 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -36,6 +72,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("toilet/CollisionShape:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.17207, 1.81715 ), Vector3( 0, 1.87546, 1.14546 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("toilet/CollisionShape:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.498963, 0.0734327, 0.61411 ), Vector3( 0.498963, 0.678639, 0.0513532 ) ]
+}
 
 [node name="toilet" instance=ExtResource( 1 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
@@ -45,12 +105,12 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 
 [node name="toilet" type="StaticBody" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0402887, 0, 0 )
-collision_layer = 512
+collision_layer = 4096
 collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="toilet" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17207, 1.16098 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17207, 1.81715 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
