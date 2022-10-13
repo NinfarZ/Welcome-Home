@@ -89,9 +89,14 @@ func _physics_process(delta):
 				#$running3D.play()
 		CHASE:
 			$monsterSpawner/CollisionShape.disabled = true
-			speed = 4
 			if path.size() > 0:
-				playFootStep()
+				if not $steps3D.playing:
+					match phase:
+						PHASE1, PHASE2:
+							$steps3D.play()
+						PHASE3:
+							$steps3D.play()
+							$monsterBreath.play()
 				move_to_target()
 			
 				

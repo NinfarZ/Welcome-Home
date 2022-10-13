@@ -66,6 +66,7 @@ func _physics_process(delta):
 					elif $candyBasket/basket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
+						$Audio/phaseTransition.play()
 						
 						
 						
@@ -177,7 +178,15 @@ func _physics_process(delta):
 		PUNISHMENT:
 			turnAllLightsOff()
 			get_tree().call_group("player", "toggleFlashlight", false)
-			$punishmentTimer.start()
+			$CanvasLayer/Sanity.visible = false
+			if not $Audio/fearNoise.playing:
+				$Audio/fearNoise.play()
+			if $punishmentTimer.is_stopped():
+				$punishmentTimer.start()
+			get_tree().call_group("invisibleEnemy", "setStateChase")
+			get_tree().call_group("door", "setMonsterDoorTimer", 1)
+			
+			
 			
 func shutDownLight(currentLight, isTimeOver):
 	if isTimeOver:
@@ -390,10 +399,15 @@ func _on_lightCoolDown_timeout():
 
 
 func _on_punishmentTimer_timeout():
+	state = GAME
+	$CanvasLayer/Sanity.resetSanity()
+	$CanvasLayer/Sanity.visible = true
+	$Audio/fearNoise.stop()
+	$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
 	get_tree().call_group("player", "toggleFlashlight", true)
 	pickLight()
 	get_tree().call_group("invisibleEnemy", "setStateFollow")
-	state = GAME
+	
 
 func setPunishmentTimer(time):
 	$punishmentTimer.wait_time = time

@@ -3,7 +3,7 @@ extends Control
 onready var sanityBar = $ProgressBar
 
 var recoverValue = 0.09
-var playerIsDead = false
+var punishmentTime = false
 var isMonsterDraining = false
 
 func _physics_process(delta):
@@ -40,14 +40,14 @@ func setRecoverValue(value):
 	recoverValue = value
 
 func drainSanity(drainValue):
-	if sanityBar.value < sanityBar.max_value and not playerIsDead:
+	if sanityBar.value < sanityBar.max_value and not punishmentTime:
 		sanityBar.value += drainValue
 		get_tree().call_group("monster", "setFaceAnimation", sanityBar.value)
 	else:
 		#pass
-		playerIsDead = true
+		punishmentTime = true
 		
-		get_tree().call_group("gameMaster", "setGameState", 4)
+		get_tree().call_group("gameMaster", "setGameState", 5)
 		
 
 func recoverSanity(value):
@@ -62,4 +62,6 @@ func getSanityBarValue():
 
 func resetSanity():
 	sanityBar.value = 0
+	punishmentTime = false
+
 	

@@ -40,8 +40,7 @@ export var transition_type = 1 # TRANS_SINE
 func _ready():
 	yield(owner, "ready")
 	player = owner.player
-	if backbreak:
-		$AnimationPlayer.play("backbreak")
+	#set_state_hiding()
 
 func _physics_process(delta):
 	lookAtPlayer()
@@ -122,6 +121,7 @@ func set_state_active():
 		$AnimationPlayer.play("crazyOpen")
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = true
+	
 
 func set_state_hiding():
 	state = HIDING

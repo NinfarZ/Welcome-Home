@@ -1,7 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://3DModels/Furniture/toilet.glb" type="PackedScene" id=1]
 [ext_resource path="res://toilet.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.756863, 0.756863, 0.694118, 1 )
+roughness = 0.25
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.5
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.137255, 0.188235, 0.305882, 1 )
+roughness = 0.32
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.5
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.682353, 0.682353, 0.647059, 1 )
+roughness = 0.22
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.5
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.662745, 0.662745, 0.619608, 1 )
+roughness = 0.26
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.5
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.498963, 0.0734327, 0.61411 )
@@ -100,8 +128,19 @@ tracks/2/keys = {
 [node name="toilet" instance=ExtResource( 1 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 
+[node name="Cube" parent="." index="0"]
+transform = Transform( 0.427211, 0, 0, 0, 0.427211, 0, 0, 0, 0.427211, 0.0276088, 1.00911, 1.82706 )
+material/0 = SubResource( 7 )
+
 [node name="Cube001" parent="." index="1"]
 "blend_shapes/seat move" = 0.0
+material/0 = SubResource( 4 )
+
+[node name="Cube002" parent="." index="2"]
+material/0 = SubResource( 5 )
+
+[node name="Cube003" parent="." index="3"]
+material/0 = SubResource( 6 )
 
 [node name="toilet" type="StaticBody" parent="." index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0402887, 0, 0 )

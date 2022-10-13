@@ -30,7 +30,7 @@
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=28]
 [ext_resource path="res://bigBed.tscn" type="PackedScene" id=29]
 [ext_resource path="res://candyBasket.tscn" type="PackedScene" id=30]
-[ext_resource path="res://audio/lastPhaseAudio.wav" type="AudioStream" id=31]
+[ext_resource path="res://audio/phaseTransition.wav" type="AudioStream" id=31]
 [ext_resource path="res://twoStoryBedblend.tscn" type="PackedScene" id=32]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -839,7 +839,9 @@ surfaces/0 = {
 
 [sub_resource type="Environment" id=580]
 background_mode = 3
-background_color = Color( 0.027451, 0.027451, 0.027451, 1 )
+background_color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
+ssao_radius = 14.52
+ssao_intensity = 8.28
 
 [sub_resource type="BoxShape" id=316]
 extents = Vector3( 6.88913, 1, 5.17929 )
@@ -1740,10 +1742,11 @@ transform = Transform( -0.0845699, -0.996129, -0.0239367, -0.995847, 0.0853099, 
 monsterNearDoor = true
 
 [node name="yellowgirl36" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
-transform = Transform( -0.942665, 0.0906659, -0.321186, -0.116619, -0.991209, 0.062468, -0.312698, 0.0963433, 0.944953, 1.16929, 21.0209, -9.57357 )
+transform = Transform( -0.966668, 0.142393, -0.212776, -0.124029, -0.987489, -0.0973622, -0.223978, -0.0677264, 0.972237, 1.16929, 21.0209, -9.57357 )
 
 [node name="yellowgirl25" parent="Monsters" groups=["corridor1", "corridor2", "monstermyBedroom"] instance=ExtResource( 4 )]
-transform = Transform( -0.407868, 0, -0.91304, 0, 1, 0, 0.913041, 0, -0.407868, 8.09355, 14.017, 8.62932 )
+transform = Transform( -0.119825, 0, -0.992794, 0, 1, 0, 0.992795, 0, -0.119824, 7.91755, 14.017, 8.42216 )
+backbreak = true
 
 [node name="yellowgirl42" parent="Monsters" groups=["monstermyBedroom", "monsterwardrobe", "wardrobe"] instance=ExtResource( 4 )]
 transform = Transform( -0.0566618, -0.998333, -0.0110508, -0.0272445, -0.00951832, 0.999583, -0.998021, 0.0569394, -0.0266598, 9.60977, 12.7115, 14.0117 )
@@ -1756,7 +1759,7 @@ transform = Transform( -0.999901, 0.0134802, -0.00393321, -0.00420529, -0.020247
 transform = Transform( -0.996748, 0.0522095, 0.0613803, -0.0524768, -0.998619, -0.00275022, 0.0611519, -0.00596232, 0.998111, 19.4742, 21.93, 3.27148 )
 
 [node name="yellowgirl12" parent="Monsters" groups=["bedRoom3", "monsterbathroom2", "monsterbedRoom3", "monstercorridor3"] instance=ExtResource( 4 )]
-transform = Transform( 0.05643, 0.072023, 0.995806, -0.560781, 0.827488, -0.0280708, -0.826036, -0.556846, 0.0870845, 0.496253, 14.5181, 28.1987 )
+transform = Transform( 0.0397306, 0, 0.999211, 0, 1, 0, -0.999208, 0, 0.0397307, 0.734681, 14.0337, 26.8381 )
 monsterNearDoor = true
 
 [node name="yellowgirl43" parent="Monsters" groups=["bathroom2", "monsterbathroom2", "monstercorridor3"] instance=ExtResource( 4 )]
@@ -1766,10 +1769,10 @@ transform = Transform( 0.539388, -0.783352, -0.308901, 0.591162, 0.613515, -0.52
 transform = Transform( -0.397076, -0.0050739, -0.917771, 0.0285854, 0.999431, -0.0178929, 0.917339, -0.0333397, -0.396705, 5.73154, 14.0194, 30.9613 )
 
 [node name="yellowgirl37" parent="Monsters" groups=["bathroom2", "corridor3", "monstercorridor1"] instance=ExtResource( 4 )]
-transform = Transform( 0.440867, -0.0325111, 0.896983, -0.00307887, 0.999285, 0.0377322, -0.897565, -0.0193966, 0.440452, -2.42428, 13.9847, 18.2428 )
+transform = Transform( 0.991076, -0.0325111, 0.129261, 0.029722, 0.999285, 0.0234477, -0.129931, -0.0193966, 0.991333, -2.15462, 14.011, 19.1464 )
 
 [node name="yellowgirl16" parent="Monsters" groups=["bathroom2", "bedRoom3", "corridor3", "monstercorridor1", "monstercorridor3"] instance=ExtResource( 4 )]
-transform = Transform( -0.992709, 0.0148287, -0.119617, -0.0166253, -0.999763, 0.0140356, -0.119381, 0.015922, 0.992721, -0.0145753, 19.7991, 18.8813 )
+transform = Transform( -0.992709, 0.0148287, -0.119617, -0.0166253, -0.999763, 0.0140356, -0.119381, 0.015922, 0.992721, 1.48771, 19.8243, 19.062 )
 
 [node name="yellowgirl19" parent="Monsters" groups=["corridor1", "corridor2", "livingroom", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( 0.98978, -0.0184444, -0.141394, -0.0166253, -0.999763, 0.0140356, -0.141619, -0.0115415, -0.989854, -0.439706, 21.9169, 20.2127 )
@@ -1830,7 +1833,7 @@ transform = Transform( 0.972155, -0.18582, 0.14278, -0.177751, -0.981762, -0.067
 transform = Transform( 0.343554, -0.181866, -0.921355, -0.572972, 0.736728, -0.359073, 0.744092, 0.651272, 0.148902, 7.28391, 13.6426, -4.70194 )
 
 [node name="yellowgirl41" parent="Monsters" groups=["bedRoom2", "corridor1", "corridor2", "monsterbedRoom2"] instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, -0.984825, -0.173545, 0, 0.173545, -0.984826, 1, -4.30481e-08, -7.58588e-09, 12.1352, 18.1713, -0.503562 )
+transform = Transform( -4.37114e-08, -0.948234, -0.317569, 0, 0.317569, -0.948235, 1, -4.14486e-08, -1.38814e-08, 10.6997, 17.7325, -1.23852 )
 
 [node name="yellowgirl24" parent="Monsters" groups=["corridor1", "corridor2", "monsterbedRoom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.128435, 0.100054, -0.986658, 0.117858, -0.989386, -0.0849891, -0.98469, -0.105371, -0.138865, 2.89133, 20.9089, -0.939872 )
@@ -1838,8 +1841,8 @@ transform = Transform( 0.128435, 0.100054, -0.986658, 0.117858, -0.989386, -0.08
 [node name="yellowgirl10" parent="Monsters" groups=["balcony", "balcony2", "bedRoom2", "monsterbalcony2", "monsterbedRoom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.140676, -0.0156947, -0.989931, 0.0244177, 0.999625, -0.0123788, 0.989754, -0.0224298, 0.141006, 30.1255, 9.41476, -7.25865 )
 
-[node name="yellowgirl2" parent="Monsters" groups=["bathroom2", "monsterbathroom2"] instance=ExtResource( 4 )]
-transform = Transform( -0.976221, 0.130216, -0.173306, 0.135001, 0.990715, -0.0160671, 0.169604, -0.0390816, -0.984737, -2.55894, 13.8973, 31.9479 )
+[node name="yellowgirl2" parent="Monsters" groups=["corridor1", "corridor3", "monsterbathroom2"] instance=ExtResource( 4 )]
+transform = Transform( -0.991355, 0, 0.131201, 0, 1, 0, -0.131201, 0, -0.991356, -2.41197, 13.9579, 31.9242 )
 
 [node name="yellowgirl3" parent="Monsters" groups=["livingroom", "livingroom2", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.159903, -0.00643967, -0.987112, 0.00527905, -0.999959, 0.00737864, -0.987119, -0.00639087, -0.159862, 25.98, 23.7289, -23.8484 )
@@ -1849,9 +1852,6 @@ transform = Transform( 0.159903, -0.00643967, -0.987112, 0.074213, 0.997227, 0.0
 
 [node name="yellowgirl18" parent="Monsters" groups=["balcony", "balcony2", "monsterbalcony", "monsterbalcony2", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.76643, 0.63802, 0.0742634, -0.637273, 0.769776, -0.036446, -0.0804195, -0.0193927, 0.996572, 23.5949, 14.1585, -18.3295 )
-
-[node name="yellowgirl21" parent="Monsters" groups=["bathroom1", "entrance", "monsterbathroom1"] instance=ExtResource( 4 )]
-transform = Transform( 0.988345, 0.0386869, 0.147233, -0.0402088, 0.999164, 0.00737839, -0.146825, -0.0132128, 0.989075, -3.58652, 10.2965, -57.3636 )
 
 [node name="yellowgirl30" parent="Monsters" groups=["bathroom1", "monsterentrance"] instance=ExtResource( 4 )]
 transform = Transform( -0.844094, -0.536149, 0.00717088, -0.536042, 0.844096, 0.0126885, -0.0128548, 0.00686665, -0.999895, -0.243554, 14.0492, -48.4894 )
@@ -1875,7 +1875,7 @@ transform = Transform( 0.0264467, -0.867758, -0.496283, 0.999598, 0.0280382, 0.0
 transform = Transform( 0.99327, 0.115821, 0, -0.115821, 0.993271, 0, 0, 0, 1, -0.0689641, 14.0384, -26.1712 )
 
 [node name="yellowgirl71" parent="Monsters" groups=["entrance", "livingroom", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( -0.934864, 0.353787, 0.0293818, 0.35199, 0.93451, -0.0528692, -0.046162, -0.0390834, -0.99817, -1.07501, 14.2174, -22.1594 )
+transform = Transform( -0.854963, 0.517855, 0.0293818, 0.516024, 0.854942, -0.0528692, -0.0524982, -0.0300395, -0.99817, -1.07501, 14.2174, -22.1594 )
 
 [node name="yellowgirl45" parent="Monsters" groups=["livingroom", "livingroom2", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.981382, 0.00327906, 0.192038, 0.19204, -0.0331123, -0.980829, 0.00314255, 0.999446, -0.0331256, 12.9682, 20.3678, -27.1928 )
@@ -2216,13 +2216,13 @@ transform = Transform( -1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, -
 transform = Transform( 0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, 0.0354577, 15.2278, 13.9828, 34.2952 )
 
 [node name="twoStoryBedblend" parent="Furniture" instance=ExtResource( 32 )]
-transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 21.0169, 16.0666, -0.671394 )
+transform = Transform( 8.74228e-08, -4.37114e-08, -1, 1, 4.37114e-08, 8.74228e-08, 4.37114e-08, -1, 4.37114e-08, 21.0169, 16.0666, -0.671394 )
 
 [node name="twoStoryBedblend2" parent="Furniture" instance=ExtResource( 32 )]
-transform = Transform( 1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 15.7491, 16.0666, -11.393 )
+transform = Transform( 8.74228e-08, 4.37114e-08, -1, -1, 4.37114e-08, -8.74228e-08, 4.37114e-08, 1, 4.37114e-08, 15.7491, 16.0666, -11.393 )
 
 [node name="twoStoryBedblend3" parent="Furniture" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0497, 13.3039, -0.612216 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.0497, 13.3039, -1.61317 )
 
 [node name="twoStoryBedblend4" parent="Furniture" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0692, 13.3451, -9.23436 )

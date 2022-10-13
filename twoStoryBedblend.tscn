@@ -16,6 +16,7 @@ rim = 1.0
 rim_tint = 0.5
 
 [sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.882353, 0.886275, 0.756863, 1 )
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.592157, 0.592157, 0.592157, 1 )
