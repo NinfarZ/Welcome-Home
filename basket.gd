@@ -32,13 +32,9 @@ func addCandy(candyToAdd):
 	
 	currentCandyCount += candyToAdd
 	
-	if currentCandyCount > totalCandy:
+	if currentCandyCount >= totalCandy:
 		isBasketFull = true
-		candyToAdd = (currentCandyCount) - totalCandy
-	elif currentCandyCount == totalCandy:
-		isBasketFull = true
-		
-	get_tree().call_group("sanityBar", "recoverSanity", candyToAdd*4)
+		currentCandyCount = totalCandy
 	
 	get_parent().get_node("candyCountLabel").set_text(str(currentCandyCount) + " / " + str(totalCandy))
 	

@@ -67,7 +67,7 @@ func lookAtPlayer():
 	head.rotate_object_local(Vector3(0,1,0), 3.14)
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
 	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
-	head.rotation.y = clamp(head.rotation.y, deg2rad(-40), deg2rad(40))
+	head.rotation.y = clamp(head.rotation.y, deg2rad(-60), deg2rad(60))
 	
 
 func isCanSpawn():
@@ -187,6 +187,15 @@ func canMonsterSpawnNextToDoor():
 		else:
 			return false
 	return true
+
+func isPlayerInViewcone():
+	if head.rotation.x >= deg2rad(50) or head.rotation.x <= deg2rad(-50) or head.rotation.y >= deg2rad(50) or head.rotation.y <= deg2rad(-50):
+		print("NO")
+		return false
+	else:
+		print("YES")
+		return true
+	
 
 func killPlayer():
 	if not $RandomAudioStreamPlayer.playing:

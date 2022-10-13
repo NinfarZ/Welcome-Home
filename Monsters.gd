@@ -48,7 +48,7 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			for monster in get_children():
-				if monster.isCanSpawn() and monster.canSeePlayer() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
+				if monster.isCanSpawn() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 					#monster.enableArea()
 					#print("monster can spawn")
 					add_monster_to_list(monster)
@@ -82,27 +82,27 @@ func _physics_process(delta):
 #				despawnMonster(currentMonster)
 #				state = ROOMCHANGE
 
+			#print(rad2deg(get_node(currentMonster).get_node("Head").rotation.x))
 			
 			if get_node(currentMonster).canSeePlayer() and get_node(currentMonster).isFaceInView():
-				get_node(currentMonster).playerLooksAtMonster()
-					#print(get_node(currentMonster).name + " can see you")
-					#invisibleMonster.setStateFollow()
+				get_node(currentMonster).playerLooksAtMonster()	
 				state = ANGER
-				#else:
-					#invisibleMonster.setStateStop()
+				
+				
 			elif not get_node(currentMonster).isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				get_parent().get_node("TimerMonsterCooldown").start()
 				state = COOLDOWN
-				
-			elif not get_node(currentMonster).canSeePlayer():
-					despawnMonster(currentMonster)
+			
+			#if the player is away from the monster's view cone, it despawns
+			elif not get_node(currentMonster).isPlayerInViewcone():
+				despawnMonster(currentMonster)
 					#print("monster can't see play so was removed")
-					get_parent().get_node("TimerMonsterSwitch").stop()
-					#monsterCanDespawn = false
-					get_parent().get_node("TimerMonsterCooldown").start()
-					state = COOLDOWN
+				get_parent().get_node("TimerMonsterSwitch").stop()
+				#monsterCanDespawn = false
+				get_parent().get_node("TimerMonsterCooldown").start()
+				state = COOLDOWN
 					
 			elif monsterCanDespawn:
 				if not get_node(currentMonster).isInView():
@@ -198,10 +198,10 @@ func despawnMonster(chosenMonster):
 func changeDifficulty(newSpeed, newTime):
 	get_parent().get_node("TimerMonsterSwitch").wait_time = newTime
 	#get_parent().get_node("TimerMonsterSwitch").wait_time = clamp(get_parent().get_node("TimerMonsterSwitch").wait_time, 8, 10)
-	print(get_parent().get_node("TimerMonsterSwitch").wait_time)
+	#print(get_parent().get_node("TimerMonsterSwitch").wait_time)
 	invisibleMonster.setSpeedIncrease(newSpeed)
 	#invisibleMonster.speed = clamp(invisibleMonster.speed, 1, 4)
-	print(invisibleMonster.speed)
+	#print(invisibleMonster.speed)
 
 func cooldown(minValue, maxValue):
 	#get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(minValue, maxValue)

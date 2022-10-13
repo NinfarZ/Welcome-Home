@@ -6,7 +6,8 @@ enum {
 	PATROL,
 	STOP,
 	FOLLOWPLAYER,
-	KILLPLAYER
+	KILLPLAYER,
+	CHASE
 }
 
 enum {
@@ -74,8 +75,6 @@ func _physics_process(delta):
 						playFootStep()
 					PHASE3:
 						playFootStep()
-						if not $monsterBreath.playing:
-							$monsterBreath.play()
 					#else:
 						#print("rng failed!")
 						#yield(get_tree().create_timer(5.0),"timeout")
@@ -88,6 +87,13 @@ func _physics_process(delta):
 				move_to_target()
 			#if not $running3D.playing:
 				#$running3D.play()
+		CHASE:
+			$monsterSpawner/CollisionShape.disabled = true
+			speed = 4
+			if path.size() > 0:
+				playFootStep()
+				move_to_target()
+			
 				
 		
 		
@@ -133,6 +139,9 @@ func setStateFollow():
 
 func setStateKillplayer():
 	state = KILLPLAYER
+
+func setStateChase():
+	state = CHASE
 	
 
 func getSpeed():
@@ -293,11 +302,13 @@ func _on_running3D_finished():
 
 
 func _on_locationSensor_area_entered(area):
-	monstersToSpawn = "monster" + area.name
+	if not area.is_in_group("player"):
+		monstersToSpawn = "monster" + area.name
 	#print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
-	currentLocation = area.name
+		currentLocation = area.name
 	#print("ENEMY IS INSIDE " + area.name)
 	#get_tree().call_group("gameMaster", "shutDownLight", currentLocation)
+	
 
 
 func setMonsterSpawner(setSpawner):
@@ -309,3 +320,10 @@ func setInvisibleEnemyPhase(newPhase):
 func playRunningAudio():
 	yield(get_tree().create_timer(2.0), "timeout")
 	$running3D.play()
+
+
+func _on_locationSensor_body_entered(body):
+	if body.is_in_group("player"):
+		if state == CHASE:
+			get_tree().call_group("gameMaster", "setGameState", 4)
+			_physics_process(false)

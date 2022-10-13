@@ -78,7 +78,7 @@ random_pitch_range = 0.359
 
 [node name="locationSensor" type="Area" parent="."]
 collision_layer = 32
-collision_mask = 16
+collision_mask = 17
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="locationSensor"]
@@ -103,3 +103,4 @@ random_pitch_range = 0.277
 [connection signal="finished" from="steps3D" to="." method="_on_steps3D_finished"]
 [connection signal="finished" from="running3D" to="." method="_on_running3D_finished"]
 [connection signal="area_entered" from="locationSensor" to="." method="_on_locationSensor_area_entered"]
+[connection signal="body_entered" from="locationSensor" to="." method="_on_locationSensor_body_entered"]

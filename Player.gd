@@ -55,27 +55,28 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("crouch") and crouching:
 		if not $Neck/RayCast.is_colliding():
 			$AnimationPlayer.play_backwards("crouch")
-			moveSpeed = 3.5
+			moveSpeed = 3.2
 			crouching = false
 	
 	#running
 	if Input.is_action_pressed("run") and not crouching:
 		moveSpeed = sprintSpeed
 	elif Input.is_action_just_released("run") and not crouching:
-		moveSpeed = 3.5
+		moveSpeed = 3.2
 	
 	#flashlightToggle
 	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
 		toggleFlashlight(false)
 	elif Input.is_action_just_pressed("flashlightToggle") and not flashlightOn:
 		toggleFlashlight(true)
+	
 		
 	
 	#recovering sanity
 	match state:
 		DEFAULT:
 			if not inSpotlight:
-				get_tree().call_group("sanityBar", "drainSanity", 0.02)
+				get_tree().call_group("sanityBar", "drainSanity", 0.013)
 			else:
 				get_tree().call_group("sanityBar", "recoverSanity", 0.06)
 		SEEMONSTER:
@@ -192,13 +193,14 @@ func setState(newState):
 
 func _on_viewCone_area_entered(area):
 	if area.is_in_group("monsterHead"):
-		print("player can see monster!")
+		#print("player can see monster!")
+		pass
 
 
 func _on_viewCone_area_exited(area):
 	if area.is_in_group("monsterHead"):
-		print("player can NOT see monster!")
-
+		#print("player can NOT see monster!")
+		pass
 
 #func _on_wardrobe_body_entered(body):
 	#currentLocation = "wardrobe"

@@ -16,7 +16,8 @@ material/0 = ExtResource( 4 )
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="1"]
 stream = ExtResource( 2 )
 unit_db = 19.01
-pitch_scale = 1.49
+unit_size = 1.5
+pitch_scale = 1.25
 
 [node name="bunny" type="StaticBody" parent="." index="2" groups=["bunny"]]
 collision_layer = 4096

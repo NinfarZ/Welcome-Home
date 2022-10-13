@@ -172,12 +172,12 @@ func _physics_process(delta):
 			$CanvasLayer/Sanity.queue_free()
 			deathSequence()
 			set_physics_process(false)
+		
+		#PLAYER NEEDS TO RUN FOR THEIR LIVES
 		PUNISHMENT:
-			pass
 			turnAllLightsOff()
 			get_tree().call_group("player", "toggleFlashlight", false)
 			$punishmentTimer.start()
-			state = GAME
 			
 func shutDownLight(currentLight, isTimeOver):
 	if isTimeOver:
@@ -392,6 +392,8 @@ func _on_lightCoolDown_timeout():
 func _on_punishmentTimer_timeout():
 	get_tree().call_group("player", "toggleFlashlight", true)
 	pickLight()
+	get_tree().call_group("invisibleEnemy", "setStateFollow")
+	state = GAME
 
 func setPunishmentTimer(time):
 	$punishmentTimer.wait_time = time

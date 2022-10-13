@@ -43,3 +43,5 @@ func _on_AudioStreamPlayer3D_finished():
 	state = INACTIVE
 	get_tree().call_group("gameMaster", "setPunishmentTimer", RNGTools.randi_range(15, 30))
 	get_tree().call_group("gameMaster", "setGameState", 5)
+	get_tree().call_group("invisibleEnemy", "setStateChase")
+	

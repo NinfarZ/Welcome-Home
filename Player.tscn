@@ -23,10 +23,10 @@ extents = Vector3( 1, 1, 0.581893 )
 radius = 0.93536
 height = 1.76092
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Neck:translation")
+tracks/0/path = NodePath("Neck/viewCone:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,10 +35,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 1.68043, 0.125317 ) ]
+"values": [ Vector3( -0.00204064, -0.24652, -0.33842 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape:scale")
+tracks/1/path = NodePath("Neck/viewCone:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -47,55 +47,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape:shape:height")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 3.35366 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Neck/viewCone:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.563513, 0.535604, 0.476839 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Neck/viewCone:translation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -0.00204064, -0.847383, -1.23644 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Neck/viewCone:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -5.94359, 0, 0 ) ]
+"values": [ Vector3( 0.1702, 0.187621, 0.138133 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -138,7 +90,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0.1702, 0.187604, 0.10383 ) ]
+"values": [ Vector3( 0.199524, 0.208325, 0.138137 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Neck/viewCone:translation")
@@ -150,7 +102,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( -0.00204064, -0.24652, -0.261452 ) ]
+"values": [ Vector3( -0.00204064, -0.280834, -0.323508 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Neck/viewCone:rotation_degrees")
@@ -207,8 +159,8 @@ tracks/2/keys = {
 [node name="Player" type="KinematicBody" groups=["player"]]
 collision_mask = 529
 script = ExtResource( 1 )
-moveSpeed = 3.5
-sprintSpeed = 6.0
+moveSpeed = 3.2
+sprintSpeed = 5.2
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -229,7 +181,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, -0.716641 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.563513, 0, 0, 0, 0.532725, 0.0493763, 0, -0.0554614, 0.474276, -0.00204064, -0.847383, -1.23644 )
+transform = Transform( 0.1702, 0, 0, 0, 0.187399, -0.00671024, 0, 0.00911427, 0.13797, -0.00204064, -0.24652, -0.33842 )
 collision_layer = 0
 collision_mask = 4
 
@@ -273,7 +225,7 @@ shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flashlightON"
-anims/RESET = SubResource( 6 )
+anims/RESET = SubResource( 11 )
 anims/crouch = SubResource( 7 )
 anims/flashlightOFF = SubResource( 8 )
 anims/flashlightON = SubResource( 9 )
