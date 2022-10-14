@@ -20,6 +20,7 @@ var currentLocation = null
 var inSpotlight = false
 var crouching = false
 var flashlightOn = true
+var drainSanityValue = 0.013
 var state = DEFAULT
 
 func _ready():
@@ -76,7 +77,7 @@ func _physics_process(delta):
 	match state:
 		DEFAULT:
 			if not inSpotlight:
-				get_tree().call_group("sanityBar", "drainSanity", 0.013)
+				get_tree().call_group("sanityBar", "drainSanity", drainSanityValue)
 			else:
 				get_tree().call_group("sanityBar", "recoverSanity", 0.06)
 		SEEMONSTER:
@@ -111,6 +112,9 @@ func die():
 	$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone/CollisionShape.disabled = true
 	#state = DEAD
+
+func setDrainSanity(drainValue):
+	drainSanityValue = drainValue
 
 
 func get_current_location():

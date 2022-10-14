@@ -4,28 +4,28 @@
 [ext_resource path="res://toilet.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0.756863, 0.756863, 0.694118, 1 )
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 roughness = 0.25
 rim_enabled = true
 rim = 1.0
 rim_tint = 0.5
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.137255, 0.188235, 0.305882, 1 )
+albedo_color = Color( 0.482353, 0.364706, 0.513726, 1 )
 roughness = 0.32
 rim_enabled = true
 rim = 1.0
 rim_tint = 0.5
 
 [sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.682353, 0.682353, 0.647059, 1 )
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 roughness = 0.22
 rim_enabled = true
 rim = 1.0
 rim_tint = 0.5
 
 [sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.662745, 0.662745, 0.619608, 1 )
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 roughness = 0.26
 rim_enabled = true
 rim = 1.0

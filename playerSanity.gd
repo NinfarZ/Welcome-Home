@@ -8,6 +8,14 @@ var isMonsterDraining = false
 
 func _physics_process(delta):
 	pass
+	var tween = create_tween()
+	if sanityBar.value > 70:
+		tween.tween_property($ProgressBar, "self_modulate", Color(0.92, 0.41, 0.35), 5.0)
+		#$ProgressBar.self_modulate = Color(0.92, 0.41, 0.35)
+	elif sanityBar.value <= 70:
+		tween.tween_property($ProgressBar, "self_modulate", Color(1.00, 0.91, 0.92), 5.0)
+		
+		
 #	if sanityBar.value < 20:
 #		get_tree().call_group("monsterController", "changeDifficulty", 1, 10)
 #		get_tree().call_group("monsterController", "cooldown", 5, 10)

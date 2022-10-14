@@ -1,14 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://3DModels/Furniture/twoStoryBedblend.glb" type="PackedScene" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.607843, 0.607843, 0.607843, 1 )
+albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 metallic = 0.61
 roughness = 0.46
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.192157, 0.192157, 0.192157, 1 )
+albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 metallic = 0.6
 roughness = 0.21
 rim_enabled = true
@@ -19,15 +19,15 @@ rim_tint = 0.5
 albedo_color = Color( 0.882353, 0.886275, 0.756863, 1 )
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.592157, 0.592157, 0.592157, 1 )
+albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 metallic = 0.53
 roughness = 0.53
 
 [sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.192157, 0.168627, 0.380392, 1 )
+albedo_color = Color( 0.682353, 0.529412, 0.72549, 1 )
 
 [sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.541176, 0.541176, 0.541176, 1 )
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 metallic = 0.65
 roughness = 0.52
 rim_enabled = true
@@ -36,6 +36,16 @@ rim_tint = 0.5
 
 [sub_resource type="BoxShape" id=7]
 extents = Vector3( 3.80101, 0.395993, 1 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
+metallic = 0.83
+roughness = 0.4
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
+metallic = 0.87
+roughness = 0.26
 
 [node name="twoStoryBedblend" instance=ExtResource( 1 )]
 
@@ -68,3 +78,9 @@ shape = SubResource( 7 )
 [node name="CollisionShape2" type="CollisionShape" parent="StaticBody" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.77721, 0 )
 shape = SubResource( 7 )
+
+[node name="Cylinder001" parent="." index="7"]
+material/0 = SubResource( 8 )
+
+[node name="Cylinder002" parent="." index="8"]
+material/0 = SubResource( 9 )

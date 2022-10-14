@@ -4,7 +4,7 @@
 [ext_resource path="res://3DModels/Monster/eye.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=12]
-albedo_color = Color( 0.729412, 0.729412, 0.65098, 1 )
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 roughness = 0.48
 rim_enabled = true
 rim = 0.3
@@ -14,11 +14,11 @@ rim_tint = 0.5
 extents = Vector3( 0.448665, 3.15629, 0.215522 )
 
 [sub_resource type="SpatialMaterial" id=13]
-albedo_color = Color( 0.611765, 0.611765, 0.54902, 1 )
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 roughness = 0.48
 
 [sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0.588235, 0.588235, 0.494118, 1 )
+albedo_color = Color( 0.933333, 0.811765, 0.427451, 1 )
 roughness = 0.55
 
 [node name="mannequim" instance=ExtResource( 1 )]

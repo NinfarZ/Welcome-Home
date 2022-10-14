@@ -43,6 +43,7 @@ func _ready():
 	target = owner.player
 
 func _physics_process(delta):
+	lookAtPlayer()
 	match state:
 		FOLLOWPLAYER:
 			if path.size() > 0:
@@ -141,12 +142,14 @@ func setStateStop():
 
 func setStateFollow():
 	state = FOLLOWPLAYER
+	$body.visible = false
 
 func setStateKillplayer():
 	state = KILLPLAYER
 
 func setStateChase():
 	state = CHASE
+	$body.visible = true
 	
 
 func getSpeed():
@@ -188,6 +191,15 @@ func get_current_location():
 func get_current_monstersToSpawn():
 	return monstersToSpawn
 
+func lookAtPlayer():
+	$body.look_at(target.get_position(), Vector3.UP) #+ Vector3(0,1,0)
+	$body.rotate_object_local(Vector3(0,1,0), 3.14)
+	#head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
+	#head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
+	$body.rotation.x = clamp($body.rotation.x, deg2rad(0), deg2rad(0))
+	
+	for eye in $body/head/eyes.get_children():
+		eye.frame = RNGTools.pick([1,2,3])
 
 #func _on_myBedroom_body_entered(body):
 #	if body.is_in_group("invisibleEnemy"):

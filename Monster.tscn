@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://3DModels/Monster/monster.glb" type="PackedScene" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=2]
@@ -323,7 +323,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="SpatialMaterial" id=12]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 roughness = 0.48
 rim_enabled = true
 rim = 0.3
@@ -358,6 +358,13 @@ surfaces/1 = {
 "skeleton_aabb": [  ],
 "vertex_count": 16
 }
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
+roughness = 0.25
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 
 [node name="monster" groups=["monster"] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -468,6 +475,8 @@ blend_shapes/armbreak = 0.0
 blend_shapes/backbreak = 0.0
 blend_shapes/mouthsmile = 0.0
 blend_shapes/necklong = 1.0
+material/0 = SubResource( 15 )
+material/1 = SubResource( 16 )
 
 [node name="raycasts" type="Spatial" parent="Head/head" index="0"]
 transform = Transform( 0.997418, -0.0715327, 0.00614248, 0.0716841, 0.996987, -0.029584, -0.00400775, 0.029948, 0.999542, -0.00172213, 4.77681, 0.901098 )
