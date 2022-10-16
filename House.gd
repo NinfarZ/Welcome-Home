@@ -84,7 +84,7 @@ func _physics_process(delta):
 						randomizeCandy(25)
 						get_tree().call_group("monsterController", "setStateSearching")
 						CandyRandomized = true
-						currentBunny = pickBunny()
+						#currentBunny = pickBunny()
 						
 						
 						$candyBasket/basket.displayText(15)
@@ -108,7 +108,7 @@ func _physics_process(delta):
 					difficultySet(3)
 					if not CandyRandomized:
 						randomizeCandy(28)
-						$bunnySpawnTimer.start()
+						#$bunnySpawnTimer.start()
 						
 						CandyRandomized = true
 						$candyBasket/basket.displayText(20)
@@ -177,6 +177,8 @@ func _physics_process(delta):
 		#PLAYER NEEDS TO RUN FOR THEIR LIVES
 		PUNISHMENT:
 			turnAllLightsOff()
+			$lightCoolDown.stop()
+			get_tree().call_group("player", "setState", 1)
 			get_tree().call_group("player", "toggleFlashlight", false)
 			$CanvasLayer/Sanity.visible = false
 			if not $Audio/fearNoise.playing:
@@ -206,19 +208,22 @@ func shutDownLight(currentLight, isTimeOver):
 func randomizeCandy(amount):
 	var candiesPicked = 0
 	var candyList = $Candy.get_children()
+	var activeCandy = []
+	var possibleCandyFound = false
 	
 	#for candy in $Candy.get_children():
 		#candy.get_node("candy").setState(0)
-	var distance = 10.0
 	while candiesPicked < amount:
 		var newCandy = RNGTools.pick(candyList)
-		for candy in candyList:
-			if newCandy.transform.origin.distance_to(candy.transform.origin) < distance:
-				newCandy.get_node("candy").setState(0)
+		for candy in activeCandy:
+			while newCandy.transform.origin.distance_to(candy.transform.origin) < 9.0:
 				candyList.erase(newCandy)
-				candiesPicked += 1
-			else:
-				distance -= 1
+				print(newCandy.name + "was too close to " + candy.name)
+				newCandy = RNGTools.pick(candyList)
+		newCandy.get_node("candy").setState(0)
+		candiesPicked += 1
+		activeCandy.append(newCandy)
+		
 		
 
 
@@ -407,12 +412,14 @@ func _on_lightCoolDown_timeout():
 
 func _on_punishmentTimer_timeout():
 	state = GAME
-	get_tree().call_group("invisibleEnemy", "setStateFollow")
+	#get_tree().call_group("invisibleEnemy", "setStateFollow")
+	get_tree().call_group("monsterController", "setStateSearching")
 	$CanvasLayer/Sanity.resetSanity()
 	$CanvasLayer/Sanity.visible = true
 	$Audio/fearNoise.stop()
 	$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
 	get_tree().call_group("player", "toggleFlashlight", true)
+	get_tree().call_group("player", "setState", 0)
 	pickLight()
 	
 	

@@ -54,6 +54,7 @@ func drainSanity(drainValue):
 	else:
 		#pass
 		punishmentTime = true
+		print("punishment time")
 		
 		get_tree().call_group("gameMaster", "setGameState", 5)
 		

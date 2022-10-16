@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://3DModels/Monster/monster.glb" type="PackedScene" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://3DModels/Monster/Material_001.material" type="Material" id=14]
 [ext_resource path="res://3DModels/Mannequin/Material.material" type="Material" id=15]
 [ext_resource path="res://3DModels/Mannequin/mouth.material" type="Material" id=16]
+[ext_resource path="res://3DModels/Monster/mouths.png" type="Texture" id=17]
 
 [sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
@@ -364,7 +365,7 @@ albedo_color = Color( 1, 0.917647, 0.92549, 1 )
 roughness = 0.25
 
 [sub_resource type="SpatialMaterial" id=16]
-albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
+albedo_color = Color( 0.898039, 0.898039, 0.898039, 1 )
 
 [node name="monster" groups=["monster"] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -521,14 +522,22 @@ transform = Transform( 1.68648, -0.414459, -0.25087, 0.42815, 1.7422, -1.65775e-
 shaded = true
 texture = ExtResource( 13 )
 hframes = 4
-frame = 2
 
 [node name="eye2" type="Sprite3D" parent="Head/head/eyes" index="1"]
 transform = Transform( 1.97655, -0.546396, 0.177826, 0.561421, 2.00652, -0.0172519, -0.347385, 0.133935, 0.983911, -0.0659889, 1.11674, 0.951128 )
 shaded = true
 texture = ExtResource( 13 )
 hframes = 4
-frame = 2
+frame = 1
+
+[node name="mouths" type="Spatial" parent="Head/head" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.59193, 1.36255 )
+
+[node name="mouths" type="Sprite3D" parent="Head/head/mouths" index="0"]
+transform = Transform( 2.43024, 0, 0, 0, 1.71476, -0.193669, 0, 0.338506, 0.981067, -0.0939222, 0.0203481, -0.396598 )
+pixel_size = 0.02
+texture = ExtResource( 17 )
+hframes = 5
 
 [node name="faceStareDelay" type="Timer" parent="." index="16"]
 wait_time = 0.1

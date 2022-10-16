@@ -110,17 +110,14 @@ func get_monster_position():
 func set_state_active():
 	state = ACTIVE
 	disableArea()
-	var randomFace = RNGTools.pick([1,2,3])
 			
 		#animate monster face
-	if randomFace == 1:
-		$AnimationPlayer.play("neutral")
-	elif randomFace == 2:
-		$AnimationPlayer.play("openMouth")
-	elif randomFace == 3:
-		$AnimationPlayer.play("crazyOpen")
+	for eye in $Head/head/eyes.get_children():
+		eye.frame = RNGTools.pick([0 , 1, 2])
+	$Head/head/mouths/mouths.frame = RNGTools.pick([0, 1, 2])
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = true
+	
 	
 
 func set_state_hiding():

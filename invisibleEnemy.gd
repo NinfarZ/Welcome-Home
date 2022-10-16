@@ -27,6 +27,7 @@ var threshold = 0.1
 var offset = Vector3(10,10,10)
 var decreaseScale = Vector3(0.01, 0.01, 0.01)
 var invisibleEnemyInview = false
+var gracePeriodOver = false
 
 var canPlaySound = true
 var timesSoundPlayed = 1
@@ -90,6 +91,7 @@ func _physics_process(delta):
 				#$running3D.play()
 		CHASE:
 			$monsterSpawner/CollisionShape.disabled = true
+			$chaseGracePeriod.start()
 			if path.size() > 0:
 				if not $steps3D.playing:
 					match phase:
@@ -143,13 +145,15 @@ func setStateStop():
 func setStateFollow():
 	state = FOLLOWPLAYER
 	$body.visible = false
+	gracePeriodOver = false
 
 func setStateKillplayer():
 	state = KILLPLAYER
 
 func setStateChase():
 	state = CHASE
-	$body.visible = true
+	#$body.visible = true
+	$chaseGracePeriod.start()
 	
 
 func getSpeed():
@@ -201,111 +205,6 @@ func lookAtPlayer():
 	for eye in $body/head/eyes.get_children():
 		eye.frame = RNGTools.pick([1,2,3])
 
-#func _on_myBedroom_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "my_bedroom"
-#		monstersToSpawn = "monsterMybedroom"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_bedRoom3_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "bedRoom3"
-#		monstersToSpawn = "monsterBedroom3"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_bathroom2_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "bathroom2"
-#		monstersToSpawn = "monsterBathroom2"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_corridor1_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "corridor1"
-#		monstersToSpawn = "monsterCorridor1"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_corridor3_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "corridor3"
-#		monstersToSpawn = "monsterCorridor3"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_corridor2_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "corridor2"
-#		monstersToSpawn = "monsterCorridor2"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_livingroom_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "livingroom"
-#		monstersToSpawn = "monsterLivingroom"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_entrance_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "entrance"
-#		monstersToSpawn = "monsterEntrance"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_bathroom1_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "bathroom1"
-#		monstersToSpawn = "monsterBathroom1"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_kitchen_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "kitchen"
-#		monstersToSpawn = "monsterKitchen"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_bedRoom2_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "my_bedroom2"
-#		monstersToSpawn = "monsterBedroom2"
-#		print("enemy is in " + currentLocation)
-#
-#
-#
-#
-#func _on_balcony_body_entered(body):
-#	if body.is_in_group("invisibleEnemy"):
-#		currentLocation = "balcony"
-#		monstersToSpawn = "monsterBalcony"
-#		print("enemy is in " + currentLocation)
-
 
 func _on_steps3D_finished():
 	yield(get_tree().create_timer(5.0), "timeout")
@@ -340,7 +239,16 @@ func playRunningAudio():
 
 
 func _on_locationSensor_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and gracePeriodOver:
 		if state == CHASE:
 			get_tree().call_group("gameMaster", "setGameState", 4)
 			_physics_process(false)
+
+
+func _on_locationSensor_body_exited(body):
+	pass
+
+
+func _on_chaseGracePeriod_timeout():
+	gracePeriodOver = true
+	$body.visible = true

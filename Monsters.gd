@@ -60,7 +60,7 @@ func _physics_process(delta):
 			if monstersInRange != []:
 				if RNGTools.pick([1,0,0]) == 1:
 					currentMonster = RNGTools.pick(monstersInRange)
-					get_node(currentMonster).makeCreepySound()
+					#get_node(currentMonster).makeCreepySound()
 					spawnMonster(currentMonster)
 				else:
 					monstersInRange = []

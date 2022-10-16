@@ -186,6 +186,10 @@ texture = ExtResource( 16 )
 hframes = 4
 frame = 1
 
+[node name="chaseGracePeriod" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
 [connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]
@@ -197,3 +201,5 @@ frame = 1
 [connection signal="finished" from="running3D" to="." method="_on_running3D_finished"]
 [connection signal="area_entered" from="locationSensor" to="." method="_on_locationSensor_area_entered"]
 [connection signal="body_entered" from="locationSensor" to="." method="_on_locationSensor_body_entered"]
+[connection signal="body_exited" from="locationSensor" to="." method="_on_locationSensor_body_exited"]
+[connection signal="timeout" from="chaseGracePeriod" to="." method="_on_chaseGracePeriod_timeout"]

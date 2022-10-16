@@ -1,4 +1,4 @@
-[gd_scene load_steps=301 format=2]
+[gd_scene load_steps=302 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://audio/phaseTransition.wav" type="AudioStream" id=31]
 [ext_resource path="res://twoStoryBedblend.tscn" type="PackedScene" id=32]
 [ext_resource path="res://shelf.tscn" type="PackedScene" id=33]
+[ext_resource path="res://bathroomSink.tscn" type="PackedScene" id=34]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -2239,6 +2240,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10366, 13.5032, 14.0552 )
 
 [node name="shelf2" parent="Furniture" instance=ExtResource( 33 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95406, 13.5032, -3.51286 )
+
+[node name="bathroomSink" parent="Furniture" instance=ExtResource( 34 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.41102, 12.0627, -53.2762 )
 
 [node name="windowBarrier" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.065, 13.3705, -19.6296 )
