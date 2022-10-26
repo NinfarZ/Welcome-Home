@@ -12,6 +12,7 @@ enum {
 	ROOMCHANGE
 	KILL
 	COOLDOWN
+	HUNTING
 }
 
 export(NodePath) var invisibleMonsterPath
@@ -21,6 +22,7 @@ var state = IDLE
 var currentMonster = null
 var monsterCanDespawn = false
 var lastMonster = null
+var monsterActive = false
 
 var playerStaringAtMonster = false
 
@@ -62,14 +64,15 @@ func _physics_process(delta):
 					currentMonster = RNGTools.pick(monstersInRange)
 					#get_node(currentMonster).makeCreepySound()
 					spawnMonster(currentMonster)
+					state = STALKING
 				else:
 					monstersInRange = []
 					state = COOLDOWN
 					get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
-					print(get_parent().get_node("TimerMonsterCooldown").wait_time)
+					#print(get_parent().get_node("TimerMonsterCooldown").wait_time)
 					get_parent().get_node("TimerMonsterCooldown").start()
 		STALKING:
-			print(currentMonster + " is staking hehe")
+			print(currentMonster.name + " is staking hehe")
 			#for raycast in get_node(currentMonster).get_node("Cube001").get_children():
 				#if not raycast.is_colliding():
 			get_parent().get_node("TimerMonsterSwitch").start()
@@ -84,19 +87,19 @@ func _physics_process(delta):
 
 			#print(rad2deg(get_node(currentMonster).get_node("Head").rotation.x))
 			
-			if get_node(currentMonster).canSeePlayer() and get_node(currentMonster).isFaceInView():
-				get_node(currentMonster).playerLooksAtMonster()	
+			if currentMonster.canSeePlayer() and currentMonster.isFaceInView():
+				currentMonster.playerLooksAtMonster()	
 				state = ANGER
 				
 				
-			elif not get_node(currentMonster).isMonsterInPlayerLocation():
+			elif not currentMonster.isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				get_parent().get_node("TimerMonsterCooldown").start()
 				state = COOLDOWN
 			
 			#if the player is away from the monster's view cone, it despawns
-			elif not get_node(currentMonster).isPlayerInViewcone():
+			elif not currentMonster.isPlayerInViewcone():
 				despawnMonster(currentMonster)
 					#print("monster can't see play so was removed")
 				get_parent().get_node("TimerMonsterSwitch").stop()
@@ -105,7 +108,7 @@ func _physics_process(delta):
 				state = COOLDOWN
 					
 			elif monsterCanDespawn:
-				if not get_node(currentMonster).isInView():
+				if not currentMonster.isInView():
 					print("monster cooldown over so can despawn")
 					despawnMonster(currentMonster)
 					monsterCanDespawn = false
@@ -125,12 +128,24 @@ func _physics_process(delta):
 			if monsterCanDespawn:
 				state = SEARCHING
 		KILL:
-			get_node(currentMonster).killPlayer()
+			currentMonster.killPlayer()
 			#print("player has been killed")
 		
 		COOLDOWN:
-			#print("monster spawner is on cooldown!")
-			pass
+			#monster creeps around. Not dangerous but creepy
+			if not monsterActive:
+				for monster in get_children():
+					if monster.isCanSpawn() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster:
+						spawnMonster(monster)
+						currentMonster = monster
+						monsterActive = true
+			elif currentMonster.isInView():
+				despawnMonster(currentMonster)
+				monsterActive = false
+			
+		HUNTING:
+			get_parent().get_node("TimerMonsterCooldown").stop()
+			get_parent().get_node("TimerMonsterSwitch").stop()
 			
 			
 			
@@ -138,13 +153,13 @@ func _physics_process(delta):
 		
 
 func add_monster_to_list(monster):
-	if not monster.name in monstersInRange:
-		monstersInRange.append(monster.name)
+	if not monster in monstersInRange:
+		monstersInRange.append(monster)
 
 func remove_monster_from_list(monster):
 	var i = 0
 	while i < monstersInRange.size():
-		if monstersInRange[i] == monster.name:
+		if monstersInRange[i] == monster:
 				monstersInRange.pop_at(i)
 		i += 1
 
@@ -161,7 +176,7 @@ func pickRandomMonster():
 	
 	#chosenMonster = monstersInRange[randi() % monstersInRange.size()]
 	chosenMonster = RNGTools.pick(monstersInRange)
-	print(chosenMonster)
+	#print(chosenMonster)
 	#get_node(chosenMonster).set_state_active()
 	#state = STALKING
 	return chosenMonster
@@ -180,15 +195,15 @@ func _on_TimerMonsterSwitch_timeout():
 
 func spawnMonster(chosenMonster):
 	#if RNGTools.randi_range(-10,10) < 0:
-	get_node(chosenMonster).set_state_active()
+	chosenMonster.set_state_active()
 	#get_node(chosenMonster).makeCreepySound()
-	lastMonster = get_node(currentMonster)
-	state = STALKING
+	lastMonster = currentMonster
+	#state = STALKING
 	#else:
 		#return
 
 func despawnMonster(chosenMonster):
-	get_node(chosenMonster).set_state_hiding()
+	chosenMonster.set_state_hiding()
 	#invisibleMonster.setStateFollow()
 	monstersInRange = []
 
@@ -220,9 +235,15 @@ func _on_monsterSpawner_area_exited(area):
 
 
 func _on_TimerMonsterCooldown_timeout():
+	if monsterActive:
+		despawnMonster(currentMonster)
 	state = SEARCHING
 
 func setStateIdle():
 	state = IDLE
 func setStateSearching():
 	state = SEARCHING
+func setStateCooldown():
+	state = COOLDOWN
+func setStateHunting():
+	state = HUNTING

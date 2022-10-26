@@ -28,6 +28,7 @@ var offset = Vector3(10,10,10)
 var decreaseScale = Vector3(0.01, 0.01, 0.01)
 var invisibleEnemyInview = false
 var gracePeriodOver = false
+var monsterChaseVisible = false
 
 var canPlaySound = true
 var timesSoundPlayed = 1
@@ -68,18 +69,18 @@ func _physics_process(delta):
 						#timesSoundPlayed -= 1
 				#elif currentLocation != target.get_current_location():
 					#timesSoundPlayed = 1
-			if currentLocation != target.get_current_location():
-				
-				match phase:
-					PHASE1:
-						pass
-					PHASE2:
-						playFootStep()
-					PHASE3:
-						playFootStep()
-					#else:
-						#print("rng failed!")
-						#yield(get_tree().create_timer(5.0),"timeout")
+				elif transform.origin.distance_to(target.transform.origin) > 15:
+					
+					match phase:
+						PHASE1:
+							pass
+						PHASE2:
+							playFootStep()
+						PHASE3:
+							playFootStep()
+						#else:
+							#print("rng failed!")
+							#yield(get_tree().create_timer(5.0),"timeout")
 					
 		STOP:
 			pass
@@ -91,7 +92,6 @@ func _physics_process(delta):
 				#$running3D.play()
 		CHASE:
 			$monsterSpawner/CollisionShape.disabled = true
-			$chaseGracePeriod.start()
 			if path.size() > 0:
 				if not $steps3D.playing:
 					match phase:
@@ -100,6 +100,11 @@ func _physics_process(delta):
 						PHASE3:
 							$steps3D.play()
 							$monsterBreath.play()
+				if transform.origin.distance_to(target.transform.origin) <= 10:
+					$body.visible = true
+				elif transform.origin.distance_to(target.transform.origin) > 10:
+					$body.visible = false
+					
 				move_to_target()
 			
 				
@@ -145,6 +150,7 @@ func setStateStop():
 func setStateFollow():
 	state = FOLLOWPLAYER
 	$body.visible = false
+	monsterChaseVisible = false
 	gracePeriodOver = false
 
 func setStateKillplayer():
@@ -152,8 +158,11 @@ func setStateKillplayer():
 
 func setStateChase():
 	state = CHASE
+	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2])
 	#$body.visible = true
-	$chaseGracePeriod.start()
+	if not gracePeriodOver and $chaseGracePeriod.is_stopped():
+		$chaseGracePeriod.start()
+	print("timer start chase")
 	
 
 func getSpeed():
@@ -203,7 +212,8 @@ func lookAtPlayer():
 	$body.rotation.x = clamp($body.rotation.x, deg2rad(0), deg2rad(0))
 	
 	for eye in $body/head/eyes.get_children():
-		eye.frame = RNGTools.pick([1,2,3])
+		eye.frame = RNGTools.pick([0,1,2,3])
+	
 
 
 func _on_steps3D_finished():
@@ -251,4 +261,5 @@ func _on_locationSensor_body_exited(body):
 
 func _on_chaseGracePeriod_timeout():
 	gracePeriodOver = true
-	$body.visible = true
+	monsterChaseVisible = true
+	print("grace period over")

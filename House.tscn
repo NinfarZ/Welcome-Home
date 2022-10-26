@@ -1,4 +1,4 @@
-[gd_scene load_steps=302 format=2]
+[gd_scene load_steps=303 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://twoStoryBedblend.tscn" type="PackedScene" id=32]
 [ext_resource path="res://shelf.tscn" type="PackedScene" id=33]
 [ext_resource path="res://bathroomSink.tscn" type="PackedScene" id=34]
+[ext_resource path="res://CandyManager.gd" type="Script" id=35]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -2291,6 +2292,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714271, 15.2592, -37.041 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38872, 15.5502, -54.3336 )
 
 [node name="Candy" type="Spatial" parent="."]
+script = ExtResource( 35 )
 
 [node name="candy" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.52895, 14.2764, -20.809 )

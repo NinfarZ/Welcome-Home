@@ -3,6 +3,7 @@ extends Spatial
 
 onready var player = $Player
 onready var monsters = $Monsters
+onready var candyManager = $Candy
 
 var isWardrobeDown = false
 var state = START
@@ -58,7 +59,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 					
 						
-						randomizeCandy(10)
+						candyManager.randomizeCandy(10)
 						get_tree().call_group("monsterController", "setStateIdle")
 						CandyRandomized = true
 						$candyBasket/basket.displayText(5)
@@ -81,13 +82,13 @@ func _physics_process(delta):
 					difficultySet(2)
 					if not CandyRandomized:
 						
-						randomizeCandy(25)
+						candyManager.randomizeCandy(15)
 						get_tree().call_group("monsterController", "setStateSearching")
 						CandyRandomized = true
 						#currentBunny = pickBunny()
 						
 						
-						$candyBasket/basket.displayText(15)
+						$candyBasket/basket.displayText(10)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
@@ -107,7 +108,7 @@ func _physics_process(delta):
 					
 					difficultySet(3)
 					if not CandyRandomized:
-						randomizeCandy(28)
+						candyManager.randomizeCandy(28)
 						#$bunnySpawnTimer.start()
 						
 						CandyRandomized = true
@@ -127,7 +128,7 @@ func _physics_process(delta):
 					
 					difficultySet(4)
 					if not CandyRandomized:
-						randomizeCandy(33)
+						candyManager.randomizeCandy(33)
 						
 						CandyRandomized = true
 						$candyBasket/basket.displayText(25)
@@ -185,7 +186,8 @@ func _physics_process(delta):
 				$Audio/fearNoise.play()
 			if $punishmentTimer.is_stopped():
 				$punishmentTimer.start()
-			get_tree().call_group("invisibleEnemy", "setStateChase")
+				get_tree().call_group("invisibleEnemy", "setStateChase")
+				get_tree().call_group("monsterController", "setStateHunting")
 			get_tree().call_group("door", "setMonsterDoorTimer", 1)
 			
 			

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
 [ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://3DModels/Mannequin/mouth.material" type="Material" id=15]
 [ext_resource path="res://3DModels/Monster/eye.png" type="Texture" id=16]
 [ext_resource path="res://chasePuppet.gd" type="Script" id=17]
+[ext_resource path="res://3DModels/Monster/mouths.png" type="Texture" id=18]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -81,6 +82,15 @@ surfaces/1 = {
 "skeleton_aabb": [  ],
 "vertex_count": 16
 }
+
+[sub_resource type="SpatialMaterial" id=13]
+roughness = 0.32
+rim_enabled = true
+rim = 1.0
+rim_tint = 0.5
+
+[sub_resource type="SpatialMaterial" id=14]
+roughness = 0.39
 
 [node name="invisibleEnemy" type="KinematicBody" groups=["invisibleEnemy"]]
 transform = Transform( 1, 0, 0, 0, 0.624, 0, 0, 0, 1, 0, 1, 0 )
@@ -168,8 +178,10 @@ mesh = SubResource( 10 )
 skeleton = NodePath("../../..")
 blend_shapes/armbreak = 0.0
 blend_shapes/backbreak = 0.0
-blend_shapes/mouthsmile = 1.0
+blend_shapes/mouthsmile = 0.0
 blend_shapes/necklong = 1.0
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
 
 [node name="eyes" type="Spatial" parent="body/head" groups=["eyes"]]
 transform = Transform( 1.1098, 0.187619, -0.0422995, -0.19106, 1.10389, -0.116534, 0.0220447, 0.121998, 1.1195, 0.0780414, 4.02907, -0.152727 )
@@ -178,13 +190,21 @@ transform = Transform( 1.1098, 0.187619, -0.0422995, -0.19106, 1.10389, -0.11653
 transform = Transform( 1.68648, -0.414459, -0.25087, 0.42815, 1.7422, -1.65775e-07, 0.437065, -0.10741, 0.968021, -0.567503, 1.00598, 0.967163 )
 texture = ExtResource( 16 )
 hframes = 4
-frame = 1
 
 [node name="eye2" type="Sprite3D" parent="body/head/eyes"]
 transform = Transform( 1.97655, -0.546396, 0.177826, 0.561421, 2.00652, -0.0172519, -0.347385, 0.133935, 0.983911, -0.0659888, 1.11674, 0.951128 )
 texture = ExtResource( 16 )
 hframes = 4
 frame = 1
+
+[node name="mouths" type="Spatial" parent="body/head"]
+transform = Transform( 1.00594, 0.110769, 0, -0.0426813, 0.920852, 0, 0, 0, 2.50283, -0.0438571, 4.56464, 1.82038 )
+
+[node name="mouths" type="Sprite3D" parent="body/head/mouths"]
+transform = Transform( 2.43084, -0.020114, -0.117612, -0.0238222, 1.88023, 0.405173, 0.0420488, 0.209291, 0.972479, -0.0939188, 0.0203457, -0.352695 )
+pixel_size = 0.02
+texture = ExtResource( 18 )
+hframes = 5
 
 [node name="chaseGracePeriod" type="Timer" parent="."]
 wait_time = 4.0

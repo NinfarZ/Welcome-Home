@@ -48,15 +48,16 @@ func setRecoverValue(value):
 	recoverValue = value
 
 func drainSanity(drainValue):
-	if sanityBar.value < sanityBar.max_value and not punishmentTime:
-		sanityBar.value += drainValue
-		get_tree().call_group("monster", "setFaceAnimation", sanityBar.value)
-	else:
-		#pass
-		punishmentTime = true
-		print("punishment time")
-		
-		get_tree().call_group("gameMaster", "setGameState", 5)
+	if not punishmentTime:
+		if sanityBar.value < sanityBar.max_value:
+			sanityBar.value += drainValue
+			get_tree().call_group("monster", "setFaceAnimation", sanityBar.value)
+		else:
+			#pass
+			punishmentTime = true
+			print("punishment time")
+			
+			get_tree().call_group("gameMaster", "setGameState", 5)
 		
 
 func recoverSanity(value):

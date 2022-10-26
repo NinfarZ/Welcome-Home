@@ -24,6 +24,7 @@ func _physics_process(delta):
 func interact():
 	state = DISABLED
 	#get_tree().call_group("sanityBar", "recoverSanity", 4)
+	emit_signal("candyPicked", self)
 
 func getState():
 	return state
