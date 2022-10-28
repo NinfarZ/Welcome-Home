@@ -22,7 +22,7 @@ var inView = false
 var canSpawn = false
 var doorOpen = false
 export var monsterNearDoor = false
-export var canCrouchMonsterAttack = false
+export var isCrouchMonster = false
 var collidingWithDoor = false
 var canSeeMonsterFace = false
 var timesSoundPlayed = 1
@@ -74,8 +74,9 @@ func isCanSpawn():
 		#return true
 	#else:
 		#return false
-	if self.is_in_group("crouchMonster") and not canCrouchMonsterAttack:
-		return false
+	if  isCrouchMonster:
+		if not canSeePlayer() and not player.getIsUnderFurniture():
+			return false
 		
 	match monsterNearDoor:
 		true:
@@ -102,6 +103,9 @@ func isFaceInView():
 		return true
 	else:
 		return false
+
+func getDistanceFromPlayer():
+	return transform.origin.distance_to(player.transform.origin)
 	
 
 func get_monster_position():
@@ -187,10 +191,10 @@ func canMonsterSpawnNextToDoor():
 
 func isPlayerInViewcone():
 	if head.rotation.x >= deg2rad(50) or head.rotation.x <= deg2rad(-50) or head.rotation.y >= deg2rad(50) or head.rotation.y <= deg2rad(-50):
-		print("NO")
+		
 		return false
 	else:
-		print("YES")
+		
 		return true
 	
 
@@ -266,9 +270,6 @@ func _on_MonsterArea_body_exited(body):
 
 func setFaceAnimation(value):
 	animationValue = value
-
-func setCrouchMonsterSpawn(value):
-	canCrouchMonsterAttack = value
 
 func setMonsterPhase(newPhase):
 	monsterPhase = newPhase

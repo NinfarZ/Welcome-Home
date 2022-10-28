@@ -1,13 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://3DModels/Furniture/drawer.glb" type="PackedScene" id=1]
 [ext_resource path="res://furniture.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.803922, 0.733333, 0.505882, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.419608, 0.25098, 0.47451, 1 )
+metallic = 0.49
+roughness = 0.51
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.72207, 1.59834, 1 )
 
 [node name="drawer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Cube" parent="." index="0"]
+material/0 = SubResource( 2 )
+
+[node name="Cube001" parent="." index="1"]
+material/0 = SubResource( 3 )
+
+[node name="Cube002" parent="." index="2"]
+material/0 = SubResource( 4 )
 
 [node name="drawer" type="StaticBody" parent="." index="4"]
 collision_layer = 512

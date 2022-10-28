@@ -19,6 +19,8 @@ enum {
 var state = FOLLOWPLAYER
 var phase = PHASE1
 
+signal killPlayer
+
 var path = []
 var current_path_idx = 0
 var target = null
@@ -85,27 +87,28 @@ func _physics_process(delta):
 		STOP:
 			pass
 		KILLPLAYER:
-			speed = 10
-			if path.size() > 0:
-				move_to_target()
+			emit_signal("killPlayer")
+			$body.visible = false
 			#if not $running3D.playing:
 				#$running3D.play()
 		CHASE:
-			$monsterSpawner/CollisionShape.disabled = true
-			if path.size() > 0:
-				if not $steps3D.playing:
-					match phase:
-						PHASE1, PHASE2:
-							$steps3D.play()
-						PHASE3:
-							$steps3D.play()
-							$monsterBreath.play()
-				if transform.origin.distance_to(target.transform.origin) <= 10:
-					$body.visible = true
-				elif transform.origin.distance_to(target.transform.origin) > 10:
-					$body.visible = false
-					
-				move_to_target()
+			#$monsterSpawner/CollisionShape.disabled = true
+			if gracePeriodOver:
+				if path.size() > 0:
+					if not $steps3D.playing:
+						match phase:
+							PHASE1, PHASE2:
+								$steps3D.play()
+							PHASE3:
+								$steps3D.play()
+								$monsterBreath.play()
+					if transform.origin.distance_to(target.transform.origin) <= 15:
+						$body.visible = true
+						flickerLightIfClose()
+					elif transform.origin.distance_to(target.transform.origin) > 15:
+						$body.visible = false
+						
+					move_to_target()
 			
 				
 		
@@ -163,6 +166,25 @@ func setStateChase():
 	if not gracePeriodOver and $chaseGracePeriod.is_stopped():
 		$chaseGracePeriod.start()
 	print("timer start chase")
+
+func monsterIsVisibleForMoment():
+	if not invisibleEnemyInview and transform.origin.distance_to(target.transform.origin) > 20:
+		$body.visible = true
+	else:
+		yield(get_tree().create_timer(0.1),"timeout")
+		$body.visible = false
+
+func getDistanceToPlayer():
+	return transform.origin.distance_to(target.transform.origin)
+
+func flickerLightIfClose():
+	get_tree().call_group("flashlight", "flicker")
+
+func setBodyVisible(value):
+	$body.visible = value
+
+func getIsInView():
+	return invisibleEnemyInview
 	
 
 func getSpeed():
@@ -251,8 +273,9 @@ func playRunningAudio():
 func _on_locationSensor_body_entered(body):
 	if body.is_in_group("player") and gracePeriodOver:
 		if state == CHASE:
+			state = KILLPLAYER
 			get_tree().call_group("gameMaster", "setGameState", 4)
-			_physics_process(false)
+			#_physics_process(false)
 
 
 func _on_locationSensor_body_exited(body):

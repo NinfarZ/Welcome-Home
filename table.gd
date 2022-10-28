@@ -11,10 +11,10 @@ func _ready():
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
-		get_tree().call_group("crouchMonster", "setCrouchMonsterSpawn", true)
+		body.setIsUnderFurniture(true)
 	
 
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("player"):
-		get_tree().call_group("crouchMonster", "setCrouchMonsterSpawn", false)
+		body.setIsUnderFurniture(false)

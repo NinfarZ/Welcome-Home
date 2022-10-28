@@ -34,7 +34,7 @@ func _physics_process(delta):
 				
 	
 func _on_Area_body_entered(body):
-	print("FOUND " + body.name)
+	
 	if body.has_method("interact"):
 		interactables.append(body)
 	

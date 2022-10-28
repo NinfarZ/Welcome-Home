@@ -3,7 +3,10 @@ extends Spatial
 
 onready var player = $Player
 onready var monsters = $Monsters
+onready var invisibleEnemy = $Navigation/invisibleEnemy
 onready var candyManager = $Candy
+onready var candyBasket = $BasketManager/candyBasket/basket
+onready var doorManager = $Doors
 
 var isWardrobeDown = false
 var state = START
@@ -15,6 +18,7 @@ var bunnyActive = false
 var bunnyCanSpawn = false
 var currentBunny = null
 var difficulty = 1
+var lockedDoor = null
 
 
 enum {
@@ -41,7 +45,7 @@ func _physics_process(delta):
 			pass
 		START:
 			turnAllLightsOff()
-			turnOnLight("spotlight")
+			turnOnLight("spotlight8")
 			
 			
 			#randomize candy on house
@@ -62,11 +66,12 @@ func _physics_process(delta):
 						candyManager.randomizeCandy(10)
 						get_tree().call_group("monsterController", "setStateIdle")
 						CandyRandomized = true
-						$candyBasket/basket.displayText(5)
+						candyBasket.displayText(5)
 
-					elif $candyBasket/basket.getIsBasketFull():
+					elif candyBasket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
+						candyManager.hideCandy()
 						$Audio/phaseTransition.play()
 						
 						
@@ -83,20 +88,23 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						
 						candyManager.randomizeCandy(15)
+						lockedDoor = doorManager.pickDoor()
+						doorManager.lockDoor(lockedDoor)
 						get_tree().call_group("monsterController", "setStateSearching")
 						CandyRandomized = true
 						#currentBunny = pickBunny()
 						
 						
-						$candyBasket/basket.displayText(10)
+						candyBasket.displayText(10)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
 					
 						
-					elif $candyBasket/basket.getIsBasketFull():
+					elif candyBasket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
+						candyManager.hideCandy()
 						
 							
 							
@@ -108,19 +116,20 @@ func _physics_process(delta):
 					
 					difficultySet(3)
 					if not CandyRandomized:
-						candyManager.randomizeCandy(28)
+						candyManager.randomizeCandy(20)
 						#$bunnySpawnTimer.start()
 						
 						CandyRandomized = true
-						$candyBasket/basket.displayText(20)
+						candyBasket.displayText(15)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
 					
 						
-					elif $candyBasket/basket.getIsBasketFull():
+					elif candyBasket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
+						candyManager.hideCandy()
 						
 						phase = PHASE3
 						
@@ -131,15 +140,16 @@ func _physics_process(delta):
 						candyManager.randomizeCandy(33)
 						
 						CandyRandomized = true
-						$candyBasket/basket.displayText(25)
+						candyBasket.displayText(25)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
 					
 						
-					elif $candyBasket/basket.getIsBasketFull():
+					elif candyBasket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
+						candyManager.hideCandy()
 						
 						phase = PHASE4
 				PHASE4:
@@ -147,18 +157,19 @@ func _physics_process(delta):
 					difficultySet(5)
 					if not CandyRandomized:
 						$Audio/phaseTransition.play()
-						randomizeCandy(40)
+						candyBasket.randomizeCandy(40)
 						
 						CandyRandomized = true
-						$candyBasket/basket.displayText(30)
+						candyBasket.displayText(30)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
 					
 						
-					elif $candyBasket/basket.getIsBasketFull():
+					elif candyBasket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
+						candyManager.hideCandy()
 						
 						phase = PHASE5
 				PHASE5:
@@ -207,39 +218,42 @@ func shutDownLight(currentLight, isTimeOver):
 
 
 
-func randomizeCandy(amount):
-	var candiesPicked = 0
-	var candyList = $Candy.get_children()
-	var activeCandy = []
-	var possibleCandyFound = false
-	
-	#for candy in $Candy.get_children():
-		#candy.get_node("candy").setState(0)
-	while candiesPicked < amount:
-		var newCandy = RNGTools.pick(candyList)
-		for candy in activeCandy:
-			while newCandy.transform.origin.distance_to(candy.transform.origin) < 9.0:
-				candyList.erase(newCandy)
-				print(newCandy.name + "was too close to " + candy.name)
-				newCandy = RNGTools.pick(candyList)
-		newCandy.get_node("candy").setState(0)
-		candiesPicked += 1
-		activeCandy.append(newCandy)
+#func randomizeCandy(amount):
+#	var candiesPicked = 0
+#	var candyList = $Candy.get_children()
+#	var activeCandy = []
+#	var possibleCandyFound = false
+#
+#	#for candy in $Candy.get_children():
+#		#candy.get_node("candy").setState(0)
+#	while candiesPicked < amount:
+#		var newCandy = RNGTools.pick(candyList)
+#		for candy in activeCandy:
+#			while newCandy.transform.origin.distance_to(candy.transform.origin) < 9.0:
+#				candyList.erase(newCandy)
+#				print(newCandy.name + "was too close to " + candy.name)
+#				newCandy = RNGTools.pick(candyList)
+#		newCandy.get_node("candy").setState(0)
+#		candiesPicked += 1
+#		activeCandy.append(newCandy)
 		
 		
 
 
 func deathSequence():
-	get_tree().call_group("invisibleEnemy", "setStateKillplayer")
-	get_tree().call_group("door","setMonsterDoorTimer", 0)
-	get_tree().call_group("invisibleEnemy", "playRunningAudio")
+	$punishmentTimer.stop()
+	#get_tree().call_group("invisibleEnemy", "setStateKillplayer")
+	#get_tree().call_group("door","setMonsterDoorTimer", 0)
+	#get_tree().call_group("invisibleEnemy", "playRunningAudio")
 	player.die()
 	monsters.set_physics_process(false)
 	$Audio/BackgroundAmbience.stop()
 	$Audio/fearNoise.stop()
-	yield(get_tree().create_timer(2), "timeout")
+	#yield(get_tree().create_timer(2), "timeout")
 	$Audio/deathMusic.play()
-	yield(get_tree().create_timer(1),"timeout")
+	#yield(get_tree().create_timer(1),"timeout")
+	yield(get_tree().create_timer(2), "timeout")
+	endGame()
 	
 	
 func fade_out():
@@ -304,7 +318,7 @@ func difficultySet(difficulty):
 		1:
 			
 			get_tree().call_group("monsterController", "changeDifficulty", 2, 10)
-			get_tree().call_group("monsterController", "cooldown", 5, 10)
+			get_tree().call_group("monsterController", "cooldown", 10, 20)
 			get_tree().call_group("door", "setMonsterDoorTimer", 5)
 			get_tree().call_group("player", "setDrainSanity", 0.013)
 			
@@ -336,7 +350,7 @@ func difficultySet(difficulty):
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("monsterController", "changeDifficulty", 1.5, 10)
-				get_tree().call_group("monsterController", "cooldown", 8, 10)
+				get_tree().call_group("monsterController", "cooldown", 10, 20)
 				get_tree().call_group("door", "setMonsterDoorTimer", 5)
 				
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
@@ -415,11 +429,11 @@ func _on_lightCoolDown_timeout():
 func _on_punishmentTimer_timeout():
 	state = GAME
 	#get_tree().call_group("invisibleEnemy", "setStateFollow")
-	get_tree().call_group("monsterController", "setStateSearching")
+	get_tree().call_group("monsterController", "setStateCooldown")
 	$CanvasLayer/Sanity.resetSanity()
 	$CanvasLayer/Sanity.visible = true
 	$Audio/fearNoise.stop()
-	$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
+	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
 	get_tree().call_group("player", "toggleFlashlight", true)
 	get_tree().call_group("player", "setState", 0)
 	pickLight()

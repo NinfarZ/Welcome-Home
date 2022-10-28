@@ -97,6 +97,9 @@ func setLock(islocked):
 func isLocked():
 	return locked
 
+func isOpen():
+	return open
+
 func unlock():
 	#animate
 	$AnimationPlayer.play("unlock")

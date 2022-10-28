@@ -4,7 +4,7 @@
 [ext_resource path="res://candy.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.929412, 0.415686, 0.352941, 1 )
+albedo_color = Color( 0.713726, 0.211765, 0.862745, 1 )
 roughness = 0.16
 clearcoat_enabled = true
 clearcoat = 1.0

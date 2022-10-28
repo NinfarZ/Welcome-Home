@@ -5,9 +5,9 @@ var activeCandy = []
 onready var candyList = get_children()
 
 func _ready():
-	connect("candyPicked", self, "activeCandyPicked")
+	for candy in candyList:
+		candy.get_node("candy").connect("candyPicked", self, "activeCandyPicked")
 
-	print(candyList)
 	
 #Randomizes candies 
 func randomizeCandy(amount):
@@ -20,7 +20,6 @@ func randomizeCandy(amount):
 		for candy in activeCandy:
 			while newCandy.transform.origin.distance_to(candy.transform.origin) < 9.0:
 				#candyList.erase(newCandy)
-				print(newCandy.name + "was too close to " + candy.name)
 				newCandy = RNGTools.pick(candyList)
 		newCandy.get_node("candy").setState(0)
 		candiesPicked += 1
@@ -29,5 +28,13 @@ func randomizeCandy(amount):
 
 func activeCandyPicked(candy):
 	activeCandy.erase(candy)
+
+#Resets active candy list, hides all candies not picked and adds them back to the candy list
+func hideCandy():
+	
+	activeCandy = []
+	for candy in activeCandy:
+		candy.get_node("candy").setState(1)
+		candyList.append(candy)
 
 

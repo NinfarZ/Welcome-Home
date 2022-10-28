@@ -6,13 +6,17 @@ enum {
 }
 const MOUSE_SENSITIVITY: float = 0.08
 const MOVE_SPEED: float = 5.0
-const GRAVITY_ACCELERATION: float = 9.8
+const GRAVITY_ACCELERATION: float = 5.8
+
+
 
 export(NodePath) var nodePath
 export var moveSpeed = 5.0
 export var sprintSpeed = 5.0
 
 onready var neck: Spatial = $Neck
+
+var invisibleEnemy = null
 
 var input_move: Vector3 = Vector3()
 var gravity_local: Vector3 = Vector3()
@@ -22,11 +26,17 @@ var crouching = false
 var flashlightOn = true
 var drainSanityValue = 0.013
 var state = DEFAULT
+var isUnderFurniture = false
 
 func _ready():
+	yield(owner, "ready")
+	invisibleEnemy = owner.invisibleEnemy
 	
 	#makes mouse cursor invisible
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	invisibleEnemy.connect("killPlayer", self, "die")
+	
+	#CONNECT INVISIBLE ENEMY KILL SIGNAL
 
 func _input(event):
 	#makes player look up/down and left/right
@@ -42,7 +52,7 @@ func _physics_process(delta):
 	input_move = get_input_direction() * moveSpeed
 	if not is_on_floor():
 		gravity_local += GRAVITY_ACCELERATION * Vector3.DOWN * delta
-	move_and_slide(input_move + gravity_local, Vector3.UP)
+	
 	
 	#for raycast in $Neck/Camera.get_children():
 		#if raycast.is_colliding():
@@ -65,11 +75,18 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("run") and not crouching:
 		moveSpeed = 3.2
 	
-	#flashlightToggle
-	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
-		toggleFlashlight(false)
-	elif Input.is_action_just_pressed("flashlightToggle") and not flashlightOn:
-		toggleFlashlight(true)
+#	#flashlightToggle
+#	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
+#		toggleFlashlight(false)
+#	elif Input.is_action_just_pressed("flashlightToggle") and not flashlightOn:
+#		toggleFlashlight(true)
+	
+	#climbing
+#	if $RayCastLadder.is_colliding():
+#		if Input.is_action_pressed("forward"):
+#			input_move.y +=5
+	
+	move_and_slide(input_move + gravity_local, Vector3.UP)
 	
 		
 	
@@ -111,6 +128,8 @@ func die():
 	$Neck/flashlight/SpotLight.visible = false
 	$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone/CollisionShape.disabled = true
+	
+	$Neck/Camera/Head.headJumpscare()
 	#state = DEAD
 
 func setDrainSanity(drainValue):
@@ -149,3 +168,9 @@ func _on_AreaPlayer_area_entered(area):
 func _on_AreaPlayer_area_exited(area):
 	if area.is_in_group("spotlight"):
 		inSpotlight = false
+
+func setIsUnderFurniture(value):
+	isUnderFurniture = value
+
+func getIsUnderFurniture():
+	return isUnderFurniture

@@ -11,6 +11,8 @@ var currentCandyCount = 0
 var totalCandy = 0
 var isBasketFull = false
 
+signal basketFull
+
 func _ready():
 	pass
 
@@ -35,6 +37,7 @@ func addCandy(candyToAdd):
 	if currentCandyCount >= totalCandy:
 		isBasketFull = true
 		currentCandyCount = totalCandy
+		emit_signal("basketFull")
 	
 	get_parent().get_node("candyCountLabel").set_text(str(currentCandyCount) + " / " + str(totalCandy))
 	
@@ -60,6 +63,11 @@ func getTotalCandy():
 
 func getIsBasketFull():
 	return isBasketFull
+
+#possible code to fade out basket when full
+func dissolveBasket():
+	var tween = create_tween()
+	pass
 
 
 

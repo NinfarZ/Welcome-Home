@@ -4,6 +4,8 @@ var state = DISABLED
 var canSpawn = true
 var listOfCandyNearby = []
 
+signal candyPicked
+
 
 enum {
 	ENABLED,
