@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://new_theme.tres" type="Theme" id=1]
 [ext_resource path="res://playerSanity.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Kanit-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
 
 [node name="Sanity" type="Control" groups=["sanityBar"]]
 anchor_right = 1.0
@@ -21,9 +28,9 @@ margin_bottom = 18.0
 theme = ExtResource( 1 )
 percent_visible = false
 
-[node name="Label" type="Label" parent="ProgressBar"]
-margin_left = 125.0
-margin_top = -15.0
-margin_right = 200.0
-margin_bottom = -1.0
+[node name="Label" type="Label" parent="."]
+margin_left = 94.0
+margin_right = 184.0
+margin_bottom = 25.0
+theme = SubResource( 2 )
 text = "FEAR LEVEL:"

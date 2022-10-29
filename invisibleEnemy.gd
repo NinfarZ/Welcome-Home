@@ -33,6 +33,8 @@ var decreaseScale = Vector3(0.01, 0.01, 0.01)
 var invisibleEnemyInview = false
 var gracePeriodOver = false
 var monsterChaseVisible = false
+var monsterWantsToOpenDoor = false
+var door = null
 
 var canPlaySound = true
 var timesSoundPlayed = 1
@@ -50,6 +52,11 @@ func _ready():
 
 func _physics_process(delta):
 	lookAtPlayer()
+	
+	#open doors code
+	if monsterWantsToOpenDoor:
+		door.interact()
+	
 	match state:
 		FOLLOWPLAYER:
 			if path.size() > 0:
@@ -196,7 +203,7 @@ func monsterSpeedUp():
 		
 	else:
 		speed -= 0.01
-	clamp(speed, minSpeed, maxSpeed)
+	speed = clamp(speed, minSpeed, maxSpeed)
 	
 
 func getSpeed():
@@ -205,6 +212,9 @@ func getSpeed():
 func setSpeedIncrease(newSpeed):
 	speed = newSpeed
 	#speed += increase -- old version
+
+func setMonsterDoorTimer(newTime):
+	$openDoorTimer.wait_time = newTime
 	
 
 
@@ -277,6 +287,9 @@ func setMonsterSpawner(setSpawner):
 func setInvisibleEnemyPhase(newPhase):
 	phase = newPhase
 
+func setWantsToOpenDoor(value):
+	monsterWantsToOpenDoor = value
+
 func playRunningAudio():
 	yield(get_tree().create_timer(2.0), "timeout")
 	$running3D.play()
@@ -288,13 +301,25 @@ func _on_locationSensor_body_entered(body):
 			state = KILLPLAYER
 			get_tree().call_group("gameMaster", "setGameState", 4)
 			#_physics_process(false)
+	elif body.is_in_group("door"):
+		if not body.isOpen():
+			door = body
+			if $openDoorTimer.is_stopped():
+				$openDoorTimer.start()
+			
 
 
 func _on_locationSensor_body_exited(body):
-	pass
+	$openDoorTimer.stop()
+	door = null
+	monsterWantsToOpenDoor = false
 
 
 func _on_chaseGracePeriod_timeout():
 	gracePeriodOver = true
 	monsterChaseVisible = true
 	print("grace period over")
+
+
+func _on_openDoorTimer_timeout():
+	monsterWantsToOpenDoor = true

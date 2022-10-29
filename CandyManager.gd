@@ -3,6 +3,7 @@ extends Spatial
 var candiesUsed = []
 var activeCandy = []
 onready var candyList = get_children()
+onready var candyCounter = get_parent().get_node("CanvasLayer/candyCounter")
 
 func _ready():
 	for candy in candyList:
@@ -28,6 +29,7 @@ func randomizeCandy(amount):
 
 func activeCandyPicked(candy):
 	activeCandy.erase(candy)
+	candyCounter.addCandy()
 
 #Resets active candy list, hides all candies not picked and adds them back to the candy list
 func hideCandy():

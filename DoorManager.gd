@@ -26,6 +26,7 @@ func lockDoor(door):
 	if door.isOpen():
 		door.interact()
 	door.setLock(true)
+	print(door, " is locked")
 	lastLockedDoor = door
 
 func unlockLastDoor():

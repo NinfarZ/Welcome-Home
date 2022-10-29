@@ -5,32 +5,39 @@ var interactables = []
 var items = []
 var hasKey = false
 var numberOfCandy = 0
-export var candyLimit = 20
+export var candyLimit = 5
 
 func _physics_process(delta):
 	#OPENING DOORS
-	if not interactables.empty() and interactables.front().has_method("unlock") and hasKey:
+	if not interactables.empty() and interactables.front().is_in_group("door"):
 		if Input.is_action_just_pressed("interact"):
+		
 			if interactables.front().isLocked():
-				interactables.front().unlock()
-				hasKey = false
+				interactables.front().interact()
+				if hasKey:
+					interactables.front().unlock()
+					hasKey = false
 			elif not interactables.front().isLocked():
 				interactables.front().interact()
 	
 	#INTERACT WITH ANYTHING ELSE
 	elif not interactables.empty() and interactables.front().has_method("interact"):
 		if Input.is_action_just_pressed("interact"):
-			interactables.front().interact()
 			if interactables.front().is_in_group("candy"):
 				if numberOfCandy < candyLimit:
+					interactables.front().interact()
 					numberOfCandy += 1
 			elif interactables.front().is_in_group("basket"):
 				if numberOfCandy != 0:
 					interactables.front().addCandy(numberOfCandy)
-					if numberOfCandy > interactables.front().getTotalCandy():
-						numberOfCandy -= interactables.front().getTotalCandy()
-					else:
-						numberOfCandy = 0
+					numberOfCandy -= 1
+#					if numberOfCandy > interactables.front().getTotalCandy():
+#						numberOfCandy -= interactables.front().getTotalCandy()
+#					else:
+#						numberOfCandy = 0
+			else:
+				interactables.front().interact()
+			
 				
 	
 func _on_Area_body_entered(body):
@@ -53,6 +60,9 @@ func addItem(newItem):
 
 func addKey():
 	hasKey = true
+
+func getHaskey():
+	return hasKey
 
 func getNumberOfCandy():
 	return numberOfCandy

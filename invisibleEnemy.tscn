@@ -95,7 +95,7 @@ roughness = 0.39
 [node name="invisibleEnemy" type="KinematicBody" groups=["invisibleEnemy"]]
 transform = Transform( 1, 0, 0, 0, 0.624, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 32
-collision_mask = 144
+collision_mask = 16
 script = ExtResource( 1 )
 speed = 1
 
@@ -105,7 +105,6 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-visible = false
 mesh = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -210,6 +209,8 @@ hframes = 5
 wait_time = 4.0
 one_shot = true
 
+[node name="openDoorTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
 [connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]
@@ -223,3 +224,4 @@ one_shot = true
 [connection signal="body_entered" from="locationSensor" to="." method="_on_locationSensor_body_entered"]
 [connection signal="body_exited" from="locationSensor" to="." method="_on_locationSensor_body_exited"]
 [connection signal="timeout" from="chaseGracePeriod" to="." method="_on_chaseGracePeriod_timeout"]
+[connection signal="timeout" from="openDoorTimer" to="." method="_on_openDoorTimer_timeout"]

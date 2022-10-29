@@ -21,8 +21,12 @@ var state = HIDING
 var inView = false
 var canSpawn = false
 var doorOpen = false
+
+#special unique monster conditions
 export var monsterNearDoor = false
+export var needsDoor = false
 export var isCrouchMonster = false
+
 var collidingWithDoor = false
 var canSeeMonsterFace = false
 var timesSoundPlayed = 1
@@ -59,7 +63,8 @@ func _physics_process(delta):
 			
 			#disappear if colliding with door
 			if collidingWithDoor:
-				state = HIDING
+				#state = HIDING
+				get_parent().despawnMonster(self)
 	
 func lookAtPlayer():
 	head.look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
@@ -81,10 +86,19 @@ func isCanSpawn():
 	match monsterNearDoor:
 		true:
 			if collidingWithDoor:
+				#monster needs door collision to spawn
+				if needsDoor:
+					if not inView and canSpawn: #and canSeePlayer():
+						return true
+						
 				return false
 			elif not collidingWithDoor:
-				if not inView and canSpawn: #and canSeePlayer():
-					return true
+				#monster doesn't want door collision to spawn
+				if not needsDoor:
+					if not inView and canSpawn: #and canSeePlayer():
+						return true
+						
+				return false
 		false:
 			if not inView and canSpawn: #and canSeePlayer():
 				return true

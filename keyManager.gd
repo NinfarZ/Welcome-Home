@@ -19,6 +19,7 @@ func placeKey(key):
 	if key != null:
 		key.setStateActive()
 		lastKey = key
+		print("spawned ", key)
 
 func chooseKey():
 	var listOfKeys = get_children()
