@@ -1,7 +1,31 @@
 extends StaticBody
 
+var state = INACTIVE
+signal gotKey
+
+enum {
+	ACTIVE,
+	INACTIVE
+}
+
+func _physics_process(delta):
+	
+	match state:
+		ACTIVE:
+			$CollisionShape.disabled = false
+			visible = true
+		INACTIVE:
+			$CollisionShape.disabled = true
+			visible = false
 
 #get key
 func interact():
 	get_tree().call_group("interact", "addKey")
-	queue_free()
+	state = INACTIVE
+	emit_signal("gotKey")
+
+func setStateActive():
+	state = ACTIVE
+
+func setStateIncative():
+	state = INACTIVE

@@ -117,8 +117,8 @@ func set_state_active():
 			
 		#animate monster face
 	for eye in $Head/head/eyes.get_children():
-		eye.frame = RNGTools.pick([0 , 1, 2])
-	$Head/head/mouths/mouths.frame = RNGTools.pick([0, 1, 2])
+		eye.frame = RNGTools.pick([0,1,2])
+	$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = true
 	

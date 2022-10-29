@@ -132,6 +132,7 @@ func _physics_process(delta):
 			#print("player has been killed")
 		
 		COOLDOWN:
+			invisibleMonster.setStateFollow()
 			if get_parent().get_node("TimerMonsterCooldown").is_stopped():
 				get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
 				#print(get_parent().get_node("TimerMonsterCooldown").wait_time)
@@ -233,9 +234,10 @@ func spawnMonster(chosenMonster):
 		#return
 
 func despawnMonster(chosenMonster):
-	chosenMonster.set_state_hiding()
+	if chosenMonster != null:
+		chosenMonster.set_state_hiding()
 	#invisibleMonster.setStateFollow()
-	monstersInRange = []
+		monstersInRange = []
 
 
 	

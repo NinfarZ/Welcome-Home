@@ -7,6 +7,7 @@ onready var invisibleEnemy = $Navigation/invisibleEnemy
 onready var candyManager = $Candy
 onready var candyBasket = $BasketManager/candyBasket/basket
 onready var doorManager = $Doors
+onready var keyManager = $keyManager
 
 var isWardrobeDown = false
 var state = START
@@ -19,6 +20,7 @@ var bunnyCanSpawn = false
 var currentBunny = null
 var difficulty = 1
 var lockedDoor = null
+var currentKey = null
 
 
 enum {
@@ -46,6 +48,9 @@ func _physics_process(delta):
 		START:
 			turnAllLightsOff()
 			turnOnLight("spotlight8")
+			doorManager.lockDoor($Doors/Door2)
+			keyManager.placeKey($keyManager/Key)
+			
 			
 			
 			#randomize candy on house
@@ -90,6 +95,9 @@ func _physics_process(delta):
 						candyManager.randomizeCandy(15)
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
+						
+						currentKey = keyManager.chooseKey()
+						keyManager.placeKey(currentKey)
 						get_tree().call_group("monsterController", "setStateSearching")
 						CandyRandomized = true
 						#currentBunny = pickBunny()
@@ -118,7 +126,8 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						candyManager.randomizeCandy(20)
 						#$bunnySpawnTimer.start()
-						
+						lockedDoor = doorManager.pickDoor()
+						doorManager.lockDoor(lockedDoor)
 						CandyRandomized = true
 						candyBasket.displayText(15)
 						#currentBunny = pickBunny()

@@ -523,6 +523,7 @@ pixel_size = 0.02
 shaded = true
 texture = ExtResource( 17 )
 hframes = 5
+frame = 3
 
 [node name="faceStareDelay" type="Timer" parent="." index="16"]
 wait_time = 0.1

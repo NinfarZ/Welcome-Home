@@ -1,6 +1,8 @@
 extends KinematicBody
 
 export var speed = 2
+var maxSpeed = speed + 1.5
+var minSpeed = speed
 
 enum {
 	PATROL,
@@ -107,7 +109,8 @@ func _physics_process(delta):
 						flickerLightIfClose()
 					elif transform.origin.distance_to(target.transform.origin) > 15:
 						$body.visible = false
-						
+					
+					monsterSpeedUp()
 					move_to_target()
 			
 				
@@ -161,7 +164,7 @@ func setStateKillplayer():
 
 func setStateChase():
 	state = CHASE
-	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2])
+	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 	#$body.visible = true
 	if not gracePeriodOver and $chaseGracePeriod.is_stopped():
 		$chaseGracePeriod.start()
@@ -178,13 +181,22 @@ func getDistanceToPlayer():
 	return transform.origin.distance_to(target.transform.origin)
 
 func flickerLightIfClose():
-	get_tree().call_group("flashlight", "flicker")
+	if transform.origin.distance_to(target.transform.origin) <= 5:
+		get_tree().call_group("flashlight", "flicker")
 
 func setBodyVisible(value):
 	$body.visible = value
 
 func getIsInView():
 	return invisibleEnemyInview
+
+func monsterSpeedUp():
+	if invisibleEnemyInview:
+		speed += 0.01
+		
+	else:
+		speed -= 0.01
+	clamp(speed, minSpeed, maxSpeed)
 	
 
 func getSpeed():
