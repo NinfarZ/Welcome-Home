@@ -12,6 +12,7 @@ extents = Vector3( 0.392397, 0.285607, 0.363205 )
 params_billboard_mode = 1
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
+albedo_color = Color( 0.843137, 0.756863, 0.482353, 1 )
 albedo_texture = ExtResource( 1 )
 metallic = 0.45
 roughness = 0.39
@@ -27,3 +28,9 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0201631, 0 )
+light_color = Color( 0.933333, 0.811765, 0.427451, 1 )
+omni_range = 1.78094
+omni_attenuation = 4.75683

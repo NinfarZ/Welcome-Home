@@ -96,8 +96,9 @@ func _physics_process(delta):
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
 						
-						currentKey = keyManager.chooseKey()
-						keyManager.placeKey(currentKey)
+						if lockedDoor != null:
+							currentKey = keyManager.chooseKey()
+							keyManager.placeKey(currentKey)
 						get_tree().call_group("monsterController", "setStateSearching")
 						CandyRandomized = true
 						#currentBunny = pickBunny()
@@ -129,8 +130,9 @@ func _physics_process(delta):
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
 						
-						currentKey = keyManager.chooseKey()
-						keyManager.placeKey(currentKey)
+						if lockedDoor != null:
+							currentKey = keyManager.chooseKey()
+							keyManager.placeKey(currentKey)
 						
 						CandyRandomized = true
 						candyBasket.displayText(15)
@@ -155,8 +157,9 @@ func _physics_process(delta):
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
 						
-						currentKey = keyManager.chooseKey()
-						keyManager.placeKey(currentKey)
+						if lockedDoor != null:
+							currentKey = keyManager.chooseKey()
+							keyManager.placeKey(currentKey)
 						
 						CandyRandomized = true
 						candyBasket.displayText(15)
@@ -181,8 +184,9 @@ func _physics_process(delta):
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
 						
-						currentKey = keyManager.chooseKey()
-						keyManager.placeKey(currentKey)
+						if lockedDoor != null:
+							currentKey = keyManager.chooseKey()
+							keyManager.placeKey(currentKey)
 						
 						CandyRandomized = true
 						candyBasket.displayText(15)
@@ -360,7 +364,7 @@ func difficultySet(difficulty):
 				
 		2:
 			
-			get_tree().call_group("player", "setDrainSanity", 0.015)
+			get_tree().call_group("player", "setDrainSanity", 0.013)
 			
 			#if not bunnyActive:
 				#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
@@ -381,7 +385,7 @@ func difficultySet(difficulty):
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
 				
 		3:
-			get_tree().call_group("player", "setDrainSanity", 0.02)
+			get_tree().call_group("player", "setDrainSanity", 0.014)
 			
 			
 			
@@ -399,7 +403,7 @@ func difficultySet(difficulty):
 				get_tree().call_group("monsterController", "cooldown", 10, 15)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4)
 		4:
-			get_tree().call_group("player", "setDrainSanity", 0.025)
+			get_tree().call_group("player", "setDrainSanity", 0.015)
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
@@ -423,7 +427,7 @@ func difficultySet(difficulty):
 			#get_tree().call_group("monsterController", "cooldown", 4, 5)
 			#get_tree().call_group("door", "setMonsterDoorTimer", 2)
 			#get_tree().call_group("monster", "setMonsterPhase", 1)
-			get_tree().call_group("player", "setDrainSanity", 0.025)
+			get_tree().call_group("player", "setDrainSanity", 0.015)
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("monster", "setMonsterPhase", 1)

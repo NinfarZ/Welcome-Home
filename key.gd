@@ -27,5 +27,5 @@ func interact():
 func setStateActive():
 	state = ACTIVE
 
-func setStateIncative():
+func setStateInactive():
 	state = INACTIVE

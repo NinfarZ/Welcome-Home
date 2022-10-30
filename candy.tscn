@@ -38,5 +38,11 @@ collision_mask = 4096
 [node name="CollisionShape" type="CollisionShape" parent="candy/Area" index="0"]
 shape = SubResource( 3 )
 
+[node name="OmniLight" type="OmniLight" parent="." index="2"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+light_color = Color( 0.796078, 0.509804, 0.878431, 1 )
+omni_range = 0.718056
+omni_attenuation = 4.43828
+
 [connection signal="body_entered" from="candy/Area" to="candy" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="candy/Area" to="candy" method="_on_Area_body_exited"]
