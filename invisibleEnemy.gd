@@ -1,7 +1,7 @@
 extends KinematicBody
 
 export var speed = 2
-var maxSpeed = speed + 1.5
+var maxSpeed = speed + 2
 var minSpeed = speed
 
 enum {
@@ -52,6 +52,7 @@ func _ready():
 
 func _physics_process(delta):
 	lookAtPlayer()
+	monsterSpeedUp()
 	
 	#open doors code
 	if monsterWantsToOpenDoor:
@@ -63,6 +64,8 @@ func _physics_process(delta):
 				move_to_target()
 			if RNGTools.pick([1,0]) == 1:
 				if currentLocation != null and currentLocation == target.get_current_location():
+					
+					get_tree().call_group("sanityBar", "drainSanity", 0.02)
 					match phase:
 						PHASE1:
 							pass
@@ -94,7 +97,9 @@ func _physics_process(delta):
 							#yield(get_tree().create_timer(5.0),"timeout")
 					
 		STOP:
-			pass
+			if currentLocation != null and currentLocation == target.get_current_location():
+					
+					get_tree().call_group("sanityBar", "drainSanity", 0.02)
 		KILLPLAYER:
 			emit_signal("killPlayer")
 			$body.visible = false
@@ -111,13 +116,13 @@ func _physics_process(delta):
 							PHASE3:
 								$steps3D.play()
 								$monsterBreath.play()
-					if transform.origin.distance_to(target.transform.origin) <= 15:
+					if transform.origin.distance_to(target.transform.origin) <= 20:
 						$body.visible = true
 						flickerLightIfClose()
-					elif transform.origin.distance_to(target.transform.origin) > 15:
+					elif transform.origin.distance_to(target.transform.origin) > 20:
 						$body.visible = false
 					
-					monsterSpeedUp()
+					
 					move_to_target()
 			
 				

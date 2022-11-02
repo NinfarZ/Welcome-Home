@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://spotlight.gd" type="Script" id=1]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
+[ext_resource path="res://audio/lightSwitch.wav" type="AudioStream" id=3]
 
 [sub_resource type="SphereShape" id=1]
 radius = 6.35325
@@ -63,6 +65,15 @@ anims/flicker = SubResource( 3 )
 [node name="changeTimer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="lightSwitch" type="AudioStreamPlayer3D" parent="."]
+unit_db = 1.5
+unit_size = 3.0
+script = ExtResource( 2 )
+samples = [ ExtResource( 3 ) ]
+random_strategy = 2
+random_volume_range = 0
+random_pitch_range = 0.428
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

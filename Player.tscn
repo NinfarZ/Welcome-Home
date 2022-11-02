@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Flashlight.tscn" type="PackedScene" id=2]
@@ -9,6 +9,14 @@
 [ext_resource path="res://3DModels/Monster/mouths.png" type="Texture" id=7]
 [ext_resource path="res://3DModels/Monster/eye.png" type="Texture" id=8]
 [ext_resource path="res://Head.gd" type="Script" id=9]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=10]
+[ext_resource path="res://audio/walking3.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/walking4.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/walking1.wav" type="AudioStream" id=13]
+[ext_resource path="res://audio/walking2.wav" type="AudioStream" id=14]
+[ext_resource path="res://audio/walking6.wav" type="AudioStream" id=15]
+[ext_resource path="res://audio/walking5.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/running.wav" type="AudioStream" id=17]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.718534
@@ -321,7 +329,7 @@ anims/jumpscareDeath = SubResource( 18 )
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, -0.716641 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.1702, 0, 0, 0, 0.187399, -0.00671027, 0, 0.00911431, 0.13797, -0.00204064, -0.24652, -0.33842 )
+transform = Transform( 0.1702, 0, 0, 0, 0.187399, -0.00671029, 0, 0.00911434, 0.13797, -0.00204064, -0.24652, -0.33842 )
 collision_layer = 16384
 collision_mask = 4
 
@@ -378,6 +386,22 @@ collision_mask = 512
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color( 1, 0, 0, 1 )
+
+[node name="Audio" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.94717, 0 )
+
+[node name="walk" type="AudioStreamPlayer3D" parent="Audio"]
+script = ExtResource( 10 )
+samples = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 15 ) ]
+random_strategy = 2
+random_volume_range = 0.611
+random_pitch_range = 0.244
+
+[node name="running" type="AudioStreamPlayer3D" parent="Audio"]
+script = ExtResource( 10 )
+samples = [ ExtResource( 17 ) ]
+random_volume_range = 0
+random_pitch_range = 0
 
 [connection signal="animation_finished" from="Neck/Camera/Head/deathAnimation" to="Neck/Camera/Head" method="_on_deathAnimation_animation_finished"]
 [connection signal="area_entered" from="Neck/viewCone" to="." method="_on_viewCone_area_entered"]

@@ -62,7 +62,9 @@ func drainSanity(drainValue):
 
 func recoverSanity(value):
 	if not isMonsterDraining:
-		sanityBar.value -= value
+		var tween = create_tween()
+		tween.tween_property($ProgressBar, "value", sanityBar.value - value, 0.5)
+		#sanityBar.value -= value
 
 func setIsDraining(value):
 	isMonsterDraining = value

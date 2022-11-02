@@ -50,6 +50,20 @@ func _input(event):
 
 func _physics_process(delta):
 	input_move = get_input_direction() * moveSpeed
+	
+	if not input_move == Vector3(0,0,0) and not crouching:
+		if moveSpeed == 3.2:
+			if not $Audio/walk.playing:
+				$Audio/running.stop()
+				$Audio/walk.play()
+		elif moveSpeed == 5.2:
+			if not $Audio/running.playing:
+				$Audio/walk.stop()
+				$Audio/running.play()
+	else:
+		$Audio/walk.stop()
+		$Audio/running.stop()
+		
 	if not is_on_floor():
 		gravity_local += GRAVITY_ACCELERATION * Vector3.DOWN * delta
 	
@@ -93,10 +107,11 @@ func _physics_process(delta):
 	#recovering sanity
 	match state:
 		DEFAULT:
-			if not inSpotlight:
-				get_tree().call_group("sanityBar", "drainSanity", drainSanityValue)
-			else:
-				get_tree().call_group("sanityBar", "recoverSanity", 0.06)
+			pass
+#			if not inSpotlight:
+#				get_tree().call_group("sanityBar", "drainSanity", drainSanityValue)
+			#else:
+				#get_tree().call_group("sanityBar", "recoverSanity", 0.06)
 		SEEMONSTER:
 			pass
 

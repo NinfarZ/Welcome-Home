@@ -90,7 +90,8 @@ func _physics_process(delta):
 			if currentMonster.canSeePlayer() and currentMonster.isFaceInView():
 				currentMonster.playerLooksAtMonster()	
 				state = ANGER
-				
+			
+
 				
 			elif not currentMonster.isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()

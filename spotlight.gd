@@ -57,6 +57,7 @@ func enableLight():
 	$changeTimer.start()
 
 func setState(newState):
+	$lightSwitch.play()
 	state = newState
 
 func getState():
