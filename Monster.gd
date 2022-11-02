@@ -33,6 +33,7 @@ var timesSoundPlayed = 1
 var canMakeSound = false
 var animationValue = 0
 var inSpotlight = false
+var monsterInSight = false
 
 export var backbreak = false
 
@@ -80,7 +81,7 @@ func isCanSpawn():
 	#else:
 		#return false
 	if  isCrouchMonster:
-		if not canSeePlayer() and not player.getIsUnderFurniture():
+		if not canSeePlayer() or not player.getIsUnderFurniture():
 			return false
 		
 	match monsterNearDoor:
@@ -88,19 +89,22 @@ func isCanSpawn():
 			if collidingWithDoor:
 				#monster needs door collision to spawn
 				if needsDoor:
-					if not inView and canSpawn: #and canSeePlayer():
+					#isMonsterPositionedToSpawn()
+					if canSpawn: #and canSeePlayer():
 						return true
-						
+#
 				return false
 			elif not collidingWithDoor:
 				#monster doesn't want door collision to spawn
 				if not needsDoor:
-					if not inView and canSpawn: #and canSeePlayer():
+					#isMonsterPositionedToSpawn()
+					if canSpawn: #and canSeePlayer():
 						return true
-						
+#
 				return false
 		false:
-			if not inView and canSpawn: #and canSeePlayer():
+			#isMonsterPositionedToSpawn()
+			if canSpawn: #and canSeePlayer():
 				return true
 			else:
 				return false
@@ -120,6 +124,14 @@ func isFaceInView():
 
 func getDistanceFromPlayer():
 	return transform.origin.distance_to(player.transform.origin)
+
+func isMonsterPositionedToSpawn():
+	if monsterInSight and canSeePlayer():
+		
+		return false
+	return true
+		
+			
 	
 
 func get_monster_position():
@@ -182,6 +194,7 @@ func _on_MonsterArea_area_entered(area):
 		canSpawn = false
 	elif area.get_parent().is_in_group("invisibleEnemy") and not inSpotlight:
 		canSpawn = true
+	
 
 
 func _on_MonsterArea_area_exited(area):
@@ -189,6 +202,7 @@ func _on_MonsterArea_area_exited(area):
 		inSpotlight = false
 	elif area.get_parent().is_in_group("invisibleEnemy"):
 		canSpawn = false
+	
 
 func isMonsterInPlayerLocation():
 	if is_in_group(player.get_current_location()):
@@ -291,3 +305,15 @@ func setMonsterPhase(newPhase):
 
 func _on_faceStareDelay_timeout():
 	canSeeMonsterFace = true
+
+
+func _on_bodyVisibleArea_area_entered(area):
+	if area.is_in_group("playerViewCone"):
+		monsterInSight = true
+		#print("monster can not spawn")
+
+
+func _on_bodyVisibleArea_area_exited(area):
+	if area.is_in_group("playerViewCone"):
+		monsterInSight = false
+		#print("monster can spawn")

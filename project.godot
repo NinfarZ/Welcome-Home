@@ -299,6 +299,7 @@ cimbing={
 3d_physics/layer_8="door"
 3d_physics/layer_10="object"
 3d_physics/layer_13="item"
+3d_physics/layer_15="playerViewCone"
 
 [rendering]
 

@@ -118,11 +118,11 @@ func toggleFlashlight(power):
 	if not power:
 		$Neck/flashlight/SpotLight.visible = false
 		flashlightOn = false
-		$AnimationPlayer.play("flashlightOFF")
+		#$AnimationPlayer.play("flashlightOFF")
 	elif power:
 		$Neck/flashlight/SpotLight.visible = true
 		flashlightOn = true
-		$AnimationPlayer.play("flashlightON")
+		#$AnimationPlayer.play("flashlightON")
 	
 func die():
 	$Neck/flashlight/SpotLight.visible = false

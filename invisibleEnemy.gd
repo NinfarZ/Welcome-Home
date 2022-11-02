@@ -162,7 +162,7 @@ func setStateStop():
 
 func setStateFollow():
 	state = FOLLOWPLAYER
-	$body.visible = false
+	#$body.visible = false
 	monsterChaseVisible = false
 	gracePeriodOver = false
 
@@ -192,6 +192,7 @@ func flickerLightIfClose():
 		get_tree().call_group("flashlight", "flicker")
 
 func setBodyVisible(value):
+	print("setting body visibility to ", value)
 	$body.visible = value
 
 func getIsInView():
@@ -279,6 +280,8 @@ func _on_locationSensor_area_entered(area):
 	#print("ENEMY IS INSIDE " + area.name)
 	#get_tree().call_group("gameMaster", "shutDownLight", currentLocation)
 	
+	
+	
 
 
 func setMonsterSpawner(setSpawner):
@@ -323,3 +326,9 @@ func _on_chaseGracePeriod_timeout():
 
 func _on_openDoorTimer_timeout():
 	monsterWantsToOpenDoor = true
+
+
+func _on_bodyVisibility_area_entered(area):
+	if area.is_in_group("playerViewCone"):
+		setBodyVisible(false)
+		

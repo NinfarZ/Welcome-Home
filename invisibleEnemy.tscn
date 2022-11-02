@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
 [ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
@@ -91,6 +91,9 @@ rim_tint = 0.5
 
 [sub_resource type="SpatialMaterial" id=14]
 roughness = 0.39
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.552972, 3.88159, 1 )
 
 [node name="invisibleEnemy" type="KinematicBody" groups=["invisibleEnemy"]]
 transform = Transform( 1, 0, 0, 0, 0.624, 0, 0, 0, 1, 0, 1, 0 )
@@ -212,6 +215,14 @@ one_shot = true
 
 [node name="openDoorTimer" type="Timer" parent="."]
 
+[node name="bodyVisibility" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 16384
+
+[node name="CollisionShape" type="CollisionShape" parent="bodyVisibility"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68862, 0 )
+shape = SubResource( 15 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
 [connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]
@@ -226,3 +237,4 @@ one_shot = true
 [connection signal="body_exited" from="locationSensor" to="." method="_on_locationSensor_body_exited"]
 [connection signal="timeout" from="chaseGracePeriod" to="." method="_on_chaseGracePeriod_timeout"]
 [connection signal="timeout" from="openDoorTimer" to="." method="_on_openDoorTimer_timeout"]
+[connection signal="area_entered" from="bodyVisibility" to="." method="_on_bodyVisibility_area_entered"]

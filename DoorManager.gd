@@ -17,6 +17,7 @@ func pickDoor():
 	availableDoors.erase(lastLockedDoor)
 	
 	removeImpossibleDoors(availableDoors)
+	print(availableDoors)
 	doorPicked = RNGTools.pick(availableDoors)
 	return doorPicked
 		
@@ -44,9 +45,12 @@ func removeImpossibleDoors(availableDoors):
 	availableDoors.erase($Door7)
 	
 	for door in availableDoors:
-		if door.is_in_group(player.get_current_location()) or door.is_in_group(invisibleEnemy.get_current_location()):
+		if door.is_in_group(player.get_current_location()):
 			availableDoors.erase(door)
-			print("removed door", door, " bacause player is in ", player.get_current_location(), " and enemy in ", invisibleEnemy.get_current_location())
+			print("removed door", door, " bacause player is in ", player.get_current_location())
+		elif door.is_in_group(invisibleEnemy.get_current_location()):
+			availableDoors.erase(door)
+			print("removed door", door, " because enemy is in ", invisibleEnemy.get_current_location())
 	
 	
 	
