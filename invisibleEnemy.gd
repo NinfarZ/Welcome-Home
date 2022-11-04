@@ -3,7 +3,7 @@ extends KinematicBody
 export var speed = 2
 var maxSpeed = speed + 2
 var minSpeed = speed
-
+var doorForce = 2
 enum {
 	PATROL,
 	STOP,
@@ -22,6 +22,7 @@ var state = FOLLOWPLAYER
 var phase = PHASE1
 
 signal killPlayer
+signal playerViewConeDetected
 
 var path = []
 var current_path_idx = 0
@@ -56,7 +57,7 @@ func _physics_process(delta):
 	
 	#open doors code
 	if monsterWantsToOpenDoor:
-		door.interact()
+		door.interact(getDoorOpeningForce())
 	
 	match state:
 		FOLLOWPLAYER:
@@ -65,7 +66,7 @@ func _physics_process(delta):
 			if RNGTools.pick([1,0]) == 1:
 				if currentLocation != null and currentLocation == target.get_current_location():
 					
-					get_tree().call_group("sanityBar", "drainSanity", 0.02)
+					get_tree().call_group("sanityBar", "drainSanity", 0.05)
 					match phase:
 						PHASE1:
 							pass
@@ -83,7 +84,7 @@ func _physics_process(delta):
 						#timesSoundPlayed -= 1
 				#elif currentLocation != target.get_current_location():
 					#timesSoundPlayed = 1
-				elif transform.origin.distance_to(target.transform.origin) > 15:
+				elif transform.origin.distance_to(target.transform.origin) > 15 and not monsterWantsToOpenDoor:
 					
 					match phase:
 						PHASE1:
@@ -99,7 +100,7 @@ func _physics_process(delta):
 		STOP:
 			if currentLocation != null and currentLocation == target.get_current_location():
 					
-					get_tree().call_group("sanityBar", "drainSanity", 0.02)
+					get_tree().call_group("sanityBar", "drainSanity", 0.05)
 		KILLPLAYER:
 			emit_signal("killPlayer")
 			$body.visible = false
@@ -108,22 +109,30 @@ func _physics_process(delta):
 		CHASE:
 			#$monsterSpawner/CollisionShape.disabled = true
 			if gracePeriodOver:
-				if path.size() > 0:
-					if not $steps3D.playing:
-						match phase:
-							PHASE1, PHASE2:
-								$steps3D.play()
-							PHASE3:
-								$steps3D.play()
-								$monsterBreath.play()
-					if transform.origin.distance_to(target.transform.origin) <= 20:
-						$body.visible = true
-						flickerLightIfClose()
-					elif transform.origin.distance_to(target.transform.origin) > 20:
-						$body.visible = false
+				
+#					if transform.origin.distance_to(target.transform.origin) <= 20:
+#						$body.visible = true
+#						flickerLightIfClose()
+#					elif transform.origin.distance_to(target.transform.origin) > 20:
+#						$body.visible = false
+					if not invisibleEnemyInview:
+						setBodyVisible(true)
+						$bodyVisibility.monitoring = true
+						if path.size() > 0:
+							move_to_target()
+						if not $steps3D.playing:
+							match phase:
+								PHASE1, PHASE2:
+									$steps3D.play()
+								PHASE3:
+									$steps3D.play()
+									$monsterBreath.play()
+					elif $body.visible == false:
+						$bodyVisibility.monitoring = false
 					
 					
-					move_to_target()
+					
+					
 			
 				
 		
@@ -199,21 +208,34 @@ func flickerLightIfClose():
 func setBodyVisible(value):
 	print("setting body visibility to ", value)
 	$body.visible = value
+	
 
 func getIsInView():
 	return invisibleEnemyInview
 
 func monsterSpeedUp():
 	if invisibleEnemyInview:
-		speed += 0.01
+		speed -= 0.01
 		
 	else:
-		speed -= 0.01
+		speed += 0.01
 	speed = clamp(speed, minSpeed, maxSpeed)
 	
 
 func getSpeed():
 	return speed
+
+func getDoorOpeningForce():
+	var doorForce = null
+	if speed <= 2:
+		doorForce = 2.5
+	elif speed > 2 and speed <= 3:
+		doorForce = 1
+	elif speed > 3 and speed <= 4:
+		doorForce = 0.5
+	elif speed > 4:
+		doorForce = 0.2
+	return doorForce
 
 func setSpeedIncrease(newSpeed):
 	speed = newSpeed
@@ -304,12 +326,12 @@ func playRunningAudio():
 
 
 func _on_locationSensor_body_entered(body):
-	if body.is_in_group("player") and gracePeriodOver:
-		if state == CHASE:
-			state = KILLPLAYER
-			get_tree().call_group("gameMaster", "setGameState", 4)
+#	if body.is_in_group("player") and gracePeriodOver:
+#		if state == CHASE:
+#			state = KILLPLAYER
+#			get_tree().call_group("gameMaster", "setGameState", 4)
 			#_physics_process(false)
-	elif body.is_in_group("door"):
+	if body.is_in_group("door"):
 		if not body.isOpen():
 			door = body
 			if $openDoorTimer.is_stopped():
@@ -336,4 +358,13 @@ func _on_openDoorTimer_timeout():
 func _on_bodyVisibility_area_entered(area):
 	if area.is_in_group("playerViewCone"):
 		setBodyVisible(false)
+		#emit_signal("playerViewConeDetected", false)
+	
 		
+
+
+func _on_bodyVisibility_body_entered(body):
+	if body.is_in_group("player") and gracePeriodOver:
+		if state == CHASE:
+			state = KILLPLAYER
+			get_tree().call_group("gameMaster", "setGameState", 4)

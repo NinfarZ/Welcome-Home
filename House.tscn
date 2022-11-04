@@ -1,4 +1,4 @@
-[gd_scene load_steps=307 format=2]
+[gd_scene load_steps=308 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -844,11 +844,13 @@ surfaces/0 = {
 "vertex_count": 6240
 }
 
-[sub_resource type="Environment" id=580]
-background_mode = 3
-background_color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
-ssao_radius = 14.52
-ssao_intensity = 8.28
+[sub_resource type="SpatialMaterial" id=583]
+albedo_color = Color( 1, 0.917647, 0.92549, 1 )
+
+[sub_resource type="Environment" id=582]
+background_mode = 1
+ambient_light_color = Color( 0.294118, 0.294118, 0.294118, 1 )
+ambient_light_energy = 0.01
 
 [sub_resource type="BoxShape" id=316]
 extents = Vector3( 6.88913, 1, 5.17929 )
@@ -1679,14 +1681,15 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 use_in_baked_light = true
 mesh = SubResource( 579 )
 skeleton = NodePath("../../../QodotMap/entity_0_worldspawn")
+material/0 = SubResource( 583 )
 
 [node name="invisibleEnemy" parent="Navigation" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 0.623604, 0, 0, 0, 1, 0, 13.1306, 0 )
+transform = Transform( 1, 0, 0, 0, 0.623604, 0, 0, 0, 1, 0, 13.1306, -19.3616 )
 
 [node name="NavigationAgent" type="NavigationAgent" parent="Navigation"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 580 )
+environment = SubResource( 582 )
 
 [node name="Monsters" type="Spatial" parent="." groups=["monsterController"]]
 script = ExtResource( 5 )
@@ -1739,7 +1742,7 @@ transform = Transform( -0.187061, -0.124908, 0.974376, 0.438139, 0.877153, 0.196
 [node name="yellowgirl49" parent="Monsters" groups=["corridor1", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.991945, -0.0560585, -0.113583, 0.0548711, 0.998401, -0.0135564, 0.114161, 0.0072148, 0.993437, 1.90246, 12.5819, -10.6081 )
 
-[node name="yellowgirl8" parent="Monsters" groups=["bedRoom2", "monstercorridor2"] instance=ExtResource( 4 )]
+[node name="yellowgirl8" parent="Monsters" groups=["bedRoom2", "monsterbedRoom2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( -0.0758621, -0.0419714, 0.996234, 0.550551, 0.831247, 0.0769451, -0.831347, 0.554315, -0.0399533, 1.80937, 14.1108, -3.80175 )
 
 [node name="yellowgirl52" parent="Monsters" groups=["corridor1", "monsterbedRoom2", "monstercorridor1", "monstercorridor2", "myBedroom"] instance=ExtResource( 4 )]
@@ -1754,7 +1757,7 @@ monsterNearDoor = true
 transform = Transform( -0.966668, 0.142393, -0.212776, -0.124029, -0.987489, -0.0973622, -0.223978, -0.0677264, 0.972237, 1.16929, 21.0209, -9.57357 )
 
 [node name="yellowgirl75" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
-transform = Transform( 0.933323, -0.0229336, 0.358299, -0.0346648, -0.99905, 0.0263512, 0.357355, -0.0370146, -0.933233, 1.12796, 19.7694, 3.6794 )
+transform = Transform( 0.99927, -0.0350689, -0.0150311, -0.0346648, -0.99905, 0.0263512, -0.0159408, -0.025811, -0.999538, 1.12796, 19.7694, 3.6794 )
 
 [node name="yellowgirl25" parent="Monsters" groups=["corridor1", "corridor2", "monstermyBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.119825, 0, -0.992794, 0, 1, 0, 0.992795, 0, -0.119824, 7.91755, 14.017, 8.42216 )
@@ -1854,7 +1857,7 @@ monsterNearDoor = true
 transform = Transform( 0.972155, -0.18582, 0.14278, -0.177751, -0.981762, -0.0674418, 0.152708, 0.0401848, -0.987454, -0.696679, 22.3838, -12.8534 )
 
 [node name="yellowgirl23" parent="Monsters" groups=["corridor1", "corridor2", "monsterbedRoom2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
-transform = Transform( 0.343554, -0.0119828, -0.939057, -0.572972, 0.789579, -0.219698, 0.744092, 0.613531, 0.264398, 6.79541, 13.6426, -4.70194 )
+transform = Transform( 0.397853, 0.0336036, -0.916834, -0.572972, 0.789579, -0.219698, 0.71653, 0.612727, 0.333391, 6.45649, 13.6426, -4.55684 )
 monsterNearDoor = true
 needsDoor = true
 
@@ -1887,6 +1890,7 @@ transform = Transform( -0.0629016, 0.972539, 0.224073, 0.263767, 0.232734, -0.93
 
 [node name="yellowgirl24" parent="Monsters" groups=["corridor1", "corridor2", "monsterbedRoom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.128435, 0.100054, -0.986658, 0.117858, -0.989386, -0.0849891, -0.98469, -0.105371, -0.138865, 2.89133, 20.9089, -0.939872 )
+monsterNearDoor = true
 
 [node name="yellowgirl10" parent="Monsters" groups=["balcony", "balcony2", "bedRoom2", "monsterbalcony2", "monsterbedRoom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.140676, -0.0156947, -0.989931, 0.0244177, 0.999625, -0.0123788, 0.989754, -0.0224298, 0.141006, 30.4026, 10.7781, -7.33167 )
@@ -2421,7 +2425,7 @@ transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474,
 transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474, 17.2902, 12.1477, -30.2613 )
 
 [node name="candy49" parent="Candy" instance=ExtResource( 22 )]
-transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474, 16.6041, 14.491, -29.782 )
+transform = Transform( 0.150474, 0, -0.131748, 0, 0.2, 0, 0.131748, 0, 0.150474, 14.9087, 14.491, -29.782 )
 
 [node name="candy4" parent="Candy" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.9964, 15.3381, -28.0198 )
@@ -2523,11 +2527,11 @@ stream = ExtResource( 16 )
 [node name="Tween" type="Tween" parent="Audio/deathMusic"]
 
 [node name="fearNoise" type="AudioStreamPlayer" parent="Audio"]
-volume_db = -1.0
+volume_db = -2.0
 script = ExtResource( 28 )
 samples = [ ExtResource( 26 ) ]
 random_volume_range = 0
-random_pitch_range = 0.224
+random_pitch_range = 0.312
 
 [node name="phaseTransition" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 31 )
@@ -2564,12 +2568,15 @@ one_shot = true
 script = ExtResource( 36 )
 
 [node name="candyBasket" parent="BasketManager" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1066, 14.225, 15.1322 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62387, -3.95538, 15.1322 )
 
 [node name="locations" type="Spatial" parent="BasketManager"]
 
 [node name="Position3D" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6137, 15.5883, 31.8509 )
+
+[node name="Position3D7" type="Position3D" parent="BasketManager/locations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1389, 15.3582, 15.126 )
 
 [node name="Position3D2" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28387, 13.1791, 37.4046 )
@@ -2578,7 +2585,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28387, 13.1791, 37.4046 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1823, 13.0278, -2.74225 )
 
 [node name="Position3D4" type="Position3D" parent="BasketManager/locations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7134, 13.1301, -20.6492 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9973, 14.7464, -26.5449 )
 
 [node name="Position3D5" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8618, 13.2117, -47.1541 )

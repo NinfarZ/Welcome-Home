@@ -21,16 +21,16 @@ func _physics_process(delta):
 		set_collision_mask_bit(0, true)
 		
 		
-func interact():
+func interact(openingForce):
 	if not locked:
 		if in_animation:
 			return
 		else:
-			open_and_close()
+			open_and_close(openingForce)
 	else:
 		$AnimationPlayer.play("locked")
 
-func open_and_close():
+func open_and_close(openingForce):
 	#print("trying to open/close door")
 	#NOT OPEN MEANS CLOSES
 	if not open and not in_animation:
@@ -39,7 +39,7 @@ func open_and_close():
 		in_animation = true
 		#$CollisionShape.disabled = true
 		
-		tween.interpolate_property(self, "rotation_degrees", closed_angle, open_angle, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.interpolate_property(self, "rotation_degrees", closed_angle, open_angle, openingForce, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		
 		
 	

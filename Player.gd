@@ -107,9 +107,8 @@ func _physics_process(delta):
 	#recovering sanity
 	match state:
 		DEFAULT:
-			pass
-#			if not inSpotlight:
-#				get_tree().call_group("sanityBar", "drainSanity", drainSanityValue)
+			if inSpotlight:
+				get_tree().call_group("sanityBar", "recoverSanity", 0.03)
 			#else:
 				#get_tree().call_group("sanityBar", "recoverSanity", 0.06)
 		SEEMONSTER:
@@ -186,6 +185,20 @@ func _on_AreaPlayer_area_exited(area):
 
 func setIsUnderFurniture(value):
 	isUnderFurniture = value
+
+func getDoorOpeningForce():
+	var doorForce
+	if input_move == Vector3(0,0,0):
+		doorForce = 2
+	elif moveSpeed == 3.2:
+		doorForce = 1
+	elif moveSpeed == 5.2:
+		doorForce = 0.5
+	elif moveSpeed == 1.5:
+		doorForce = 1.5
+	
+		
+	return doorForce
 
 func getIsUnderFurniture():
 	return isUnderFurniture

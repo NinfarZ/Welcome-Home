@@ -65,7 +65,11 @@ func _physics_process(delta):
 			#disappear if colliding with door
 			if collidingWithDoor:
 				#state = HIDING
-				get_parent().despawnMonster(self)
+				if not needsDoor:
+					get_parent().despawnMonster(self)
+			elif not collidingWithDoor:
+				if needsDoor:
+					get_parent().despawnMonster(self)
 	
 func lookAtPlayer():
 	head.look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
@@ -148,7 +152,11 @@ func set_state_active():
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = true
 	
+func shadeFace(value):
 	
+	for eye in $Head/head/eyes.get_children():
+		eye.shaded = value
+	$Head/head/mouths/mouths.shaded = value
 
 func set_state_hiding():
 	state = HIDING

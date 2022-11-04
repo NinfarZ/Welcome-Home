@@ -35,6 +35,8 @@ var cooldownValues = [5, 10]
 var monstersInRange = []
 
 func _ready():
+	invisibleMonster.setBodyVisible(false)
+	#invisibleMonster.connect("playerViewConeDetected", self, "setMonsterActive")
 	randomize()
 
 #TO DO: Make it so monster can disappear as soon as the timer is down. No need to move out of view of the monster
@@ -46,6 +48,8 @@ func _physics_process(delta):
 			
 		SEARCHING:
 			monsterActive = false
+			invisibleMonster.setBodyVisible(false)
+			
 			#print("monster is searching")
 			#for monster in get_children():
 				#for raycast in monster.get_node("Cube001").get_children():
@@ -88,12 +92,17 @@ func _physics_process(delta):
 			#print(rad2deg(get_node(currentMonster).get_node("Head").rotation.x))
 			
 			if currentMonster.canSeePlayer() and currentMonster.isFaceInView():
-				currentMonster.playerLooksAtMonster()	
+				currentMonster.playerLooksAtMonster()
+				currentMonster.shadeFace(false)	
+				
 				state = ANGER
+			else:
+				currentMonster.shadeFace(true)	
+			
 			
 
 				
-			elif not currentMonster.isMonsterInPlayerLocation():
+			if not currentMonster.isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				#get_parent().get_node("TimerMonsterCooldown").start()
@@ -115,10 +124,13 @@ func _physics_process(delta):
 					monsterCanDespawn = false
 					#get_parent().get_node("TimerMonsterCooldown").start()
 					state = COOLDOWN
+			
 		ANGER:
 			#incrementDifficulty()
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
 			get_tree().call_group("flashlight", "flicker")
+			
+			
 			state = CHANGING
 		ROOMCHANGE:
 			#print("rommchange, monster disappeared")
@@ -144,7 +156,7 @@ func _physics_process(delta):
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
 					for monster in get_children():
-						if monster.isCanSpawn() and monster.isMonsterPositionedToSpawn() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 15:
+						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 10:
 							add_monster_to_list(monster)
 						else:
 							remove_monster_from_list(monster)
@@ -154,25 +166,25 @@ func _physics_process(delta):
 						
 						spawnMonster(currentMonster)
 						monsterActive = true
-				elif currentMonster.getDistanceFromPlayer() < 15:
-					despawnMonster(currentMonster)
-					monsterActive = false
-#					if get_parent().get_node("monsterCreepTimer").is_stopped():
-#						get_parent().get_node("monsterCreepTimer").wait_time = 0.5
-#						get_parent().get_node("monsterCreepTimer").start()
+				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 10:
+					#despawnMonster(currentMonster)
+					#monsterActive = false
+					if get_parent().get_node("monsterCreepTimer").is_stopped():
+						get_parent().get_node("monsterCreepTimer").wait_time = 0.3
+						get_parent().get_node("monsterCreepTimer").start()
 			elif rngCreepyBehavior == 0:
 				if not monsterActive:
-					if not invisibleMonster.getIsInView() and invisibleMonster.getDistanceToPlayer() > 8:
+					if not invisibleMonster.getIsInView() and invisibleMonster.getDistanceToPlayer() > 15:
 						print("monster is behind you!!")
 						invisibleMonster.setBodyVisible(true)
 						monsterActive = true
 					
-				elif invisibleMonster.getDistanceToPlayer() < 8:
-					invisibleMonster.setBodyVisible(false)
-					monsterActive = false
-					#if get_parent().get_node("monsterCreepTimer").is_stopped():
-						#get_parent().get_node("monsterCreepTimer").wait_time = 0.5
-						#get_parent().get_node("monsterCreepTimer").start()
+				elif invisibleMonster.getIsInView() or invisibleMonster.getDistanceToPlayer() < 8:
+					#invisibleMonster.setBodyVisible(false)
+					#monsterActive = false
+					if get_parent().get_node("monsterCreepTimer").is_stopped():
+						get_parent().get_node("monsterCreepTimer").wait_time = 1
+						get_parent().get_node("monsterCreepTimer").start()
 					
 				#invisibleMonster.monsterIsVisibleForMoment()
 					#monsterActive = true
@@ -290,11 +302,13 @@ func setStateCooldown():
 func setStateHunting():
 	state = HUNTING
 
+func setMonsterActive(value):
+	monsterActive = value
 
 func _on_monsterCreepTimer_timeout():
-#	if rngCreepyBehavior == 1:
-#		despawnMonster(currentMonster)
-#		monsterActive = false
+	if rngCreepyBehavior == 1:
+		despawnMonster(currentMonster)
+		monsterActive = false
 	if rngCreepyBehavior == 0:
 		invisibleMonster.setBodyVisible(false)
 		monsterActive = false

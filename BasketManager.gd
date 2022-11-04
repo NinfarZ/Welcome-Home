@@ -14,8 +14,12 @@ func changeBasketLocation():
 	if lastPosition != null:
 		availableLocations.erase(lastPosition)
 	var newLocation = RNGTools.pick(availableLocations)
-	candyBasket.transform.origin = newLocation.transform.origin
+	moveBasketToPosition(newLocation)
 	lastPosition = newLocation
+
+func moveBasketToPosition(basketPosition):
+	candyBasket.transform.origin = basketPosition.transform.origin
+	
 
 func updateCandyCounter():
 	candyCounter.removeCandy()

@@ -5,20 +5,22 @@ var interactables = []
 var items = []
 var hasKey = false
 var numberOfCandy = 0
+onready var player = get_parent().get_parent()
+var openingForce = null
 export var candyLimit = 5
 
 func _physics_process(delta):
 	#OPENING DOORS
 	if not interactables.empty() and interactables.front().is_in_group("door"):
 		if Input.is_action_just_pressed("interact"):
-		
+			openingForce = player.getDoorOpeningForce()
 			if interactables.front().isLocked():
-				interactables.front().interact()
+				interactables.front().interact(openingForce)
 				if hasKey:
 					interactables.front().unlock()
 					hasKey = false
 			elif not interactables.front().isLocked():
-				interactables.front().interact()
+				interactables.front().interact(openingForce)
 	
 	#INTERACT WITH ANYTHING ELSE
 	elif not interactables.empty() and interactables.front().has_method("interact"):
