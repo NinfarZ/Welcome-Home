@@ -29,6 +29,10 @@ func interact(openingForce):
 			open_and_close(openingForce)
 	else:
 		$AnimationPlayer.play("locked")
+		
+		
+		
+		
 
 func open_and_close(openingForce):
 	#print("trying to open/close door")
@@ -110,3 +114,7 @@ func unlock():
 	#animate
 	$AnimationPlayer.play("unlock")
 	locked = false
+
+func playMonsterLockedDoor():
+	if not $monsterLockedDoorKnock.playing:
+		$monsterLockedDoorKnock.play()

@@ -15,6 +15,7 @@ var state = START
 var phase = PHASE0
 var currentOnLight = "spotlight4"
 var CandyRandomized = false
+var monsterTriggered = false
 var initialKeysRandomized = false
 var bunnyActive = false
 var bunnyCanSpawn = false
@@ -50,8 +51,9 @@ func _physics_process(delta):
 			turnAllLightsOff()
 			turnOnLight("spotlight8")
 			doorManager.lockDoor($Doors/Door4)
-			keyManager.placeKey($keyManager/Key7)
-			basketManager.moveBasketToPosition(basketManager.get_node("locations/Position3D4"))
+			
+			basketManager.moveBasketToPosition(basketManager.get_node("locations/Position3D3"))
+			#monsters.spawnMonster($Monsters/yellowgirl25)
 			
 			
 			
@@ -69,17 +71,36 @@ func _physics_process(delta):
 					difficultySet(1)
 					if not CandyRandomized:
 					
-						
-						candyManager.randomizeCandy(7)
-						get_tree().call_group("monsterController", "setStateIdle")
+						candyManager.randomizeCandy(2, candyManager.get_node("myBedroom"))
+						candyManager.randomizeCandy(2, candyManager.get_node("corridor"))
+						candyManager.randomizeCandy(2, candyManager.get_node("bedRoom2"))
+						monsters.setStateIdle()
+						invisibleEnemy.setStateStop()
 						CandyRandomized = true
 						candyBasket.displayText(5)
-
+					#if the basket is full, moves to phase1
 					elif candyBasket.getIsBasketFull():
 						print("done")
 						CandyRandomized = false
 						candyManager.hideCandy()
 						$Audio/phaseTransition.play()
+						phase = PHASE1
+						
+						
+					#wakes up monster after grabbing the key and heading to corridor
+					if player.get_current_location() == "corridor2" and not monsterTriggered:
+						invisibleEnemy.setStateFollow()
+						monsters.spawnMonster(monsters.get_node("yellowgirl18"))
+						monsterTriggered = true
+						
+					elif monsterTriggered:
+						if monsters.get_node("yellowgirl18").canSeePlayer():
+							monsters.get_node("yellowgirl18").makeCreepySound()
+						
+					
+					
+					
+					
 						
 						
 						
@@ -87,7 +108,7 @@ func _physics_process(delta):
 							
 							
 							#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
-						phase = PHASE1
+						
 				PHASE1:
 					#MONSTERS CAN SPAWN, EASY DIFFUCLTY
 					

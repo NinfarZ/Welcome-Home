@@ -2,6 +2,7 @@ extends Spatial
 
 var lastKey = null
 var currentKey = null
+var hasKey = false
 onready var doorManager = get_parent().get_node("Doors")
 onready var player = get_parent().get_node("Player")
 
@@ -12,7 +13,7 @@ func _ready():
 
 #called when player gets key. Updates UI and Haskey
 func handleKey():
-	pass
+	hasKey = true
 
 #spawns a new key
 func placeKey(key):
@@ -43,6 +44,9 @@ func removeImpossibleKeys(listOfKeys):
 
 func distanceToPlayer(key):
 	return key.transform.origin.distance_to(player.transform.origin)
+
+func getHasKey():
+	return hasKey
 	
 	
 

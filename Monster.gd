@@ -254,6 +254,12 @@ func enableArea():
 func disableArea():
 	$MonsterArea.monitorable = false
 
+func backBreak():
+	$AnimationPlayer.play("backbreak")
+
+func isBackBreak():
+	return backbreak
+
 
 
 #func _on_headVisibility_camera_entered(camera):

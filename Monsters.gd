@@ -44,7 +44,8 @@ func _physics_process(delta):
 	
 	match state:
 		IDLE:
-			invisibleMonster.setStateFollow()
+			#invisibleMonster.setStateStop()
+			pass
 			
 		SEARCHING:
 			monsterActive = false

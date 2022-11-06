@@ -58,6 +58,7 @@ func _physics_process(delta):
 	#open doors code
 	if monsterWantsToOpenDoor:
 		door.interact(getDoorOpeningForce())
+		
 	
 	match state:
 		FOLLOWPLAYER:
@@ -332,7 +333,10 @@ func _on_locationSensor_body_entered(body):
 #			get_tree().call_group("gameMaster", "setGameState", 4)
 			#_physics_process(false)
 	if body.is_in_group("door"):
-		if not body.isOpen():
+		if body.isLocked():
+			body.interact(getDoorOpeningForce())
+			body.playMonsterLockedDoor()
+		elif not body.isOpen():
 			door = body
 			if $openDoorTimer.is_stopped():
 				$openDoorTimer.start()

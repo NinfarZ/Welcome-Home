@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Door.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
 [ext_resource path="res://audio/doorOpen1.wav" type="AudioStream" id=3]
 [ext_resource path="res://textures/lock.png" type="Texture" id=4]
+[ext_resource path="res://audio/monsterLockedDoorKnock.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/doorLocked.wav" type="AudioStream" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 3, 6, 0.2 )
@@ -154,6 +156,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("locked")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "unlock"
@@ -245,7 +261,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47526, 2.64569, 0 )
 shape = SubResource( 3 )
 
 [node name="openCloseSound" type="AudioStreamPlayer3D" parent="."]
-unit_db = 5.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58512, 2.98388, 0 )
+unit_db = 2.0
 script = ExtResource( 2 )
 samples = [ ExtResource( 3 ) ]
 random_strategy = 2
@@ -267,6 +284,25 @@ hframes = 6
 anims/RESET = SubResource( 4 )
 anims/locked = SubResource( 5 )
 anims/unlock = SubResource( 6 )
+
+[node name="monsterLockedDoorKnock" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52739, 2.88032, 0 )
+unit_db = 3.0
+unit_size = 2.0
+script = ExtResource( 2 )
+samples = [ ExtResource( 5 ) ]
+random_volume_range = 0
+random_pitch_range = 0.117
+
+[node name="locked" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39778, 2.98787, 0 )
+stream = ExtResource( 6 )
+unit_db = 3.0
+pitch_scale = 1.06658
+script = ExtResource( 2 )
+samples = [ ExtResource( 6 ) ]
+random_volume_range = 0
+random_pitch_range = 0.139
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="body_entered" from="monsterSensor" to="." method="_on_monsterSensor_body_entered"]
