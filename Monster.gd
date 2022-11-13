@@ -172,14 +172,14 @@ func canSeePlayer():
 					return true
 	return false
 
-func makeCreepySound():
+func makeCreepySound(type):
 	
-	match monsterPhase:
-		PHASE1:
+	match type:
+		1:
 			if canMakeSound and not $monsterNoise3D.playing:
 				$monsterNoise3D.play()
 				canMakeSound = false
-		PHASE2:
+		2:
 			if canMakeSound and not $monsterNoise3D_2.playing:
 				$monsterNoise3D_2.play()
 				canMakeSound = false

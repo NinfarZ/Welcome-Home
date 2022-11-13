@@ -12,8 +12,8 @@ func _ready():
 		key.connect("gotKey", self, "handleKey")
 
 #called when player gets key. Updates UI and Haskey
-func handleKey():
-	hasKey = true
+func handleKey(value):
+	hasKey = value
 
 #spawns a new key
 func placeKey(key):

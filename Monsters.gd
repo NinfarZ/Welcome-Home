@@ -15,10 +15,16 @@ enum {
 	HUNTING
 }
 
+enum {
+	PHASE1,
+	PHASE2
+}
+
 export(NodePath) var invisibleMonsterPath
 onready var invisibleMonster = get_node(invisibleMonsterPath)
 
 var state = IDLE
+var phase = PHASE1
 var currentMonster = null
 var monsterCanDespawn = false
 var lastMonster = null
@@ -94,16 +100,15 @@ func _physics_process(delta):
 			
 			if currentMonster.canSeePlayer() and currentMonster.isFaceInView():
 				currentMonster.playerLooksAtMonster()
-				currentMonster.shadeFace(false)	
+				#currentMonster.shadeFace(false)	
 				
 				state = ANGER
-			else:
-				currentMonster.shadeFace(true)	
+				#currentMonster.shadeFace(true)	
 			
 			
 
 				
-			if not currentMonster.isMonsterInPlayerLocation():
+			elif not currentMonster.isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				#get_parent().get_node("TimerMonsterCooldown").start()
@@ -151,13 +156,16 @@ func _physics_process(delta):
 				get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
 				#print(get_parent().get_node("TimerMonsterCooldown").wait_time)
 				get_parent().get_node("TimerMonsterCooldown").start()
-				rngCreepyBehavior = RNGTools.pick([1,0])
+				if phase == PHASE1:
+					rngCreepyBehavior = 0
+				else:
+					rngCreepyBehavior = RNGTools.pick([1,0])
 			#monster creeps around. Not dangerous but creepy
 			elif rngCreepyBehavior == 1:
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
 					for monster in get_children():
-						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 10:
+						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 15:
 							add_monster_to_list(monster)
 						else:
 							remove_monster_from_list(monster)
@@ -167,7 +175,7 @@ func _physics_process(delta):
 						
 						spawnMonster(currentMonster)
 						monsterActive = true
-				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 10:
+				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 15:
 					#despawnMonster(currentMonster)
 					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
@@ -184,7 +192,7 @@ func _physics_process(delta):
 					#invisibleMonster.setBodyVisible(false)
 					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
-						get_parent().get_node("monsterCreepTimer").wait_time = 1
+						get_parent().get_node("monsterCreepTimer").wait_time = 0.5
 						get_parent().get_node("monsterCreepTimer").start()
 					
 				#invisibleMonster.monsterIsVisibleForMoment()
@@ -208,6 +216,9 @@ func _physics_process(delta):
 func add_monster_to_list(monster):
 	if not monster in monstersInRange:
 		monstersInRange.append(monster)
+
+func setMonsterManagerPhase(newPhase):
+	phase = newPhase
 
 func remove_monster_from_list(monster):
 	var i = 0

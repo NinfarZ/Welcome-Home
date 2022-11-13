@@ -22,13 +22,14 @@ func _physics_process(delta):
 		
 		
 func interact(openingForce):
-	if not locked:
-		if in_animation:
-			return
+	if not $monsterLockedDoorKnock.playing:
+		if not locked:
+			if in_animation:
+				return
+			else:
+				open_and_close(openingForce)
 		else:
-			open_and_close(openingForce)
-	else:
-		$AnimationPlayer.play("locked")
+			$AnimationPlayer.play("locked")
 		
 		
 		
@@ -102,6 +103,8 @@ func setMonsterDoorTimer(newTime):
 	$TimerMonsterOpenDoor.wait_time = newTime
 
 func setLock(islocked):
+	if not islocked:
+		get_tree().call_group("keyManager", "handleKey", false)
 	locked = islocked
 
 func isLocked():
@@ -113,7 +116,7 @@ func isOpen():
 func unlock():
 	#animate
 	$AnimationPlayer.play("unlock")
-	locked = false
+	setLock(false)
 
 func playMonsterLockedDoor():
 	if not $monsterLockedDoorKnock.playing:

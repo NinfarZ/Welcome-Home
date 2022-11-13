@@ -325,6 +325,9 @@ func playRunningAudio():
 	yield(get_tree().create_timer(2.0), "timeout")
 	$running3D.play()
 
+func playMonsterGrunt():
+	$monsterNoise.play()
+
 
 func _on_locationSensor_body_entered(body):
 #	if body.is_in_group("player") and gracePeriodOver:

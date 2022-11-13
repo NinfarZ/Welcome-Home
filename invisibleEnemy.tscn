@@ -1,9 +1,8 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
 [ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=3]
-[ext_resource path="res://audio/monsterClose1.mp3" type="AudioStream" id=4]
 [ext_resource path="res://audio/monsterClose2.mp3" type="AudioStream" id=5]
 [ext_resource path="res://audio/monsterClose3.wav" type="AudioStream" id=6]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=7]
@@ -18,6 +17,9 @@
 [ext_resource path="res://3DModels/Monster/eye.png" type="Texture" id=16]
 [ext_resource path="res://chasePuppet.gd" type="Script" id=17]
 [ext_resource path="res://3DModels/Monster/mouths.png" type="Texture" id=18]
+[ext_resource path="res://audio/monsterGrunt1.wav" type="AudioStream" id=19]
+[ext_resource path="res://audio/monsterGrunt2.wav" type="AudioStream" id=20]
+[ext_resource path="res://audio/monsterGrunt3.wav" type="AudioStream" id=21]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -125,7 +127,7 @@ aabb = AABB( -0.549117, -3.94098, -0.320682, 1.09823, 7.88197, 0.6482 )
 [node name="RandomAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -4.0
 script = ExtResource( 3 )
-samples = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+samples = [ ExtResource( 5 ), ExtResource( 6 ) ]
 random_strategy = 2
 random_volume_range = 0
 random_pitch_range = 0.385
@@ -227,6 +229,15 @@ collision_mask = 16385
 [node name="CollisionShape" type="CollisionShape" parent="bodyVisibility"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68862, 0 )
 shape = SubResource( 15 )
+
+[node name="monsterNoise" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1.60256, 0, 0, 0, 1, 0, 6.68557, 0 )
+unit_db = 6.0
+script = ExtResource( 7 )
+samples = [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ]
+random_strategy = 2
+random_volume_range = 0
+random_pitch_range = 0.183
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]

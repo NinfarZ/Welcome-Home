@@ -1,5 +1,7 @@
 extends Spatial
 
+signal changeLight
+
 var isPlayerInside = false
 var isEnemyInside = false
 var state = OFF
@@ -17,10 +19,16 @@ func _physics_process(delta):
 	match state:
 		ON:
 			enableLight()
-			state = CHANGELIGHT
+			if isEnemyInside:
+				emit_signal("changeLight")
+				self.setState(1)
+			elif isPlayerInside:
+				get_tree().call_group("sanityBar", "recoverSanity", 0.5)
+			#state = CHANGELIGHT
 		OFF:
 			disableLight()
-			timerOver = false
+			#timerOver = false
+			isPlayerInside = false
 		CHANGELIGHT:
 			get_tree().call_group("gameMaster", "shutDownLight", self, timerOver)
 			#state = OFF
@@ -66,7 +74,9 @@ func getState():
 
 func _on_changeTimer_timeout():
 	print("light timer time out")
-	timerOver = true
+	emit_signal("changeLight")
+	self.setState(1)
+	#timerOver = true
 	
 	#state = CHANGELIGHT
 	

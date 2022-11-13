@@ -107,8 +107,7 @@ func _physics_process(delta):
 	#recovering sanity
 	match state:
 		DEFAULT:
-			if inSpotlight:
-				get_tree().call_group("sanityBar", "recoverSanity", 0.03)
+			pass
 			#else:
 				#get_tree().call_group("sanityBar", "recoverSanity", 0.06)
 		SEEMONSTER:

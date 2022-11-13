@@ -22,7 +22,7 @@ func _physics_process(delta):
 func interact():
 	get_tree().call_group("interact", "addKey")
 	state = INACTIVE
-	emit_signal("gotKey")
+	emit_signal("gotKey", true)
 
 func setStateActive():
 	state = ACTIVE
