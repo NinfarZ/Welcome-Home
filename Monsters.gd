@@ -21,7 +21,9 @@ enum {
 }
 
 export(NodePath) var invisibleMonsterPath
+export(NodePath) var playerPath
 onready var invisibleMonster = get_node(invisibleMonsterPath)
+onready var player = get_node(playerPath)
 
 var state = IDLE
 var phase = PHASE1
@@ -106,7 +108,11 @@ func _physics_process(delta):
 				#currentMonster.shadeFace(true)	
 			
 			
-
+			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
+				get_parent().get_node("TimerMonsterSwitch").stop()
+				despawnMonster(currentMonster)
+				#get_parent().get_node("TimerMonsterCooldown").start()
+				state = COOLDOWN
 				
 			elif not currentMonster.isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()

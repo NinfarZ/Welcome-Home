@@ -10,6 +10,7 @@ onready var basketManager = $BasketManager
 onready var doorManager = $Doors
 onready var keyManager = $keyManager
 onready var spotlightManager = $spotlights
+onready var furnitureManager = $Furniture
 
 var isWardrobeDown = false
 var state = START
@@ -78,7 +79,7 @@ func _physics_process(delta):
 					
 						candyManager.randomizeCandy(2, candyManager.get_node("myBedroom"))
 						candyManager.randomizeCandy(2, candyManager.get_node("corridor"))
-						candyManager.randomizeCandy(2, candyManager.get_node("livingroom"))
+						candyManager.randomizeCandy(2, candyManager.get_node("bedRoom2"))
 						monsters.setStateIdle()
 						invisibleEnemy.setStateStop()
 						CandyRandomized = true
@@ -100,7 +101,7 @@ func _physics_process(delta):
 						invisibleEnemy.setStateFollow()
 						monsters.spawnMonster(monsters.get_node("yellowgirl85"))
 						monsterTriggered = true
-						yield(get_tree().create_timer(3),"timeout")
+						yield(get_tree().create_timer(2),"timeout")
 						invisibleEnemy.playMonsterGrunt()
 						yield(get_tree().create_timer(2),"timeout")
 						$Audio/suspencePiano.play()
@@ -135,10 +136,16 @@ func _physics_process(delta):
 					difficultySet(2)
 					if not CandyRandomized:
 						
+						furnitureManager.setBarricade(furnitureManager.get_node("barricade3"), false)
 						candyManager.randomizeCandy(5, candyManager.get_node("livingroom"))
 						candyManager.randomizeCandy(1, candyManager.get_node("bathroom2"))
 						candyManager.randomizeCandy(2, candyManager.get_node("bathroom1"))
 						candyManager.randomizeCandy(3, candyManager.get_node("corridor"))
+						
+						doorManager.lockDoor($Doors/Door6)
+						keyManager.placeKey(keyManager.get_node("Key"))
+			
+						basketManager.moveBasketToPosition(basketManager.get_node("locations/PositionBathroom1"))
 						
 						
 						get_tree().call_group("monsterController", "setStateSearching")

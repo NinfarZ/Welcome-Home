@@ -16,6 +16,13 @@ func takeKey(furniture):
 func placeKey(furniture):
 	pass
 
+func setBarricade(barricade, isActive):
+	for furniture in barricade.get_children():
+		for object in furniture.get_children():
+			if object.get_class() == "StaticBody":
+				object.get_node("CollisionShape").disabled = !isActive
+		furniture.visible = isActive
+
 #func randomizeCandy():
 
 	#for candy in $Items.get_children():
