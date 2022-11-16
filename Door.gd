@@ -69,6 +69,8 @@ func open_and_close(openingForce):
 func _on_Tween_tween_all_completed():
 	open = !open
 	in_animation = false
+	if !open:
+		$closeDoor.play()
 	#$CollisionShape.disabled = false
 	#$monsterSensor/CollisionShape.disabled = false
 	
@@ -121,3 +123,10 @@ func unlock():
 func playMonsterLockedDoor():
 	if not $monsterLockedDoorKnock.playing:
 		$monsterLockedDoorKnock.play()
+
+func monsterKnocking(speed):
+	if speed <= 3:
+		$slowKnock.play()
+	elif speed > 3:
+		$fastKnock.play()
+	

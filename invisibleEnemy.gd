@@ -36,6 +36,7 @@ var gracePeriodOver = false
 var monsterChaseVisible = false
 var monsterWantsToOpenDoor = false
 var door = null
+var sanityDrain = 0.015
 
 var canPlaySound = true
 var timesSoundPlayed = 1
@@ -64,44 +65,43 @@ func _physics_process(delta):
 		FOLLOWPLAYER:
 			if path.size() > 0:
 				move_to_target()
-			if RNGTools.pick([1,0]) == 1:
-				if currentLocation != null and currentLocation == target.get_current_location():
+			if currentLocation != null and currentLocation == target.get_current_location():
+				
+				get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
+				match phase:
+					PHASE1:
+						pass
+					PHASE2:
+						if not $RandomAudioStreamPlayer.playing and canPlaySound:
+							$RandomAudioStreamPlayer.play()
+							$RandomAudioStreamPlayer/TimerAudio.start()
+							canPlaySound = false
+					PHASE3:
+						if not $RandomAudioStreamPlayer.playing and canPlaySound:
+							$RandomAudioStreamPlayer.play()
+							$RandomAudioStreamPlayer/TimerAudio.start()
+							canPlaySound = false
 					
-					get_tree().call_group("sanityBar", "drainSanity", 0.05)
-					match phase:
-						PHASE1:
-							pass
-						PHASE2:
-							if not $RandomAudioStreamPlayer.playing and canPlaySound:
-								$RandomAudioStreamPlayer.play()
-								$RandomAudioStreamPlayer/TimerAudio.start()
-								canPlaySound = false
-						PHASE3:
-							if not $RandomAudioStreamPlayer.playing and canPlaySound:
-								$RandomAudioStreamPlayer.play()
-								$RandomAudioStreamPlayer/TimerAudio.start()
-								canPlaySound = false
-						
-						#timesSoundPlayed -= 1
-				#elif currentLocation != target.get_current_location():
-					#timesSoundPlayed = 1
-				elif transform.origin.distance_to(target.transform.origin) > 15 and not monsterWantsToOpenDoor:
-					
-					match phase:
-						PHASE1:
-							pass
-						PHASE2:
-							playFootStep()
-						PHASE3:
-							playFootStep()
-						#else:
-							#print("rng failed!")
-							#yield(get_tree().create_timer(5.0),"timeout")
+					#timesSoundPlayed -= 1
+			#elif currentLocation != target.get_current_location():
+				#timesSoundPlayed = 1
+			elif transform.origin.distance_to(target.transform.origin) > 15 and not monsterWantsToOpenDoor:
+				
+				match phase:
+					PHASE1:
+						pass
+					PHASE2:
+						playFootStep()
+					PHASE3:
+						playFootStep()
+					#else:
+						#print("rng failed!")
+						#yield(get_tree().create_timer(5.0),"timeout")
 					
 		STOP:
 			if currentLocation != null and currentLocation == target.get_current_location():
 					
-					get_tree().call_group("sanityBar", "drainSanity", 0.05)
+					get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
 		KILLPLAYER:
 			emit_signal("killPlayer")
 			$body.visible = false
@@ -167,7 +167,9 @@ func playFootStep():
 			timeFootstepPlayed -= 1
 			yield(get_tree().create_timer(1.0),"timeout")
 	
-	
+
+func setSanityDrain(newValue):
+	sanityDrain = newValue
 
 func _on_Timer_timeout():
 	get_target_path(target.global_transform.origin)
@@ -303,9 +305,9 @@ func _on_running3D_finished():
 func _on_locationSensor_area_entered(area):
 	if not area.is_in_group("player"):
 		monstersToSpawn = "monster" + area.name
-	#print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
+		print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
 		currentLocation = area.name
-	#print("ENEMY IS INSIDE " + area.name)
+		print("ENEMY IS INSIDE " + area.name)
 	#get_tree().call_group("gameMaster", "shutDownLight", currentLocation)
 	
 	
@@ -338,10 +340,11 @@ func _on_locationSensor_body_entered(body):
 	if body.is_in_group("door"):
 		if body.isLocked():
 			body.interact(getDoorOpeningForce())
-			body.playMonsterLockedDoor()
 		elif not body.isOpen():
 			door = body
 			if $openDoorTimer.is_stopped():
+				if RNGTools.pick([1,0,0]) == 1:
+					door.monsterKnocking(speed)
 				$openDoorTimer.start()
 			
 

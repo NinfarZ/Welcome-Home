@@ -2346,7 +2346,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.445103, 16.0115, 35.527 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8733, 15.1548, 25.3588 )
 
 [node name="spotlight3" parent="spotlights/lights" groups=["corridor1"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36922, 15.1548, 13.2533 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36922, 15.1548, 13.847 )
+
+[node name="spotlight13" parent="spotlights/lights" groups=["corridor1"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36922, 15.1548, -5.08026 )
 
 [node name="spotlight7" parent="spotlights/lights" groups=["bedRoom2"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8292, 15.1548, -6.349 )
@@ -2618,7 +2621,7 @@ stream = ExtResource( 16 )
 [node name="Tween" type="Tween" parent="Audio/deathMusic"]
 
 [node name="fearNoise" type="AudioStreamPlayer" parent="Audio"]
-volume_db = -2.0
+volume_db = -3.0
 script = ExtResource( 28 )
 samples = [ ExtResource( 26 ) ]
 random_volume_range = 0
@@ -2638,6 +2641,7 @@ random_pitch_range = 0.146
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8404, 12.5784, 3.0399 )
 stream = ExtResource( 42 )
 unit_db = 10.0
+unit_size = 2.0
 autoplay = true
 
 [node name="Bunnies" type="Spatial" parent="."]

@@ -173,14 +173,15 @@ func _on_viewCone_area_exited(area):
 
 func _on_AreaPlayer_area_entered(area):
 	currentLocation = area.name
-	#print("PLAYER IS INSIDE " + area.name)
-	if area.is_in_group("spotlight"):
-		inSpotlight = true
+	print("PLAYER IS INSIDE " + currentLocation)
+	#if area.is_in_group("spotlight"):
+		#inSpotlight = true
 
 
 func _on_AreaPlayer_area_exited(area):
-	if area.is_in_group("spotlight"):
-		inSpotlight = false
+	#if area.is_in_group("spotlight"):
+		#inSpotlight = false
+		pass
 
 func setIsUnderFurniture(value):
 	isUnderFurniture = value

@@ -31,5 +31,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81026, -1.03767 )
 shape = SubResource( 1 )
 
 [node name="Area" parent="." index="3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83902, -1.11236 )
 
 [connection signal="body_entered" from="Area" to="table" method="_on_Area_body_entered"]

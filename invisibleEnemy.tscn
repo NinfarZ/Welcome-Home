@@ -3,13 +3,13 @@
 [ext_resource path="res://invisibleEnemy.gd" type="Script" id=1]
 [ext_resource path="res://monsterSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=3]
+[ext_resource path="res://audio/monsterSlide3.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/monsterClose2.mp3" type="AudioStream" id=5]
 [ext_resource path="res://audio/monsterClose3.wav" type="AudioStream" id=6]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=7]
-[ext_resource path="res://audio/monsterstep1.wav" type="AudioStream" id=8]
-[ext_resource path="res://audio/monsterstep4.wav" type="AudioStream" id=9]
-[ext_resource path="res://audio/monsterstep2.wav" type="AudioStream" id=10]
-[ext_resource path="res://audio/monsterstep3.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/monsterSlide4.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/monsterSlide2.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/monsterSlide1.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/runningTowardsYou.wav" type="AudioStream" id=12]
 [ext_resource path="res://audio/monsterBreath.wav" type="AudioStream" id=13]
 [ext_resource path="res://3DModels/Mannequin/Material.material" type="Material" id=14]
@@ -110,7 +110,6 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-visible = false
 mesh = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -133,13 +132,14 @@ random_volume_range = 0
 random_pitch_range = 0.385
 
 [node name="TimerAudio" type="Timer" parent="RandomAudioStreamPlayer"]
-wait_time = 15.0
+wait_time = 30.0
 one_shot = true
 
 [node name="steps3D" type="AudioStreamPlayer3D" parent="."]
-unit_db = 15.0
+unit_db = 2.0
+unit_size = 3.0
 script = ExtResource( 7 )
-samples = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ) ]
+samples = [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 8 ) ]
 random_strategy = 2
 random_volume_range = 2.0
 random_pitch_range = 1.0

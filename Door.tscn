@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Door.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://textures/lock.png" type="Texture" id=4]
 [ext_resource path="res://audio/monsterLockedDoorKnock.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/doorLocked.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/monsterDoorScratch.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/monsterDoorKnockHeavy.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/monsterDoorKnock.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/monsterDoorKnockFast.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/doorClosed.wav" type="AudioStream" id=11]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 3, 6, 0.2 )
@@ -255,6 +260,8 @@ shape = SubResource( 2 )
 transform = Transform( 1.03741, 0, 0, 0, 1, 0, 0, 0, 1, -0.0317788, 0, 0 )
 collision_layer = 0
 collision_mask = 32
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="monsterSensor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47526, 2.64569, 0 )
@@ -262,7 +269,7 @@ shape = SubResource( 3 )
 
 [node name="openCloseSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58512, 2.98388, 0 )
-unit_db = 2.0
+unit_db = 1.0
 script = ExtResource( 2 )
 samples = [ ExtResource( 3 ) ]
 random_strategy = 2
@@ -303,6 +310,34 @@ script = ExtResource( 2 )
 samples = [ ExtResource( 6 ) ]
 random_volume_range = 0
 random_pitch_range = 0.139
+
+[node name="slowKnock" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48005, 3.33012, 0 )
+unit_db = 1.0
+unit_size = 3.0
+script = ExtResource( 2 )
+samples = [ ExtResource( 7 ), ExtResource( 9 ) ]
+random_strategy = 2
+random_volume_range = 0
+random_pitch_range = 0.153
+
+[node name="fastKnock" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45407, 3.23477, 0 )
+unit_db = 1.0
+unit_size = 3.0
+script = ExtResource( 2 )
+samples = [ ExtResource( 10 ), ExtResource( 8 ) ]
+random_strategy = 2
+random_volume_range = 0
+random_pitch_range = 0.153
+
+[node name="closeDoor" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70081, 3.23346, 0 )
+unit_db = 1.0
+script = ExtResource( 2 )
+samples = [ ExtResource( 11 ) ]
+random_volume_range = 0
+random_pitch_range = 0.122
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="body_entered" from="monsterSensor" to="." method="_on_monsterSensor_body_entered"]

@@ -48,7 +48,7 @@ light_color = Color( 0.866667, 0.803922, 0.6, 1 )
 light_energy = 0.505
 shadow_enabled = true
 omni_range = 8.3067
-omni_attenuation = 2.14355
+omni_attenuation = 1.93187
 
 [node name="Area" type="Area" parent="." groups=["spotlight"]]
 collision_layer = 1024

@@ -21,6 +21,7 @@ func _physics_process(delta):
 #get key
 func interact():
 	get_tree().call_group("interact", "addKey")
+	$getKey.play()
 	state = INACTIVE
 	emit_signal("gotKey", true)
 

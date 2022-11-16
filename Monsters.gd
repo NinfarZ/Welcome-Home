@@ -56,8 +56,11 @@ func _physics_process(delta):
 			pass
 			
 		SEARCHING:
-			monsterActive = false
-			invisibleMonster.setBodyVisible(false)
+			if not get_parent().get_node("TimerMonsterCooldown").is_stopped():
+				monsterActive = false
+				despawnMonster(currentMonster)
+				invisibleMonster.setBodyVisible(false)
+				get_parent().get_node("TimerMonsterCooldown").stop()
 			
 			#print("monster is searching")
 			#for monster in get_children():
@@ -142,6 +145,9 @@ func _physics_process(delta):
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
 			get_tree().call_group("flashlight", "flicker")
 			
+			get_tree().call_group("sanityBar", "isPlayerDead")
+			
+			
 			
 			state = CHANGING
 		ROOMCHANGE:
@@ -162,16 +168,13 @@ func _physics_process(delta):
 				get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
 				#print(get_parent().get_node("TimerMonsterCooldown").wait_time)
 				get_parent().get_node("TimerMonsterCooldown").start()
-				if phase == PHASE1:
-					rngCreepyBehavior = 0
-				else:
-					rngCreepyBehavior = RNGTools.pick([1,0])
+				rngCreepyBehavior = RNGTools.pick([1,0])
 			#monster creeps around. Not dangerous but creepy
 			elif rngCreepyBehavior == 1:
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
 					for monster in get_children():
-						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 15:
+						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 8:
 							add_monster_to_list(monster)
 						else:
 							remove_monster_from_list(monster)
@@ -306,10 +309,13 @@ func _on_monsterSpawner_area_exited(area):
 
 
 func _on_TimerMonsterCooldown_timeout():
-	if monsterActive:
-		despawnMonster(currentMonster)
-		monsterActive = false
-	state = SEARCHING
+	despawnMonster(currentMonster)
+	invisibleMonster.setBodyVisible(false)
+	monsterActive = false
+	if phase == PHASE1:
+		state = COOLDOWN
+	else:
+		state = SEARCHING
 
 func setStateIdle():
 	state = IDLE

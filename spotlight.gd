@@ -41,8 +41,9 @@ func _on_Area_body_entered(body):
 		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", false)
 		
 	if body.is_in_group("invisibleEnemy"):
-		if self.is_in_group(body.get_current_location()):
-			isEnemyInside = true
+		if body.get_current_location() != null:
+			if self.is_in_group(body.get_current_location()):
+				isEnemyInside = true
 	
 		
 
