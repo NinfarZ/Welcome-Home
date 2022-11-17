@@ -56,12 +56,6 @@ func _physics_process(delta):
 			pass
 			
 		SEARCHING:
-			if not get_parent().get_node("TimerMonsterCooldown").is_stopped():
-				monsterActive = false
-				despawnMonster(currentMonster)
-				invisibleMonster.setBodyVisible(false)
-				get_parent().get_node("TimerMonsterCooldown").stop()
-			
 			#print("monster is searching")
 			#for monster in get_children():
 				#for raycast in monster.get_node("Cube001").get_children():
@@ -174,7 +168,7 @@ func _physics_process(delta):
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
 					for monster in get_children():
-						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 8:
+						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 10:
 							add_monster_to_list(monster)
 						else:
 							remove_monster_from_list(monster)
@@ -184,7 +178,7 @@ func _physics_process(delta):
 						
 						spawnMonster(currentMonster)
 						monsterActive = true
-				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 15:
+				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 10:
 					#despawnMonster(currentMonster)
 					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
@@ -201,7 +195,7 @@ func _physics_process(delta):
 					#invisibleMonster.setBodyVisible(false)
 					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
-						get_parent().get_node("monsterCreepTimer").wait_time = 0.5
+						get_parent().get_node("monsterCreepTimer").wait_time = 0.4
 						get_parent().get_node("monsterCreepTimer").start()
 					
 				#invisibleMonster.monsterIsVisibleForMoment()
@@ -212,6 +206,7 @@ func _physics_process(delta):
 				
 			
 		HUNTING:
+			invisibleMonster.setStateChase()
 			despawnMonster(currentMonster)
 			monsterActive = false
 			get_parent().get_node("TimerMonsterCooldown").stop()
@@ -319,8 +314,15 @@ func _on_TimerMonsterCooldown_timeout():
 
 func setStateIdle():
 	state = IDLE
+	
 func setStateSearching():
+	if not get_parent().get_node("TimerMonsterCooldown").is_stopped():
+		monsterActive = false
+		despawnMonster(currentMonster)
+		invisibleMonster.setBodyVisible(false)
+		get_parent().get_node("TimerMonsterCooldown").stop()
 	state = SEARCHING
+	
 func setStateCooldown():
 	state = COOLDOWN
 func setStateHunting():

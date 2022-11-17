@@ -303,7 +303,7 @@ func _on_running3D_finished():
 
 
 func _on_locationSensor_area_entered(area):
-	if not area.is_in_group("player"):
+	if not area.is_in_group("spotlight"):
 		monstersToSpawn = "monster" + area.name
 		print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
 		currentLocation = area.name

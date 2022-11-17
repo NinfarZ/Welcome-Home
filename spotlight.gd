@@ -19,16 +19,14 @@ func _physics_process(delta):
 	match state:
 		ON:
 			enableLight()
-			if isEnemyInside:
-				emit_signal("changeLight")
-				self.setState(1)
-			elif isPlayerInside:
+				#self.setState(1)
+			if isPlayerInside:
 				get_tree().call_group("sanityBar", "recoverSanity", 0.5)
 			#state = CHANGELIGHT
 		OFF:
 			disableLight()
 			#timerOver = false
-			isPlayerInside = false
+			#isPlayerInside = false
 		CHANGELIGHT:
 			get_tree().call_group("gameMaster", "shutDownLight", self, timerOver)
 			#state = OFF
@@ -72,11 +70,17 @@ func setState(newState):
 func getState():
 	return state
 
+func getIsPlayerInside():
+	return isPlayerInside
+
+func getIsEnemyInside():
+	return isEnemyInside
+
 
 func _on_changeTimer_timeout():
 	print("light timer time out")
 	emit_signal("changeLight")
-	self.setState(1)
+	#self.setState(1)
 	#timerOver = true
 	
 	#state = CHANGELIGHT

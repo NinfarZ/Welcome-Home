@@ -27,6 +27,9 @@ var flashlightOn = true
 var drainSanityValue = 0.013
 var state = DEFAULT
 var isUnderFurniture = false
+var playerCanRun = true
+var stamina = 100
+var isRunning = false
 
 func _ready():
 	yield(owner, "ready")
@@ -56,11 +59,15 @@ func _physics_process(delta):
 			if not $Audio/walk.playing:
 				$Audio/running.stop()
 				$Audio/walk.play()
-		elif moveSpeed == 5.2:
+		elif moveSpeed == sprintSpeed:
 			if not $Audio/running.playing:
 				$Audio/walk.stop()
 				$Audio/running.play()
+			isRunning = false
+			
+				
 	else:
+		isRunning = false
 		$Audio/walk.stop()
 		$Audio/running.stop()
 		
@@ -84,10 +91,32 @@ func _physics_process(delta):
 			crouching = false
 	
 	#running
+	
 	if Input.is_action_pressed("run") and not crouching:
-		moveSpeed = sprintSpeed
+		if playerCanRun:
+			isRunning = true
+			moveSpeed = sprintSpeed
+				
+			stamina -= 0.5
+			stamina = clamp(stamina, 0, 100)
+			if stamina == 0:
+				playerCanRun = false
+				isRunning = false
+				moveSpeed = 3.2
 	elif Input.is_action_just_released("run") and not crouching:
 		moveSpeed = 3.2
+		
+	elif not playerCanRun:
+		if stamina == 100:
+			playerCanRun = true
+	
+	if not isRunning or not playerCanRun:
+		stamina += 0.3
+		stamina = clamp(stamina, 0, 100)
+	
+	print(stamina)
+	
+	
 	
 #	#flashlightToggle
 #	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
@@ -192,7 +221,7 @@ func getDoorOpeningForce():
 		doorForce = 2
 	elif moveSpeed == 3.2:
 		doorForce = 1
-	elif moveSpeed == 5.2:
+	elif moveSpeed == sprintSpeed:
 		doorForce = 0.5
 	elif moveSpeed == 1.5:
 		doorForce = 1.5

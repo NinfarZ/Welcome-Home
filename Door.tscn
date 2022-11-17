@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Door.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://audio/monsterDoorKnock.wav" type="AudioStream" id=9]
 [ext_resource path="res://audio/monsterDoorKnockFast.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/doorClosed.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/doorUnlock.wav" type="AudioStream" id=12]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=13]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 3, 6, 0.2 )
@@ -239,6 +241,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 4, 5 ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("unlock")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="Door" type="StaticBody" groups=["door"]]
 collision_layer = 128
@@ -338,6 +354,14 @@ script = ExtResource( 2 )
 samples = [ ExtResource( 11 ) ]
 random_volume_range = 0
 random_pitch_range = 0.122
+
+[node name="unlock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -3.0
+script = ExtResource( 13 )
+samples = [ ExtResource( 12 ) ]
+random_volume_range = 0
+random_pitch_range = 0
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="body_entered" from="monsterSensor" to="." method="_on_monsterSensor_body_entered"]

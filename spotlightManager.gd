@@ -1,10 +1,25 @@
 extends Spatial
 
 var currentOnLight = null
+var availableLightsList = []
+var invisibleEnemy = null
+var player = null
 
 func _ready():
 	for light in $lights.get_children():
 		light.connect("changeLight", self, "startTimer")
+	
+	yield(owner, "ready")
+	invisibleEnemy = owner.invisibleEnemy
+	player = owner.player
+
+func _physics_process(delta):
+	if currentOnLight != null and invisibleEnemy.get_current_location() != null:
+		if currentOnLight.is_in_group(invisibleEnemy.get_current_location()):
+			turnOffLight(currentOnLight.name)
+			startTimer()
+		elif currentOnLight.getIsPlayerInside():
+			get_tree().call_group("sanityBar", "recoverSanity", 0.5)
 
 func turnAllLightsOff():
 	for light in $lights.get_children():
@@ -21,8 +36,14 @@ func turnOnLight(lightName):
 	currentOnLight = $lights.get_node(lightName)
 	$lights.get_node(lightName).setState(0)
 
+func turnOffLight(lightName):
+	$lights.get_node(lightName).setState(1)
+	currentOnLight = null
+
 func startTimer():
 	if $lightCoolDown.is_stopped():
+		if currentOnLight != null:
+			turnOffLight(currentOnLight.name)
 		$lightCoolDown.wait_time = RNGTools.randi_range(5, 15)
 		$lightCoolDown.start()
 
@@ -34,7 +55,23 @@ func pickLight():
 	var lightList = $lights.get_children()
 	lightList.erase(currentOnLight)
 	var newLight = RNGTools.pick(lightList)
+	while not canLightSpawn(newLight):
+		lightList.erase(newLight)
+		newLight = RNGTools.pick(lightList)
 	turnOnLight(newLight.name)
+
+func canLightSpawn(light):
+	if not light.is_in_group(player.get_current_location()) and not light.is_in_group(invisibleEnemy.get_current_location()):
+		return true
+	return false
+
+#Not every area of the house can be reached sometimes. This removes the unreachable lights by changing the light list
+func eraseOutOfReachLights(lightArray):
+	if lightArray == []:
+		availableLightsList = $lights.get_children()
+	elif lightArray != []:
+		for light in lightArray:
+			availableLightsList.erase(light)
 
 #func shutDownLight(currentLight, isTimeOver):
 #	if isTimeOver:
@@ -51,6 +88,7 @@ func pickLight():
 
 
 func _on_lightCoolDown_timeout():
-	currentOnLight.setState(1)
+	#eraseOutOfReachLights([])
+	#currentOnLight.setState(1)
 	pickLight()
 

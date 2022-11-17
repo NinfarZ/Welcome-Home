@@ -52,12 +52,12 @@ func _physics_process(delta):
 	match state:
 		HIDING:
 			visible = false
-			$headArea.monitorable = false
+			$headArea.monitoring = false
 			canMakeSound = true
 			#timesSoundPlayed = 1
 		ACTIVE:
 			visible = true
-			$headArea.monitorable = true
+			$headArea.monitoring = true
 			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
 			#makeCreepySound()
 			

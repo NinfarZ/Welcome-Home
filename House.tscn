@@ -1,4 +1,4 @@
-[gd_scene load_steps=284 format=2]
+[gd_scene load_steps=285 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://table2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sofa.tscn" type="PackedScene" id=14]
 [ext_resource path="res://playerSanity.tscn" type="PackedScene" id=15]
-[ext_resource path="res://audio/monsterStare.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/deathJumpscare.wav" type="AudioStream" id=16]
 [ext_resource path="res://wardrobe.tscn" type="PackedScene" id=17]
 [ext_resource path="res://drawer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Furniture.gd" type="Script" id=19]
@@ -51,6 +51,7 @@
 [ext_resource path="res://textures/houseDarkTexture.png" type="Texture" id=49]
 [ext_resource path="res://textures/redBlock.png" type="Texture" id=50]
 [ext_resource path="res://textures/ceiling1.png" type="Texture" id=51]
+[ext_resource path="res://BunnyManager.gd" type="Script" id=52]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -1602,6 +1603,9 @@ transform = Transform( -0.16003, 0.000849522, -0.987112, 0.955087, 0.252786, -0.
 [node name="yellowgirl61" parent="Monsters" groups=["monsterbalcony", "monsterbalcony2", "monstermyBedroom", "myBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.993496, -0.0518996, -0.101352, -0.0333191, 0.983633, -0.177078, 0.108884, -0.172549, -0.978965, 14.8054, 12.1031, 19.7762 )
 
+[node name="yellowgirl88" parent="Monsters" groups=["monsterbalcony", "monsterbalcony2", "monstermyBedroom", "myBedroom"] instance=ExtResource( 4 )]
+transform = Transform( 0.979424, 0.201813, 0, -0.201813, 0.979424, 0, 0, 0, 1, 6.85914, 14.1239, 7.70244 )
+
 [node name="yellowgirl67" parent="Monsters" groups=["monsterbalcony", "monsterbalcony2", "monstermyBedroom", "myBedroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.000178551, 0.0289397, -0.999582, -0.0534712, 0.998151, 0.0289078, 0.998569, 0.0534539, 0.00136922, 21.4295, 12.9303, 17.5835 )
 
@@ -2348,7 +2352,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8733, 15.1548, 25.3588 )
 [node name="spotlight3" parent="spotlights/lights" groups=["corridor1"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36922, 15.1548, 13.847 )
 
-[node name="spotlight13" parent="spotlights/lights" groups=["corridor1"] instance=ExtResource( 21 )]
+[node name="spotlight13" parent="spotlights/lights" groups=["corridor2"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36922, 15.1548, -5.08026 )
 
 [node name="spotlight7" parent="spotlights/lights" groups=["bedRoom2"] instance=ExtResource( 21 )]
@@ -2378,7 +2382,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38872, 15.5502, -54.3336 )
 [node name="Candy" type="Spatial" parent="."]
 script = ExtResource( 35 )
 
-[node name="myBedroom" type="Spatial" parent="Candy"]
+[node name="myBedroom" type="Spatial" parent="Candy" groups=["balcony", "balcony2", "myBedroom"]]
 
 [node name="candy8" parent="Candy/myBedroom" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14.3757, 14.7275, 17.9374 )
@@ -2404,7 +2408,7 @@ transform = Transform( 0.153534, 0, 0.128169, 0, 0.2, 0, -0.128169, 0, 0.153534,
 [node name="candy29" parent="Candy/myBedroom" instance=ExtResource( 22 )]
 transform = Transform( -0.0131564, -0.199184, 0.0123596, -0.199565, 0.0131816, 0, -0.000814595, -0.0123327, -0.199618, 26.9317, 18.329, 4.34282 )
 
-[node name="bedRoom2" type="Spatial" parent="Candy"]
+[node name="bedRoom2" type="Spatial" parent="Candy" groups=["balcony", "balcony2", "bedRoom2"]]
 
 [node name="candy19" parent="Candy/bedRoom2" instance=ExtResource( 22 )]
 transform = Transform( 0.153534, 0, 0.128169, 0, 0.2, 0, -0.128169, 0, 0.153534, 17.8274, 18.2246, -1.0185 )
@@ -2436,7 +2440,7 @@ transform = Transform( 0.153534, 0, 0.128169, 0.00350043, 0.199925, -0.00419317,
 [node name="candy26" parent="Candy/bedRoom2" instance=ExtResource( 22 )]
 transform = Transform( 0.153534, 0, 0.128169, 0.00350043, 0.199925, -0.00419317, -0.128121, 0.00546221, 0.153477, 9.37382, 14.5192, -1.73926 )
 
-[node name="bedRoom3" type="Spatial" parent="Candy"]
+[node name="bedRoom3" type="Spatial" parent="Candy" groups=["bedRoom3"]]
 
 [node name="candy10" parent="Candy/bedRoom3" instance=ExtResource( 22 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.39233, 12.0869, 23.1108 )
@@ -2462,7 +2466,7 @@ transform = Transform( 0.128252, 0, 0.153464, 0, 0.2, 0, -0.153464, 0, 0.128252,
 [node name="candy14" parent="Candy/bedRoom3" instance=ExtResource( 22 )]
 transform = Transform( 0.162502, 0, 0.116589, -0.0703032, 0.159548, 0.0979887, -0.093008, -0.1206, 0.129635, 24.7267, 15.3087, 35.8022 )
 
-[node name="corridor" type="Spatial" parent="Candy"]
+[node name="corridor" type="Spatial" parent="Candy" groups=["corridor1", "corridor2"]]
 
 [node name="candy22" parent="Candy/corridor" instance=ExtResource( 22 )]
 transform = Transform( 0.166459, 0, 0.110867, 0, 0.2, 0, -0.110867, 0, 0.166459, 0.657028, 15.6844, 10.6332 )
@@ -2494,7 +2498,7 @@ transform = Transform( -0.0279936, 0, -0.198031, 0, 0.2, 0, 0.198031, 0, -0.0279
 [node name="candy30" parent="Candy/corridor" instance=ExtResource( 22 )]
 transform = Transform( -0.199977, 0, -0.00300184, 0, 0.2, 0, 0.00300184, 0, -0.199977, -2.67565, 12.0517, -11.5386 )
 
-[node name="bathroom1" type="Spatial" parent="Candy"]
+[node name="bathroom1" type="Spatial" parent="Candy" groups=["bathroom1"]]
 
 [node name="candy45" parent="Candy/bathroom1" instance=ExtResource( 22 )]
 transform = Transform( -0.155621, -0.125541, -0.00464319, -0.125485, 0.15569, -0.00374404, 0.00596465, 0, -0.199911, -5.70322, 12.1416, -53.3294 )
@@ -2514,7 +2518,7 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.88627, 15.0781, -51.26
 [node name="candy50" parent="Candy/bathroom1" instance=ExtResource( 22 )]
 transform = Transform( 0.185565, 0, 0.074604, 0, 0.2, 0, -0.074604, 0, 0.185565, 3.53671, 13.6445, -56.953 )
 
-[node name="bathroom2" type="Spatial" parent="Candy"]
+[node name="bathroom2" type="Spatial" parent="Candy" groups=["bathroom2"]]
 
 [node name="candy17" parent="Candy/bathroom2" instance=ExtResource( 22 )]
 transform = Transform( 0.166459, 0, 0.110867, 0, 0.2, 0, -0.110867, 0, 0.166459, -2.37163, 15.094, 39.0657 )
@@ -2540,7 +2544,7 @@ transform = Transform( 0.166459, 0, 0.110867, 0, 0.2, 0, -0.110867, 0, 0.166459,
 [node name="candy22" parent="Candy/bathroom2" instance=ExtResource( 22 )]
 transform = Transform( 0.084086, 0.14366, 0.110867, -0.172607, 0.101029, 0, -0.056004, -0.0956819, 0.166459, 3.45286, 12.1775, 33.3661 )
 
-[node name="livingroom" type="Spatial" parent="Candy"]
+[node name="livingroom" type="Spatial" parent="Candy" groups=["entrance", "livingroom", "livingroom2"]]
 
 [node name="candy32" parent="Candy/livingroom" instance=ExtResource( 22 )]
 transform = Transform( -0.188892, 0, -0.0657239, 0, 0.2, 0, 0.0657239, 0, -0.188892, 3.59889, 13.3325, -16.9805 )
@@ -2581,7 +2585,7 @@ transform = Transform( 0.184086, 0, 0.0781816, 0, 0.2, 0, -0.0781816, 0, 0.18408
 [node name="candy36" parent="Candy/livingroom" instance=ExtResource( 22 )]
 transform = Transform( 0.066961, 0.117331, 0.147478, -0.0485073, 0.161967, -0.106835, -0.182108, 0, 0.0826845, 8.37731, 13.4662, -19.6004 )
 
-[node name="kitchen" type="Spatial" parent="Candy"]
+[node name="kitchen" type="Spatial" parent="Candy" groups=["kitchen"]]
 
 [node name="candy51" parent="Candy/kitchen" instance=ExtResource( 22 )]
 transform = Transform( 0.185565, 0, 0.074604, 0, 0.2, 0, -0.074604, 0, 0.185565, 18.4072, 14.4081, -47.5853 )
@@ -2645,6 +2649,7 @@ unit_size = 2.0
 autoplay = true
 
 [node name="Bunnies" type="Spatial" parent="."]
+script = ExtResource( 52 )
 
 [node name="Bunny" parent="Bunnies" instance=ExtResource( 11 )]
 transform = Transform( -0.690872, 0, -0.112677, 0, 0.7, 0, 0.112677, 0, -0.690872, 25.2076, 11.6235, 12.0512 )
