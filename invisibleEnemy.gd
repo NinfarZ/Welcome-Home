@@ -24,6 +24,7 @@ var phase = PHASE1
 signal killPlayer
 signal playerViewConeDetected
 
+onready var positions = get_parent().get_node("positions")
 var path = []
 var current_path_idx = 0
 var target = null
@@ -370,7 +371,8 @@ func _on_bodyVisibility_area_entered(area):
 		setBodyVisible(false)
 		#emit_signal("playerViewConeDetected", false)
 	
-		
+func moveToPosition(position):
+	self.transform.origin = position.transform.origin
 
 
 func _on_bodyVisibility_body_entered(body):

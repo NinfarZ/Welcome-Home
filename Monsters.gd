@@ -137,7 +137,10 @@ func _physics_process(delta):
 		ANGER:
 			#incrementDifficulty()
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
-			get_tree().call_group("flashlight", "flicker")
+			if player.getFlashlightPower():
+				get_tree().call_group("flashlight", "flicker")
+			else:
+				get_tree().call_group("flashlight", "flicker2")
 			
 			get_tree().call_group("sanityBar", "isPlayerDead")
 			

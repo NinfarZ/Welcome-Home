@@ -9,6 +9,10 @@ func flicker():
 	if not $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("flicker")
 
+func flicker2():
+	if not $AnimationPlayer.is_playing():
+		$AnimationPlayer.play("flicker2")
+
 func stopFlicker():
 	$AnimationPlayer.stop()
 

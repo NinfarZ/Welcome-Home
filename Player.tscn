@@ -185,6 +185,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "flashlightOFF"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Neck/viewCone:scale")
 tracks/0/interp = 1
@@ -224,6 +225,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "flashlightON"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Neck/viewCone:scale")
 tracks/0/interp = 1
@@ -329,13 +331,14 @@ anims/jumpscareDeath = SubResource( 18 )
 transform = Transform( -0.00359446, -0.0142276, 0.499785, 0.0368852, 0.498428, 0.0144542, -0.498625, 0.0369732, -0.00253357, 0, -0.700028, -0.716641 )
 
 [node name="viewCone" type="Area" parent="Neck" groups=["playerViewCone"]]
-transform = Transform( 0.1702, 0, 0, 0, 0.187399, -0.00671034, 0, 0.00911441, 0.13797, -0.00204064, -0.24652, -0.33842 )
+transform = Transform( 0.1702, 0, 0, 0, 0.187599, -0.00209865, 0, 0.00285052, 0.138117, -0.00204064, -0.24652, -0.33842 )
 collision_layer = 16384
 collision_mask = 4
 
 [node name="MeshInstance" type="MeshInstance" parent="Neck/viewCone"]
 transform = Transform( 7.0694, 0, 0, 0, -3.27826e-07, 6.73505, 0, -5.22817, -3.72529e-07, 0, 1.33106, 12.8063 )
 visible = false
+cast_shadow = 0
 mesh = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Neck/viewCone"]

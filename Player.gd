@@ -38,6 +38,7 @@ func _ready():
 	#makes mouse cursor invisible
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	invisibleEnemy.connect("killPlayer", self, "die")
+	toggleFlashlight(false)
 	
 	#CONNECT INVISIBLE ENEMY KILL SIGNAL
 
@@ -114,7 +115,7 @@ func _physics_process(delta):
 		stamina += 0.3
 		stamina = clamp(stamina, 0, 100)
 	
-	print(stamina)
+	
 	
 	
 	
@@ -160,11 +161,14 @@ func toggleFlashlight(power):
 	if not power:
 		$Neck/flashlight/SpotLight.visible = false
 		flashlightOn = false
-		#$AnimationPlayer.play("flashlightOFF")
+		$AnimationPlayer.play("flashlightOFF")
 	elif power:
 		$Neck/flashlight/SpotLight.visible = true
 		flashlightOn = true
-		#$AnimationPlayer.play("flashlightON")
+		$AnimationPlayer.play("flashlightON")
+
+func getFlashlightPower():
+	return flashlightOn
 	
 func die():
 	$Neck/flashlight/SpotLight.visible = false
