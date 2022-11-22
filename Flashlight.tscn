@@ -65,6 +65,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("SpotLight:spot_attenuation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.36358 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
@@ -106,7 +118,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 16.0, 35.182, 16.0 ]
+"values": [ 16.0, 24.188, 16.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("OmniLight:light_energy")
@@ -121,7 +133,7 @@ tracks/1/keys = {
 "values": [ 0.2, 0.0, 0.1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("SpotLight:visible")
+tracks/2/path = NodePath("SpotLight:spot_attenuation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -129,8 +141,8 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
+"update": 0,
+"values": [ 3.36358, 7.99998, 3.26 ]
 }
 
 [sub_resource type="Animation" id=4]

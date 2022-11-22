@@ -11,6 +11,7 @@ onready var doorManager = $Doors
 onready var keyManager = $keyManager
 onready var spotlightManager = $spotlights
 onready var furnitureManager = $Furniture
+onready var bunnyManager = $BunnyManager
 
 var isWardrobeDown = false
 var state = START
@@ -45,23 +46,28 @@ enum {
 	PHASE5
 }
 
+func _ready():
+	spotlightManager.turnAllLightsOff()
+	spotlightManager.turnOnLight("spotlight8")
+	spotlightManager.turnOnLight("spotlight9")
+	spotlightManager.turnOnLight("spotlight3")
+	spotlightManager.turnOnLight("spotlight13")
+	spotlightManager.turnOnLight("spotlight")
+	spotlightManager.turnOnLight("spotlight12")
+	spotlightManager.turnOnLight("spotlight11")
+	spotlightManager.turnOnLight("spotlight7")
+	doorManager.lockDoor($Doors/Door)
+	keyManager.placeKey(keyManager.get_node("Key7"))
+	
+	
+	basketManager.moveBasketToPosition(basketManager.get_node("locations/PositionBedroom2"))
+
 func _physics_process(delta):
 	match state:
 		INTRO:
 			pass
 		START:
-			spotlightManager.turnAllLightsOff()
-			spotlightManager.turnOnLight("spotlight8")
-			spotlightManager.turnOnLight("spotlight9")
-			spotlightManager.turnOnLight("spotlight3")
-			spotlightManager.turnOnLight("spotlight13")
-			spotlightManager.turnOnLight("spotlight")
-			spotlightManager.turnOnLight("spotlight12")
-			spotlightManager.turnOnLight("spotlight11")
-			doorManager.lockDoor($Doors/Door)
-			keyManager.placeKey(keyManager.get_node("Key7"))
 			
-			basketManager.moveBasketToPosition(basketManager.get_node("locations/PositionBedroom2"))
 			#monsters.spawnMonster($Monsters/yellowgirl25)
 			
 			
@@ -78,6 +84,8 @@ func _physics_process(delta):
 					#MONSTERS CAN NOT SPAWN
 					
 					difficultySet(1)
+					spotlightManager.get_node("lights/spotlight7/AnimationPlayer").play("superFlicker")
+						
 					if not CandyRandomized:
 					
 						candyManager.randomizeCandy(2, candyManager.get_node("myBedroom"))
@@ -178,10 +186,10 @@ func _physics_process(delta):
 							yield(get_tree().create_timer(5),"timeout")
 							if not doorManager.get_node("Door2").isOpen() and player.get_current_location() == "myBedroom":
 								doorManager.get_node("Door2").interact(2)
-						elif keyManager.hasKey and monsters.get_node("yellowgirl88").state == 0:
+						elif keyManager.hasKey and not monsters.get_node("yellowgirl88").getIsActive():
 							monsters.spawnMonster(monsters.get_node("yellowgirl88"))
 							
-						elif monsters.get_node("yellowgirl88").state == 1:
+						elif monsters.get_node("yellowgirl88").getIsActive():
 							if monsters.get_node("yellowgirl88").canSeeMonsterFace and monsters.get_node("yellowgirl88").canSeeMonsterFace or monsters.get_node("yellowgirl88").getDistanceFromPlayer() < 8:
 								monsters.despawnMonster(monsters.get_node("yellowgirl88"))
 								monsterTriggered = true
@@ -210,7 +218,7 @@ func _physics_process(delta):
 						monsters.setStateSearching()
 						monsters.setMonsterManagerPhase(1)
 						CandyRandomized = true
-						#currentBunny = pickBunny()
+						bunnyManager.startTimer()
 						
 						
 						candyBasket.displayText(13)
@@ -243,10 +251,11 @@ func _physics_process(delta):
 						basketManager.moveBasketToPosition(basketManager.get_node("locations/PositionBathroom2"))
 						
 						CandyRandomized = true
-						#currentBunny = pickBunny()
+						
 						
 						
 						candyBasket.displayText(15)
+						
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
@@ -302,18 +311,21 @@ func _physics_process(delta):
 		
 		#PLAYER NEEDS TO RUN FOR THEIR LIVES
 		PUNISHMENT:
-			spotlightManager.turnAllLightsOff()
-			$lightCoolDown.stop()
-			#get_tree().call_group("player", "setState", 1)
-			get_tree().call_group("player", "toggleFlashlight", false)
-			$CanvasLayer/Sanity.visible = false
+			get_tree().call_group("flashlight", "flicker")
 			if not $Audio/fearNoise.playing:
 				$Audio/fearNoise.play()
-			#if $punishmentTimer.is_stopped():
+			if $punishmentTimer.is_stopped():
+				spotlightManager.turnAllLightsOff()
+				#spotlightManager.get_node("lightCoolDown").stop()
+				#get_tree().call_group("player", "setState", 1)
+				#get_tree().call_group("player", "toggleFlashlight", false)
+				$CanvasLayer/Sanity.visible = false
 				#$punishmentTimer.start()
 			#get_tree().call_group("invisibleEnemy", "setStateChase")
-			get_tree().call_group("monsterController", "setStateHunting")
+				get_tree().call_group("monsterController", "setStateHunting")
 			#get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 1)
+			elif spotlightManager.getCurrentLight().getIsPlayerInside():
+				punishmentEnd()
 			
 				#$CanvasLayer/Sanity.resetSanity()
 				#$CanvasLayer/Sanity.visible = true
@@ -438,7 +450,7 @@ func difficultySet(difficulty):
 	match difficulty:
 		1:
 			invisibleEnemy.setSanityDrain(0.015)
-			get_tree().call_group("monsterController", "changeDifficulty", 2, 10)
+			get_tree().call_group("monsterController", "changeDifficulty", 2, 3)
 			get_tree().call_group("monsterController", "cooldown", 10, 30)
 			get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 5)
 			
@@ -464,13 +476,13 @@ func difficultySet(difficulty):
 				#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 8)
+				get_tree().call_group("monsterController", "changeDifficulty", 2, 4)
 				get_tree().call_group("monsterController", "cooldown", 10, 25)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4.5)
 				
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 10)
+				get_tree().call_group("monsterController", "changeDifficulty", 2, 3)
 				get_tree().call_group("monsterController", "cooldown", 10, 30)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 5)
 				
@@ -489,14 +501,14 @@ func difficultySet(difficulty):
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4)
 			elif $CanvasLayer/Sanity.getSanityBarValue() >= 90:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 3.5, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 3.5, 10)
 				get_tree().call_group("monsterController", "cooldown", 2, 5)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 3)
 				
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 8)
+				get_tree().call_group("monsterController", "changeDifficulty", 2, 3)
 				get_tree().call_group("monsterController", "cooldown", 10, 15)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4.5)
 		4:
@@ -504,19 +516,19 @@ func difficultySet(difficulty):
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50 and $CanvasLayer/Sanity.getSanityBarValue() < 90:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 3, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 3, 8)
 				get_tree().call_group("monsterController", "cooldown", 3, 6)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 3.5)
 			elif $CanvasLayer/Sanity.getSanityBarValue() >= 90:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 4, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 4, 10)
 				get_tree().call_group("monsterController", "cooldown", 1, 5)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 2)
 				
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 2.5, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 2.5, 3)
 				get_tree().call_group("monsterController", "cooldown", 5, 10)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4)
 			
@@ -530,12 +542,12 @@ func difficultySet(difficulty):
 			invisibleEnemy.setSanityDrain(0.035)
 			
 			if $CanvasLayer/Sanity.getSanityBarValue() > 50 and $CanvasLayer/Sanity.getSanityBarValue() < 90:
-				get_tree().call_group("monsterController", "changeDifficulty", 3.5, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 3.5, 8)
 				get_tree().call_group("monsterController", "cooldown", 2, 4)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 2)
 			elif $CanvasLayer/Sanity.getSanityBarValue() >= 90:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 5, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 5, 10)
 				get_tree().call_group("monsterController", "cooldown", 1, 2)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 1)
 			
@@ -543,7 +555,7 @@ func difficultySet(difficulty):
 				
 			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
 				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 3, 6)
+				get_tree().call_group("monsterController", "changeDifficulty", 3, 3)
 				get_tree().call_group("monsterController", "cooldown", 3, 6)
 				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 3)
 
@@ -554,17 +566,25 @@ func _on_bunnySpawnTimer_timeout():
 	currentBunny.get_node("bunny").setState(0)
 	currentBunny.get_node("bunny").playMusicBox()
 
+func punishmentEnd():
+	state = GAME
+	#get_tree().call_group("invisibleEnemy", "setStateFollow")
+	monsters.setStateCooldown()
+	$CanvasLayer/Sanity.visible = true
+	$Audio/fearNoise.stop()
+	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
+	player.toggleFlashlight(true)
+	#spotlightManager.pickLight()
+
 
 func _on_punishmentTimer_timeout():
 	state = GAME
 	#get_tree().call_group("invisibleEnemy", "setStateFollow")
 	get_tree().call_group("monsterController", "setStateCooldown")
-	$CanvasLayer/Sanity.resetSanity()
 	$CanvasLayer/Sanity.visible = true
 	$Audio/fearNoise.stop()
 	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
-	get_tree().call_group("player", "toggleFlashlight", true)
-	get_tree().call_group("player", "setState", 0)
+	#get_tree().call_group("player", "toggleFlashlight", true)
 	spotlightManager.pickLight()
 	
 	

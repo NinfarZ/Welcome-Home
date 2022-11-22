@@ -15,7 +15,7 @@ func _ready():
 
 func _physics_process(delta):
 	if currentOnLight != null and invisibleEnemy.get_current_location() != null:
-		if currentOnLight.is_in_group(invisibleEnemy.get_current_location()):
+		if currentOnLight.is_in_group(invisibleEnemy.get_current_location()) and not invisibleEnemy.getState() == 1:
 			turnOffLight(currentOnLight.name)
 			startTimer()
 		elif currentOnLight.getIsPlayerInside():
@@ -23,21 +23,21 @@ func _physics_process(delta):
 
 func turnAllLightsOff():
 	for light in $lights.get_children():
-		light.setState(1)
+		light.disableLight()
 
 func turnAllLightsOn():
 	for light in $lights.get_children():
-		light.setState(0)
+		light.enableLight()
 
 func turnOnLight(lightName):
 #	for light in $lights.get_children():
 #		if light.name == lightName:
 #			light.setState(0)
 	currentOnLight = $lights.get_node(lightName)
-	$lights.get_node(lightName).setState(0)
+	$lights.get_node(lightName).enableLight()
 
 func turnOffLight(lightName):
-	$lights.get_node(lightName).setState(1)
+	$lights.get_node(lightName).disableLight()
 	currentOnLight = null
 
 func startTimer():
@@ -50,6 +50,9 @@ func startTimer():
 func stopTimer():
 	if not $lightCoolDown.is_stopped():
 		$lightCoolDown.stop()
+
+func getCurrentLight():
+	return currentOnLight
 
 func pickLight():
 	var lightList = $lights.get_children()

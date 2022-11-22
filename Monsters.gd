@@ -62,14 +62,7 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			for monster in get_children():
-				if monster.isCanSpawn() and monster.isMonsterPositionedToSpawn() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
-					#monster.enableArea()
-					#print("monster can spawn")
-					add_monster_to_list(monster)
-				else:
-					#monster.set_state_hiding()
-					#monster.disableArea()
-					remove_monster_from_list(monster)
+				createSpawnableMonsterList(monster, 1)
 			
 			if monstersInRange != []:
 				if RNGTools.pick([1,0]) == 1:
@@ -171,10 +164,7 @@ func _physics_process(delta):
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
 					for monster in get_children():
-						if monster.isCanSpawn() and not monster.isInView() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > 10:
-							add_monster_to_list(monster)
-						else:
-							remove_monster_from_list(monster)
+						createSpawnableMonsterList(monster, 10)
 							
 					if monstersInRange != []:
 						currentMonster = RNGTools.pick(monstersInRange)
@@ -252,7 +242,22 @@ func pickRandomMonster():
 	#state = STALKING
 	return chosenMonster
 	
-
+func createSpawnableMonsterList(monster, distance):
+	if monster.isCanSpawn():
+		monster.set_physics_process(true)
+		
+		if monster.isMonsterPositionedToSpawn() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
+		#monster.enableArea()
+		#print("monster can spawn")
+			add_monster_to_list(monster)
+			
+		else:
+			remove_monster_from_list(monster)
+	else:
+		
+#		if monster.getIsActive():
+#			despawnMonster(monster)
+		monster.set_physics_process(false)
 
 func _on_TimerMonsterSwitch_timeout():
 	#print("timer ran out!")

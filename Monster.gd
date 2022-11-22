@@ -21,6 +21,7 @@ var state = HIDING
 var inView = false
 var canSpawn = false
 var doorOpen = false
+var isActive = false
 
 #special unique monster conditions
 export var monsterNearDoor = false
@@ -46,22 +47,31 @@ func _ready():
 	yield(owner, "ready")
 	player = owner.player
 	#set_state_hiding()
+	set_physics_process(false)
+	visible = false
+	head.get_node("headArea").monitoring = false
+	
+	if backbreak:
+		$AnimationPlayer.play("backbreak")
+	else:
+		$AnimationPlayer.play("upright")
 
 func _physics_process(delta):
 	lookAtPlayer()
-	match state:
-		HIDING:
-			visible = false
-			$headArea.monitoring = false
-			canMakeSound = true
-			#timesSoundPlayed = 1
-		ACTIVE:
-			visible = true
-			$headArea.monitoring = true
-			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
-			#makeCreepySound()
+#	match state:
+#		HIDING:
+#			visible = false
+#			$headArea.monitoring = false
+#			canMakeSound = true
+#			#timesSoundPlayed = 1
+#
+#		ACTIVE:
+#			visible = true
+#			$headArea.monitoring = true
+#			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
+#			#makeCreepySound()
 			
-			
+	if isActive:
 			#disappear if colliding with door
 			if collidingWithDoor:
 				#state = HIDING
@@ -142,7 +152,10 @@ func get_monster_position():
 	return global_transform.origin
 
 func set_state_active():
-	state = ACTIVE
+	#state = ACTIVE
+	isActive = true
+	visible = true
+	head.get_node("headArea").monitoring = true
 	disableArea()
 			
 		#animate monster face
@@ -159,10 +172,17 @@ func shadeFace(value):
 	$Head/head/mouths/mouths.shaded = value
 
 func set_state_hiding():
-	state = HIDING
+	#state = HIDING
+	isActive = false
+	visible = false
+	head.get_node("headArea").monitoring = false
+	canMakeSound = true
 	enableArea()
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = false
+
+func getIsActive():
+	return isActive
 
 func canSeePlayer():
 	for raycast in $Head/head/raycasts.get_children():
@@ -202,6 +222,7 @@ func _on_MonsterArea_area_entered(area):
 		canSpawn = false
 	elif area.get_parent().is_in_group("invisibleEnemy") and not inSpotlight:
 		canSpawn = true
+		#set_physics_process(true)
 	
 
 
@@ -210,7 +231,9 @@ func _on_MonsterArea_area_exited(area):
 		inSpotlight = false
 	elif area.get_parent().is_in_group("invisibleEnemy"):
 		canSpawn = false
-	
+#		if state == ACTIVE:
+#			state == HIDING
+#		set_physics_process(false)
 
 func isMonsterInPlayerLocation():
 	if is_in_group(player.get_current_location()):
@@ -243,7 +266,7 @@ func playerKeepsStaring():
 	$stareDrainSound.play()
 
 func playerLooksAtMonster():
-	if state == 1 and not $stareDrainSound.playing and timesSoundPlayed > 0:
+	if isActive and not $stareDrainSound.playing and timesSoundPlayed > 0:
 		$RandomAudioStreamPlayer.play()
 		$stareDrainSound.play()
 		timesSoundPlayed -= 1

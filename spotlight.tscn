@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://spotlight.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
@@ -21,6 +21,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.505 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpotLight:omni_attenuation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.93187 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpotLight:omni_range")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8.3067 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "flicker"
@@ -36,6 +60,33 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.505, 0.308, 0.505 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "superFlicker"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpotLight:omni_attenuation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.93187, 3.36358, 1.86606, 3.99999 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpotLight:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 8.3067, 6.156, 8.954, 6.156 ]
 }
 
 [node name="spotlight" type="Spatial"]
@@ -61,6 +112,7 @@ shape = SubResource( 1 )
 autoplay = "flicker"
 anims/RESET = SubResource( 2 )
 anims/flicker = SubResource( 3 )
+anims/superFlicker = SubResource( 4 )
 
 [node name="changeTimer" type="Timer" parent="."]
 wait_time = 60.0

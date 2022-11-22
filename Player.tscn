@@ -407,8 +407,6 @@ random_volume_range = 0
 random_pitch_range = 0
 
 [connection signal="animation_finished" from="Neck/Camera/Head/deathAnimation" to="Neck/Camera/Head" method="_on_deathAnimation_animation_finished"]
-[connection signal="area_entered" from="Neck/viewCone" to="." method="_on_viewCone_area_entered"]
-[connection signal="area_exited" from="Neck/viewCone" to="." method="_on_viewCone_area_exited"]
 [connection signal="body_entered" from="Neck/Interact/Area" to="Neck/Interact" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Neck/Interact/Area" to="Neck/Interact" method="_on_Area_body_exited"]
 [connection signal="area_entered" from="AreaPlayer" to="." method="_on_AreaPlayer_area_entered"]

@@ -21,10 +21,11 @@ func _physics_process(delta):
 		DISABLED:
 			get_parent().visible = false
 			$CollisionShape.disabled = true
+	set_physics_process(false)
 			
 #get candy
 func interact():
-	state = DISABLED
+	setState(DISABLED)
 	#get_tree().call_group("sanityBar", "recoverSanity", 4)
 	get_parent().get_node("candyPicked").play()
 	emit_signal("candyPicked", self)
@@ -34,6 +35,7 @@ func getState():
 
 func setState(newState):
 	state = newState
+	set_physics_process(true)
 
 func canSpawn():
 	print(listOfCandyNearby)
@@ -45,14 +47,14 @@ func canSpawn():
 		
 
 
-func _on_Area_body_entered(body):
-	if body.is_in_group("candy") and not self.get_parent():
-		listOfCandyNearby.append(body)
-
-
-
-
-func _on_Area_body_exited(body):
-	if body.is_in_group("candy"):
-		#listOfCandyNearby.erase(body)
-		pass
+#func _on_Area_body_entered(body):
+#	if body.is_in_group("candy") and not self.get_parent():
+#		listOfCandyNearby.append(body)
+#
+#
+#
+#
+#func _on_Area_body_exited(body):
+#	if body.is_in_group("candy"):
+#		#listOfCandyNearby.erase(body)
+#		pass

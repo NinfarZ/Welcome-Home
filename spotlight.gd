@@ -10,26 +10,16 @@ var timerOver = false
 enum {
 	ON,
 	OFF,
-	CHANGELIGHT
 }
 
+func _ready():
+	set_physics_process(false)
 
 
 func _physics_process(delta):
-	match state:
-		ON:
-			enableLight()
-				#self.setState(1)
-			if isPlayerInside:
-				get_tree().call_group("sanityBar", "recoverSanity", 0.5)
+	if isPlayerInside:
+		get_tree().call_group("sanityBar", "recoverSanity", 0.5)
 			#state = CHANGELIGHT
-		OFF:
-			disableLight()
-			#timerOver = false
-			#isPlayerInside = false
-		CHANGELIGHT:
-			get_tree().call_group("gameMaster", "shutDownLight", self, timerOver)
-			#state = OFF
 				
 		
 
@@ -55,13 +45,17 @@ func _on_Area_body_exited(body):
 		isEnemyInside = false
 
 func disableLight():
+	set_physics_process(false)
 	self.get_node("Area/CollisionShape").disabled = true
 	$SpotLight.visible = false
+	$lightSwitch.play()
 
 func enableLight():
+	set_physics_process(true)
 	self.get_node("Area/CollisionShape").disabled = false
 	$SpotLight.visible = true
 	$changeTimer.start()
+	$lightSwitch.play()
 
 func setState(newState):
 	$lightSwitch.play()
@@ -75,6 +69,9 @@ func getIsPlayerInside():
 
 func getIsEnemyInside():
 	return isEnemyInside
+
+func superflicker():
+	$AnimationPlayer.play("superFlicker")
 
 
 func _on_changeTimer_timeout():

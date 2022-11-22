@@ -187,17 +187,17 @@ func get_current_location():
 	
 func setState(newState):
 	state = newState
-
-func _on_viewCone_area_entered(area):
-	if area.is_in_group("monsterHead"):
-		#print("player can see monster!")
-		pass
-
-
-func _on_viewCone_area_exited(area):
-	if area.is_in_group("monsterHead"):
-		#print("player can NOT see monster!")
-		pass
+#
+#func _on_viewCone_area_entered(area):
+#	if area.is_in_group("monsterHead"):
+#		#print("player can see monster!")
+#		pass
+#
+#
+#func _on_viewCone_area_exited(area):
+#	if area.is_in_group("monsterHead"):
+#		#print("player can NOT see monster!")
+#		pass
 
 #func _on_wardrobe_body_entered(body):
 	#currentLocation = "wardrobe"

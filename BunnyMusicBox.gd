@@ -1,24 +1,26 @@
 extends Spatial
 
-enum {
-	ACTIVE,
-	INACTIVE
-}
+#enum {
+#	ACTIVE,
+#	INACTIVE
+#}
 
 
-var state = INACTIVE
+#var state = INACTIVE
+var isActive = false
 
 func _ready():
-	pass
+	get_parent().visible = false
+	$CollisionShape.disabled = true
 
-func _physics_process(delta):
-	match state:
-		ACTIVE:
-			get_parent().visible = true
-			$CollisionShape.disabled = false
-		INACTIVE:
-			get_parent().visible = false
-			$CollisionShape.disabled = true
+#func _physics_process(delta):
+#	match state:
+#		ACTIVE:
+#			get_parent().visible = true
+#			$CollisionShape.disabled = false
+#		INACTIVE:
+#			get_parent().visible = false
+#			$CollisionShape.disabled = true
 
 #plays music box
 func playMusicBox():
@@ -30,17 +32,23 @@ func stopMusicBox():
 func interact():
 	#animate and add sound
 	stopMusicBox()
-	state = INACTIVE
-	get_tree().call_group("gameMaster", "startBunnyTimer")
+	setActive(false)
+#	get_tree().call_group("gameMaster", "startBunnyTimer")
 
-func setState(newState):
-	state = newState
+func setActive(active):
+	if active:
+		get_parent().visible = true
+		$CollisionShape.disabled = false
+	else:
+		get_parent().visible = false
+		$CollisionShape.disabled = true
+		
 
-func getState():
-	return state
+func getIsActive():
+	return isActive
 
 func _on_AudioStreamPlayer3D_finished():
-	state = INACTIVE
+	setActive(false)
 	get_tree().call_group("gameMaster", "setPunishmentTimer", RNGTools.randi_range(15, 30))
 	get_tree().call_group("gameMaster", "setGameState", 5)
 	get_tree().call_group("invisibleEnemy", "setStateChase")

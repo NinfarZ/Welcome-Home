@@ -240,6 +240,9 @@ random_strategy = 2
 random_volume_range = 0
 random_pitch_range = 0.183
 
+[node name="monsterKillDelay" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
 [connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]

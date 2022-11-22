@@ -112,16 +112,8 @@ func _physics_process(delta):
 			#$monsterSpawner/CollisionShape.disabled = true
 			if gracePeriodOver:
 				
-#					if transform.origin.distance_to(target.transform.origin) <= 20:
-#						$body.visible = true
-#						flickerLightIfClose()
-#					elif transform.origin.distance_to(target.transform.origin) > 20:
-#						$body.visible = false
-					if not invisibleEnemyInview:
-						setBodyVisible(true)
-						$bodyVisibility.monitoring = true
-						if path.size() > 0:
-							move_to_target()
+					if path.size() > 0:
+						move_to_target()
 						if not $steps3D.playing:
 							match phase:
 								PHASE1, PHASE2:
@@ -129,6 +121,10 @@ func _physics_process(delta):
 								PHASE3:
 									$steps3D.play()
 									$monsterBreath.play()
+					if not invisibleEnemyInview:
+						setBodyVisible(true)
+						$bodyVisibility.monitoring = true
+						
 					elif $body.visible == false:
 						$bodyVisibility.monitoring = false
 					
@@ -194,6 +190,9 @@ func setStateChase():
 	if not gracePeriodOver and $chaseGracePeriod.is_stopped():
 		$chaseGracePeriod.start()
 	print("timer start chase")
+
+func getState():
+	return state
 
 func monsterIsVisibleForMoment():
 	if not invisibleEnemyInview and transform.origin.distance_to(target.transform.origin) > 20:
