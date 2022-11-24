@@ -1,8 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://new_theme.tres" type="Theme" id=1]
 [ext_resource path="res://playerSanity.gd" type="Script" id=2]
-[ext_resource path="res://fonts/Kanit-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.231373, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.835294, 0.737255, 0.737255, 1 )
+
+[sub_resource type="Theme" id=5]
+Label/fonts/font = SubResource( 6 )
+ProgressBar/styles/bg = SubResource( 3 )
+ProgressBar/styles/fg = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -11,26 +25,34 @@ font_data = ExtResource( 3 )
 default_font = SubResource( 1 )
 
 [node name="Sanity" type="Control" groups=["sanityBar"]]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+theme = SubResource( 5 )
 script = ExtResource( 2 )
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-self_modulate = Color( 1, 0.917647, 0.92549, 1 )
-anchor_left = 0.03
-anchor_top = 0.041
-anchor_right = 0.3
-anchor_bottom = 0.11
-margin_left = 0.280001
-margin_top = 0.4
-margin_right = -59.2
-margin_bottom = 18.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 32.0
+margin_top = 8.0
+margin_right = 178.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_top = 12.0
+margin_right = 146.0
+margin_bottom = 28.0
+theme = SubResource( 2 )
+text = "FEAR:"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+margin_left = 24.0
+margin_top = 32.0
+margin_right = 200.0
+margin_bottom = 72.0
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer2"]
+self_modulate = Color( 1, 0.917647, 0.92549, 0.823529 )
+margin_right = 176.0
+margin_bottom = 40.0
+size_flags_vertical = 1
 theme = ExtResource( 1 )
 percent_visible = false
-
-[node name="Label" type="Label" parent="."]
-margin_left = 94.0
-margin_right = 184.0
-margin_bottom = 25.0
-theme = SubResource( 2 )
-text = "FEAR LEVEL:"

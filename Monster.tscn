@@ -392,7 +392,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0674357, 0.145835, 0.091777
 aabb = AABB( -0.189962, -0.315187, -0.225403, 0.379924, 0.481936, 0.450805 )
 
 [node name="faceStareDelay" type="Timer" parent="." index="14"]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="bodyVisibleArea" type="Area" parent="." index="15"]

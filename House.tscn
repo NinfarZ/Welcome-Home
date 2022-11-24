@@ -1,4 +1,4 @@
-[gd_scene load_steps=289 format=2]
+[gd_scene load_steps=287 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://table.tscn" type="PackedScene" id=12]
 [ext_resource path="res://table2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sofa.tscn" type="PackedScene" id=14]
-[ext_resource path="res://playerSanity.tscn" type="PackedScene" id=15]
+[ext_resource path="res://CanvasLayer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://audio/deathJumpscare.wav" type="AudioStream" id=16]
 [ext_resource path="res://wardrobe.tscn" type="PackedScene" id=17]
 [ext_resource path="res://drawer.tscn" type="PackedScene" id=18]
@@ -38,7 +38,6 @@
 [ext_resource path="res://BasketManager.gd" type="Script" id=36]
 [ext_resource path="res://DoorManager.gd" type="Script" id=37]
 [ext_resource path="res://keyManager.gd" type="Script" id=38]
-[ext_resource path="res://candyCounter.tscn" type="PackedScene" id=39]
 [ext_resource path="res://audio/monsterClose1.mp3" type="AudioStream" id=40]
 [ext_resource path="res://spotlightManager.gd" type="Script" id=41]
 [ext_resource path="res://audio/ambientDark.mp3" type="AudioStream" id=42]
@@ -55,7 +54,6 @@
 [ext_resource path="res://audio/darkScaryHorn.wav" type="AudioStream" id=53]
 [ext_resource path="res://FlashlightItem.tscn" type="PackedScene" id=54]
 [ext_resource path="res://audio/heartbeat.mp3" type="AudioStream" id=55]
-[ext_resource path="res://pauseMenu.tscn" type="PackedScene" id=56]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -1904,11 +1902,11 @@ transform = Transform( 0.959857, 0.271844, 0.069111, -0.265658, 0.960133, -0.087
 [node name="yellowgirl92" parent="Monsters" groups=["livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.869748, 0.491294, 0.0465632, -0.485218, 0.868553, -0.100887, -0.0900078, 0.0651528, 0.993807, 12.9495, 13.8188, -23.4506 )
 
-[node name="yellowgirl99" parent="Monsters" groups=["livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( 0.941649, -0.319395, 0.106223, 0.324339, 0.945378, -0.032603, -0.0900078, 0.0651528, 0.993807, 13.4563, 13.8188, -23.4506 )
+[node name="yellowgirl99" parent="Monsters" groups=["livingroom", "livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
+transform = Transform( 0.944791, -0.32545, -0.0380903, 0.324339, 0.945378, -0.032603, 0.0466205, 0.0184489, 0.998742, 13.4563, 13.8188, -23.4506 )
 
 [node name="yellowgirl90" parent="Monsters" groups=["livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( -0.0481409, -0.996976, 0.0610004, 0.994777, -0.0423522, 0.092872, -0.0900078, 0.0651528, 0.993807, 19.582, 14.0852, -23.3971 )
+transform = Transform( 0.863238, -0.504795, -0.00134127, 0.504753, 0.863195, -0.0108752, 0.0066475, 0.00871095, 0.999939, 17.896, 14.0852, -23.0739 )
 
 [node name="yellowgirl28" parent="Monsters" groups=["entrance", "kitchen", "monsterKitchen"] instance=ExtResource( 4 )]
 transform = Transform( 0.419841, 0.0239003, -0.907283, 0.0908601, 0.993524, 0.0682173, 0.903039, -0.111076, 0.414951, 25.7921, 13.544, -47.2871 )
@@ -2734,13 +2732,7 @@ transform = Transform( -0.0554831, 0, 0.19215, 0, 0.2, 0, -0.19215, 0, -0.055483
 [node name="candy53" parent="Candy/kitchen" instance=ExtResource( 22 )]
 transform = Transform( -0.125636, 0, 0.155614, 0.0741951, 0.175803, 0.0599021, -0.136787, 0.0953581, -0.110436, 22.6388, 12.1855, -48.4862 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="pauseMenu" parent="CanvasLayer" instance=ExtResource( 56 )]
-
-[node name="Sanity" parent="CanvasLayer" instance=ExtResource( 15 )]
-
-[node name="candyCounter" parent="CanvasLayer" instance=ExtResource( 39 )]
+[node name="CanvasLayer" parent="." instance=ExtResource( 15 )]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.0836778, 0, 0.996493, 0, 1, 0, -0.996493, 0, -0.0836778, 14.0492, 14.6545, 12.0749 )

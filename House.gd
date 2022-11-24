@@ -272,18 +272,23 @@ func _physics_process(delta):
 					difficultySet(5)
 					if not CandyRandomized:
 						$Audio/phaseTransition.play()
-						candyManager.randomizeCandy(1, candyManager.get_node("bedRoom2"))
+						for location in candyManager:
+							candyManager.randomizeCandy(2, location)
 						
-						doorManager.lockDoor($Doors/Door4)
+						lockedDoor = doorManager.pickDoor()
+						doorManager.lockDoor(lockedDoor)
+						
+						currentKey = keyManager.chooseKey()
+						keyManager.placeKey()
 						#keyManager.placeKey(keyManager.get_node("Key16"))
 			
-						basketManager.moveBasketToPosition(basketManager.get_node("locations/PositionMybedroom"))
+						basketManager.changeBasketLocation()
 						
 						CandyRandomized = true
 						#currentBunny = pickBunny()
 						
 						
-						candyBasket.displayText(5)
+						candyBasket.displayText(16)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
@@ -294,7 +299,7 @@ func _physics_process(delta):
 						CandyRandomized = false
 						candyManager.hideCandy()
 						
-						phase = PHASE5
+						phase = PHASE4
 				PHASE5:
 					pass
 					
@@ -320,12 +325,14 @@ func _physics_process(delta):
 				#get_tree().call_group("player", "setState", 1)
 				#get_tree().call_group("player", "toggleFlashlight", false)
 				$CanvasLayer/Sanity.visible = false
-				#$punishmentTimer.start()
+				$punishmentTimer.start()
 			#get_tree().call_group("invisibleEnemy", "setStateChase")
 				get_tree().call_group("monsterController", "setStateHunting")
 			#get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 1)
-			elif spotlightManager.getCurrentLight().getIsPlayerInside():
-				punishmentEnd()
+			elif spotlightManager.getCurrentLight() != null:
+				if spotlightManager.getCurrentLight().getIsPlayerInside():
+					punishmentEnd()
+				
 			
 				#$CanvasLayer/Sanity.resetSanity()
 				#$CanvasLayer/Sanity.visible = true
@@ -572,8 +579,9 @@ func punishmentEnd():
 	monsters.setStateCooldown()
 	$CanvasLayer/Sanity.visible = true
 	$Audio/fearNoise.stop()
+	$punishmentTimer.stop()
 	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
-	player.toggleFlashlight(true)
+	#player.toggleFlashlight(true)
 	#spotlightManager.pickLight()
 
 
@@ -585,7 +593,7 @@ func _on_punishmentTimer_timeout():
 	$Audio/fearNoise.stop()
 	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
 	#get_tree().call_group("player", "toggleFlashlight", true)
-	spotlightManager.pickLight()
+	#spotlightManager.pickLight()
 	
 	
 

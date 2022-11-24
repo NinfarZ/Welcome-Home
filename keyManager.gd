@@ -14,6 +14,7 @@ func _ready():
 #called when player gets key. Updates UI and Haskey
 func handleKey(value):
 	hasKey = value
+	get_tree().call_group("keyUI", "setKey", value)
 
 #spawns a new key
 func placeKey(key):

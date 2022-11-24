@@ -1,6 +1,6 @@
 extends Control
 
-onready var sanityBar = $ProgressBar
+onready var sanityBar = $MarginContainer2/ProgressBar
 
 var recoverValue = 0.09
 var punishmentTime = false
@@ -8,16 +8,15 @@ var isMonsterDraining = false
 onready var heartbeat = get_parent().get_parent().get_node("Audio/heartbeat")
 
 func _physics_process(delta):
-	pass
 	var tween = create_tween()
 	if sanityBar.value > 70:
-		tween.tween_property($ProgressBar, "self_modulate", Color(0.92, 0.41, 0.35), 5.0)
+		tween.tween_property(sanityBar, "self_modulate", Color(0.92, 0.41, 0.35), 5.0)
 		if not heartbeat.playing:
 			heartbeat.play()
 		tween.tween_property(heartbeat, "volume_db", -5, 8.0)
 		#$ProgressBar.self_modulate = Color(0.92, 0.41, 0.35)
 	elif sanityBar.value <= 70:
-		tween.tween_property($ProgressBar, "self_modulate", Color(1.00, 0.91, 0.92), 5.0)
+		tween.tween_property(sanityBar, "self_modulate", Color(1.00, 0.91, 0.92), 5.0)
 		
 		if heartbeat.playing:
 			if heartbeat.volume_db == -10:
@@ -72,7 +71,7 @@ func drainSanity(drainValue):
 func recoverSanity(value):
 	if not isMonsterDraining:
 		var tween = create_tween()
-		tween.tween_property($ProgressBar, "value", sanityBar.value - value, 0.5)
+		tween.tween_property(sanityBar, "value", sanityBar.value - value, 0.5)
 		#sanityBar.value -= value
 
 func setIsDraining(value):

@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://pauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://textures/key.png" type="Texture" id=2]
+[ext_resource path="res://keyHandler.gd" type="Script" id=3]
+[ext_resource path="res://pauseMenu.tres" type="Theme" id=4]
+[ext_resource path="res://candyCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://playerSanity.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("pauseMenu/CenterContainer/VBoxContainer/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "writeText"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("pauseMenu/CenterContainer/VBoxContainer/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="pauseMenu" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+
+[node name="background" type="ColorRect" parent="pauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.972549 )
+
+[node name="CenterContainer" type="CenterContainer" parent="pauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu/CenterContainer"]
+margin_left = 450.0
+margin_top = 257.0
+margin_right = 574.0
+margin_bottom = 343.0
+custom_constants/separation = 5
+
+[node name="Label" type="Label" parent="pauseMenu/CenterContainer/VBoxContainer"]
+margin_right = 124.0
+margin_bottom = 26.0
+text = "Paused"
+uppercase = true
+percent_visible = 0.0
+
+[node name="resumeButton" type="Button" parent="pauseMenu/CenterContainer/VBoxContainer"]
+margin_top = 31.0
+margin_right = 124.0
+margin_bottom = 56.0
+text = "RESUME"
+
+[node name="quitButton" type="Button" parent="pauseMenu/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 124.0
+margin_bottom = 86.0
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pauseMenu"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/writeText = SubResource( 2 )
+
+[node name="Sanity" parent="." instance=ExtResource( 7 )]
+
+[node name="candyCounter" parent="." instance=ExtResource( 5 )]
+
+[node name="keyUI" type="Control" parent="." groups=["keyUI"]]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="keyUI"]
+visible = false
+modulate = Color( 1, 1, 1, 0.631373 )
+position = Vector2( -62.9999, -51 )
+scale = Vector2( 6.6875, 6.6875 )
+texture = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[connection signal="pressed" from="pauseMenu/CenterContainer/VBoxContainer/resumeButton" to="pauseMenu" method="_on_resumeButton_pressed"]
+[connection signal="pressed" from="pauseMenu/CenterContainer/VBoxContainer/quitButton" to="pauseMenu" method="_on_quitButton_pressed"]

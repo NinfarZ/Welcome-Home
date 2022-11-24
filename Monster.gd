@@ -249,7 +249,7 @@ func canMonsterSpawnNextToDoor():
 	return true
 
 func isPlayerInViewcone():
-	if head.rotation.x >= deg2rad(50) or head.rotation.x <= deg2rad(-50) or head.rotation.y >= deg2rad(50) or head.rotation.y <= deg2rad(-50):
+	if head.rotation.x >= deg2rad(40) or head.rotation.x <= deg2rad(-40) or head.rotation.y >= deg2rad(40) or head.rotation.y <= deg2rad(-40):
 		
 		return false
 	else:

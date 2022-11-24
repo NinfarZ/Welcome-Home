@@ -62,7 +62,7 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			for monster in get_children():
-				createSpawnableMonsterList(monster, 1)
+				createSpawnableMonsterList(monster, 0)
 			
 			if monstersInRange != []:
 				if RNGTools.pick([1,0]) == 1:
@@ -164,14 +164,14 @@ func _physics_process(delta):
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
 					for monster in get_children():
-						createSpawnableMonsterList(monster, 10)
+						createSpawnableMonsterList(monster, 13)
 							
 					if monstersInRange != []:
 						currentMonster = RNGTools.pick(monstersInRange)
 						
 						spawnMonster(currentMonster)
 						monsterActive = true
-				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 10:
+				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 13:
 					#despawnMonster(currentMonster)
 					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
@@ -343,6 +343,7 @@ func _on_monsterCreepTimer_timeout():
 	if rngCreepyBehavior == 1:
 		despawnMonster(currentMonster)
 		monsterActive = false
+		rngCreepyBehavior = 0
 	if rngCreepyBehavior == 0:
 		invisibleMonster.setBodyVisible(false)
 		monsterActive = false
