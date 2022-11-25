@@ -30,7 +30,7 @@ func _physics_process(delta):
 			isBasketFull = false
 
 func addCandy(candyToAdd):
-	get_tree().call_group("sanityBar", "recoverSanity", 7)
+	get_tree().call_group("sanityBar", "recoverSanity", 10)
 	if isBasketFull:
 		return
 	
@@ -66,6 +66,9 @@ func setState(newState):
 
 func getTotalCandy():
 	return totalCandy
+
+func getCurrentCandyCount():
+	return currentCandyCount
 
 func getIsBasketFull():
 	return isBasketFull

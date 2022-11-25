@@ -8,6 +8,8 @@ extends Spatial
 
 #var state = INACTIVE
 var isActive = false
+var isDeadly = false
+var isMusicBoxFinished = false
 
 func _ready():
 	get_parent().visible = false
@@ -39,17 +41,25 @@ func setActive(active):
 	if active:
 		get_parent().visible = true
 		$CollisionShape.disabled = false
+		isDeadly = true
+		isMusicBoxFinished = false
 	else:
 		get_parent().visible = false
 		$CollisionShape.disabled = true
+		isDeadly = false
+
+func getIsMusicBoxFinished():
+	return isMusicBoxFinished
 		
 
 func getIsActive():
 	return isActive
 
 func _on_AudioStreamPlayer3D_finished():
-	setActive(false)
-	get_tree().call_group("gameMaster", "setPunishmentTimer", RNGTools.randi_range(15, 30))
-	get_tree().call_group("gameMaster", "setGameState", 5)
-	get_tree().call_group("invisibleEnemy", "setStateChase")
+	if isDeadly:
+		setActive(false)
+		get_tree().call_group("gameMaster", "setPunishmentTimer", RNGTools.randi_range(15, 30))
+		get_tree().call_group("gameMaster", "setGameState", 5)
+		get_tree().call_group("invisibleEnemy", "setStateChase")
+	isMusicBoxFinished = true
 	

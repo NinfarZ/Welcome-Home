@@ -291,11 +291,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Peek3D"
-run/main_scene="res://House.tscn"
+run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
 
 [display]
 
+window/size/fullscreen=true
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 

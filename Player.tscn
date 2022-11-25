@@ -154,6 +154,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 0.1702, 0.187621, 0.138133 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("RayCast:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.80751, 0 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "crouch"
@@ -181,6 +193,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 3.35366, 0.133575 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RayCast:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.80751, 0 ), Vector3( 0, 0.654468, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -268,6 +292,13 @@ collision_mask = 529
 script = ExtResource( 1 )
 moveSpeed = 3.2
 sprintSpeed = 6.0
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80751, 0 )
+enabled = true
+cast_to = Vector3( 0, 5, 0 )
+collision_mask = 513
+debug_shape_custom_color = Color( 1, 0, 0, 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -357,13 +388,6 @@ collision_mask = 4736
 [node name="CollisionShape" type="CollisionShape" parent="Neck/Interact/Area"]
 transform = Transform( 0.634183, 0, 0, 0, 1, 0, 0, 0, 1.44355, 0, 0, -0.316107 )
 shape = SubResource( 4 )
-
-[node name="RayCast" type="RayCast" parent="Neck"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127075, -0.125317 )
-enabled = true
-cast_to = Vector3( 0, 5, 0 )
-collision_mask = 513
-debug_shape_custom_color = Color( 1, 0, 0, 1 )
 
 [node name="AreaPlayer" type="Area" parent="." groups=["player"]]
 transform = Transform( 1.47396, 0, 0, 0, 1.72622, 0, 0, 0, 1.3795, 0, 0, 0 )

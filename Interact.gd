@@ -9,6 +9,9 @@ onready var player = get_parent().get_parent()
 var openingForce = null
 export var candyLimit = 5
 
+var interactLabel = preload("res://interactLabel.tscn")
+
+
 func _physics_process(delta):
 	#OPENING DOORS
 	if not interactables.empty() and interactables.front().is_in_group("door"):
@@ -46,6 +49,9 @@ func _on_Area_body_entered(body):
 	
 	if body.has_method("interact"):
 		interactables.append(body)
+		print("can interact")
+		if not has_node("interactLabel"):
+			add_child(interactLabel.instance())
 	
 
 
@@ -56,6 +62,8 @@ func _on_Area_body_exited(body):
 			if i == body:
 				interactables.pop_at(index)
 			index += 1
+		if has_node("interactLabel"):
+			get_node("interactLabel").queue_free()
 
 func addItem(newItem):
 	items.append(newItem)

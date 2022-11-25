@@ -86,7 +86,7 @@ func _physics_process(delta):
 		moveSpeed = 1.5
 		crouching = true
 	elif Input.is_action_just_pressed("crouch") and crouching:
-		if not $Neck/RayCast.is_colliding():
+		if not $RayCast.is_colliding():
 			$AnimationPlayer.play_backwards("crouch")
 			moveSpeed = 3.2
 			crouching = false

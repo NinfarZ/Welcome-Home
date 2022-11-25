@@ -6,6 +6,7 @@ var isPlayerInside = false
 var isEnemyInside = false
 var state = OFF
 var timerOver = false
+var player = null
 
 enum {
 	ON,
@@ -18,7 +19,8 @@ func _ready():
 
 func _physics_process(delta):
 	if isPlayerInside:
-		get_tree().call_group("sanityBar", "recoverSanity", 0.5)
+		if self.is_in_group(player.currentLocation):
+			get_tree().call_group("sanityBar", "recoverSanity", 0.8)
 			#state = CHANGELIGHT
 				
 		
@@ -26,6 +28,7 @@ func _physics_process(delta):
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
 		isPlayerInside = true
+		player = body
 		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", false)
 		
 	if body.is_in_group("invisibleEnemy"):
@@ -54,8 +57,11 @@ func enableLight():
 	set_physics_process(true)
 	self.get_node("Area/CollisionShape").disabled = false
 	$SpotLight.visible = true
-	$changeTimer.start()
+	#$changeTimer.start()
 	$lightSwitch.play()
+
+func changeTimerStart():
+	$changeTimer.start
 
 func setState(newState):
 	$lightSwitch.play()

@@ -1,50 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://spotlight.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
 [ext_resource path="res://audio/lightSwitch.wav" type="AudioStream" id=3]
 
 [sub_resource type="SphereShape" id=1]
-radius = 6.35325
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpotLight:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.505 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpotLight:omni_attenuation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.93187 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SpotLight:omni_range")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 8.3067 ]
-}
+radius = 9.35726
 
 [sub_resource type="Animation" id=3]
 resource_name = "flicker"
@@ -98,7 +59,8 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0
 light_color = Color( 0.866667, 0.803922, 0.6, 1 )
 light_energy = 0.505
 shadow_enabled = true
-omni_range = 8.3067
+shadow_reverse_cull_face = true
+omni_range = 10.6683
 omni_attenuation = 1.93187
 
 [node name="Area" type="Area" parent="." groups=["spotlight"]]
@@ -110,7 +72,6 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flicker"
-anims/RESET = SubResource( 2 )
 anims/flicker = SubResource( 3 )
 anims/superFlicker = SubResource( 4 )
 

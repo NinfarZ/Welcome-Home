@@ -2,6 +2,7 @@ extends Spatial
 
 var candiesUsed = []
 var activeCandy = []
+var currentCandyAmount = 0
 onready var candyList = get_children()
 onready var candyCounter = get_parent().get_node("CanvasLayer/candyCounter")
 onready var player = get_parent().get_node("Player")
@@ -37,6 +38,10 @@ func randomizeCandy(amount, location):
 func activeCandyPicked(candy):
 	activeCandy.erase(candy)
 	candyCounter.addCandy()
+	currentCandyAmount += 1
+
+func getCurrentCandyAmount():
+	return currentCandyAmount
 
 func getDistanceFromPlayerToCandy():
 	for candy in activeCandy:

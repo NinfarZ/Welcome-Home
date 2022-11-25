@@ -18,6 +18,11 @@ albedo_color = Color( 0.843137, 0.756863, 0.482353, 1 )
 albedo_texture = ExtResource( 1 )
 metallic = 0.45
 roughness = 0.39
+emission_enabled = true
+emission = Color( 0.27451, 0.239216, 0.12549, 1 )
+emission_energy = 0.12
+emission_operator = 0
+emission_on_uv2 = false
 
 [node name="Key" type="StaticBody"]
 collision_layer = 4096

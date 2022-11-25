@@ -27,8 +27,8 @@ func lockDoor(door):
 	if door.isOpen():
 		door.interact(0.5)
 	door.setLock(true)
-	print(door, " is locked")
 	lastLockedDoor = door
+	get_tree().call_group("invisibleEnemy", "isMonsterLockedInside", lastLockedDoor)
 
 func unlockLastDoor():
 	if lastLockedDoor != null:

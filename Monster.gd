@@ -169,7 +169,7 @@ func shadeFace(value):
 	
 	for eye in $Head/head/eyes.get_children():
 		eye.shaded = value
-	$Head/head/mouths/mouths.shaded = value
+	#$Head/head/mouths/mouths.shaded = value
 
 func set_state_hiding():
 	#state = HIDING
@@ -249,7 +249,7 @@ func canMonsterSpawnNextToDoor():
 	return true
 
 func isPlayerInViewcone():
-	if head.rotation.x >= deg2rad(40) or head.rotation.x <= deg2rad(-40) or head.rotation.y >= deg2rad(40) or head.rotation.y <= deg2rad(-40):
+	if head.rotation.x >= deg2rad(45) or head.rotation.x <= deg2rad(-45) or head.rotation.y >= deg2rad(45) or head.rotation.y <= deg2rad(-45):
 		
 		return false
 	else:
@@ -264,6 +264,22 @@ func killPlayer():
 
 func playerKeepsStaring():
 	$stareDrainSound.play()
+
+func flickerFace(faceType):
+	match faceType:
+		1:
+			shadeFace(false)
+			for eye in $Head/head/eyes.get_children():
+				eye.frame = RNGTools.pick([0,1,2])
+		2:
+			shadeFace(false)
+			$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
+		3:
+			shadeFace(false)
+			for eye in $Head/head/eyes.get_children():
+				eye.frame = RNGTools.pick([0,1,2])
+			$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
+			
 
 func playerLooksAtMonster():
 	if isActive and not $stareDrainSound.playing and timesSoundPlayed > 0:
@@ -309,6 +325,7 @@ func fadeDrainSound():
 func _on_headArea_area_exited(area):
 	if area.is_in_group("playerViewCone"):
 		canSeeMonsterFace = false
+		shadeFace(true)
 		$faceStareDelay.stop()
 		if $stareDrainSound.playing:
 			fadeDrainSound()

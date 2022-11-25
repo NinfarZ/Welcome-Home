@@ -129,6 +129,8 @@ func _physics_process(delta):
 			
 		ANGER:
 			#incrementDifficulty()
+			currentMonster.flickerFace(RNGTools.pick([1,2,3]))
+			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
 			get_tree().call_group("sanityBar", "drainSanity", 1.17)
 			if player.getFlashlightPower():
 				get_tree().call_group("flashlight", "flicker")
@@ -246,7 +248,7 @@ func createSpawnableMonsterList(monster, distance):
 	if monster.isCanSpawn():
 		monster.set_physics_process(true)
 		
-		if monster.isMonsterPositionedToSpawn() and monster.isPlayerInViewcone() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
+		if monster.isMonsterPositionedToSpawn() and monster.canSeePlayer() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 		#monster.enableArea()
 		#print("monster can spawn")
 			add_monster_to_list(monster)

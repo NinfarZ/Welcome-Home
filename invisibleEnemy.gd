@@ -24,7 +24,7 @@ var phase = PHASE1
 signal killPlayer
 signal playerViewConeDetected
 
-onready var positions = get_parent().get_node("positions")
+onready var positions = get_parent().get_parent().get_node("positions")
 var path = []
 var current_path_idx = 0
 var target = null
@@ -343,8 +343,9 @@ func _on_locationSensor_body_entered(body):
 		elif not body.isOpen():
 			door = body
 			if $openDoorTimer.is_stopped():
-				if RNGTools.pick([1,0,0]) == 1:
-					door.monsterKnocking(speed)
+				if currentLocation != target.get_current_location():
+					if RNGTools.pick([1,0,0]) == 1:
+						door.monsterKnocking(speed)
 				$openDoorTimer.start()
 			
 
@@ -373,9 +374,27 @@ func _on_bodyVisibility_area_entered(area):
 func moveToPosition(position):
 	self.transform.origin = position.transform.origin
 
+#checks if the monster is locked in locked room. I so, move monster to another position
+func isMonsterLockedInside(currentDoor):
+	if state == FOLLOWPLAYER and currentLocation:
+		if currentDoor.is_in_group(currentLocation):
+			moveToPosition(RNGTools.pick(positions.get_children()))
+
 
 func _on_bodyVisibility_body_entered(body):
 	if body.is_in_group("player") and gracePeriodOver:
 		if state == CHASE:
-			state = KILLPLAYER
-			get_tree().call_group("gameMaster", "setGameState", 4)
+			playMonsterGrunt()
+			$monsterKillDelay.start()
+			
+
+
+func _on_monsterKillDelay_timeout():
+	state = KILLPLAYER
+	get_tree().call_group("gameMaster", "setGameState", 4)
+
+
+func _on_bodyVisibility_body_exited(body):
+	if body.is_in_group("player") and gracePeriodOver:
+		if state == CHASE:
+			$monsterKillDelay.stop()

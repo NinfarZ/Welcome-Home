@@ -17,7 +17,6 @@ material/0 = ExtResource( 4 )
 stream = ExtResource( 2 )
 unit_db = 19.01
 unit_size = 1.5
-pitch_scale = 1.13
 
 [node name="bunny" type="StaticBody" parent="." index="2" groups=["bunny"]]
 collision_layer = 4096

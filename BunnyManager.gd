@@ -15,7 +15,7 @@ func getDistanceFromPlayer(bunny):
 func pickBunny():
 	var bunnyList = $Bunnies.get_children()
 	var bunny = RNGTools.pick(bunnyList)
-	while getDistanceFromPlayer(bunny) < 15:
+	while getDistanceFromPlayer(bunny) < 30:
 		bunnyList.erase(bunny)
 		bunny = RNGTools.pick(bunnyList)
 	#bunny.get_node("bunny").setState(0)
@@ -33,6 +33,9 @@ func spawnBunny(currentBunny):
 	currentBunny.get_node("bunny").setActive(true)
 	#currentBunny.get_node("bunny").displayText(candyAmount)
 	currentBunny.get_node("bunny").playMusicBox()
+
+func playBunnyMusicBox(bunny):
+	bunny.get_node("bunny").playMusicBox()
 
 func despawnBunny(currentBunny):
 	bunnyActive = false
