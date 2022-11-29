@@ -34,6 +34,7 @@ var offset = Vector3(10,10,10)
 var decreaseScale = Vector3(0.01, 0.01, 0.01)
 var invisibleEnemyInview = false
 var gracePeriodOver = false
+var monsterCloseToKill = false
 var monsterChaseVisible = false
 var monsterWantsToOpenDoor = false
 var door = null
@@ -86,7 +87,7 @@ func _physics_process(delta):
 					#timesSoundPlayed -= 1
 			#elif currentLocation != target.get_current_location():
 				#timesSoundPlayed = 1
-			elif transform.origin.distance_to(target.transform.origin) > 15 and not monsterWantsToOpenDoor:
+			elif transform.origin.distance_to(target.get_position()) > 15 and not monsterWantsToOpenDoor:
 				
 				match phase:
 					PHASE1:
@@ -120,13 +121,14 @@ func _physics_process(delta):
 									$steps3D.play()
 								PHASE3:
 									$steps3D.play()
-									$monsterBreath.play()
+									#$monsterBreath.play()
 					if not invisibleEnemyInview:
 						setBodyVisible(true)
-						$bodyVisibility.monitoring = true
-						
-					elif $body.visible == false:
-						$bodyVisibility.monitoring = false
+						#$bodyVisibility.monitoring = true
+					
+					if monsterCloseToKill and $monsterKillDelay.is_stopped():
+						playMonsterGrunt()
+						$monsterKillDelay.start()
 					
 					
 					
@@ -202,7 +204,7 @@ func monsterIsVisibleForMoment():
 		$body.visible = false
 
 func getDistanceToPlayer():
-	return transform.origin.distance_to(target.transform.origin)
+	return transform.origin.distance_to(target.get_position())
 
 func flickerLightIfClose():
 	if transform.origin.distance_to(target.transform.origin) <= 5:
@@ -382,10 +384,9 @@ func isMonsterLockedInside(currentDoor):
 
 
 func _on_bodyVisibility_body_entered(body):
-	if body.is_in_group("player") and gracePeriodOver:
-		if state == CHASE:
-			playMonsterGrunt()
-			$monsterKillDelay.start()
+	if body.is_in_group("player"): 
+		monsterCloseToKill = true
+		
 			
 
 
@@ -395,6 +396,7 @@ func _on_monsterKillDelay_timeout():
 
 
 func _on_bodyVisibility_body_exited(body):
-	if body.is_in_group("player") and gracePeriodOver:
-		if state == CHASE:
+	if body.is_in_group("player"):
+		monsterCloseToKill = false
+		if gracePeriodOver:
 			$monsterKillDelay.stop()

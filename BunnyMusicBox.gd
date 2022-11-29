@@ -11,6 +11,8 @@ var isActive = false
 var isDeadly = false
 var isMusicBoxFinished = false
 
+signal bunnyTurnedOff
+
 func _ready():
 	get_parent().visible = false
 	$CollisionShape.disabled = true
@@ -26,15 +28,15 @@ func _ready():
 
 #plays music box
 func playMusicBox():
-	get_parent().get_node("AudioStreamPlayer3D").play()
+	if not get_parent().get_node("AudioStreamPlayer3D").playing:
+		get_parent().get_node("AudioStreamPlayer3D").play()
 
 func stopMusicBox():
 	get_parent().get_node("AudioStreamPlayer3D").stop()
 
 func interact():
 	#animate and add sound
-	stopMusicBox()
-	setActive(false)
+	emit_signal("bunnyTurnedOff", self)
 #	get_tree().call_group("gameMaster", "startBunnyTimer")
 
 func setActive(active):
@@ -58,7 +60,7 @@ func getIsActive():
 func _on_AudioStreamPlayer3D_finished():
 	if isDeadly:
 		setActive(false)
-		get_tree().call_group("gameMaster", "setPunishmentTimer", RNGTools.randi_range(15, 30))
+		get_tree().call_group("gameMaster", "setPunishmentTimer", RNGTools.randi_range(30, 90))
 		get_tree().call_group("gameMaster", "setGameState", 5)
 		get_tree().call_group("invisibleEnemy", "setStateChase")
 	isMusicBoxFinished = true

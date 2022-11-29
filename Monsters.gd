@@ -95,10 +95,12 @@ func _physics_process(delta):
 				#currentMonster.shadeFace(false)	
 				
 				state = ANGER
-				#currentMonster.shadeFace(true)	
+				#currentMonster.shadeFace(true)
+			else:
+				currentMonster.shadeFace(true)	
 			
 			
-			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
+			if currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				#get_parent().get_node("TimerMonsterCooldown").start()

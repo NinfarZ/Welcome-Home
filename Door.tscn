@@ -285,13 +285,12 @@ shape = SubResource( 3 )
 
 [node name="openCloseSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58512, 2.98388, 0 )
-unit_db = -3.0
+unit_db = -10.0
 unit_size = 2.0
 script = ExtResource( 2 )
 samples = [ ExtResource( 3 ) ]
 random_strategy = 2
-random_volume_range = 0.5
-random_pitch_range = 0.5
+random_pitch_range = 0.195
 
 [node name="TimerMonsterOpenDoor" type="Timer" parent="."]
 wait_time = 5.0

@@ -13,15 +13,17 @@ func _physics_process(delta):
 		tween.tween_property(sanityBar, "self_modulate", Color(0.92, 0.41, 0.35), 5.0)
 		if not heartbeat.playing:
 			heartbeat.play()
-		tween.tween_property(heartbeat, "volume_db", -5, 8.0)
+		tween.tween_property(heartbeat, "volume_db", -5.0, 8.0)
 		#$ProgressBar.self_modulate = Color(0.92, 0.41, 0.35)
 	elif sanityBar.value <= 70:
 		tween.tween_property(sanityBar, "self_modulate", Color(1.00, 0.91, 0.92), 5.0)
 		
 		if heartbeat.playing:
-			if heartbeat.volume_db == -10:
+			tween.tween_property(heartbeat, "volume_db", -10.0, 8.0)
+			if heartbeat.volume_db <= -10.0:
 				heartbeat.stop()
-			tween.tween_property(heartbeat, "volume_db", -10, 8.0)
+			
+			
 		
 		
 #	if sanityBar.value < 20:

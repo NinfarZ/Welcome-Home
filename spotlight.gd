@@ -20,7 +20,7 @@ func _ready():
 func _physics_process(delta):
 	if isPlayerInside:
 		if self.is_in_group(player.currentLocation):
-			get_tree().call_group("sanityBar", "recoverSanity", 0.8)
+			get_tree().call_group("sanityBar", "recoverSanity", 0.03)
 			#state = CHANGELIGHT
 				
 		
@@ -52,6 +52,8 @@ func disableLight():
 	self.get_node("Area/CollisionShape").disabled = true
 	$SpotLight.visible = false
 	$lightSwitch.play()
+	$changeTimer.stop()
+	print("turning" + self.name + " off")
 
 func enableLight():
 	set_physics_process(true)
@@ -61,7 +63,7 @@ func enableLight():
 	$lightSwitch.play()
 
 func changeTimerStart():
-	$changeTimer.start
+	$changeTimer.start()
 
 func setState(newState):
 	$lightSwitch.play()

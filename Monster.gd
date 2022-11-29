@@ -85,7 +85,7 @@ func lookAtPlayer():
 	head.look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
 	head.rotate_object_local(Vector3(0,1,0), 3.14)
 	head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
-	head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
+	head.rotation.z = clamp(head.rotation.z, deg2rad(0), deg2rad(0))
 	head.rotation.y = clamp(head.rotation.y, deg2rad(-60), deg2rad(60))
 	
 
@@ -137,7 +137,7 @@ func isFaceInView():
 		return false
 
 func getDistanceFromPlayer():
-	return transform.origin.distance_to(player.transform.origin)
+	return transform.origin.distance_to(player.get_position())
 
 func isMonsterPositionedToSpawn():
 	if monsterInSight and canSeePlayer():
@@ -249,11 +249,11 @@ func canMonsterSpawnNextToDoor():
 	return true
 
 func isPlayerInViewcone():
-	if head.rotation.x >= deg2rad(45) or head.rotation.x <= deg2rad(-45) or head.rotation.y >= deg2rad(45) or head.rotation.y <= deg2rad(-45):
-		
+	if head.rotation.x >= deg2rad(60) or head.rotation.x <= deg2rad(-60):
+		return false
+	elif head.rotation.y >= deg2rad(60) or head.rotation.y <= deg2rad(-60):
 		return false
 	else:
-		
 		return true
 	
 

@@ -8,14 +8,17 @@ var player = null
 func _ready():
 	yield(owner, "ready")
 	player = owner.player
+	
+	for bunny in $Bunnies.get_children():
+		bunny.get_node("bunny").connect("bunnyTurnedOff", self, "despawnBunny")
 
 func getDistanceFromPlayer(bunny):
-	return bunny.transform.origin.distance_to(player.transform.origin)
+	return bunny.transform.origin.distance_to(player.get_position())
 
 func pickBunny():
 	var bunnyList = $Bunnies.get_children()
 	var bunny = RNGTools.pick(bunnyList)
-	while getDistanceFromPlayer(bunny) < 30:
+	while getDistanceFromPlayer(bunny) < 50:
 		bunnyList.erase(bunny)
 		bunny = RNGTools.pick(bunnyList)
 	#bunny.get_node("bunny").setState(0)
@@ -39,10 +42,10 @@ func playBunnyMusicBox(bunny):
 
 func despawnBunny(currentBunny):
 	bunnyActive = false
-	currentBunny.get_node("bunny").stopMusicBox()
+	currentBunny.stopMusicBox()
 	#yield(get_tree().create_timer(1),"timeout")
 	startTimer()
-	currentBunny.get_node("bunny").setActive(false)
+	currentBunny.setActive(false)
 
 
 func _on_bunnySpawnTimer_timeout():

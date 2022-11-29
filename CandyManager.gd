@@ -21,18 +21,21 @@ func _physics_process(delta):
 func randomizeCandy(amount, location):
 	
 	var candiesPicked = 0
+	var locationCandyList = location.get_children()
 	#for candy in $Candy.get_children():
 		#candy.get_node("candy").setState(0)
 	while candiesPicked < amount:
-		var newCandy = RNGTools.pick(location.get_children())
+		var newCandy = RNGTools.pick(locationCandyList)
 		if activeCandy != []:
 			for candy in activeCandy:
-				while newCandy.transform.origin.distance_to(candy.transform.origin) < 1.0:
+				while newCandy.transform.origin.distance_to(candy.global_transform.origin) < 1.0:
 					#candyList.erase(newCandy)
-					newCandy = RNGTools.pick(location.get_children())
+					locationCandyList.erase(newCandy)
+					newCandy = RNGTools.pick(locationCandyList)
 		newCandy.get_node("candy").setState(0)
 		candiesPicked += 1
 		activeCandy.append(newCandy)
+		locationCandyList.erase(newCandy)
 		#candyList.erase(newCandy)
 
 func activeCandyPicked(candy):
@@ -46,7 +49,7 @@ func getCurrentCandyAmount():
 func getDistanceFromPlayerToCandy():
 	for candy in activeCandy:
 		if candy.get_node("candy").getState() == 0: 
-			if candy.transform.origin.distance_to(player.transform.origin) < 7:
+			if candy.transform.origin.distance_to(player.get_position()) < 7:
 				candyCounter.playBeep()
 				return
 	candyCounter.stopBeep()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://textures/wall3.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://3DModels/Monster/eye.png" type="Texture" id=4]
 [ext_resource path="res://textures/key.png" type="Texture" id=5]
 [ext_resource path="res://mainMenu.tres" type="Theme" id=6]
+[ext_resource path="res://TransitionScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/Frauds of The Night.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -120,6 +122,13 @@ amount = 10
 process_material = SubResource( 2 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Light2D" type="Light2D" parent="."]
+
+[node name="TransitionScreen" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/quitButton" to="." method="_on_quitButton_pressed"]
+[connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]

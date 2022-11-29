@@ -98,7 +98,7 @@ func _physics_process(delta):
 			isRunning = true
 			moveSpeed = sprintSpeed
 				
-			stamina -= 0.5
+			stamina -= 0.4
 			stamina = clamp(stamina, 0, 100)
 			if stamina == 0:
 				playerCanRun = false
@@ -187,6 +187,8 @@ func get_current_location():
 	
 func setState(newState):
 	state = newState
+
+
 #
 #func _on_viewCone_area_entered(area):
 #	if area.is_in_group("monsterHead"):

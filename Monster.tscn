@@ -330,7 +330,7 @@ material/0 = SubResource( 15 )
 material/1 = SubResource( 16 )
 
 [node name="raycasts" type="Spatial" parent="Head/head" index="0"]
-transform = Transform( 0.997418, 0.07004, -0.017624, -0.0698043, 0.992082, 0.0324869, 0.0197237, -0.0308041, 1.00621, -0.00102204, 4.76345, 1.50655 )
+transform = Transform( 0.997457, 0.0694856, -0.0176253, -0.0698472, 0.992598, 0, 0.0174629, 0.00121652, 1.00673, -0.00102204, 4.818, 1.50655 )
 
 [node name="RayCast" type="RayCast" parent="Head/head/raycasts" index="0"]
 transform = Transform( 0.999999, -3.35276e-08, -1.45345e-07, 1.97324e-08, -4.47035e-08, 0.999999, -3.72529e-09, -1, -5.96046e-08, -0.340149, 0.271377, -0.479103 )
@@ -341,7 +341,7 @@ debug_shape_custom_color = Color( 1, 0, 0, 1 )
 debug_shape_thickness = 5
 
 [node name="RayCast2" type="RayCast" parent="Head/head/raycasts" index="1"]
-transform = Transform( 0.999999, -3.35276e-08, -1.6758e-07, 1.97324e-08, -4.09782e-08, 0.999999, -3.72529e-09, -1, -5.58794e-08, 0.10179, 0.25464, -0.461891 )
+transform = Transform( 0.999999, -3.35276e-08, -1.82481e-07, 1.9907e-08, -3.72529e-08, 0.999999, -3.72529e-09, -1, -5.21541e-08, 0.098826, 0.297193, -0.46053 )
 enabled = true
 cast_to = Vector3( 0, -60, 0 )
 collision_mask = 643

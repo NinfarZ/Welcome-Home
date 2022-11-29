@@ -296,7 +296,6 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/fullscreen=true
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 
@@ -376,5 +375,4 @@ pause={
 
 [rendering]
 
-gles3/shaders/shader_compilation_mode=2
 environment/default_environment="res://default_env.tres"
