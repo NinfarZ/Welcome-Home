@@ -292,11 +292,16 @@ _global_script_class_icons={
 
 config/name="Peek3D"
 run/main_scene="res://Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://textures/key.png"
+
+[autoload]
+
+GameData="*res://gameData.gd"
+GlobalNode="*res://globalNode.gd"
 
 [display]
 
-window/vsync/use_vsync=false
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 
 [editor]

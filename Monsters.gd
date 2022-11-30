@@ -24,6 +24,7 @@ export(NodePath) var invisibleMonsterPath
 export(NodePath) var playerPath
 onready var invisibleMonster = get_node(invisibleMonsterPath)
 onready var player = get_node(playerPath)
+onready var monsterSoundTimer = get_parent().get_node("monsterSoundTimer")
 
 var state = IDLE
 var phase = PHASE1
@@ -32,6 +33,7 @@ var monsterCanDespawn = false
 var lastMonster = null
 var monsterActive = false
 var rngCreepyBehavior = null
+var monsterCanMakeSound = true
 
 var playerStaringAtMonster = false
 
@@ -52,7 +54,6 @@ func _physics_process(delta):
 	
 	match state:
 		IDLE:
-			#invisibleMonster.setStateStop()
 			pass
 			
 		SEARCHING:
@@ -278,6 +279,10 @@ func spawnMonster(chosenMonster):
 	chosenMonster.set_state_active()
 	#get_node(chosenMonster).makeCreepySound()
 	lastMonster = currentMonster
+	if RNGTools.pick([1,0]) == 1 and monsterCanMakeSound:
+		chosenMonster.makeCreepySound(1)
+		monsterCanMakeSound = false
+		monsterSoundTimer.start()
 	#state = STALKING
 	#else:
 		#return
@@ -352,3 +357,7 @@ func _on_monsterCreepTimer_timeout():
 		invisibleMonster.setBodyVisible(false)
 		monsterActive = false
 	
+
+
+func _on_monsterSoundTimer_timeout():
+	monsterCanMakeSound = true

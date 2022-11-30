@@ -51,19 +51,23 @@ enum {
 
 func _ready():
 	$TransitionScreen.connect("transitioned", self, "playerTransition")
-	lightsToTurnOn = ["Entrance", "Livingroom", "Bathroom1", "Corridor2"]
-	for light in lightsToTurnOn:
-		spotlightManager.turnOnLight("spotlight" + light)
-	$CanvasLayer/Sanity.visible = false
-	
+	if GameData.getSkipIntro() == true:
+		state = START
+		playerTransition()
+	else:
+		state = INTRO
 	
 	monsters.setStateIdle()
-	invisibleEnemy.setStateStop()
+	invisibleEnemy.isMonsterActive(false)
 
 func _physics_process(delta):
 	match state:
 		INTRO:
 			if not CandyRandomized:
+				lightsToTurnOn = ["Entrance", "Livingroom", "Bathroom1", "Corridor2"]
+				for light in lightsToTurnOn:
+					spotlightManager.turnOnLight("spotlight" + light)
+				$CanvasLayer/Sanity.visible = false
 
 				
 				
@@ -104,7 +108,6 @@ func _physics_process(delta):
 				monsters.get_node("yellowgirl75").shadeFace(true)
 				monsters.despawnMonster(monsters.get_node("yellowgirl75"))
 				scaryHornSoundFinished = false
-				$TutorialLabels/LabelRun.visible = false
 				$TransitionScreen.transition()
 				
 				
@@ -124,6 +127,8 @@ func _physics_process(delta):
 					spotlightManager.get_node("lights/spotlightBedroom2/AnimationPlayer").play("superFlicker")
 						
 					if not CandyRandomized:
+						for label in $TutorialLabels.get_children():
+							label.visible = false
 						$CanvasLayer/Sanity.visible = true
 						doorManager.unlockLastDoor()
 						doorManager.lockDoor($Doors/Door)
@@ -157,7 +162,7 @@ func _physics_process(delta):
 					#wakes up monster after grabbing the key and heading to corridor
 					elif not monsterTriggered and doorManager.get_node("Door").isLocked():
 						if player.get_current_location() == "corridor1":
-							monsters.spawnMonster(monsters.get_node("yellowgirl85"))
+							monsters.spawnMonster(monsters.get_node("yellowgirl143"))
 							doorManager.get_node("Door").playMonsterLockedDoor()
 							monsterTriggered = true
 							yield(get_tree().create_timer(2),"timeout")
@@ -167,13 +172,14 @@ func _physics_process(delta):
 		
 						
 					elif monsterTriggered:
-						if monsters.get_node("yellowgirl85").canSeePlayer():
-							monsters.get_node("yellowgirl85").makeCreepySound(1)
-						elif doorManager.get_node("Door").isOpen():
-							monsters.despawnMonster(monsters.get_node("yellowgirl85"))
+						if monsters.get_node("yellowgirl143").canSeePlayer():
+							monsters.get_node("yellowgirl143").makeCreepySound(1)
+						elif not doorManager.get_node("Door").isLocked():
+							monsters.despawnMonster(monsters.get_node("yellowgirl143"))
 							spotlightManager.turnAllLightsOff()
 							spotlightManager.startTimer()
 							monsters.setStateCooldown()
+							invisibleEnemy.isMonsterActive(true)
 							#invisibleEnemy.setStateFollow()
 							monsterTriggered = false
 					
@@ -228,20 +234,6 @@ func _physics_process(delta):
 					
 							#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
 						phase = PHASE2
-						
-					elif not monsterTriggered:
-						if player.get_current_location() == "myBedroom" and not keyManager.hasKey:
-							yield(get_tree().create_timer(5),"timeout")
-							if not doorManager.get_node("Door2").isOpen() and player.get_current_location() == "myBedroom":
-								doorManager.get_node("Door2").interact(2)
-						elif keyManager.hasKey and not monsters.get_node("yellowgirl88").getIsActive():
-							monsters.spawnMonster(monsters.get_node("yellowgirl88"))
-							
-						elif monsters.get_node("yellowgirl88").getIsActive():
-							if monsters.get_node("yellowgirl88").canSeeMonsterFace and monsters.get_node("yellowgirl88").canSeeMonsterFace or monsters.get_node("yellowgirl88").getDistanceFromPlayer() < 8:
-								monsters.despawnMonster(monsters.get_node("yellowgirl88"))
-								monsterTriggered = true
-							#invisibleEnemy.moveToPosition($positions/PositionMyBedroom)
 							
 				PHASE2:
 					#MEDIUM DIFFICULTY
@@ -328,27 +320,20 @@ func _physics_process(delta):
 						doorManager.lockDoor(lockedDoor)
 						
 						currentKey = keyManager.chooseKey()
-						keyManager.placeKey()
-						#keyManager.placeKey(keyManager.get_node("Key16"))
+						keyManager.placeKey(currentKey)
 			
 						basketManager.changeBasketLocation()
 						
 						CandyRandomized = true
-						#currentBunny = pickBunny()
 						
 						
 						candyBasket.displayText(7)
-						#currentBunny = pickBunny()
-						#spawnBunny(currentBunny, 5)
-						#bunnyActive = true
 					
 						
 					elif candyBasket.getIsBasketFull():
-						$Audio/phaseTransition.play()
 						CandyRandomized = false
 						candyManager.hideCandy()
-						
-						phase = PHASE4
+						$TransitionScreen.transition()
 				PHASE5:
 					pass
 					
@@ -371,77 +356,24 @@ func _physics_process(delta):
 				$Audio/fearNoise.play()
 			if $punishmentTimer.is_stopped():
 				spotlightManager.turnAllLightsOff()
-				#spotlightManager.get_node("lightCoolDown").stop()
-				#get_tree().call_group("player", "setState", 1)
-				#get_tree().call_group("player", "toggleFlashlight", false)
+			
 				$CanvasLayer/Sanity.visible = false
 				$punishmentTimer.start()
-			#get_tree().call_group("invisibleEnemy", "setStateChase")
+			
 				get_tree().call_group("monsterController", "setStateHunting")
-			#get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 1)
+			
 			elif spotlightManager.getCurrentLight() != null:
 				if spotlightManager.getCurrentLight().getIsPlayerInside():
 					punishmentEnd()
 				
 			
-				#$CanvasLayer/Sanity.resetSanity()
-				#$CanvasLayer/Sanity.visible = true
-	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
-				#get_tree().call_group("player", "toggleFlashlight", true)
-				#get_tree().call_group("player", "setState", 0)
-				#pickLight()
-			
-			
-			
-func shutDownLight(currentLight, isTimeOver):
-	if isTimeOver:
-		currentLight.setState(1)
-		$lightCoolDown.wait_time = RNGTools.randi_range(10, 20)
-		$lightCoolDown.start()
-		#pickLight()
-	elif $Navigation/invisibleEnemy.get_current_location() in currentLight.get_groups():
-		#get_tree().call_group("LIGHT" + currentLocation, "setState", 1)
-		currentLight.setState(1)
-		$lightCoolDown.wait_time = RNGTools.randi_range(5, 10)
-		$lightCoolDown.start()
-		#pickLight()
-
-
-
-#func randomizeCandy(amount):
-#	var candiesPicked = 0
-#	var candyList = $Candy.get_children()
-#	var activeCandy = []
-#	var possibleCandyFound = false
-#
-#	#for candy in $Candy.get_children():
-#		#candy.get_node("candy").setState(0)
-#	while candiesPicked < amount:
-#		var newCandy = RNGTools.pick(candyList)
-#		for candy in activeCandy:
-#			while newCandy.transform.origin.distance_to(candy.transform.origin) < 9.0:
-#				candyList.erase(newCandy)
-#				print(newCandy.name + "was too close to " + candy.name)
-#				newCandy = RNGTools.pick(candyList)
-#		newCandy.get_node("candy").setState(0)
-#		candiesPicked += 1
-#		activeCandy.append(newCandy)
-		
-		
-
-
 func deathSequence():
 	$punishmentTimer.stop()
-	#get_tree().call_group("invisibleEnemy", "setStateKillplayer")
-	#get_tree().call_group("door","setMonsterDoorTimer", 0)
-	#get_tree().call_group("invisibleEnemy", "playRunningAudio")
 	player.die()
 	monsters.set_physics_process(false)
 	$Audio/BackgroundAmbience.stop()
 	$Audio/fearNoise.stop()
-	#yield(get_tree().create_timer(2), "timeout")
 	$Audio/deathMusic.play()
-	#yield(get_tree().create_timer(1),"timeout")
 	yield(get_tree().create_timer(2), "timeout")
 	endGame()
 	
@@ -453,55 +385,11 @@ func fade_out():
 
 
 func endGame():
-	#yield(get_tree().create_timer(1),"timeout")
-	get_tree().change_scene("res://House.tscn")
-
-#func turnAllLightsOff():
-#	for light in $spotlights.get_children():
-#		light.setState(1)
-#
-#func turnAllLightsOn():
-#	for light in $spotlights.get_children():
-#		light.setState(0)
-#
-#func turnOnLight(lightName):
-#	for light in $spotlights.get_children():
-#		if light.name == lightName:
-#			light.setState(0)
-#
-#func pickLight(): 
-#	RNGTools.pick($spotlights.get_children()).setState(0)
+	get_tree().change_scene("res://Menu.tscn")
 
 func setGameState(newState):
 	state = newState
 	
-	
-func startBunnyTimer():
-	$bunnySpawnTimer.wait_time = RNGTools.randi_range(30, 60)
-	$bunnySpawnTimer.start()
-
-
-	
-	
-
-func pickBunny():
-	var bunnyList = $Bunnies.get_children()
-	var bunny = RNGTools.pick(bunnyList)
-	#bunny.get_node("bunny").setState(0)
-	#bunnyList.erase(bunny)
-	return bunny
-
-func spawnBunny(currentBunny):
-	bunnyActive = true
-	currentBunny.get_node("bunny").setState(0)
-	#currentBunny.get_node("bunny").displayText(candyAmount)
-	currentBunny.get_node("bunny").playMusicBox()
-
-func despawnBunny(currentBunny):
-	bunnyActive = false
-	currentBunny.get_node("bunny").stopMusicBox()
-	#yield(get_tree().create_timer(1),"timeout")
-	currentBunny.get_node("bunny").setState(1)
 
 func difficultySet(difficulty):
 	match difficulty:
@@ -651,7 +539,8 @@ func playerTransition():
 	if state == START:
 		state = GAME
 		player.set_deferred("translation", positions.get_node("PositionMyBedroom").translation)
-		
+	elif state == GAME:
+		get_tree().change_scene("res://gameOver.tscn")	
 	
 
 func setPunishmentTimer(time):

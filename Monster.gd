@@ -95,7 +95,7 @@ func isCanSpawn():
 	#else:
 		#return false
 	if  isCrouchMonster:
-		if not canSeePlayer() or not player.getIsUnderFurniture():
+		if not player.getIsUnderFurniture():
 			return false
 		
 	match monsterNearDoor:
@@ -217,11 +217,13 @@ func _on_Visible_camera_entered(camera):
 
 
 func _on_MonsterArea_area_entered(area):
-	if area.is_in_group("spotlight"):
-		inSpotlight = true
-		canSpawn = false
-	elif area.get_parent().is_in_group("invisibleEnemy") and not inSpotlight:
-		canSpawn = true
+	if canSpawn:
+		if area.is_in_group("spotlight"):
+			inSpotlight = true
+			canSpawn = false
+	elif area.get_parent().is_in_group("invisibleEnemy"):
+		if not inSpotlight:
+			canSpawn = true
 		#set_physics_process(true)
 	
 
@@ -364,10 +366,12 @@ func _on_faceStareDelay_timeout():
 func _on_bodyVisibleArea_area_entered(area):
 	if area.is_in_group("playerViewCone"):
 		monsterInSight = true
+		shadeFace(false)
 		#print("monster can not spawn")
 
 
 func _on_bodyVisibleArea_area_exited(area):
 	if area.is_in_group("playerViewCone"):
 		monsterInSight = false
+		shadeFace(true)
 		#print("monster can spawn")

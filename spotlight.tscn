@@ -82,12 +82,13 @@ wait_time = 40.0
 one_shot = true
 
 [node name="lightSwitch" type="AudioStreamPlayer3D" parent="."]
-unit_size = 3.0
+unit_db = -3.0
+unit_size = 5.0
 script = ExtResource( 2 )
 samples = [ ExtResource( 3 ) ]
 random_strategy = 2
 random_volume_range = 0
-random_pitch_range = 0.153
+random_pitch_range = 0.092
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

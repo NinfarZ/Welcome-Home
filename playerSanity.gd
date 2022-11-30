@@ -2,6 +2,8 @@ extends Control
 
 onready var sanityBar = $MarginContainer2/ProgressBar
 
+signal sanityThreshold(value)
+
 var recoverValue = 0.09
 var punishmentTime = false
 var isMonsterDraining = false
@@ -19,8 +21,8 @@ func _physics_process(delta):
 		tween.tween_property(sanityBar, "self_modulate", Color(1.00, 0.91, 0.92), 5.0)
 		
 		if heartbeat.playing:
-			tween.tween_property(heartbeat, "volume_db", -10.0, 8.0)
-			if heartbeat.volume_db <= -10.0:
+			tween.tween_property(heartbeat, "volume_db", -80.0, 8.0)
+			if heartbeat.volume_db <= -50.0:
 				heartbeat.stop()
 			
 			

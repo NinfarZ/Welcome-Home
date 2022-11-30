@@ -15,6 +15,8 @@ enum {
 
 func _ready():
 	set_physics_process(false)
+	self.get_node("Area/CollisionShape").disabled = true
+	$SpotLight.visible = false
 
 
 func _physics_process(delta):

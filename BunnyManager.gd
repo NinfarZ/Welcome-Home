@@ -18,7 +18,7 @@ func getDistanceFromPlayer(bunny):
 func pickBunny():
 	var bunnyList = $Bunnies.get_children()
 	var bunny = RNGTools.pick(bunnyList)
-	while getDistanceFromPlayer(bunny) < 50:
+	while getDistanceFromPlayer(bunny) < 25.0:
 		bunnyList.erase(bunny)
 		bunny = RNGTools.pick(bunnyList)
 	#bunny.get_node("bunny").setState(0)

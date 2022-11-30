@@ -196,6 +196,9 @@ func setStateChase():
 func getState():
 	return state
 
+func isMonsterActive(value):
+	set_physics_process(value)
+
 func monsterIsVisibleForMoment():
 	if not invisibleEnemyInview and transform.origin.distance_to(target.transform.origin) > 20:
 		$body.visible = true

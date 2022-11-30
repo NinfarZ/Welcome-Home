@@ -8,25 +8,29 @@ enum {
 	INACTIVE
 }
 
-func _physics_process(delta):
-	
-	match state:
-		ACTIVE:
-			$CollisionShape.disabled = false
-			visible = true
-		INACTIVE:
-			$CollisionShape.disabled = true
-			visible = false
+#func _physics_process(delta):
+#
+#	match state:
+#		ACTIVE:
+#			$CollisionShape.disabled = false
+#			visible = true
+#		INACTIVE:
+#			$CollisionShape.disabled = true
+#			visible = false
 
 #get key
 func interact():
 	get_tree().call_group("interact", "addKey")
 	$getKey.play()
-	state = INACTIVE
+	setStateInactive()
 	emit_signal("gotKey", true)
 
 func setStateActive():
-	state = ACTIVE
+	#state = ACTIVE
+	$CollisionShape.disabled = false
+	visible = true
 
 func setStateInactive():
-	state = INACTIVE
+	#state = INACTIVE
+	$CollisionShape.disabled = true
+	visible = false

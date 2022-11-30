@@ -31,6 +31,3 @@ func _on_resumeButton_pressed():
 func _on_quitButton_pressed():
 	get_tree().quit()
 
-
-		
-		
