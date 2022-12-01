@@ -244,8 +244,6 @@ random_pitch_range = 0.183
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="area_entered" from="monsterSpawner" to="." method="_on_monsterSpawner_area_entered"]
-[connection signal="area_exited" from="monsterSpawner" to="." method="_on_monsterSpawner_area_exited"]
 [connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]
 [connection signal="camera_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_exited"]
 [connection signal="finished" from="RandomAudioStreamPlayer" to="." method="_on_RandomAudioStreamPlayer_finished"]

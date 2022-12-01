@@ -31,21 +31,21 @@ func startTimer():
 func stopTimer():
 	$bunnySpawnTimer.stop()
 
-func spawnBunny(currentBunny):
+func spawnBunny(bunny):
 	bunnyActive = true
-	currentBunny.get_node("bunny").setActive(true)
+	bunny.get_node("bunny").setActive(true)
 	#currentBunny.get_node("bunny").displayText(candyAmount)
-	currentBunny.get_node("bunny").playMusicBox()
+	bunny.get_node("bunny").playMusicBox()
 
 func playBunnyMusicBox(bunny):
 	bunny.get_node("bunny").playMusicBox()
 
-func despawnBunny(currentBunny):
+func despawnBunny(bunny):
 	bunnyActive = false
-	currentBunny.stopMusicBox()
+	bunny.stopMusicBox()
 	#yield(get_tree().create_timer(1),"timeout")
 	startTimer()
-	currentBunny.setActive(false)
+	bunny.setActive(false)
 
 
 func _on_bunnySpawnTimer_timeout():

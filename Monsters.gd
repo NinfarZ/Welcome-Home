@@ -42,9 +42,13 @@ var cooldownValues = [5, 10]
 
 
 #monsters that can currently see the player (possible to be spawned)
+var validMonsters = []
 var monstersInRange = []
 
 func _ready():
+	for monster in get_children():
+		monster.connect("monsterInRange", self, "_addMonsterInRange")
+		monster.connect("monsterOutOfRange", self, "_removeMonsterOutOfRange")
 	invisibleMonster.setBodyVisible(false)
 	#invisibleMonster.connect("playerViewConeDetected", self, "setMonsterActive")
 	randomize()
@@ -62,17 +66,19 @@ func _physics_process(delta):
 				#for raycast in monster.get_node("Cube001").get_children():
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
-			for monster in get_children():
-				createSpawnableMonsterList(monster, 0)
-			
 			if monstersInRange != []:
+				print(monstersInRange)
+				for monster in monstersInRange:
+					createSpawnableMonsterList(monster, 0)
+			
+			if validMonsters != []:
 				if RNGTools.pick([1,0]) == 1:
-					currentMonster = RNGTools.pick(monstersInRange)
+					currentMonster = RNGTools.pick(validMonsters)
 					#get_node(currentMonster).makeCreepySound()
 					spawnMonster(currentMonster)
 					state = STALKING
 				else:
-					monstersInRange = []
+					validMonsters = []
 					state = COOLDOWN
 					
 		STALKING:
@@ -96,12 +102,8 @@ func _physics_process(delta):
 				#currentMonster.shadeFace(false)	
 				
 				state = ANGER
-				#currentMonster.shadeFace(true)
-			else:
-				currentMonster.shadeFace(true)	
 			
-			
-			if currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
+			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
 				#get_parent().get_node("TimerMonsterCooldown").start()
@@ -168,11 +170,13 @@ func _physics_process(delta):
 			elif rngCreepyBehavior == 1:
 				#monster can either peek for a split second or appear in the form of invisible enemy
 				if not monsterActive:
-					for monster in get_children():
-						createSpawnableMonsterList(monster, 13)
-							
 					if monstersInRange != []:
-						currentMonster = RNGTools.pick(monstersInRange)
+						print(monstersInRange)
+						for monster in monstersInRange:
+							createSpawnableMonsterList(monster, 13)
+							
+					if validMonsters != []:
+						currentMonster = RNGTools.pick(validMonsters)
 						
 						spawnMonster(currentMonster)
 						monsterActive = true
@@ -216,18 +220,20 @@ func _physics_process(delta):
 		
 
 func add_monster_to_list(monster):
-	if not monster in monstersInRange:
-		monstersInRange.append(monster)
+	if not monster in validMonsters:
+		validMonsters.append(monster)
 
 func setMonsterManagerPhase(newPhase):
 	phase = newPhase
 
 func remove_monster_from_list(monster):
-	var i = 0
-	while i < monstersInRange.size():
-		if monstersInRange[i] == monster:
-				monstersInRange.pop_at(i)
-		i += 1
+#	var i = 0
+#	while i < validMonsters.size():
+#		if validMonsters[i] == monster:
+#				validMonsters.pop_at(i)
+#		i += 1
+	if monster in validMonsters:
+		validMonsters.erase(monster)
 
 #checks if player is in range
 func player_in_range(raycast):
@@ -240,8 +246,8 @@ func player_in_range(raycast):
 func pickRandomMonster():
 	var chosenMonster
 	
-	#chosenMonster = monstersInRange[randi() % monstersInRange.size()]
-	chosenMonster = RNGTools.pick(monstersInRange)
+	#chosenMonster = validMonsters[randi() % validMonsters.size()]
+	chosenMonster = RNGTools.pick(validMonsters)
 	#print(chosenMonster)
 	#get_node(chosenMonster).set_state_active()
 	#state = STALKING
@@ -249,7 +255,7 @@ func pickRandomMonster():
 	
 func createSpawnableMonsterList(monster, distance):
 	if monster.isCanSpawn():
-		monster.set_physics_process(true)
+		#monster.enableMonster(true)
 		
 		if monster.isMonsterPositionedToSpawn() and monster.canSeePlayer() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 		#monster.enableArea()
@@ -259,10 +265,8 @@ func createSpawnableMonsterList(monster, distance):
 		else:
 			remove_monster_from_list(monster)
 	else:
-		
-#		if monster.getIsActive():
-#			despawnMonster(monster)
-		monster.set_physics_process(false)
+		pass
+		#monster.enableMonster(false)
 
 func _on_TimerMonsterSwitch_timeout():
 	#print("timer ran out!")
@@ -287,11 +291,13 @@ func spawnMonster(chosenMonster):
 	#else:
 		#return
 
+
+
 func despawnMonster(chosenMonster):
 	if chosenMonster != null:
 		chosenMonster.set_state_hiding()
 	#invisibleMonster.setStateFollow()
-		monstersInRange = []
+		validMonsters = []
 
 
 	
@@ -316,7 +322,7 @@ func _on_monsterSpawner_area_entered(area):
 
 
 func _on_monsterSpawner_area_exited(area):
-	monstersInRange = []
+	validMonsters = []
 	despawnMonster(currentMonster)
 
 
@@ -328,6 +334,15 @@ func _on_TimerMonsterCooldown_timeout():
 		state = COOLDOWN
 	else:
 		state = SEARCHING
+
+func _addMonsterInRange(monster):
+	if not monster in monstersInRange:
+		monstersInRange.append(monster)
+
+func _removeMonsterOutOfRange(monster):
+	if monster in monstersInRange:
+		monstersInRange.erase(monster)
+	
 
 func setStateIdle():
 	state = IDLE

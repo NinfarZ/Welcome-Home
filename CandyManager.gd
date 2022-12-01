@@ -12,7 +12,7 @@ func _ready():
 		for candy in location.get_children():
 			candy.get_node("candy").connect("candyPicked", self, "activeCandyPicked")
 
-func _physics_process(delta):
+func _process(delta):
 	if activeCandy != []:
 		getDistanceFromPlayerToCandy()
 

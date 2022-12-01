@@ -11,17 +11,6 @@ enum {
 	ENABLED,
 	DISABLED
 }
-
-func _physics_process(delta):
-	match state:
-		ENABLED:
-			
-			get_parent().visible = true
-			$CollisionShape.disabled = false
-		DISABLED:
-			get_parent().visible = false
-			$CollisionShape.disabled = true
-	set_physics_process(false)
 			
 #get candy
 func interact():
@@ -35,7 +24,15 @@ func getState():
 
 func setState(newState):
 	state = newState
-	set_physics_process(true)
+	match state:
+		ENABLED:
+			
+			get_parent().visible = true
+			$CollisionShape.disabled = false
+		DISABLED:
+			get_parent().visible = false
+			$CollisionShape.disabled = true
+	
 
 func canSpawn():
 	print(listOfCandyNearby)

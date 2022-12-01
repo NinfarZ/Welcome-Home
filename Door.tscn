@@ -290,6 +290,7 @@ unit_size = 2.0
 script = ExtResource( 2 )
 samples = [ ExtResource( 3 ) ]
 random_strategy = 2
+random_volume_range = 0
 random_pitch_range = 0.195
 
 [node name="TimerMonsterOpenDoor" type="Timer" parent="."]

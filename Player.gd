@@ -98,7 +98,7 @@ func _physics_process(delta):
 			isRunning = true
 			moveSpeed = sprintSpeed
 				
-			stamina -= 0.4
+			stamina -= 0.4 
 			stamina = clamp(stamina, 0, 100)
 			if stamina == 0:
 				playerCanRun = false
@@ -112,36 +112,11 @@ func _physics_process(delta):
 			playerCanRun = true
 	
 	if not isRunning or not playerCanRun:
-		stamina += 0.3
+		stamina += 0.3 
 		stamina = clamp(stamina, 0, 100)
-	
-	
-	
-	
-	
-#	#flashlightToggle
-#	if Input.is_action_just_pressed("flashlightToggle") and flashlightOn:
-#		toggleFlashlight(false)
-#	elif Input.is_action_just_pressed("flashlightToggle") and not flashlightOn:
-#		toggleFlashlight(true)
-	
-	#climbing
-#	if $RayCastLadder.is_colliding():
-#		if Input.is_action_pressed("forward"):
-#			input_move.y +=5
 	
 	move_and_slide(input_move + gravity_local, Vector3.UP)
 	
-		
-	
-	#recovering sanity
-	match state:
-		DEFAULT:
-			pass
-			#else:
-				#get_tree().call_group("sanityBar", "recoverSanity", 0.06)
-		SEEMONSTER:
-			pass
 
 func get_input_direction() -> Vector3:
 	#
@@ -189,33 +164,11 @@ func setState(newState):
 	state = newState
 
 
-#
-#func _on_viewCone_area_entered(area):
-#	if area.is_in_group("monsterHead"):
-#		#print("player can see monster!")
-#		pass
-#
-#
-#func _on_viewCone_area_exited(area):
-#	if area.is_in_group("monsterHead"):
-#		#print("player can NOT see monster!")
-#		pass
-
-#func _on_wardrobe_body_entered(body):
-	#currentLocation = "wardrobe"
-	#print(currentLocation)
-
-
 func _on_AreaPlayer_area_entered(area):
 	currentLocation = area.name
-	print("PLAYER IS INSIDE " + currentLocation)
-	#if area.is_in_group("spotlight"):
-		#inSpotlight = true
 
 
 func _on_AreaPlayer_area_exited(area):
-	#if area.is_in_group("spotlight"):
-		#inSpotlight = false
 		pass
 
 func setIsUnderFurniture(value):

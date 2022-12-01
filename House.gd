@@ -56,7 +56,6 @@ func _ready():
 		playerTransition()
 	else:
 		state = INTRO
-	
 	monsters.setStateIdle()
 	invisibleEnemy.isMonsterActive(false)
 
@@ -161,7 +160,7 @@ func _physics_process(delta):
 						
 					#wakes up monster after grabbing the key and heading to corridor
 					elif not monsterTriggered and doorManager.get_node("Door").isLocked():
-						if player.get_current_location() == "corridor1":
+						if player.get_current_location() == "corridor1" and keyManager.getHasKey():
 							monsters.spawnMonster(monsters.get_node("yellowgirl143"))
 							doorManager.get_node("Door").playMonsterLockedDoor()
 							monsterTriggered = true

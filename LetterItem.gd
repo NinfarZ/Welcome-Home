@@ -1,8 +1,9 @@
 extends StaticBody
 
-
+export(Texture) var texture 
 
 func interact():
+	$Letter/TextureRect.texture = texture
 	$Letter.visible = true
 	$CollisionShape.disabled = true
 	

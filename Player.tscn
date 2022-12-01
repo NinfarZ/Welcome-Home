@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Flashlight.tscn" type="PackedScene" id=2]
@@ -124,51 +124,9 @@ points = PoolVector3Array( 0, -1.95346, 1, 0, -1.95346, -1, 0.207967, -1.93432, 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 1, 1, 0.581893 )
 
-[sub_resource type="SphereShape" id=20]
-radius = 0.838995
-
 [sub_resource type="CapsuleShape" id=3]
 radius = 0.93536
 height = 1.76092
-
-[sub_resource type="Animation" id=11]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Neck/viewCone:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -0.00204064, -0.24652, -0.33842 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Neck/viewCone:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.1702, 0.187621, 0.138133 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("RayCast:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 1.80751, 0 ) ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_name = "crouch"
@@ -195,7 +153,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 3.35366, 0.133575 ]
+"values": [ 3.35366, 0.532664 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("RayCast:translation")
@@ -207,7 +165,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 1.80751, 0 ), Vector3( 0, 0.654468, 0 ) ]
+"values": [ Vector3( 0, 2.38721, 0 ), Vector3( 0, 0.994113, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -291,13 +249,13 @@ tracks/2/keys = {
 }
 
 [node name="Player" type="KinematicBody" groups=["player"]]
-collision_mask = 529
+collision_mask = 528
 script = ExtResource( 1 )
 moveSpeed = 3.2
 sprintSpeed = 6.0
 
 [node name="RayCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80751, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38721, 0 )
 enabled = true
 cast_to = Vector3( 0, 3, 0 )
 collision_mask = 513
@@ -392,13 +350,6 @@ collision_mask = 4736
 transform = Transform( 0.634183, 0, 0, 0, 1, 0, 0, 0, 1.44355, 0, 0, -0.316107 )
 shape = SubResource( 4 )
 
-[node name="headCollision" type="StaticBody" parent="Neck" groups=["playerHead"]]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape" type="CollisionShape" parent="Neck/headCollision"]
-shape = SubResource( 20 )
-
 [node name="AreaPlayer" type="Area" parent="." groups=["player"]]
 transform = Transform( 1.47396, 0, 0, 0, 1.72622, 0, 0, 0, 1.3795, 0, 0, 0 )
 collision_layer = 2
@@ -410,7 +361,6 @@ shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flashlightON"
-anims/RESET = SubResource( 11 )
 anims/crouch = SubResource( 7 )
 anims/flashlightOFF = SubResource( 8 )
 anims/flashlightON = SubResource( 9 )

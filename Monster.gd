@@ -10,6 +10,8 @@ enum {
 	PHASE2
 }
 
+signal monsterInRange(monster)
+signal monsterOutOfRange(monster)
 
 var player = null
 onready var head = $Head
@@ -47,7 +49,7 @@ func _ready():
 	yield(owner, "ready")
 	player = owner.player
 	#set_state_hiding()
-	set_physics_process(false)
+	enableMonster(false)
 	visible = false
 	head.get_node("headArea").monitoring = false
 	
@@ -58,19 +60,7 @@ func _ready():
 
 func _physics_process(delta):
 	lookAtPlayer()
-#	match state:
-#		HIDING:
-#			visible = false
-#			$headArea.monitoring = false
-#			canMakeSound = true
-#			#timesSoundPlayed = 1
-#
-#		ACTIVE:
-#			visible = true
-#			$headArea.monitoring = true
-#			#yield(get_tree().create_timer(RNGTools.randi_range(1,5)),"timeout")
-#			#makeCreepySound()
-			
+
 	if isActive:
 			#disappear if colliding with door
 			if collidingWithDoor:
@@ -90,10 +80,7 @@ func lookAtPlayer():
 	
 
 func isCanSpawn():
-	#if not inView and canSpawn: #and canSeePlayer():
-		#return true
-	#else:
-		#return false
+
 	if  isCrouchMonster:
 		if not player.getIsUnderFurniture():
 			return false
@@ -123,7 +110,25 @@ func isCanSpawn():
 			else:
 				return false
 		
-
+func enableMonster(enable):
+	if enable:
+		set_physics_process(true)
+		$bodyVisibleArea/CollisionShape.disabled = false
+		$Head/headArea/CollisionShape.disabled = false
+		for raycast in $Head/head/raycasts.get_children():
+			raycast.enabled = true
+		$Visible.connect("camera_entered", self, "_on_Visible_camera_entered")
+		$Visible.connect("camera_exited", self, "_on_Visible_camera_exited")
+		
+	elif not enable:
+		set_physics_process(false)
+		$bodyVisibleArea/CollisionShape.disabled = true
+		$Head/headArea/CollisionShape.disabled = true
+		for raycast in $Head/head/raycasts.get_children():
+			raycast.enabled = false
+		$Visible.disconnect("camera_entered", self, "_on_Visible_camera_entered")
+		$Visible.disconnect("camera_exited", self, "_on_Visible_camera_exited")
+	
 func isInView():
 	if inView:
 		return true
@@ -184,25 +189,29 @@ func set_state_hiding():
 func getIsActive():
 	return isActive
 
+#check if monster can see player. At least two raycasts must return true
 func canSeePlayer():
+	var raycastsColliding = 0
 	for raycast in $Head/head/raycasts.get_children():
 		if not raycast.is_in_group("eyes"):
 			if raycast.get_collider() != null:
-				if raycast.get_collider().is_in_group("player"): #== player.get_node("AreaPlayer"):
-					return true
+				if raycast.get_collider().is_in_group("player"):
+					raycastsColliding += 1 #== player.get_node("AreaPlayer"):
+	if raycastsColliding >= 2:
+		return true
 	return false
 
 func makeCreepySound(type):
 	
 	match type:
 		1:
-			if canMakeSound and not $monsterNoise3D.playing:
+			if $monsterNoise3D.playing:
 				$monsterNoise3D.play()
-				canMakeSound = false
+				#canMakeSound = false
 		2:
-			if canMakeSound and not $monsterNoise3D_2.playing:
+			if $monsterNoise3D_2.playing:
 				$monsterNoise3D_2.play()
-				canMakeSound = false
+				#canMakeSound = false
 
 func get_state():
 	return state
@@ -212,6 +221,7 @@ func _on_Visible_camera_exited(camera):
 
 
 func _on_Visible_camera_entered(camera):
+	print("monster in camera")
 	inView = true
 	
 
@@ -224,6 +234,8 @@ func _on_MonsterArea_area_entered(area):
 	elif area.get_parent().is_in_group("invisibleEnemy"):
 		if not inSpotlight:
 			canSpawn = true
+			enableMonster(true)
+			emit_signal("monsterInRange", self)
 		#set_physics_process(true)
 	
 
@@ -233,6 +245,8 @@ func _on_MonsterArea_area_exited(area):
 		inSpotlight = false
 	elif area.get_parent().is_in_group("invisibleEnemy"):
 		canSpawn = false
+		enableMonster(false)
+		emit_signal("monsterOutOfRange", self)
 #		if state == ACTIVE:
 #			state == HIDING
 #		set_physics_process(false)
@@ -251,9 +265,9 @@ func canMonsterSpawnNextToDoor():
 	return true
 
 func isPlayerInViewcone():
-	if head.rotation.x >= deg2rad(60) or head.rotation.x <= deg2rad(-60):
+	if head.rotation.x >= deg2rad(50) or head.rotation.x <= deg2rad(-50):
 		return false
-	elif head.rotation.y >= deg2rad(60) or head.rotation.y <= deg2rad(-60):
+	elif head.rotation.y >= deg2rad(50) or head.rotation.y <= deg2rad(-50):
 		return false
 	else:
 		return true
@@ -270,14 +284,14 @@ func playerKeepsStaring():
 func flickerFace(faceType):
 	match faceType:
 		1:
-			shadeFace(false)
+			#shadeFace(false)
 			for eye in $Head/head/eyes.get_children():
 				eye.frame = RNGTools.pick([0,1,2])
 		2:
-			shadeFace(false)
+			#shadeFace(false)
 			$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 		3:
-			shadeFace(false)
+			#shadeFace(false)
 			for eye in $Head/head/eyes.get_children():
 				eye.frame = RNGTools.pick([0,1,2])
 			$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
@@ -314,6 +328,7 @@ func isBackBreak():
 
 func _on_headArea_area_entered(area):
 	if area.is_in_group("playerViewCone"):
+		shadeFace(false)
 		$faceStareDelay.start()
 		
 		#print("monster head are entered")
@@ -366,12 +381,12 @@ func _on_faceStareDelay_timeout():
 func _on_bodyVisibleArea_area_entered(area):
 	if area.is_in_group("playerViewCone"):
 		monsterInSight = true
-		shadeFace(false)
+		
 		#print("monster can not spawn")
 
 
 func _on_bodyVisibleArea_area_exited(area):
 	if area.is_in_group("playerViewCone"):
 		monsterInSight = false
-		shadeFace(true)
+		
 		#print("monster can spawn")

@@ -233,25 +233,6 @@ material/0 = SubResource( 9 )
 visible = false
 "blend_shapes/mouth open" = -1.0
 
-[node name="raycasts" type="Spatial" parent="Cube001" index="0"]
-transform = Transform( 0.997418, -0.0715327, 0.00614248, 0.0716841, 0.996987, -0.029584, -0.00400775, 0.029948, 0.999542, -0.00172213, 4.77681, 0.901098 )
-
-[node name="RayCast" type="RayCast" parent="Cube001/raycasts" index="0"]
-transform = Transform( 1, -3.72529e-09, -2.35974e-07, -9.98843e-08, -5.21541e-08, 1, 3.72529e-09, -1, -4.84288e-08, -0.629811, -3.56329, 0.214705 )
-enabled = true
-cast_to = Vector3( 0, -60, 0 )
-collision_mask = 643
-debug_shape_custom_color = Color( 1, 0, 0, 1 )
-debug_shape_thickness = 5
-
-[node name="RayCast2" type="RayCast" parent="Cube001/raycasts" index="1"]
-transform = Transform( 1, -3.72529e-09, -2.35974e-07, -9.98843e-08, -5.21541e-08, 1, 3.72529e-09, -1, -4.84288e-08, 0.131431, -3.57013, 0.253527 )
-enabled = true
-cast_to = Vector3( 0, -60, 0 )
-collision_mask = 643
-debug_shape_custom_color = Color( 1, 0, 0, 1 )
-debug_shape_thickness = 5
-
 [node name="Cylinder002" parent="." index="4"]
 transform = Transform( 0.121449, 0, 0, 0, 0.121449, 0, 0, 0, 0.121449, 0.00756806, 1.82495, -0.0196924 )
 visible = false
@@ -278,6 +259,7 @@ random_volume_range = 0
 random_pitch_range = 0.308
 
 [node name="monsterNoise3D" type="AudioStreamPlayer3D" parent="." index="8"]
+unit_size = 5.0
 script = ExtResource( 5 )
 samples = [ ExtResource( 6 ), ExtResource( 7 ) ]
 random_strategy = 2
@@ -286,7 +268,7 @@ random_pitch_range = 1.0
 
 [node name="monsterNoise3D_2" type="AudioStreamPlayer3D" parent="." index="9"]
 unit_db = 6.5
-unit_size = 2.0
+unit_size = 3.0
 script = ExtResource( 5 )
 samples = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), null ]
 random_strategy = 2
@@ -342,6 +324,14 @@ debug_shape_thickness = 5
 
 [node name="RayCast2" type="RayCast" parent="Head/head/raycasts" index="1"]
 transform = Transform( 0.999999, -3.35276e-08, -1.82481e-07, 1.9907e-08, -3.72529e-08, 0.999999, -3.72529e-09, -1, -5.21541e-08, 0.098826, 0.297193, -0.46053 )
+enabled = true
+cast_to = Vector3( 0, -60, 0 )
+collision_mask = 643
+debug_shape_custom_color = Color( 1, 0, 0, 1 )
+debug_shape_thickness = 5
+
+[node name="RayCast3" type="RayCast" parent="Head/head/raycasts" index="2"]
+transform = Transform( 0.999999, -3.35276e-08, -2.01944e-07, 1.39789e-08, -3.70201e-08, 0.999999, -1.86265e-09, -1, -5.21541e-08, -0.109172, 0.282557, -0.456904 )
 enabled = true
 cast_to = Vector3( 0, -60, 0 )
 collision_mask = 643
