@@ -67,7 +67,6 @@ func _physics_process(delta):
 					#if raycast.is_colliding():
 			invisibleMonster.setStateFollow()
 			if monstersInRange != []:
-				print(monstersInRange)
 				for monster in monstersInRange:
 					createSpawnableMonsterList(monster, 0)
 			
@@ -106,22 +105,26 @@ func _physics_process(delta):
 			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
-				#get_parent().get_node("TimerMonsterCooldown").start()
+				
 				state = COOLDOWN
 				
 			elif not currentMonster.isMonsterInPlayerLocation():
 				get_parent().get_node("TimerMonsterSwitch").stop()
 				despawnMonster(currentMonster)
-				#get_parent().get_node("TimerMonsterCooldown").start()
+
 				state = COOLDOWN
 			
 			#if the player is away from the monster's view cone, it despawns
 			elif not currentMonster.isPlayerInViewcone():
 				despawnMonster(currentMonster)
-					#print("monster can't see play so was removed")
+
 				get_parent().get_node("TimerMonsterSwitch").stop()
-				#monsterCanDespawn = false
-				#get_parent().get_node("TimerMonsterCooldown").start()
+
+				state = COOLDOWN
+				
+			elif player.getIsInSpotlight():
+				despawnMonster(currentMonster)
+				get_parent().get_node("TimerMonsterSwitch").stop()
 				state = COOLDOWN
 					
 			elif monsterCanDespawn:
@@ -168,10 +171,9 @@ func _physics_process(delta):
 				rngCreepyBehavior = RNGTools.pick([1,0])
 			#monster creeps around. Not dangerous but creepy
 			elif rngCreepyBehavior == 1:
-				#monster can either peek for a split second or appear in the form of invisible enemy
+				#monster can peek for a split second 
 				if not monsterActive:
 					if monstersInRange != []:
-						print(monstersInRange)
 						for monster in monstersInRange:
 							createSpawnableMonsterList(monster, 13)
 							
@@ -186,6 +188,7 @@ func _physics_process(delta):
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
 						get_parent().get_node("monsterCreepTimer").wait_time = 0.3
 						get_parent().get_node("monsterCreepTimer").start()
+			#monster can appear walking behind the player
 			elif rngCreepyBehavior == 0:
 				if not monsterActive:
 					if not invisibleMonster.getIsInView() and invisibleMonster.getDistanceToPlayer() > 15:

@@ -188,5 +188,8 @@ func getDoorOpeningForce():
 		
 	return doorForce
 
+func getIsInSpotlight():
+	return inSpotlight
+
 func getIsUnderFurniture():
 	return isUnderFurniture

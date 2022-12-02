@@ -28,7 +28,7 @@ func chooseKey():
 	if lastKey != null:
 		lastKey.setStateInactive()
 		listOfKeys.erase(lastKey)
-	removeImpossibleKeys(listOfKeys)
+	listOfKeys = removeImpossibleKeys(listOfKeys)
 	currentKey = RNGTools.pick(listOfKeys)
 	
 	return currentKey
@@ -41,10 +41,11 @@ func removeImpossibleKeys(listOfKeys):
 		if currentLockedDoor.is_in_group(key.get_groups()[0]) or keyDistance < 15:
 			listOfKeys.erase(key)
 			print(key, " can't be placed")
+	return listOfKeys
 		
 
 func distanceToPlayer(key):
-	return key.transform.origin.distance_to(player.transform.origin)
+	return key.global_transform.origin.distance_to(player.get_position())
 
 func getHasKey():
 	return hasKey

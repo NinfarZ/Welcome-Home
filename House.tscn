@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=2]
+[gd_scene load_steps=268 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -61,6 +61,7 @@
 [ext_resource path="res://textures/letterCandyTutorial.png" type="Texture" id=59]
 [ext_resource path="res://textures/letterMonster.png" type="Texture" id=60]
 [ext_resource path="res://textures/letterLore.png" type="Texture" id=61]
+[ext_resource path="res://audio/lastPhaseAudio.wav" type="AudioStream" id=62]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -2394,7 +2395,7 @@ shape = SubResource( 581 )
 script = ExtResource( 41 )
 
 [node name="lightCoolDown" type="Timer" parent="spotlights"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="lights" type="Spatial" parent="spotlights"]
@@ -2799,6 +2800,10 @@ volume_db = -8.0
 stream = ExtResource( 56 )
 volume_db = 4.0
 
+[node name="lastPhase" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 62 )
+volume_db = 1.0
+
 [node name="BunnyManager" type="Spatial" parent="."]
 script = ExtResource( 52 )
 
@@ -2847,7 +2852,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62387, -3.95538, 15.1322 )
 [node name="PositionBedroom3" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6137, 15.5883, 31.8509 )
 
-[node name="PositionMybedroom" type="Position3D" parent="BasketManager/locations"]
+[node name="PositionMyBedroom" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1389, 15.3582, 15.126 )
 
 [node name="PositionBathroom2" type="Position3D" parent="BasketManager/locations"]
@@ -2912,8 +2917,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4189, 16.0888, -16.2853 )
 
 [node name="positions" type="Spatial" parent="."]
 
-[node name="PositionMyBedroom" type="Position3D" parent="positions"]
-transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, 16.8607, 15.7755, 12.503 )
+[node name="PositionmyBedroom" type="Position3D" parent="positions"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, 16.8607, 15.115, 12.503 )
+
+[node name="PositionbedRoom3" type="Position3D" parent="positions"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, 17.1197, 15.115, 27.0497 )
+
+[node name="PositionbedRoom2" type="Position3D" parent="positions"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, 12.538, 15.115, -5.70527 )
+
+[node name="Positionlivingroom" type="Position3D" parent="positions"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, 6.42498, 15.115, -25.8771 )
+
+[node name="Positionentrance" type="Position3D" parent="positions"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, -2.66758, 15.115, -40.9165 )
+
+[node name="Positionkitchen" type="Position3D" parent="positions"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 1, 8.69416, 15.115, -41.1255 )
 
 [node name="FlashlightItem" parent="." instance=ExtResource( 54 )]
 transform = Transform( 0.42192, 0.0312559, 0.26647, -0.0264267, 0.499022, -0.0166902, -0.266992, 0, 0.422747, 20.2943, 13.6412, -10.8219 )
@@ -2953,6 +2973,7 @@ font = SubResource( 782 )
 
 [node name="monsterSoundTimer" type="Timer" parent="."]
 wait_time = 30.0
+one_shot = true
 
 [node name="Letters" type="Spatial" parent="."]
 

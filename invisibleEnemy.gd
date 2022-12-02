@@ -383,7 +383,9 @@ func moveToPosition(position):
 func isMonsterLockedInside(currentDoor):
 	if state == FOLLOWPLAYER and currentLocation:
 		if currentDoor.is_in_group(currentLocation):
-			moveToPosition(RNGTools.pick(positions.get_children()))
+			var positionList = positions.get_children()
+			positionList.erase("Position" + currentLocation)
+			moveToPosition(RNGTools.pick(positionList))
 
 
 func _on_bodyVisibility_body_entered(body):
@@ -394,8 +396,9 @@ func _on_bodyVisibility_body_entered(body):
 
 
 func _on_monsterKillDelay_timeout():
-	state = KILLPLAYER
-	get_tree().call_group("gameMaster", "setGameState", 4)
+	if state == CHASE:
+		state = KILLPLAYER
+		get_tree().call_group("gameMaster", "setGameState", 4)
 
 
 func _on_bodyVisibility_body_exited(body):

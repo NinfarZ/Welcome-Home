@@ -52,17 +52,17 @@ enum {
 func _ready():
 	$TransitionScreen.connect("transitioned", self, "playerTransition")
 	if GameData.getSkipIntro() == true:
-		state = START
-		playerTransition()
+		skipIntro()
 	else:
 		state = INTRO
-	monsters.setStateIdle()
-	invisibleEnemy.isMonsterActive(false)
+	
 
 func _physics_process(delta):
 	match state:
 		INTRO:
 			if not CandyRandomized:
+				monsters.setStateIdle()
+				invisibleEnemy.isMonsterActive(false)
 				lightsToTurnOn = ["Entrance", "Livingroom", "Bathroom1", "Corridor2"]
 				for light in lightsToTurnOn:
 					spotlightManager.turnOnLight("spotlight" + light)
@@ -85,8 +85,8 @@ func _physics_process(delta):
 				CandyRandomized = true
 				candyBasket.displayText(5)
 			
-			elif basketManager.get_node("candyBasket/basket").getCurrentCandyCount() >= 1 and not monsterTriggered:
-				yield(get_tree().create_timer(10),"timeout")
+			elif basketManager.get_node("candyBasket/basket").getCurrentCandyCount() >= 3 and not monsterTriggered:
+				yield(get_tree().create_timer(5),"timeout")
 				bunnyManager.playBunnyMusicBox(bunnyManager.get_node("Bunnies/Bunny5"))
 				monsterTriggered = true
 			elif monsterTriggered and bunnyManager.get_node("Bunnies/Bunny5/bunny").getIsMusicBoxFinished():
@@ -203,6 +203,10 @@ func _physics_process(delta):
 					
 					difficultySet(2)
 					if not CandyRandomized:
+						for letter in $Letters.get_children():
+							letter.visible = false
+							letter.get_node("CollisionShape").disabled = true
+							
 						
 						furnitureManager.setBarricade(furnitureManager.get_node("barricade3"), false)
 						candyManager.randomizeCandy(3, candyManager.get_node("livingroom"))
@@ -311,7 +315,7 @@ func _physics_process(delta):
 					
 					difficultySet(5)
 					if not CandyRandomized:
-						$Audio/phaseTransition.play()
+						$Audio/lastPhase.play()
 						for location in candyManager.get_children():
 							candyManager.randomizeCandy(1, location)
 						
@@ -351,9 +355,9 @@ func _physics_process(delta):
 		PUNISHMENT:
 			get_tree().call_group("flashlight", "flicker")
 			if not $Audio/fearNoise.playing:
-				$Audio/darkScaryHorn.play()
 				$Audio/fearNoise.play()
 			if $punishmentTimer.is_stopped():
+				$Audio/darkScaryHorn.play()
 				spotlightManager.turnAllLightsOff()
 			
 				$CanvasLayer/Sanity.visible = false
@@ -361,9 +365,8 @@ func _physics_process(delta):
 			
 				get_tree().call_group("monsterController", "setStateHunting")
 			
-			elif spotlightManager.getCurrentLight() != null:
-				if spotlightManager.getCurrentLight().getIsPlayerInside():
-					punishmentEnd()
+			elif candyBasket.getIsBasketFull():
+				punishmentEnd()
 				
 			
 func deathSequence():
@@ -388,6 +391,17 @@ func endGame():
 
 func setGameState(newState):
 	state = newState
+
+func skipIntro():
+	for label in $TutorialLabels.get_children():
+		label.visible = false
+	state = GAME
+	phase = PHASE1
+	$TransitionScreen.transition()
+	spotlightManager.startTimer()
+	$FlashlightItem.get_node("flashlight").interact()
+	monsters.setStateCooldown()
+	invisibleEnemy.isMonsterActive(true)
 	
 
 func difficultySet(difficulty):
@@ -537,8 +551,10 @@ func _on_punishmentTimer_timeout():
 func playerTransition():
 	if state == START:
 		state = GAME
-		player.set_deferred("translation", positions.get_node("PositionMyBedroom").translation)
-	elif state == GAME:
+		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
+	elif phase == PHASE1:
+		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
+	elif phase == PHASE4:
 		get_tree().change_scene("res://gameOver.tscn")	
 	
 

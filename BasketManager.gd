@@ -19,6 +19,7 @@ func changeBasketLocation():
 
 func moveBasketToPosition(basketPosition):
 	candyBasket.transform.origin = basketPosition.transform.origin
+	lastPosition = basketPosition
 	
 
 func updateCandyCounter():

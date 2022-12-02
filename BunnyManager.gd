@@ -13,12 +13,13 @@ func _ready():
 		bunny.get_node("bunny").connect("bunnyTurnedOff", self, "despawnBunny")
 
 func getDistanceFromPlayer(bunny):
-	return bunny.transform.origin.distance_to(player.get_position())
+	return bunny.global_transform.origin.distance_to(player.get_position())
 
 func pickBunny():
 	var bunnyList = $Bunnies.get_children()
 	var bunny = RNGTools.pick(bunnyList)
-	while getDistanceFromPlayer(bunny) < 25.0:
+	while getDistanceFromPlayer(bunny) < 30.0:
+		print(getDistanceFromPlayer(bunny))
 		bunnyList.erase(bunny)
 		bunny = RNGTools.pick(bunnyList)
 	#bunny.get_node("bunny").setState(0)
@@ -50,6 +51,6 @@ func despawnBunny(bunny):
 
 func _on_bunnySpawnTimer_timeout():
 	var bunnyList = $Bunnies.get_children()
-	currentBunny = RNGTools.pick(bunnyList)
+	currentBunny = pickBunny()
 	spawnBunny(currentBunny)
 	currentBunny.get_node("bunny").playMusicBox()

@@ -301,6 +301,7 @@ GlobalNode="*res://globalNode.gd"
 
 [display]
 
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 
 [editor]
