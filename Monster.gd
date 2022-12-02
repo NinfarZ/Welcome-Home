@@ -205,11 +205,11 @@ func makeCreepySound(type):
 	
 	match type:
 		1:
-			if $monsterNoise3D.playing:
+			if not $monsterNoise3D.playing:
 				$monsterNoise3D.play()
 				#canMakeSound = false
 		2:
-			if $monsterNoise3D_2.playing:
+			if not $monsterNoise3D_2.playing:
 				$monsterNoise3D_2.play()
 				#canMakeSound = false
 

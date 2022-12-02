@@ -1,6 +1,5 @@
 extends Control
 
-const mainScene = preload("res://House.tscn")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -19,7 +18,7 @@ func _on_quitButton_pressed():
 
 
 func _on_TransitionScreen_transitioned():
-	get_tree().change_scene_to(mainScene)
+	get_tree().change_scene("res://House.tscn")
 
 #starts game without intro
 func _on_Button_pressed():
