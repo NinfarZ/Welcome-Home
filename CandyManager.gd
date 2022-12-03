@@ -11,6 +11,8 @@ func _ready():
 	for location in candyList:
 		for candy in location.get_children():
 			candy.get_node("candy").connect("candyPicked", self, "activeCandyPicked")
+			candy.get_node("candy").connect("handFull", self, "playHandFull")
+			
 
 func _process(delta):
 	if activeCandy != []:
@@ -45,6 +47,12 @@ func activeCandyPicked(candy):
 
 func getCurrentCandyAmount():
 	return currentCandyAmount
+
+func setCurrentCandyAmount(amount):
+	currentCandyAmount = amount
+
+func playHandFull():
+	candyCounter.showHandFull()
 
 func resetCandyPicked():
 	candyCounter.resetCounter()

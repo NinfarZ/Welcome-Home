@@ -139,6 +139,7 @@ func _physics_process(delta):
 	
 	
 						basketManager.moveBasketToPosition(basketManager.get_node("locations/PositionBedroom2"))
+						basketManager.setCurrentCandyAmount(5)
 					
 						candyManager.randomizeCandy(2, candyManager.get_node("myBedroom"))
 						candyManager.randomizeCandy(2, candyManager.get_node("corridor"))
@@ -146,7 +147,7 @@ func _physics_process(delta):
 						#monsters.setStateIdle()
 						#invisibleEnemy.setStateStop()
 						CandyRandomized = true
-						candyBasket.displayText(5)
+						candyBasket.displayText(10)
 					#if the basket is full, moves to phase1
 					elif candyBasket.getIsBasketFull():
 						$Audio/basketTransition.play()
@@ -224,7 +225,7 @@ func _physics_process(delta):
 						#currentBunny = pickBunny()
 						
 						
-						candyBasket.displayText(9)
+						candyBasket.displayText(19)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
@@ -264,7 +265,7 @@ func _physics_process(delta):
 						bunnyManager.startTimer()
 						
 						
-						candyBasket.displayText(9)
+						candyBasket.displayText(29)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
@@ -298,7 +299,7 @@ func _physics_process(delta):
 						
 						
 						
-						candyBasket.displayText(9)
+						candyBasket.displayText(39)
 						
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
@@ -330,7 +331,7 @@ func _physics_process(delta):
 						CandyRandomized = true
 						
 						
-						candyBasket.displayText(8)
+						candyBasket.displayText(47)
 					
 						
 					elif candyBasket.getIsBasketFull():
@@ -404,6 +405,7 @@ func skipIntro():
 	$FlashlightItem.get_node("flashlight").interact()
 	monsters.setStateCooldown()
 	invisibleEnemy.isMonsterActive(true)
+	basketManager.setCurrentCandyAmount(9)
 	
 
 func difficultySet(difficulty):
@@ -553,7 +555,7 @@ func _on_punishmentTimer_timeout():
 func playerTransition():
 	if state == START:
 		state = GAME
-		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
+		player.set_deferred("translation", positions.get_node("myBedroom").translation)
 #	elif phase == PHASE1:
 #		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
 	elif phase == PHASE4:

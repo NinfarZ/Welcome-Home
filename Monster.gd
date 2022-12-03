@@ -221,7 +221,6 @@ func _on_Visible_camera_exited(camera):
 
 
 func _on_Visible_camera_entered(camera):
-	print("monster in camera")
 	inView = true
 	
 

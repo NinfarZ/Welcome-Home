@@ -32,6 +32,7 @@ func _physics_process(delta):
 func addCandy(candyToAdd):
 	get_tree().call_group("sanityBar", "recoverSanity", 6)
 	get_parent().get_node("candyDrop").play()
+	fillBasketSprite()
 	if isBasketFull:
 		return
 	
@@ -53,10 +54,15 @@ func addCandy(candyToAdd):
 
 func displayText(candyAmount):
 	totalCandy = candyAmount
-	get_parent().get_node("candyCountLabel").set_text("0 / " + str(totalCandy))
+	get_parent().get_node("candyCountLabel").set_text(str(currentCandyCount) + " / " + str(totalCandy))
 	isBasketFull = false
-	currentCandyCount = 0
-	
+	#currentCandyCount = 0
+
+func fillBasketSprite():
+	if not get_parent().get_node("Sprite3D").visible:
+		get_parent().get_node("Sprite3D").visible = true
+	get_parent().get_node("Sprite3D").transform.origin.y += 0.02
+
 
 func interact():
 	#animate and add sound

@@ -5,6 +5,8 @@ extends Control
 # var a = 2
 # var b = "text"
 var counter = 0
+onready var counterLabel = $MarginContainer/VBoxContainer/counter
+onready var radar = $MarginContainer2/radar
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,21 +16,24 @@ func _ready():
 
 func addCandy():
 	counter += 1
-	$counter.text = "%s" % counter if counter < 5 else "%s\n (full)" % counter
+	counterLabel.text = "%s" % counter 
 
 func removeCandy():
 	counter -= 1
-	$counter.text = "%s" % counter
+	counterLabel.text = "%s" % counter
 
 func resetCounter():
 	counter = 0
-	$counter.text = "%s" % counter
+	counterLabel.text = "%s" % counter
 
 func playBeep():
-	$radar.visible = true
+	radar.visible = true
 	#$radar/AnimationPlayer.playback_speed = speed
-	$radar/AnimationPlayer.play("radarBeep")
+	radar.get_node("AnimationPlayer").play("radarBeep")
 
 func stopBeep():
-	$radar.visible = false
-	$radar/AnimationPlayer.stop()
+	radar.visible = false
+	radar.get_node("AnimationPlayer").stop()
+
+func showHandFull():
+	$AnimationPlayer.play("handFull")

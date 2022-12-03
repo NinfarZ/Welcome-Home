@@ -18,7 +18,7 @@ enum {
 	PHASE3
 }
 
-var state = FOLLOWPLAYER
+var state = STOP
 var phase = PHASE1
 
 signal killPlayer
@@ -223,7 +223,7 @@ func getIsInView():
 
 func monsterSpeedUp():
 	if invisibleEnemyInview:
-		speed += 0.05
+		speed += 0.09
 		
 	else:
 		speed -= 0.01
@@ -247,6 +247,8 @@ func getDoorOpeningForce():
 
 func setSpeedIncrease(newSpeed):
 	speed = newSpeed
+	minSpeed = newSpeed
+	maxSpeed = newSpeed + 2
 	#speed += increase -- old version
 
 func setMonsterDoorTimer(newTime):
@@ -384,7 +386,9 @@ func isMonsterLockedInside(currentDoor):
 	if state == FOLLOWPLAYER and currentLocation:
 		if currentDoor.is_in_group(currentLocation):
 			var positionList = positions.get_children()
-			positionList.erase("Position" + currentLocation)
+			for position in positionList:
+				if currentDoor.is_in_group(position):
+					positionList.erase(position)
 			moveToPosition(RNGTools.pick(positionList))
 
 

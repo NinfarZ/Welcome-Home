@@ -5,6 +5,7 @@ var canSpawn = true
 var listOfCandyNearby = []
 
 signal candyPicked
+signal handFull
 
 
 enum {
@@ -18,6 +19,9 @@ func interact():
 	#get_tree().call_group("sanityBar", "recoverSanity", 4)
 	get_parent().get_node("candyPicked").play()
 	emit_signal("candyPicked", self)
+
+func emitHandFull():
+	emit_signal("handFull")
 
 func getState():
 	return state
