@@ -223,10 +223,10 @@ func getIsInView():
 
 func monsterSpeedUp():
 	if invisibleEnemyInview:
-		speed -= 0.01
+		speed += 0.05
 		
 	else:
-		speed += 0.01
+		speed -= 0.01
 	speed = clamp(speed, minSpeed, maxSpeed)
 	
 

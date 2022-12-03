@@ -61,19 +61,16 @@ func _physics_process(delta):
 			pass
 			
 		SEARCHING:
-			#print("monster is searching")
-			#for monster in get_children():
-				#for raycast in monster.get_node("Cube001").get_children():
-					#if raycast.is_colliding():
+		
 			invisibleMonster.setStateFollow()
 			if monstersInRange != []:
 				for monster in monstersInRange:
-					createSpawnableMonsterList(monster, 0)
+					createSpawnableMonsterList(monster, 1)
 			
 			if validMonsters != []:
 				if RNGTools.pick([1,0]) == 1:
 					currentMonster = RNGTools.pick(validMonsters)
-					#get_node(currentMonster).makeCreepySound()
+	
 					spawnMonster(currentMonster)
 					state = STALKING
 				else:
@@ -139,7 +136,7 @@ func _physics_process(delta):
 			#incrementDifficulty()
 			currentMonster.flickerFace(RNGTools.pick([1,2,3]))
 			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
-			get_tree().call_group("sanityBar", "drainSanity", 1.17)
+			get_tree().call_group("sanityBar", "drainSanity", 1.90)
 			if player.getFlashlightPower():
 				get_tree().call_group("flashlight", "flicker")
 			else:

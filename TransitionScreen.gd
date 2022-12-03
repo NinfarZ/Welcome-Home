@@ -4,7 +4,7 @@ signal transitioned
 
 	
 func transition():
-	visible = true
+	$ColorRect.visible = true
 	$AnimationPlayer.play("fadeToBlack")
 
 
@@ -15,4 +15,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("transitioned")
 		$AnimationPlayer.play("fadeToNormal")
 	elif anim_name == "fadeToNormal":
-		visible = false
+		$ColorRect.visible = false

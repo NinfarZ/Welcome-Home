@@ -46,6 +46,11 @@ func activeCandyPicked(candy):
 func getCurrentCandyAmount():
 	return currentCandyAmount
 
+func resetCandyPicked():
+	candyCounter.resetCounter()
+	currentCandyAmount = 0
+
+#makes the radar beep when close to candy
 func getDistanceFromPlayerToCandy():
 	for candy in activeCandy:
 		if candy.get_node("candy").getState() == 0: 

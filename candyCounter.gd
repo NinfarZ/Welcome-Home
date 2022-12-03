@@ -14,10 +14,14 @@ func _ready():
 
 func addCandy():
 	counter += 1
-	$counter.text = "%s" % counter
+	$counter.text = "%s" % counter if counter < 5 else "%s\n (full)" % counter
 
 func removeCandy():
 	counter -= 1
+	$counter.text = "%s" % counter
+
+func resetCounter():
+	counter = 0
 	$counter.text = "%s" % counter
 
 func playBeep():

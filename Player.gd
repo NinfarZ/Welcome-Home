@@ -4,7 +4,7 @@ enum {
 	DEFAULT,
 	SEEMONSTER
 }
-const MOUSE_SENSITIVITY: float = 0.08
+const MOUSE_SENSITIVITY: float = 0.16
 const MOVE_SPEED: float = 5.0
 const GRAVITY_ACCELERATION: float = 5.8
 

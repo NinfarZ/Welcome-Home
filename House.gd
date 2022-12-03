@@ -66,7 +66,7 @@ func _physics_process(delta):
 				lightsToTurnOn = ["Entrance", "Livingroom", "Bathroom1", "Corridor2"]
 				for light in lightsToTurnOn:
 					spotlightManager.turnOnLight("spotlight" + light)
-				$CanvasLayer/Sanity.visible = false
+				#$CanvasLayer/Sanity.visible = false
 
 				
 				
@@ -281,9 +281,9 @@ func _physics_process(delta):
 					
 					difficultySet(4)
 					if not CandyRandomized:
+						$mannequim.visible = false
 						candyManager.randomizeCandy(1, candyManager.get_node("livingroom"))
 						candyManager.randomizeCandy(1, candyManager.get_node("kitchen"))
-						candyManager.randomizeCandy(1, candyManager.get_node("bathroom2"))
 						candyManager.randomizeCandy(3, candyManager.get_node("bathroom1"))
 						candyManager.randomizeCandy(1, candyManager.get_node("bedRoom3"))
 						candyManager.randomizeCandy(2, candyManager.get_node("myBedroom"))
@@ -330,13 +330,15 @@ func _physics_process(delta):
 						CandyRandomized = true
 						
 						
-						candyBasket.displayText(7)
+						candyBasket.displayText(8)
 					
 						
 					elif candyBasket.getIsBasketFull():
 						CandyRandomized = false
 						candyManager.hideCandy()
 						$TransitionScreen.transition()
+						
+						set_physics_process(false)
 				PHASE5:
 					pass
 					
@@ -397,7 +399,7 @@ func skipIntro():
 		label.visible = false
 	state = GAME
 	phase = PHASE1
-	$TransitionScreen.transition()
+	player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
 	spotlightManager.startTimer()
 	$FlashlightItem.get_node("flashlight").interact()
 	monsters.setStateCooldown()
@@ -552,8 +554,8 @@ func playerTransition():
 	if state == START:
 		state = GAME
 		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
-	elif phase == PHASE1:
-		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
+#	elif phase == PHASE1:
+#		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
 	elif phase == PHASE4:
 		get_tree().change_scene("res://gameOver.tscn")	
 	

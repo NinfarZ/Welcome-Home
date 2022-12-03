@@ -331,7 +331,6 @@ margin_bottom = 31.0
 text = "No"
 
 [node name="TransitionScreen" parent="." instance=ExtResource( 7 )]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "lights"
