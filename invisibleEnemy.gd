@@ -1,8 +1,8 @@
 extends KinematicBody
 
 export var speed = 2
-var maxSpeed = speed + 2
-var minSpeed = speed
+var maxSpeed = speed + 1
+var minSpeed = speed - 1
 var doorForce = 2
 enum {
 	PATROL,
@@ -122,8 +122,6 @@ func _physics_process(delta):
 								PHASE3:
 									$steps3D.play()
 									#$monsterBreath.play()
-					if not invisibleEnemyInview:
-						setBodyVisible(true)
 						#$bodyVisibility.monitoring = true
 					
 					if monsterCloseToKill and $monsterKillDelay.is_stopped():
@@ -200,11 +198,11 @@ func isMonsterActive(value):
 	set_physics_process(value)
 
 func monsterIsVisibleForMoment():
-	if not invisibleEnemyInview and transform.origin.distance_to(target.transform.origin) > 20:
-		$body.visible = true
+	if not invisibleEnemyInview:
+		setBodyVisible(true)
 	else:
-		yield(get_tree().create_timer(0.1),"timeout")
-		$body.visible = false
+		yield(get_tree().create_timer(0.5),"timeout")
+		setBodyVisible(false)
 
 func getDistanceToPlayer():
 	return transform.origin.distance_to(target.get_position())
@@ -223,11 +221,12 @@ func getIsInView():
 
 func monsterSpeedUp():
 	if invisibleEnemyInview:
-		speed += 0.09
+		speed += 0.01
 		
 	else:
 		speed -= 0.01
 	speed = clamp(speed, minSpeed, maxSpeed)
+	print(speed)
 	
 
 func getSpeed():
@@ -247,8 +246,8 @@ func getDoorOpeningForce():
 
 func setSpeedIncrease(newSpeed):
 	speed = newSpeed
-	minSpeed = newSpeed
-	maxSpeed = newSpeed + 2
+	minSpeed = newSpeed - 1
+	maxSpeed = newSpeed + 1
 	#speed += increase -- old version
 
 func setMonsterDoorTimer(newTime):
@@ -310,7 +309,7 @@ func _on_running3D_finished():
 
 
 func _on_locationSensor_area_entered(area):
-	if not area.is_in_group("spotlight"):
+	if area.is_in_group("location"):
 		monstersToSpawn = "monster" + area.name
 		print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
 		currentLocation = area.name
@@ -386,9 +385,12 @@ func isMonsterLockedInside(currentDoor):
 	if state == FOLLOWPLAYER and currentLocation:
 		if currentDoor.is_in_group(currentLocation):
 			var positionList = positions.get_children()
-			for position in positionList:
-				if currentDoor.is_in_group(position):
-					positionList.erase(position)
+			var i = 0
+			while i < len(positionList):
+				if currentDoor.is_in_group(positionList[i].name):
+					positionList.erase(positionList[i])
+				else:
+					i += 1
 			moveToPosition(RNGTools.pick(positionList))
 
 

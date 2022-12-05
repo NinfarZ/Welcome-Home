@@ -4,6 +4,14 @@ onready var sanityBar = $MarginContainer2/ProgressBar
 
 signal sanityThreshold(value)
 
+enum {
+	LOW,
+	MEDIUM,
+	HIGH
+}
+
+var fear = null
+var isSignalEmited = false
 var recoverValue = 0.09
 var punishmentTime = false
 var isMonsterDraining = false
@@ -94,3 +102,24 @@ func resetSanity():
 	punishmentTime = false
 
 	
+
+
+
+
+
+func _on_ProgressBar_value_changed(value):
+	if value < 50:
+		if not fear == LOW:
+			fear = LOW
+			emit_signal("sanityThreshold", fear)
+			
+	elif value >= 50 and value < 70:
+		if not fear == MEDIUM:
+			fear = MEDIUM
+			emit_signal("sanityThreshold", fear)
+			
+	elif value >= 70:
+		if not fear == HIGH:
+			fear = HIGH
+			emit_signal("sanityThreshold", fear)
+			

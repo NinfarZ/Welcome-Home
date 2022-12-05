@@ -1933,7 +1933,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="myBedroom" type="Area" parent="Houselayout"]
+[node name="myBedroom" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 1.56777, 0, 0, 0, 1, 0, 0, 0, 1.34597, 26.9997, 18.2626, 11.7388 )
 collision_layer = 16
 collision_mask = 16
@@ -1942,7 +1942,7 @@ collision_mask = 16
 transform = Transform( 0.688374, 0, 0, 0, 1, 0, 0, 0, 1, -7.53635, -4.89951, -0.279715 )
 shape = SubResource( 316 )
 
-[node name="bedRoom3" type="Area" parent="Houselayout"]
+[node name="bedRoom3" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 1.09943, -0.00948092, 0.00846222, 0.00845367, 0.999728, 0.0217568, -0.0123359, -0.0339474, 1.56468, 21.9601, 18.2626, 30.6218 )
 collision_layer = 16
 collision_mask = 16
@@ -1951,7 +1951,7 @@ collision_mask = 16
 transform = Transform( 0.688374, -1.52795e-09, 0, 5.82077e-11, 1, -1.30385e-08, 0, -5.58794e-09, 1, -10.0595, -4.87992, -0.297201 )
 shape = SubResource( 316 )
 
-[node name="bathroom2" type="Area" parent="Houselayout"]
+[node name="bathroom2" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.756603, -0.00652456, 0.00582351, 0.00845367, 0.999728, 0.0217568, -0.00491211, -0.0135177, 0.623047, 1.74414, 18.1958, 35.448 )
 collision_layer = 16
 collision_mask = 16
@@ -1960,7 +1960,7 @@ collision_mask = 16
 transform = Transform( 0.688374, 1.74623e-10, 0, 5.82077e-11, 1, -3.72529e-09, 0, 0, 1, -2.87558, -4.89951, -0.279716 )
 shape = SubResource( 316 )
 
-[node name="corridor1" type="Area" parent="Houselayout"]
+[node name="corridor1" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.378006, 0, 0, 0, 1, 0, 0, 0, 1.57451, 2.82435, 18.2626, 13.0419 )
 collision_layer = 16
 collision_mask = 16
@@ -1969,7 +1969,7 @@ collision_mask = 16
 transform = Transform( 0.688374, 0, 0, 0, 1, 0, 0, 0, 1, -9.03413, -4.89951, -0.997463 )
 shape = SubResource( 316 )
 
-[node name="corridor3" type="Area" parent="Houselayout"]
+[node name="corridor3" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.29918, 0, 0, 0, 1, 0, 0, 0, 0.677088, 2.6323, 18.2626, 24.9042 )
 collision_layer = 16
 collision_mask = 16
@@ -1978,7 +1978,7 @@ collision_mask = 16
 transform = Transform( 0.688374, 0, 0, 0, 1, 0, 0, 0, 1, -9.03413, -4.89951, -0.149654 )
 shape = SubResource( 316 )
 
-[node name="corridor2" type="Area" parent="Houselayout"]
+[node name="corridor2" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.359598, 0, 0, 0, 1, 0, 0, 0, 1.23997, 2.13917, 18.2626, -4.80897 )
 collision_layer = 16
 collision_mask = 16
@@ -1987,7 +1987,7 @@ collision_mask = 16
 transform = Transform( 0.688374, 0, 0, 0, 1, 0, 0, 0, 1, -7.78739, -4.89951, -0.279715 )
 shape = SubResource( 316 )
 
-[node name="livingroom" type="Area" parent="Houselayout"]
+[node name="livingroom" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.137057, 0, 0, 0, 1, 0, 0, 0, 1.52728, 4.80976, 18.2626, -23.9645 )
 collision_layer = 16
 collision_mask = 16
@@ -1996,7 +1996,7 @@ collision_mask = 16
 transform = Transform( 5.16037, 0, 0, 0, 1, 0, 0, 0, 0.954209, -5.32559, -4.89951, 1.1063 )
 shape = SubResource( 316 )
 
-[node name="livingroom2" type="Area" parent="Houselayout"]
+[node name="livingroom2" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.167967, 0, 0, 0, 1, 0, 0, 0, 1.52728, 18.0164, 18.2626, -23.9645 )
 collision_layer = 16
 collision_mask = 16
@@ -2005,7 +2005,7 @@ collision_mask = 16
 transform = Transform( 5.16037, 0, 0, 0, 1, 0, 0, 0, 0.954209, -5.32559, -4.89951, 1.1063 )
 shape = SubResource( 316 )
 
-[node name="entrance" type="Area" parent="Houselayout"]
+[node name="entrance" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.359822, 0, 0, 0, 1, 0, 0, 0, 1.34753, 2.81377, 18.2626, -40.6963 )
 collision_layer = 16
 collision_mask = 16
@@ -2014,7 +2014,7 @@ collision_mask = 16
 transform = Transform( 1.72651, 0, 0, 0, 1, 0, 0, 0, 0.954209, -7.78739, -4.89951, 0.794674 )
 shape = SubResource( 316 )
 
-[node name="bathroom1" type="Area" parent="Houselayout"]
+[node name="bathroom1" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.246188, 0, 0, 0, 1, 0, 0, 0, 1.41271, 1.25041, 18.2626, -53.8854 )
 collision_layer = 16
 collision_mask = 16
@@ -2023,7 +2023,7 @@ collision_mask = 16
 transform = Transform( 1.72651, 0, 0, 0, 1, 0, 0, 0, 0.256234, -10.7046, -4.89951, 0.794674 )
 shape = SubResource( 316 )
 
-[node name="kitchen" type="Area" parent="Houselayout"]
+[node name="kitchen" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.246188, 0, 0, 0, 1, 0, 0, 0, 1.83265, 14.7014, 18.2626, -40.9834 )
 collision_layer = 16
 collision_mask = 16
@@ -2032,7 +2032,7 @@ collision_mask = 16
 transform = Transform( 3.26339, 0, 0, 0, 1, 0, 0, 0, 0.724309, -10.7046, -4.89951, -0.218365 )
 shape = SubResource( 316 )
 
-[node name="bedRoom2" type="Area" parent="Houselayout"]
+[node name="bedRoom2" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 1.74599, 0, 0, 0, 1.20519, 0, 0, 0, 1.01749, 27.5287, 18.2626, -5.2832 )
 collision_layer = 16
 collision_mask = 16
@@ -2041,7 +2041,7 @@ collision_mask = 16
 transform = Transform( 0.862875, 0, 0, 0, 1, 0, 0, 0, 1, -8.06608, -4.8995, -0.279715 )
 shape = SubResource( 316 )
 
-[node name="balcony" type="Area" parent="Houselayout"]
+[node name="balcony" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.174855, 0, 0, 0, 1.20519, 0, 0, 0, 1.53374, 28.4939, 18.2626, 11.1053 )
 collision_layer = 16
 collision_mask = 16
@@ -2050,7 +2050,7 @@ collision_mask = 16
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -11.0395, -4.8995, -0.279715 )
 shape = SubResource( 316 )
 
-[node name="balcony2" type="Area" parent="Houselayout"]
+[node name="balcony2" type="Area" parent="Houselayout" groups=["location"]]
 transform = Transform( 0.174855, 0, 0, 0, 1.20519, 0, 0, 0, 1.53374, 28.4939, 18.2626, -6.24325 )
 collision_layer = 16
 collision_mask = 16
@@ -2059,7 +2059,7 @@ collision_mask = 16
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -11.0395, -4.8995, -0.279715 )
 shape = SubResource( 316 )
 
-[node name="wardrobe" parent="Houselayout" instance=ExtResource( 17 )]
+[node name="wardrobe" parent="Houselayout" groups=["location"] instance=ExtResource( 17 )]
 transform = Transform( 0.5029, 0, 0, 0, 1, 0, 0, 0, 1.14161, 5.46975, 13.5318, 14.4479 )
 collision_layer = 16
 collision_mask = 0
@@ -2837,28 +2837,28 @@ script = ExtResource( 52 )
 
 [node name="Bunnies" type="Spatial" parent="BunnyManager"]
 
-[node name="Bunny" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny" parent="BunnyManager/Bunnies" groups=["myBedroom"] instance=ExtResource( 11 )]
 transform = Transform( -0.690872, 0, -0.112677, 0, 0.7, 0, 0.112677, 0, -0.690872, 25.2076, 11.6235, 12.0512 )
 
-[node name="Bunny2" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny2" parent="BunnyManager/Bunnies" groups=["bedRoom2"] instance=ExtResource( 11 )]
 transform = Transform( -0.316976, 0, -0.62412, 0, 0.7, 0, 0.62412, 0, -0.316976, 22.4825, 11.6235, -10.8397 )
 
-[node name="Bunny4" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny4" parent="BunnyManager/Bunnies" groups=["entrance"] instance=ExtResource( 11 )]
 transform = Transform( -0.512356, 0, -0.476961, 0, 0.7, 0, 0.476961, 0, -0.512356, 2.52838, 14.7319, -46.6166 )
 
-[node name="Bunny7" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny7" parent="BunnyManager/Bunnies" groups=["bathroom1"] instance=ExtResource( 11 )]
 transform = Transform( 0.0911866, -0.694035, 3.03373e-08, 0, -3.0598e-08, -0.7, 0.694036, 0.0911865, -3.98589e-09, 5.08956, 16.0892, -54.6758 )
 
-[node name="Bunny6" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny6" parent="BunnyManager/Bunnies" groups=["livingroom"] instance=ExtResource( 11 )]
 transform = Transform( -0.624799, 0, -0.315636, 0, 0.7, 0, 0.315636, 0, -0.624799, 21.133, 14.7319, -28.3158 )
 
-[node name="Bunny5" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny5" parent="BunnyManager/Bunnies" groups=["kitchen"] instance=ExtResource( 11 )]
 transform = Transform( -0.512356, 0, -0.476961, 0, 0.7, 0, 0.476961, 0, -0.512356, 14.3146, 11.5016, -35.7438 )
 
-[node name="Bunny8" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny8" parent="BunnyManager/Bunnies" groups=["bathroom2"] instance=ExtResource( 11 )]
 transform = Transform( 5.2244e-08, 0.69801, 0.052741, -0.7, 5.28485e-08, -6.02871e-09, -9.99341e-09, -0.052741, 0.69801, -5.00781, 17.5333, 36.3372 )
 
-[node name="Bunny9" parent="BunnyManager/Bunnies" instance=ExtResource( 11 )]
+[node name="Bunny9" parent="BunnyManager/Bunnies" groups=["bedRoom3"] instance=ExtResource( 11 )]
 transform = Transform( 0.0635158, 0, 0.697112, 0, 0.7, 0, -0.697112, 0, 0.0635158, 20.8835, 11.8163, 35.6031 )
 
 [node name="bunnySpawnTimer" type="Timer" parent="BunnyManager"]
@@ -2877,25 +2877,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62387, -3.95538, 15.1322 )
 
 [node name="locations" type="Spatial" parent="BasketManager"]
 
-[node name="PositionBedroom3" type="Position3D" parent="BasketManager/locations"]
+[node name="bedRoom3" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6137, 15.5883, 31.8509 )
 
-[node name="PositionMyBedroom" type="Position3D" parent="BasketManager/locations"]
+[node name="myBedroom" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1389, 15.3582, 15.126 )
 
-[node name="PositionBathroom2" type="Position3D" parent="BasketManager/locations"]
+[node name="bathroom2" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28387, 13.1791, 37.4046 )
 
-[node name="PositionBedroom2" type="Position3D" parent="BasketManager/locations"]
+[node name="bedRoom2" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1823, 13.0278, -2.74225 )
 
-[node name="PositionLivingroom" type="Position3D" parent="BasketManager/locations"]
+[node name="livingroom" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9973, 14.6109, -26.5449 )
 
-[node name="PositionKitchen" type="Position3D" parent="BasketManager/locations"]
+[node name="kitchen" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8618, 13.2117, -47.1541 )
 
-[node name="PositionBathroom1" type="Position3D" parent="BasketManager/locations"]
+[node name="bathroom1" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03165, 13.4532, -57.9258 )
 
 [node name="keyManager" type="Spatial" parent="." groups=["keyManager"]]

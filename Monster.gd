@@ -233,7 +233,6 @@ func _on_MonsterArea_area_entered(area):
 	elif area.get_parent().is_in_group("invisibleEnemy"):
 		if not inSpotlight:
 			canSpawn = true
-			enableMonster(true)
 			emit_signal("monsterInRange", self)
 		#set_physics_process(true)
 	
@@ -244,7 +243,6 @@ func _on_MonsterArea_area_exited(area):
 		inSpotlight = false
 	elif area.get_parent().is_in_group("invisibleEnemy"):
 		canSpawn = false
-		enableMonster(false)
 		emit_signal("monsterOutOfRange", self)
 #		if state == ACTIVE:
 #			state == HIDING
@@ -303,10 +301,10 @@ func playerLooksAtMonster():
 		timesSoundPlayed -= 1
 		
 func enableArea():
-	$MonsterArea.monitorable = true
+	$MonsterArea.set_deferred("monitorable", true)
 
 func disableArea():
-	$MonsterArea.monitorable = false
+	$MonsterArea.set_deferred("monitorable", false)
 
 func backBreak():
 	$AnimationPlayer.play("backbreak")

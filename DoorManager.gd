@@ -43,14 +43,19 @@ func removeImpossibleDoors(availableDoors):
 	#wardrobe doors
 	availableDoors.erase($Door8)
 	availableDoors.erase($Door7)
+	var i = 0
 	
-	for door in availableDoors:
-		if door.is_in_group(player.get_current_location()):
-			availableDoors.erase(door)
-			print("removed door", door, " bacause player is in ", player.get_current_location())
-		elif door.is_in_group(invisibleEnemy.get_current_location()):
-			availableDoors.erase(door)
-			print("removed door", door, " because enemy is in ", invisibleEnemy.get_current_location())
+	while i < len(availableDoors):
+		if availableDoors[i].is_in_group(player.get_current_location() if player.get_current_location() != null else "myBedroom"):
+			print("removed door", availableDoors[i], " bacause player is in ", player.get_current_location())
+			availableDoors.erase(availableDoors[i])
+		elif availableDoors[i].is_in_group(invisibleEnemy.get_current_location() if invisibleEnemy.get_current_location() != null else "bedRoom2"):
+			print("removed door", availableDoors[i], " because enemy is in ", invisibleEnemy.get_current_location())
+			availableDoors.erase(availableDoors[i])
+		else:
+			#index only goes forward if no element is erased
+			i += 1
+			
 	
 	
 	

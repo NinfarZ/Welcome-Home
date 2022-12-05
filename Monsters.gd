@@ -136,7 +136,7 @@ func _physics_process(delta):
 			#incrementDifficulty()
 			currentMonster.flickerFace(RNGTools.pick([1,2,3]))
 			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
-			get_tree().call_group("sanityBar", "drainSanity", 1.90)
+			get_tree().call_group("sanityBar", "drainSanity", 3)
 			if player.getFlashlightPower():
 				get_tree().call_group("flashlight", "flicker")
 			else:
@@ -227,11 +227,6 @@ func setMonsterManagerPhase(newPhase):
 	phase = newPhase
 
 func remove_monster_from_list(monster):
-#	var i = 0
-#	while i < validMonsters.size():
-#		if validMonsters[i] == monster:
-#				validMonsters.pop_at(i)
-#		i += 1
 	if monster in validMonsters:
 		validMonsters.erase(monster)
 
@@ -246,11 +241,9 @@ func player_in_range(raycast):
 func pickRandomMonster():
 	var chosenMonster
 	
-	#chosenMonster = validMonsters[randi() % validMonsters.size()]
+
 	chosenMonster = RNGTools.pick(validMonsters)
-	#print(chosenMonster)
-	#get_node(chosenMonster).set_state_active()
-	#state = STALKING
+
 	return chosenMonster
 	
 func createSpawnableMonsterList(monster, distance):
@@ -304,11 +297,9 @@ func despawnMonster(chosenMonster):
 
 func changeDifficulty(newSpeed, newTime):
 	get_parent().get_node("TimerMonsterSwitch").wait_time = newTime
-	#get_parent().get_node("TimerMonsterSwitch").wait_time = clamp(get_parent().get_node("TimerMonsterSwitch").wait_time, 8, 10)
-	#print(get_parent().get_node("TimerMonsterSwitch").wait_time)
+
 	invisibleMonster.setSpeedIncrease(newSpeed)
-	#invisibleMonster.speed = clamp(invisibleMonster.speed, 1, 4)
-	#print(invisibleMonster.speed)
+
 
 func cooldown(minValue, maxValue):
 	#get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(minValue, maxValue)
@@ -338,10 +329,16 @@ func _on_TimerMonsterCooldown_timeout():
 func _addMonsterInRange(monster):
 	if not monster in monstersInRange:
 		monstersInRange.append(monster)
+		monster.enableMonster(true)
 
 func _removeMonsterOutOfRange(monster):
 	if monster in monstersInRange:
 		monstersInRange.erase(monster)
+		monster.enableMonster(false)
+		if monster.getIsActive() and not state == IDLE:
+			despawnMonster(monster)
+			get_parent().get_node("TimerMonsterSwitch").stop()
+			state = COOLDOWN
 	
 
 func setStateIdle():

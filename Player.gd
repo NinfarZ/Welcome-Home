@@ -159,13 +159,17 @@ func setDrainSanity(drainValue):
 
 func get_current_location():
 	return currentLocation
+
+func set_current_location(location):
+	currentLocation = location
 	
 func setState(newState):
 	state = newState
 
 
 func _on_AreaPlayer_area_entered(area):
-	currentLocation = area.name
+	if area.is_in_group("location"):
+		currentLocation = area.name
 
 
 func _on_AreaPlayer_area_exited(area):

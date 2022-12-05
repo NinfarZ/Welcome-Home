@@ -137,7 +137,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 1.55061, 2.95539, -0.116692 ), Vector3( 1.55061, 3.35738, -0.116692 ) ]
+"values": [ Vector3( 1.55061, 2.95539, 0.102035 ), Vector3( 1.55061, 3.35738, 0.145932 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite3D:visible")
@@ -215,7 +215,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 1.55061, 2.95539, -0.116692 ), Vector3( 1.55061, 3.35738, -0.116692 ) ]
+"values": [ Vector3( 1.55061, 2.95539, 0.106818 ), Vector3( 1.55061, 3.35738, 0.163125 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite3D:visible")
@@ -322,7 +322,7 @@ random_pitch_range = 0.117
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39778, 2.98787, 0 )
 stream = ExtResource( 6 )
 unit_db = 3.0
-pitch_scale = 1.06658
+pitch_scale = 1.03267
 script = ExtResource( 2 )
 samples = [ ExtResource( 6 ) ]
 random_volume_range = 0

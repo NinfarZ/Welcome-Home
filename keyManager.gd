@@ -28,7 +28,7 @@ func chooseKey():
 	if lastKey != null:
 		lastKey.setStateInactive()
 		listOfKeys.erase(lastKey)
-	listOfKeys = removeImpossibleKeys(listOfKeys)
+	removeImpossibleKeys(listOfKeys)
 	currentKey = RNGTools.pick(listOfKeys)
 	
 	return currentKey
@@ -36,12 +36,21 @@ func chooseKey():
 #erases keys where they player can't reach
 func removeImpossibleKeys(listOfKeys):
 	var currentLockedDoor = doorManager.getCurrentDoor()
-	for key in listOfKeys:
-		var keyDistance = distanceToPlayer(key)
-		if currentLockedDoor.is_in_group(key.get_groups()[0]) or keyDistance < 15:
-			listOfKeys.erase(key)
-			print(key, " can't be placed")
-	return listOfKeys
+	var i = 0
+	while i < len(listOfKeys):
+		print(listOfKeys[i].name)
+		if currentLockedDoor.is_in_group(listOfKeys[i].get_groups()[0]):
+			print(listOfKeys[i], " can't be placed because it's beyond reach")
+			listOfKeys.erase(listOfKeys[i])
+		elif player.get_current_location() != null:
+			if listOfKeys[i].is_in_group(player.get_current_location()):
+				print(listOfKeys[i], " can't be placed because it's in the players location")
+				listOfKeys.erase(listOfKeys[i])
+				
+			else:
+				#the index only goes forward if no element is removed
+				i += 1
+			
 		
 
 func distanceToPlayer(key):

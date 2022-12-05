@@ -56,3 +56,5 @@ margin_bottom = 40.0
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 percent_visible = false
+
+[connection signal="value_changed" from="MarginContainer2/ProgressBar" to="." method="_on_ProgressBar_value_changed"]
