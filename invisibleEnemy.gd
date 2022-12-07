@@ -63,8 +63,7 @@ func _physics_process(delta):
 	#open doors code
 	if monsterWantsToOpenDoor:
 		door.interact(getDoorOpeningForce())
-	
-	
+
 	match state:
 		FOLLOWPLAYER:
 			if path.size() > 0:
@@ -229,7 +228,7 @@ func flickerLightIfClose():
 func setBodyVisible(value):
 	$body.visible = value
 	for eye in $body/head/eyes.get_children():
-		eye.frame = RNGTools.pick([0,1,2,3])
+		eye.frame = RNGTools.pick([0,1,2])
 	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 	
 
@@ -320,10 +319,8 @@ func _on_running3D_finished():
 func _on_locationSensor_area_entered(area):
 	if area.is_in_group("location"):
 		monstersToSpawn = "monster" + area.name
-		print("MONSTERSTOSPAWN LOCATION IS monster" + area.name)
 		currentLocation = area.name
-		print("ENEMY IS INSIDE " + area.name)
-	#get_tree().call_group("gameMaster", "shutDownLight", currentLocation)
+
 	
 	
 	
@@ -349,19 +346,21 @@ func playMonsterGrunt():
 func _on_locationSensor_body_entered(body):
 
 	if body.is_in_group("door"):
-		if body.isLocked():
-			body.interact(getDoorOpeningForce())
-		elif not body.isOpen():
+		if not body.isOpen():
 			door = body
 			if $openDoorTimer.is_stopped():
 				if currentLocation != target.get_current_location():
 					if RNGTools.pick([1,0,0]) == 1:
-							door.monsterKnocking(speed)
-					if RNGTools.randi_range(0, 100) <= 25 and not door.name in ["Door6", "Door3", "Door8", "Door7"]:
+						door.monsterKnocking(speed)
+					if body.isLocked():
+						body.interact(getDoorOpeningForce())
 						yield(get_tree().create_timer(5.0),"timeout")
-						if not door.isOpen():
-							var positionToMove = getClosestPositionToTarget()
-							moveToPosition(positionToMove)
+						var positionToMove = getClosestPositionToTarget()
+						moveToPosition(positionToMove)
+					elif RNGTools.randi_range(0, 100) <= 25 and not door.name in ["Door6", "Door3", "Door8", "Door7"]:
+						yield(get_tree().create_timer(5.0),"timeout")
+						var positionToMove = getClosestPositionToTarget()
+						moveToPosition(positionToMove)
 					else:
 						$openDoorTimer.start()
 			
@@ -376,7 +375,6 @@ func _on_locationSensor_body_exited(body):
 func _on_chaseGracePeriod_timeout():
 	gracePeriodOver = true
 	monsterChaseVisible = true
-	print("grace period over")
 
 
 func _on_openDoorTimer_timeout():

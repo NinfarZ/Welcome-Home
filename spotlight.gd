@@ -59,7 +59,6 @@ func disableLight():
 	$SpotLight.visible = false
 	$lightSwitch.play()
 	$changeTimer.stop()
-	print("turning" + self.name + " off")
 
 func enableLight():
 	set_physics_process(true)

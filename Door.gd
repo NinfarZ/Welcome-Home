@@ -41,6 +41,9 @@ func open_and_close(openingForce):
 	if not open and not in_animation:
 		#$monsterSensor/CollisionShape.disabled = true
 		$openCloseSound.play()
+		if $slowKnock.playing or $fastKnock.playing:
+			$slowKnock.stop()
+			$fastKnock.stop()
 		in_animation = true
 		#$CollisionShape.disabled = true
 		
@@ -125,8 +128,8 @@ func playMonsterLockedDoor():
 		$monsterLockedDoorKnock.play()
 
 func monsterKnocking(speed):
-	if speed <= 3:
+	if speed <= 4.2:
 		$slowKnock.play()
-	elif speed > 3:
+	elif speed > 4.2:
 		$fastKnock.play()
 	

@@ -68,7 +68,7 @@ func _physics_process(delta):
 					createSpawnableMonsterList(monster, 1)
 			
 			if validMonsters != []:
-				if RNGTools.pick([1,0]) == 1:
+				if RNGTools.randi_range(0, 100) <= 70:
 					currentMonster = RNGTools.pick(validMonsters)
 	
 					spawnMonster(currentMonster)
@@ -239,7 +239,7 @@ func createSpawnableMonsterList(monster, distance):
 	if monster.isCanSpawn():
 		#monster.enableMonster(true)
 		
-		if monster.isMonsterPositionedToSpawn() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
+		if monster.isMonsterPositionedToSpawn() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 		#monster.enableArea()
 		#print("monster can spawn")
 			add_monster_to_list(monster)
@@ -247,18 +247,13 @@ func createSpawnableMonsterList(monster, distance):
 		else:
 			remove_monster_from_list(monster)
 	else:
-		pass
+		return
 		#monster.enableMonster(false)
 
 func _on_TimerMonsterSwitch_timeout():
 	#print("timer ran out!")
 	monsterCanDespawn = true
-	
-	#else:
-		#state = SEARCHING
-	#if get_node(currentMonster).canSeePlayer() == false or get_node(currentMonster).isInView() == false:
-		#despawnMonster(currentMonster)
-		#state = SEARCHING
+
 
 func spawnMonster(chosenMonster):
 	#if RNGTools.randi_range(-10,10) < 0:
@@ -296,14 +291,14 @@ func cooldown(minValue, maxValue):
 	
 
 
-func _on_monsterSpawner_area_entered(area):
-	#print("there are monsters here")
-	pass
-
-
-func _on_monsterSpawner_area_exited(area):
-	validMonsters = []
-	despawnMonster(currentMonster)
+#func _on_monsterSpawner_area_entered(area):
+#	#print("there are monsters here")
+#	pass
+#
+#
+#func _on_monsterSpawner_area_exited(area):
+#	validMonsters = []
+#	despawnMonster(currentMonster)
 
 
 func _on_TimerMonsterCooldown_timeout():

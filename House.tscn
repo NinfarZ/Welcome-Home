@@ -1635,14 +1635,6 @@ transform = Transform( -0.9984, -0.0439219, 0.0356097, 0.0410785, -0.996187, -0.
 transform = Transform( -0.165418, 0.0691925, -0.983793, 0.0410785, -0.996187, -0.0769713, -0.985367, -0.0531459, 0.161945, 8.11245, 16.9799, -18.0275 )
 isCrouchMonster = true
 
-[node name="yellowgirl56" parent="Monsters" groups=["crouchMonster", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( -0.168559, -0.0828418, 0.982204, 0.0410785, -0.996187, -0.0769713, 0.984835, 0.0273739, 0.17132, 5.06494, 17.0399, -18.8363 )
-isCrouchMonster = true
-
-[node name="yellowgirl57" parent="Monsters" groups=["livingroom", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( 0.987071, 0.0285164, 0.157727, 0.0410785, -0.996187, -0.0769713, 0.15493, 0.0824555, -0.984478, 5.88084, 16.9695, -15.2857 )
-isCrouchMonster = true
-
 [node name="yellowgirl58" parent="Monsters" groups=["livingroom", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( -0.998768, -0.0430851, 0.024582, 0.0410785, -0.996187, -0.0769713, 0.0278046, -0.0758668, 0.99673, 6.63144, 16.9895, -21.3551 )
 isCrouchMonster = true

@@ -277,7 +277,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						$mannequim.visible = false
 						#spreads 10 candy across apartment
-						spreadCandyAcrossMap(9)
+						spreadCandyAcrossMap(8)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -350,6 +350,7 @@ func _physics_process(delta):
 			if $punishmentTimer.is_stopped():
 				$Audio/darkScaryHorn.play()
 				spotlightManager.turnAllLightsOff()
+				spotlightManager.startTimer()
 			
 				$punishmentTimer.start()
 			
@@ -507,7 +508,7 @@ func punishmentEnd():
 
 func _on_punishmentTimer_timeout():
 	state = GAME
-	get_tree().call_group("monsterController", "setStateCooldown")
+	monsters.setStateCooldown()
 	$Audio/fearNoise.stop()
 	bunnyManager.startTimer()
 
