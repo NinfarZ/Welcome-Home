@@ -38,11 +38,13 @@ var monsterCloseToKill = false
 var monsterChaseVisible = false
 var monsterWantsToOpenDoor = false
 var door = null
+var lockedDoor = null
 var sanityDrain = 0.015
 
 var canPlaySound = true
 var timesSoundPlayed = 1
 var timeFootstepPlayed = 1
+var teleportingMonster = false
 
 var currentLocation = null
 var monstersToSpawn = null
@@ -61,7 +63,7 @@ func _physics_process(delta):
 	#open doors code
 	if monsterWantsToOpenDoor:
 		door.interact(getDoorOpeningForce())
-		
+	
 	
 	match state:
 		FOLLOWPLAYER:
@@ -69,7 +71,6 @@ func _physics_process(delta):
 				move_to_target()
 			if currentLocation != null and currentLocation == target.get_current_location():
 				
-				get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
 				match phase:
 					PHASE1:
 						pass
@@ -84,9 +85,6 @@ func _physics_process(delta):
 							$RandomAudioStreamPlayer/TimerAudio.start()
 							canPlaySound = false
 					
-					#timesSoundPlayed -= 1
-			#elif currentLocation != target.get_current_location():
-				#timesSoundPlayed = 1
 			elif transform.origin.distance_to(target.get_position()) > 15 and not monsterWantsToOpenDoor:
 				
 				match phase:
@@ -96,21 +94,15 @@ func _physics_process(delta):
 						playFootStep()
 					PHASE3:
 						playFootStep()
-					#else:
-						#print("rng failed!")
-						#yield(get_tree().create_timer(5.0),"timeout")
+
 					
 		STOP:
-			if currentLocation != null and currentLocation == target.get_current_location():
-					
-					get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
+			pass
 		KILLPLAYER:
 			emit_signal("killPlayer")
 			$body.visible = false
-			#if not $running3D.playing:
-				#$running3D.play()
+
 		CHASE:
-			#$monsterSpawner/CollisionShape.disabled = true
 			if gracePeriodOver:
 				
 					if path.size() > 0:
@@ -121,8 +113,8 @@ func _physics_process(delta):
 									$steps3D.play()
 								PHASE3:
 									$steps3D.play()
-									#$monsterBreath.play()
-						#$bodyVisibility.monitoring = true
+					if not invisibleEnemyInview:
+						setBodyVisible(true)
 					
 					if monsterCloseToKill and $monsterKillDelay.is_stopped():
 						playMonsterGrunt()
@@ -185,7 +177,6 @@ func setStateKillplayer():
 
 func setStateChase():
 	state = CHASE
-	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 	#$body.visible = true
 	if not gracePeriodOver and $chaseGracePeriod.is_stopped():
 		$chaseGracePeriod.start()
@@ -207,13 +198,39 @@ func monsterIsVisibleForMoment():
 func getDistanceToPlayer():
 	return transform.origin.distance_to(target.get_position())
 
+func getClosestPositionToTarget():
+	var closestPosition = null
+	var positionsList = positions.get_children()
+	
+	#checks current enemy position from options
+	for position in positionsList:
+		if position.name == currentLocation:
+			positionsList.erase(position)
+	
+	#atributes first position depending on whether the door's already unlocked or position is impossible
+	if not lockedDoor.isLocked():
+		closestPosition = positionsList[0]
+	else:
+		closestPosition = positionsList[0] if not positionsList[0].name in lockedDoor.get_groups() else positionsList[1]
+	var i = 1
+	while i < len(positionsList):
+		if positionsList[i].name in lockedDoor.get_groups() and lockedDoor.isLocked():
+			positionsList.erase(positionsList[i])
+		else:
+			if positionsList[i].global_transform.origin.distance_to(target.get_position()) < closestPosition.global_transform.origin.distance_to(target.get_position()):
+				closestPosition = positionsList[i] 
+			i += 1
+	return closestPosition
+
 func flickerLightIfClose():
 	if transform.origin.distance_to(target.transform.origin) <= 5:
 		get_tree().call_group("flashlight", "flicker")
 
 func setBodyVisible(value):
-	print("setting body visibility to ", value)
 	$body.visible = value
+	for eye in $body/head/eyes.get_children():
+		eye.frame = RNGTools.pick([0,1,2,3])
+	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 	
 
 func getIsInView():
@@ -226,7 +243,6 @@ func monsterSpeedUp():
 	else:
 		speed -= 0.01
 	speed = clamp(speed, minSpeed, maxSpeed)
-	print(speed)
 	
 
 func getSpeed():
@@ -252,12 +268,6 @@ func setSpeedIncrease(newSpeed):
 
 func setMonsterDoorTimer(newTime):
 	$openDoorTimer.wait_time = newTime
-	
-
-
-
-
-
 
 func _on_VisibilityNotifier_camera_entered(camera):
 	invisibleEnemyInview = true
@@ -292,8 +302,7 @@ func lookAtPlayer():
 	#head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
 	$body.rotation.x = clamp($body.rotation.x, deg2rad(0), deg2rad(0))
 	
-	for eye in $body/head/eyes.get_children():
-		eye.frame = RNGTools.pick([0,1,2,3])
+	
 	
 
 
@@ -338,11 +347,7 @@ func playMonsterGrunt():
 
 
 func _on_locationSensor_body_entered(body):
-#	if body.is_in_group("player") and gracePeriodOver:
-#		if state == CHASE:
-#			state = KILLPLAYER
-#			get_tree().call_group("gameMaster", "setGameState", 4)
-			#_physics_process(false)
+
 	if body.is_in_group("door"):
 		if body.isLocked():
 			body.interact(getDoorOpeningForce())
@@ -351,8 +356,14 @@ func _on_locationSensor_body_entered(body):
 			if $openDoorTimer.is_stopped():
 				if currentLocation != target.get_current_location():
 					if RNGTools.pick([1,0,0]) == 1:
-						door.monsterKnocking(speed)
-				$openDoorTimer.start()
+							door.monsterKnocking(speed)
+					if RNGTools.randi_range(0, 100) <= 25 and not door.name in ["Door6", "Door3", "Door8", "Door7"]:
+						yield(get_tree().create_timer(5.0),"timeout")
+						if not door.isOpen():
+							var positionToMove = getClosestPositionToTarget()
+							moveToPosition(positionToMove)
+					else:
+						$openDoorTimer.start()
 			
 
 
@@ -382,6 +393,7 @@ func moveToPosition(position):
 
 #checks if the monster is locked in locked room. I so, move monster to another position
 func isMonsterLockedInside(currentDoor):
+	lockedDoor = currentDoor
 	if state == FOLLOWPLAYER and currentLocation:
 		if currentDoor.is_in_group(currentLocation):
 			var positionList = positions.get_children()

@@ -4,10 +4,13 @@ var currentOnLight = null
 var availableLightsList = []
 var invisibleEnemy = null
 var player = null
+var sanityDrain = 0.010
+var playerInSpotlight = true
 
 func _ready():
 	for light in $lights.get_children():
 		light.connect("changeLight", self, "startTimer")
+		light.connect("playerInSpotlight", self, "playerSpotlightControl")
 	
 	yield(owner, "ready")
 	invisibleEnemy = owner.invisibleEnemy
@@ -18,8 +21,8 @@ func _physics_process(delta):
 		if currentOnLight.is_in_group(invisibleEnemy.get_current_location()) and not invisibleEnemy.getState() == 1:
 			turnOffLight(currentOnLight.name)
 			startTimer()
-		elif currentOnLight.getIsPlayerInside():
-			get_tree().call_group("sanityBar", "recoverSanity", 0.013)
+		elif not currentOnLight.getIsPlayerInside():
+			get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
 
 func turnAllLightsOff():
 	for light in $lights.get_children():
@@ -28,6 +31,13 @@ func turnAllLightsOff():
 func turnAllLightsOn():
 	for light in $lights.get_children():
 		light.enableLight()
+
+func playerSpotlightControl(value):
+	if not value:
+		playerInSpotlight = false
+	else:
+		playerInSpotlight = true
+		
 
 func turnOnLight(lightName):
 #	for light in $lights.get_children():
@@ -52,6 +62,12 @@ func stopTimer():
 
 func getCurrentLight():
 	return currentOnLight
+
+func setSanityDrain(value):
+	sanityDrain = value
+
+func getSanityDrain():
+	return sanityDrain
 
 func pickLight():
 	var lightList = $lights.get_children()

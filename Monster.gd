@@ -70,6 +70,9 @@ func _physics_process(delta):
 			elif not collidingWithDoor:
 				if needsDoor:
 					get_parent().despawnMonster(self)
+			elif isCrouchMonster:
+				if not player.getIsUnderFurniture():
+					get_parent().despawnMonster(self)
 	
 func lookAtPlayer():
 	head.look_at(player.get_node("Neck").global_transform.origin, Vector3.UP) #+ Vector3(0,1,0)
@@ -145,10 +148,10 @@ func getDistanceFromPlayer():
 	return transform.origin.distance_to(player.get_position())
 
 func isMonsterPositionedToSpawn():
-	if monsterInSight and canSeePlayer():
+	if not isInView() and isPlayerInViewcone():
 		
-		return false
-	return true
+		return true
+	return false
 		
 			
 	

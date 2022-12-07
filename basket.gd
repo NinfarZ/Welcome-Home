@@ -30,7 +30,6 @@ func _physics_process(delta):
 			isBasketFull = false
 
 func addCandy(candyToAdd):
-	get_tree().call_group("sanityBar", "recoverSanity", 5.5)
 	get_parent().get_node("candyDrop").play()
 	fillBasketSprite()
 	if isBasketFull:
@@ -78,6 +77,8 @@ func getCurrentCandyCount():
 	return currentCandyCount
 
 func getIsBasketFull():
+	if isBasketFull:
+		get_tree().call_group("sanityBar", "resetSanity")
 	return isBasketFull
 
 #possible code to fade out basket when full

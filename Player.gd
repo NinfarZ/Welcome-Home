@@ -147,7 +147,7 @@ func getFlashlightPower():
 	
 func die():
 	$Neck/flashlight/SpotLight.visible = false
-	$Neck/flashlight.tweenDownLight()
+	#$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone/CollisionShape.disabled = true
 	
 	$Neck/Camera/Head.headJumpscare()

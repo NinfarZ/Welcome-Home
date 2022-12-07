@@ -136,7 +136,7 @@ func _physics_process(delta):
 			#incrementDifficulty()
 			currentMonster.flickerFace(RNGTools.pick([1,2,3]))
 			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
-			get_tree().call_group("sanityBar", "drainSanity", 3)
+			get_tree().call_group("sanityBar", "drainSanity", 1.9)
 			if player.getFlashlightPower():
 				get_tree().call_group("flashlight", "flicker")
 			else:
@@ -180,8 +180,6 @@ func _physics_process(delta):
 						spawnMonster(currentMonster)
 						monsterActive = true
 				elif currentMonster.isInView() or currentMonster.getDistanceFromPlayer() <= 13:
-					#despawnMonster(currentMonster)
-					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
 						get_parent().get_node("monsterCreepTimer").wait_time = 0.3
 						get_parent().get_node("monsterCreepTimer").start()
@@ -194,19 +192,10 @@ func _physics_process(delta):
 						monsterActive = true
 					
 				elif invisibleMonster.getIsInView() or invisibleMonster.getDistanceToPlayer() < 8:
-					#invisibleMonster.setBodyVisible(false)
-					#monsterActive = false
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
 						get_parent().get_node("monsterCreepTimer").wait_time = 0.4
 						get_parent().get_node("monsterCreepTimer").start()
-					
-				#invisibleMonster.monsterIsVisibleForMoment()
-					#monsterActive = true
-					
-			
-				#yield(get_tree().create_timer(0.1),"timeout")
-				
-			
+
 		HUNTING:
 			invisibleMonster.setStateChase()
 			despawnMonster(currentMonster)
@@ -250,7 +239,7 @@ func createSpawnableMonsterList(monster, distance):
 	if monster.isCanSpawn():
 		#monster.enableMonster(true)
 		
-		if monster.isMonsterPositionedToSpawn() and monster.canSeePlayer() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
+		if monster.isMonsterPositionedToSpawn() and monster.isMonsterInPlayerLocation() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
 		#monster.enableArea()
 		#print("monster can spawn")
 			add_monster_to_list(monster)

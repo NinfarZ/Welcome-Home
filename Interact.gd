@@ -73,6 +73,9 @@ func addItem(newItem):
 func addKey():
 	hasKey = true
 
+func removeKey():
+	hasKey = false
+
 func getHaskey():
 	return hasKey
 

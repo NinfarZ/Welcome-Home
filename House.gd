@@ -101,7 +101,6 @@ func _physics_process(delta):
 				CandyRandomized = false
 				monsterTriggered = false
 				monsters.get_node("yellowgirl75").shadeFace(false)
-				candyManager.hideCandy()
 				state = START
 		START:
 			if scaryHornSoundFinished:
@@ -129,7 +128,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						for label in $TutorialLabels.get_children():
 							label.visible = false
-						$CanvasLayer/Sanity.visible = true
+						#$CanvasLayer/Sanity.visible = true
 						doorManager.unlockLastDoor()
 						doorManager.lockDoor($Doors/Door)
 						keyManager.placeKey(keyManager.get_node("Key7"))
@@ -153,7 +152,6 @@ func _physics_process(delta):
 					elif candyBasket.getIsBasketFull():
 						$Audio/basketTransition.play()
 						CandyRandomized = false
-						candyManager.hideCandy()
 						monsterTriggered = false
 						phase = PHASE1
 					
@@ -214,7 +212,7 @@ func _physics_process(delta):
 						furnitureManager.setBarricade(furnitureManager.get_node("barricade4"), false)
 						
 						#spreads 12 candy across apartment
-						spreadCandyAcrossMap(12)
+						spreadCandyAcrossMap(9)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -228,7 +226,7 @@ func _physics_process(delta):
 						#currentBunny = pickBunny()
 						
 						
-						candyBasket.displayText(19)
+						candyBasket.displayText(18)
 						#currentBunny = pickBunny()
 						#spawnBunny(currentBunny, 5)
 						#bunnyActive = true
@@ -237,7 +235,6 @@ func _physics_process(delta):
 					elif candyBasket.getIsBasketFull():
 						$Audio/basketTransition.play()
 						CandyRandomized = false
-						candyManager.hideCandy()
 					
 							#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 0)
 						phase = PHASE2
@@ -249,7 +246,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						furnitureManager.setBarricade(furnitureManager.get_node("barricade2"), false)
 						#spreads 10 candy across apartment
-						spreadCandyAcrossMap(10)
+						spreadCandyAcrossMap(9)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -266,16 +263,11 @@ func _physics_process(delta):
 						bunnyManager.startTimer()
 						
 						
-						candyBasket.displayText(29)
-						#currentBunny = pickBunny()
-						#spawnBunny(currentBunny, 5)
-						#bunnyActive = true
-					
+						candyBasket.displayText(26)
 						
 					elif candyBasket.getIsBasketFull():
 						$Audio/basketTransition.play()
 						CandyRandomized = false
-						candyManager.hideCandy()
 						
 						phase = PHASE3
 						
@@ -285,7 +277,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						$mannequim.visible = false
 						#spreads 10 candy across apartment
-						spreadCandyAcrossMap(10)
+						spreadCandyAcrossMap(9)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -299,17 +291,13 @@ func _physics_process(delta):
 						
 						
 						
-						candyBasket.displayText(39)
+						candyBasket.displayText(34)
 						
-						#currentBunny = pickBunny()
-						#spawnBunny(currentBunny, 5)
-						#bunnyActive = true
 					
 						
 					elif candyBasket.getIsBasketFull():
 						$Audio/basketTransition.play()
 						CandyRandomized = false
-						candyManager.hideCandy()
 						
 						phase = PHASE4
 				PHASE4:
@@ -318,7 +306,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						$Audio/lastPhase.play()
 						#spreads 10 candy across apartment
-						spreadCandyAcrossMap(10)
+						spreadCandyAcrossMap(8)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -331,7 +319,7 @@ func _physics_process(delta):
 						CandyRandomized = true
 						
 						
-						candyBasket.displayText(49)
+						candyBasket.displayText(42)
 					
 						
 					elif candyBasket.getIsBasketFull():
@@ -363,12 +351,11 @@ func _physics_process(delta):
 				$Audio/darkScaryHorn.play()
 				spotlightManager.turnAllLightsOff()
 			
-				$CanvasLayer/Sanity.visible = false
 				$punishmentTimer.start()
 			
 				get_tree().call_group("monsterController", "setStateHunting")
 			
-			elif candyBasket.getIsBasketFull():
+			elif candyBasket.getIsBasketFull() or player.getIsInSpotlight():
 				punishmentEnd()
 				
 			
@@ -418,20 +405,24 @@ func spreadCandyAcrossMap(amount):
 		else:
 			candyAmount = candyToSpread
 		var location = RNGTools.pick(locationList)
-		candyManager.randomizeCandy(candyAmount, location)
-		locationList.erase(location)
-		candyToSpread -= candyAmount
+		var canBeRandomized = candyManager.randomizeCandy(candyAmount, location)
+		if not canBeRandomized:
+			return
+		else:
+			locationList.erase(location)
+			candyToSpread -= candyAmount
 		
 
 func controlDifficulty(fear):
 	match phase:
 		#PHASE0
 		PHASE0:
-			pass
+			invisibleEnemy.setInvisibleEnemyPhase(1)
+			spotlightManager.setSanityDrain(0.013)
 		#PHASE1
 		PHASE1:
 			invisibleEnemy.setInvisibleEnemyPhase(1)
-			invisibleEnemy.setSanityDrain(0.025)
+			spotlightManager.setSanityDrain(0.014)
 			match fear:
 				0:
 					monsters.changeDifficulty(2,3)
@@ -446,7 +437,7 @@ func controlDifficulty(fear):
 					pass
 		#PHASE2
 		PHASE2:
-			invisibleEnemy.setSanityDrain(0.03)
+			spotlightManager.setSanityDrain(0.015)
 			match fear:
 				0:
 					
@@ -456,131 +447,48 @@ func controlDifficulty(fear):
 					invisibleEnemy.setMonsterDoorTimer(4.5)
 				1:
 					invisibleEnemy.setInvisibleEnemyPhase(2)
-					monsters.changeDifficulty(4.2,6)
+					monsters.changeDifficulty(3.5,6)
 					monsters.cooldown(7,10)
 					invisibleEnemy.setMonsterDoorTimer(4)
 				2:
 					invisibleEnemy.setInvisibleEnemyPhase(2)
-					monsters.changeDifficulty(5.2,10)
+					monsters.changeDifficulty(4.2,10)
 					monsters.cooldown(1,7)
 					invisibleEnemy.setMonsterDoorTimer(2.5)
 		#PHASE3
 		PHASE3:
 			invisibleEnemy.setInvisibleEnemyPhase(2)
-			invisibleEnemy.setSanityDrain(0.04)
+			spotlightManager.setSanityDrain(0.015)
 			match fear:
 				0:
 					monsters.changeDifficulty(3.2,3)
 					monsters.cooldown(8,10)
 					invisibleEnemy.setMonsterDoorTimer(4)
 				1:
-					monsters.changeDifficulty(4.2,8)
+					monsters.changeDifficulty(3.5,8)
 					monsters.cooldown(5,8)
 					invisibleEnemy.setMonsterDoorTimer(3.5)
 				2:
-					monsters.changeDifficulty(5.2,10)
+					monsters.changeDifficulty(4.2,10)
 					monsters.cooldown(1,5)
 					invisibleEnemy.setMonsterDoorTimer(2)
 		#PHASE4
 		PHASE4:
 			invisibleEnemy.setInvisibleEnemyPhase(2)
-			invisibleEnemy.setSanityDrain(0.05)
+			spotlightManager.setSanityDrain(0.016)
 			match fear:
 				0:
 					monsters.changeDifficulty(3.2,3)
 					monsters.cooldown(6,8)
 					invisibleEnemy.setMonsterDoorTimer(3)
 				1:
-					monsters.changeDifficulty(4.2,8)
+					monsters.changeDifficulty(3.5,8)
 					monsters.cooldown(3,6)
-					invisibleEnemy.setMonsterDoorTimer(2)
+					invisibleEnemy.setMonsterDoorTimer(2.5)
 				2:
-					monsters.changeDifficulty(5.2,10)
+					monsters.changeDifficulty(4.2,10)
 					monsters.cooldown(1,3)
-					invisibleEnemy.setMonsterDoorTimer(1)
-
-
-func difficultySet(difficulty):
-	match difficulty:
-		1:
-			invisibleEnemy.setSanityDrain(0.015)
-			get_tree().call_group("monsterController", "changeDifficulty", 2, 3)
-			get_tree().call_group("monsterController", "cooldown", 10, 30)
-			get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 5)
-			get_tree().call_group("monster", "setMonsterPhase", 0)
-			get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-
-		2:
-			
-			invisibleEnemy.setSanityDrain(0.02)
-			
-			if $CanvasLayer/Sanity.getSanityBarValue() > 50:
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 4)
-				get_tree().call_group("monsterController", "cooldown", 10, 25)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4.5)
-				
-				
-			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 3)
-				get_tree().call_group("monsterController", "cooldown", 10, 30)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 5)
-				
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-				
-		3:
-			invisibleEnemy.setSanityDrain(0.025)
-			
-			
-			
-			
-			if $CanvasLayer/Sanity.getSanityBarValue() > 50 and $CanvasLayer/Sanity.getSanityBarValue() < 90:
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 3.2, 6)
-				get_tree().call_group("monsterController", "cooldown", 5, 10)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4)
-			elif $CanvasLayer/Sanity.getSanityBarValue() >= 90:
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 4.2, 10)
-				get_tree().call_group("monsterController", "cooldown", 2, 5)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 3)
-				
-				
-			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 1)
-				get_tree().call_group("monsterController", "changeDifficulty", 2, 3)
-				get_tree().call_group("monsterController", "cooldown", 10, 15)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 4.5)
-		4:
-			pass
-			
-			
-			#get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-		5:
-			#get_tree().call_group("monsterController", "changeDifficulty", 3, 4)
-			#get_tree().call_group("monsterController", "cooldown", 4, 5)
-			#get_tree().call_group("door", "setMonsterDoorTimer", 2)
-			#get_tree().call_group("monster", "setMonsterPhase", 1)
-			invisibleEnemy.setSanityDrain(0.035)
-			
-			if $CanvasLayer/Sanity.getSanityBarValue() > 50 and $CanvasLayer/Sanity.getSanityBarValue() < 90:
-				get_tree().call_group("monsterController", "changeDifficulty", 4.2, 8)
-				get_tree().call_group("monsterController", "cooldown", 2, 4)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 2)
-			elif $CanvasLayer/Sanity.getSanityBarValue() >= 90:
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 5.2, 10)
-				get_tree().call_group("monsterController", "cooldown", 1, 2)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 1)
-			
-				
-				
-			elif $CanvasLayer/Sanity.getSanityBarValue() <= 50:
-				get_tree().call_group("invisibleEnemy", "setInvisibleEnemyPhase", 2)
-				get_tree().call_group("monsterController", "changeDifficulty", 3.2, 3)
-				get_tree().call_group("monsterController", "cooldown", 3, 6)
-				get_tree().call_group("invisibleEnemy", "setMonsterDoorTimer", 3)
-
+					invisibleEnemy.setMonsterDoorTimer(2)
 
 func _on_bunnySpawnTimer_timeout():
 	var bunnyList = $Bunnies.get_children()
@@ -590,34 +498,23 @@ func _on_bunnySpawnTimer_timeout():
 
 func punishmentEnd():
 	state = GAME
-	#get_tree().call_group("invisibleEnemy", "setStateFollow")
 	monsters.setStateCooldown()
-	$CanvasLayer/Sanity.visible = true
 	$Audio/fearNoise.stop()
 	$punishmentTimer.stop()
 	bunnyManager.startTimer()
-	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
-	#player.toggleFlashlight(true)
-	#spotlightManager.pickLight()
+
 
 
 func _on_punishmentTimer_timeout():
 	state = GAME
-	#get_tree().call_group("invisibleEnemy", "setStateFollow")
 	get_tree().call_group("monsterController", "setStateCooldown")
-	$CanvasLayer/Sanity.visible = true
 	$Audio/fearNoise.stop()
 	bunnyManager.startTimer()
-	#$Navigation/invisibleEnemy/monsterSpawner/CollisionShape.disabled = false
-	#get_tree().call_group("player", "toggleFlashlight", true)
-	#spotlightManager.pickLight()
 
 func playerTransition():
 	if state == START:
 		state = GAME
 		player.set_deferred("translation", positions.get_node("myBedroom").translation)
-#	elif phase == PHASE1:
-#		player.set_deferred("translation", positions.get_node("PositionmyBedroom").translation)
 	elif phase == PHASE4:
 		get_tree().change_scene("res://gameOver.tscn")	
 	

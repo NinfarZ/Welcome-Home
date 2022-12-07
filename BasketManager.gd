@@ -22,13 +22,11 @@ func changeBasketLocation():
 		if doorManager.getCurrentDoor().is_in_group(availableLocations[i].name) and availableLocations[i] != lastPosition:
 			newLocation = availableLocations[i]
 			moveBasketToPosition(newLocation)
-			availableLocations.erase(newLocation)
 			return
 		i += 1
 		
 	newLocation = RNGTools.pick(availableLocations)
 	moveBasketToPosition(newLocation)
-	availableLocations.erase(newLocation)
 	return
 	
 	
@@ -36,6 +34,7 @@ func changeBasketLocation():
 func moveBasketToPosition(basketPosition):
 	candyBasket.transform.origin = basketPosition.transform.origin
 	lastPosition = basketPosition
+	availableLocations.erase(basketPosition)
 
 
 func setCurrentCandyAmount(amount):

@@ -8,6 +8,8 @@ var state = OFF
 var timerOver = false
 var player = null
 
+signal playerInSpotlight(value)
+
 enum {
 	ON,
 	OFF,
@@ -21,11 +23,13 @@ func _ready():
 
 func _physics_process(delta):
 	if isPlayerInside:
+		emit_signal("playerInSpotlight", true)
 		if self.is_in_group(player.currentLocation):
-			get_tree().call_group("sanityBar", "recoverSanity", 0.03)
+			get_tree().call_group("sanityBar", "recoverSanity", 0.07)
 			#state = CHANGELIGHT
-				
-		
+	else:
+		emit_signal("playerInSpotlight", false)
+
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
@@ -82,7 +86,6 @@ func getIsEnemyInside():
 
 func superflicker():
 	$AnimationPlayer.play("superFlicker")
-
 
 func _on_changeTimer_timeout():
 	print("light timer time out")
