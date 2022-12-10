@@ -189,7 +189,7 @@ position = Vector2( 677, 293 )
 scale = Vector2( 3.5, 3.5 )
 z_index = 1
 texture = ExtResource( 4 )
-hframes = 4
+hframes = 5
 frame = 2
 
 [node name="key" type="Sprite" parent="MarginContainer"]

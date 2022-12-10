@@ -15,11 +15,6 @@ enum {
 	HUNTING
 }
 
-enum {
-	PHASE1,
-	PHASE2
-}
-
 export(NodePath) var invisibleMonsterPath
 export(NodePath) var playerPath
 onready var invisibleMonster = get_node(invisibleMonsterPath)
@@ -27,13 +22,13 @@ onready var player = get_node(playerPath)
 onready var monsterSoundTimer = get_parent().get_node("monsterSoundTimer")
 
 var state = IDLE
-var phase = PHASE1
 var currentMonster = null
 var monsterCanDespawn = false
 var lastMonster = null
 var monsterActive = false
 var rngCreepyBehavior = null
 var monsterCanMakeSound = true
+var spawnChance = 25
 
 var playerStaringAtMonster = false
 
@@ -65,10 +60,10 @@ func _physics_process(delta):
 			invisibleMonster.setStateFollow()
 			if monstersInRange != []:
 				for monster in monstersInRange:
-					createSpawnableMonsterList(monster, 1)
+					createSpawnableMonsterList(monster, 2)
 			
 			if validMonsters != []:
-				if RNGTools.randi_range(0, 100) <= 70:
+				if RNGTools.randi_range(0, 100) <= spawnChance:
 					currentMonster = RNGTools.pick(validMonsters)
 	
 					spawnMonster(currentMonster)
@@ -134,7 +129,7 @@ func _physics_process(delta):
 			
 		ANGER:
 			#incrementDifficulty()
-			currentMonster.flickerFace(RNGTools.pick([1,2,3]))
+			currentMonster.flickerFace(RNGTools.pick([1,2]))
 			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
 			get_tree().call_group("sanityBar", "drainSanity", 1.9)
 			if player.getFlashlightPower():
@@ -212,9 +207,6 @@ func add_monster_to_list(monster):
 	if not monster in validMonsters:
 		validMonsters.append(monster)
 
-func setMonsterManagerPhase(newPhase):
-	phase = newPhase
-
 func remove_monster_from_list(monster):
 	if monster in validMonsters:
 		validMonsters.erase(monster)
@@ -279,9 +271,9 @@ func despawnMonster(chosenMonster):
 
 	
 
-func changeDifficulty(newSpeed, newTime):
+func changeDifficulty(newSpeed, newTime, newSpawnChance):
 	get_parent().get_node("TimerMonsterSwitch").wait_time = newTime
-
+	spawnChance = newSpawnChance
 	invisibleMonster.setSpeedIncrease(newSpeed)
 
 
@@ -305,10 +297,7 @@ func _on_TimerMonsterCooldown_timeout():
 	despawnMonster(currentMonster)
 	invisibleMonster.setBodyVisible(false)
 	monsterActive = false
-	if phase == PHASE1:
-		state = COOLDOWN
-	else:
-		state = SEARCHING
+	state = SEARCHING
 
 func _addMonsterInRange(monster):
 	if not monster in monstersInRange:

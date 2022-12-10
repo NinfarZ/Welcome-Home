@@ -298,12 +298,12 @@ transform = Transform( 1.1098, 0.187619, -0.0422995, -0.19106, 1.10389, -0.11653
 [node name="eye" type="Sprite3D" parent="Neck/Camera/Head/head/eyes"]
 transform = Transform( 1.68648, -0.414459, -0.25087, 0.42815, 1.7422, -1.65775e-07, 0.437065, -0.10741, 0.968021, -0.567503, 1.00598, 0.967163 )
 texture = ExtResource( 8 )
-hframes = 4
+hframes = 5
 
 [node name="eye2" type="Sprite3D" parent="Neck/Camera/Head/head/eyes"]
 transform = Transform( 1.97655, -0.546396, 0.177826, 0.561421, 2.00652, -0.0172519, -0.347385, 0.133935, 0.983911, -0.0659889, 1.11674, 0.951128 )
 texture = ExtResource( 8 )
-hframes = 4
+hframes = 5
 frame = 1
 
 [node name="mouths" type="Spatial" parent="Neck/Camera/Head/head"]

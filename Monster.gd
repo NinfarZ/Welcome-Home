@@ -120,8 +120,8 @@ func enableMonster(enable):
 		$Head/headArea/CollisionShape.disabled = false
 		for raycast in $Head/head/raycasts.get_children():
 			raycast.enabled = true
-		$Visible.connect("camera_entered", self, "_on_Visible_camera_entered")
-		$Visible.connect("camera_exited", self, "_on_Visible_camera_exited")
+#		$Visible.connect("camera_entered", self, "_on_Visible_camera_entered")
+#		$Visible.connect("camera_exited", self, "_on_Visible_camera_exited")
 		
 	elif not enable:
 		set_physics_process(false)
@@ -129,8 +129,8 @@ func enableMonster(enable):
 		$Head/headArea/CollisionShape.disabled = true
 		for raycast in $Head/head/raycasts.get_children():
 			raycast.enabled = false
-		$Visible.disconnect("camera_entered", self, "_on_Visible_camera_entered")
-		$Visible.disconnect("camera_exited", self, "_on_Visible_camera_exited")
+#		$Visible.disconnect("camera_entered", self, "_on_Visible_camera_entered")
+#		$Visible.disconnect("camera_exited", self, "_on_Visible_camera_exited")
 	
 func isInView():
 	if inView:
@@ -148,9 +148,10 @@ func getDistanceFromPlayer():
 	return transform.origin.distance_to(player.get_position())
 
 func isMonsterPositionedToSpawn():
-	if not isInView() and isPlayerInViewcone():
+	if not isInView():
+		if canSeePlayer() and isPlayerInViewcone():
 		
-		return true
+			return true
 	return false
 		
 			
@@ -168,7 +169,10 @@ func set_state_active():
 			
 		#animate monster face
 	for eye in $Head/head/eyes.get_children():
-		eye.frame = RNGTools.pick([0,1,2])
+		if getDistanceFromPlayer() < 7:
+			eye.frame = RNGTools.pick([0,1,2,3,4])
+		else:
+			eye.frame = RNGTools.pick([0,1,2])
 	$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
 	#for raycast in $Cube001.get_children():
 		#raycast.enabled = true
@@ -265,9 +269,9 @@ func canMonsterSpawnNextToDoor():
 	return true
 
 func isPlayerInViewcone():
-	if head.rotation.x >= deg2rad(50) or head.rotation.x <= deg2rad(-50):
+	if head.rotation.x >= deg2rad(40) or head.rotation.x <= deg2rad(-40):
 		return false
-	elif head.rotation.y >= deg2rad(50) or head.rotation.y <= deg2rad(-50):
+	elif head.rotation.y >= deg2rad(40) or head.rotation.y <= deg2rad(-40):
 		return false
 	else:
 		return true
@@ -286,16 +290,10 @@ func flickerFace(faceType):
 		1:
 			#shadeFace(false)
 			for eye in $Head/head/eyes.get_children():
-				eye.frame = RNGTools.pick([0,1,2])
+				eye.frame = RNGTools.pick([0,1,2,3,4])
 		2:
 			#shadeFace(false)
 			$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
-		3:
-			#shadeFace(false)
-			for eye in $Head/head/eyes.get_children():
-				eye.frame = RNGTools.pick([0,1,2])
-			$Head/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
-			
 
 func playerLooksAtMonster():
 	if isActive and not $stareDrainSound.playing and timesSoundPlayed > 0:

@@ -177,7 +177,7 @@ func _physics_process(delta):
 							monsters.despawnMonster(monsters.get_node("yellowgirl143"))
 							spotlightManager.turnAllLightsOff()
 							spotlightManager.startTimer()
-							monsters.setStateCooldown()
+							monsters.setStateSearching()
 							invisibleEnemy.isMonsterActive(true)
 							#invisibleEnemy.setStateFollow()
 							monsterTriggered = false
@@ -257,8 +257,6 @@ func _physics_process(delta):
 						basketManager.changeBasketLocation()
 						
 						
-						monsters.setStateSearching()
-						monsters.setMonsterManagerPhase(1)
 						CandyRandomized = true
 						bunnyManager.startTimer()
 						
@@ -306,7 +304,7 @@ func _physics_process(delta):
 					if not CandyRandomized:
 						$Audio/lastPhase.play()
 						#spreads 10 candy across apartment
-						spreadCandyAcrossMap(8)
+						spreadCandyAcrossMap(7)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -356,8 +354,11 @@ func _physics_process(delta):
 			
 				get_tree().call_group("monsterController", "setStateHunting")
 			
-			elif candyBasket.getIsBasketFull() or player.getIsInSpotlight():
+			elif candyBasket.getIsBasketFull():
 				punishmentEnd()
+			elif spotlightManager.getCurrentLight() != null:
+				if spotlightManager.getIsPlayerInSpotlight():
+					punishmentEnd()
 				
 			
 func deathSequence():
@@ -392,7 +393,7 @@ func skipIntro():
 	player.set_deferred("translation", positions.get_node("myBedroom").translation)
 	spotlightManager.startTimer()
 	$FlashlightItem.get_node("flashlight").interact()
-	monsters.setStateCooldown()
+	monsters.setStateSearching()
 	invisibleEnemy.isMonsterActive(true)
 	basketManager.setCurrentCandyAmount(9)
 
@@ -420,22 +421,23 @@ func controlDifficulty(fear):
 		PHASE0:
 			invisibleEnemy.setInvisibleEnemyPhase(1)
 			spotlightManager.setSanityDrain(0.013)
+			monsters.changeDifficulty(2,3,-1)
 		#PHASE1
 		PHASE1:
 			invisibleEnemy.setInvisibleEnemyPhase(1)
 			spotlightManager.setSanityDrain(0.014)
 			match fear:
 				0:
-					monsters.changeDifficulty(2,3)
+					monsters.changeDifficulty(2,3,-1)
 					monsters.cooldown(10,30)
 					invisibleEnemy.setMonsterDoorTimer(5)
 					
 				1:
-					monsters.changeDifficulty(2,4)
+					monsters.changeDifficulty(2,4,5)
 					monsters.cooldown(10,25)
 					invisibleEnemy.setMonsterDoorTimer(4.5)
 				2:
-					pass
+					monsters.changeDifficulty(3.2,4,15)
 		#PHASE2
 		PHASE2:
 			spotlightManager.setSanityDrain(0.015)
@@ -443,17 +445,17 @@ func controlDifficulty(fear):
 				0:
 					
 					invisibleEnemy.setInvisibleEnemyPhase(1)
-					monsters.changeDifficulty(3.2,3)
+					monsters.changeDifficulty(3.2,3,15)
 					monsters.cooldown(10,15)
 					invisibleEnemy.setMonsterDoorTimer(4.5)
 				1:
 					invisibleEnemy.setInvisibleEnemyPhase(2)
-					monsters.changeDifficulty(3.5,6)
+					monsters.changeDifficulty(3.5,6,25)
 					monsters.cooldown(7,10)
 					invisibleEnemy.setMonsterDoorTimer(4)
 				2:
 					invisibleEnemy.setInvisibleEnemyPhase(2)
-					monsters.changeDifficulty(4.2,10)
+					monsters.changeDifficulty(4.2,10,50)
 					monsters.cooldown(1,7)
 					invisibleEnemy.setMonsterDoorTimer(2.5)
 		#PHASE3
@@ -462,15 +464,15 @@ func controlDifficulty(fear):
 			spotlightManager.setSanityDrain(0.015)
 			match fear:
 				0:
-					monsters.changeDifficulty(3.2,3)
+					monsters.changeDifficulty(3.2,3,25)
 					monsters.cooldown(8,10)
 					invisibleEnemy.setMonsterDoorTimer(4)
 				1:
-					monsters.changeDifficulty(3.5,8)
+					monsters.changeDifficulty(3.5,8,50)
 					monsters.cooldown(5,8)
 					invisibleEnemy.setMonsterDoorTimer(3.5)
 				2:
-					monsters.changeDifficulty(4.2,10)
+					monsters.changeDifficulty(4.2,10,70)
 					monsters.cooldown(1,5)
 					invisibleEnemy.setMonsterDoorTimer(2)
 		#PHASE4
@@ -479,15 +481,15 @@ func controlDifficulty(fear):
 			spotlightManager.setSanityDrain(0.016)
 			match fear:
 				0:
-					monsters.changeDifficulty(3.2,3)
+					monsters.changeDifficulty(3.2,3,50)
 					monsters.cooldown(6,8)
 					invisibleEnemy.setMonsterDoorTimer(3)
 				1:
-					monsters.changeDifficulty(3.5,8)
+					monsters.changeDifficulty(3.5,8,70)
 					monsters.cooldown(3,6)
 					invisibleEnemy.setMonsterDoorTimer(2.5)
 				2:
-					monsters.changeDifficulty(4.2,10)
+					monsters.changeDifficulty(4.2,10,90)
 					monsters.cooldown(1,3)
 					invisibleEnemy.setMonsterDoorTimer(2)
 

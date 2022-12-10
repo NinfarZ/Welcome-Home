@@ -2801,6 +2801,7 @@ autoplay = true
 
 [node name="deathMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 16 )
+volume_db = 5.0
 
 [node name="Tween" type="Tween" parent="Audio/deathMusic"]
 
@@ -2893,7 +2894,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62387, -3.95538, 15.1322 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6137, 15.5883, 31.8509 )
 
 [node name="myBedroom" type="Position3D" parent="BasketManager/locations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1389, 15.3582, 15.126 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1389, 14.5707, 15.126 )
 
 [node name="bathroom2" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28387, 13.1791, 37.4046 )
@@ -2902,13 +2903,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28387, 13.1791, 37.4046 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0355, 13.0278, -2.74225 )
 
 [node name="livingroom" type="Position3D" parent="BasketManager/locations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9973, 14.6109, -26.5449 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9973, 14.1233, -26.5449 )
 
 [node name="kitchen" type="Position3D" parent="BasketManager/locations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8618, 13.2117, -47.1541 )
 
 [node name="bathroom1" type="Position3D" parent="BasketManager/locations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03165, 13.4532, -57.9258 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03165, 13.2594, -57.9258 )
 
 [node name="keyManager" type="Spatial" parent="." groups=["keyManager"]]
 script = ExtResource( 38 )

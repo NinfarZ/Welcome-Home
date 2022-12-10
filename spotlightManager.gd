@@ -37,6 +37,9 @@ func playerSpotlightControl(value):
 		playerInSpotlight = false
 	else:
 		playerInSpotlight = true
+
+func getIsPlayerInSpotlight():
+	currentOnLight.getIsPlayerInside()
 		
 
 func turnOnLight(lightName):
