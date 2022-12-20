@@ -18,25 +18,13 @@ extra_spacing_char = 22
 extra_spacing_space = -26
 font_data = ExtResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=2]
-emission_shape = 1
-emission_sphere_radius = 38.64
-flag_disable_z = true
-gravity = Vector3( 0, 98, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 24.37
-scale = 9.4
-scale_random = 0.47
-color = Color( 0.235294, 0.141176, 0.262745, 1 )
-
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Light2D:texture_scale")
+tracks/0/path = NodePath("CenterContainer/Light2D:texture_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,7 +36,7 @@ tracks/0/keys = {
 "values": [ 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Light2D3:texture_scale")
+tracks/1/path = NodePath("CenterContainer/Light2D3:texture_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -60,7 +48,7 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Light2D3:energy")
+tracks/2/path = NodePath("CenterContainer/Light2D3:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -72,7 +60,7 @@ tracks/2/keys = {
 "values": [ 1.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Light2D2:texture_scale")
+tracks/3/path = NodePath("CenterContainer/Light2D2:texture_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -84,7 +72,7 @@ tracks/3/keys = {
 "values": [ 1.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Light2D2:energy")
+tracks/4/path = NodePath("CenterContainer/Light2D2:energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -101,7 +89,7 @@ resource_name = "lights"
 length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Light2D:texture_scale")
+tracks/0/path = NodePath("CenterContainer/Light2D:texture_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -113,7 +101,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.8, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Light2D3:texture_scale")
+tracks/1/path = NodePath("CenterContainer/Light2D3:texture_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -125,7 +113,7 @@ tracks/1/keys = {
 "values": [ 1.1, 1.0, 1.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Light2D3:energy")
+tracks/2/path = NodePath("CenterContainer/Light2D3:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -137,7 +125,7 @@ tracks/2/keys = {
 "values": [ 1.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Light2D2:texture_scale")
+tracks/3/path = NodePath("CenterContainer/Light2D2:texture_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -149,7 +137,7 @@ tracks/3/keys = {
 "values": [ 1.0, 0.8, 1.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Light2D2:energy")
+tracks/4/path = NodePath("CenterContainer/Light2D2:energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -160,6 +148,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 1.0, 1.0, 1.1 ]
 }
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 38.64
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 24.37
+scale = 9.4
+scale_random = 0.47
+color = Color( 0.235294, 0.141176, 0.262745, 1 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -248,26 +248,6 @@ margin_right = 554.0
 margin_bottom = 31.0
 text = "Quit"
 
-[node name="eyeDrops" type="Particles2D" parent="."]
-position = Vector2( 676, 316 )
-amount = 10
-process_material = SubResource( 2 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 513, 329 )
-scale = Vector2( 23.5312, 23.5312 )
-texture = ExtResource( 9 )
-
-[node name="Light2D3" type="Light2D" parent="."]
-position = Vector2( 513, 316 )
-scale = Vector2( 32.3906, 32.3906 )
-texture = ExtResource( 9 )
-
-[node name="Light2D2" type="Light2D" parent="."]
-position = Vector2( 516, 335 )
-scale = Vector2( 18.8281, 18.8281 )
-texture = ExtResource( 9 )
-
 [node name="skipIntroMenu" type="CanvasLayer" parent="."]
 visible = false
 
@@ -339,6 +319,38 @@ anims/lights = SubResource( 4 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = 3.0
+autoplay = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="eyeDrops" type="Particles2D" parent="CenterContainer"]
+position = Vector2( 189, 54 )
+amount = 10
+process_material = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="CenterContainer"]
+position = Vector2( 14.1248, 48.1248 )
+scale = Vector2( 23.5312, 23.5312 )
+texture = ExtResource( 9 )
+
+[node name="Light2D3" type="Light2D" parent="CenterContainer"]
+position = Vector2( 14.1248, 35.1248 )
+scale = Vector2( 32.3906, 32.3906 )
+texture = ExtResource( 9 )
+
+[node name="Light2D2" type="Light2D" parent="CenterContainer"]
+position = Vector2( 17.1248, 54.1248 )
+scale = Vector2( 18.8281, 18.8281 )
+texture = ExtResource( 9 )
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/startButton" to="." method="_on_startButton_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/quitButton" to="." method="_on_quitButton_pressed"]

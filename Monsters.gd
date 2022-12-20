@@ -9,7 +9,6 @@ enum {
 	STALKING
 	CHANGING
 	ANGER
-	ROOMCHANGE
 	KILL
 	COOLDOWN
 	HUNTING
@@ -44,6 +43,7 @@ func _ready():
 	for monster in get_children():
 		monster.connect("monsterInRange", self, "_addMonsterInRange")
 		monster.connect("monsterOutOfRange", self, "_removeMonsterOutOfRange")
+		monster.connect("monsterShouldDespawn", self, "_stopMonsterStalking")
 	invisibleMonster.setBodyVisible(false)
 	#invisibleMonster.connect("playerViewConeDetected", self, "setMonsterActive")
 	randomize()
@@ -74,50 +74,40 @@ func _physics_process(delta):
 					
 		STALKING:
 			print(currentMonster.name + " is staking hehe")
-			#for raycast in get_node(currentMonster).get_node("Cube001").get_children():
-				#if not raycast.is_colliding():
+
 			get_parent().get_node("TimerMonsterSwitch").start()
 			invisibleMonster.setStateStop()
 			state = CHANGING
 		CHANGING:
-			#check if player has left the crouch monster's area so they can despawn
-#			if get_node(currentMonster).is_in_group("crouchMonster") and not get_node(currentMonster).canCrouchMonsterAttack:
-#				get_parent().get_node("TimerMonsterSwitch").stop()
-#				despawnMonster(currentMonster)
-#				state = ROOMCHANGE
 
-			#print(rad2deg(get_node(currentMonster).get_node("Head").rotation.x))
-			
 			if currentMonster.canSeePlayer() and currentMonster.isFaceInView():
 				currentMonster.playerLooksAtMonster()
-				#currentMonster.shadeFace(false)	
-				
 				state = ANGER
 			
-			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
-				get_parent().get_node("TimerMonsterSwitch").stop()
-				despawnMonster(currentMonster)
-				
-				state = COOLDOWN
-				
-			elif not currentMonster.isMonsterInPlayerLocation():
-				get_parent().get_node("TimerMonsterSwitch").stop()
-				despawnMonster(currentMonster)
-
-				state = COOLDOWN
-			
-			#if the player is away from the monster's view cone, it despawns
-			elif not currentMonster.isPlayerInViewcone():
-				despawnMonster(currentMonster)
-
-				get_parent().get_node("TimerMonsterSwitch").stop()
-
-				state = COOLDOWN
-				
-			elif player.getIsInSpotlight():
-				despawnMonster(currentMonster)
-				get_parent().get_node("TimerMonsterSwitch").stop()
-				state = COOLDOWN
+#			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
+#				get_parent().get_node("TimerMonsterSwitch").stop()
+#				despawnMonster(currentMonster)
+#
+#				state = COOLDOWN
+#
+#			elif not currentMonster.isMonsterInPlayerLocation():
+#				get_parent().get_node("TimerMonsterSwitch").stop()
+#				despawnMonster(currentMonster)
+#
+#				state = COOLDOWN
+#
+#			#if the player is away from the monster's view cone, it despawns
+#			elif not currentMonster.isPlayerInViewcone():
+#				despawnMonster(currentMonster)
+#
+#				get_parent().get_node("TimerMonsterSwitch").stop()
+#
+#				state = COOLDOWN
+#
+#			elif player.getIsInSpotlight():
+#				despawnMonster(currentMonster)
+#				get_parent().get_node("TimerMonsterSwitch").stop()
+#				state = COOLDOWN
 					
 			elif monsterCanDespawn:
 				if not currentMonster.isInView():
@@ -125,7 +115,7 @@ func _physics_process(delta):
 					despawnMonster(currentMonster)
 					monsterCanDespawn = false
 					#get_parent().get_node("TimerMonsterCooldown").start()
-					state = COOLDOWN
+					state = SEARCHING
 			
 		ANGER:
 			#incrementDifficulty()
@@ -142,14 +132,6 @@ func _physics_process(delta):
 			
 			
 			state = CHANGING
-		ROOMCHANGE:
-			#print("rommchange, monster disappeared")
-			#if get_parent().get_node("TimerMonsterSwitch").get_time_left() == 0:
-			#yield(get_tree().create_timer(5.0),"timeout")
-			#state = SEARCHING
-			get_parent().get_node("TimerMonsterSwitch").start()
-			if monsterCanDespawn:
-				state = SEARCHING
 		KILL:
 			currentMonster.killPlayer()
 			#print("player has been killed")
@@ -256,9 +238,7 @@ func spawnMonster(chosenMonster):
 		chosenMonster.makeCreepySound(1)
 		monsterCanMakeSound = false
 		monsterSoundTimer.start()
-	#state = STALKING
-	#else:
-		#return
+
 
 
 
@@ -311,7 +291,13 @@ func _removeMonsterOutOfRange(monster):
 		if monster.getIsActive() and not state == IDLE:
 			despawnMonster(monster)
 			get_parent().get_node("TimerMonsterSwitch").stop()
-			state = COOLDOWN
+			state = SEARCHING
+
+func _stopMonsterStalking(monster):
+	if not state == COOLDOWN and not state == IDLE:
+		despawnMonster(monster)
+		get_parent().get_node("TimerMonsterSwitch").stop()
+		state = SEARCHING
 	
 
 func setStateIdle():

@@ -312,6 +312,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.59193, 1.36255 )
 [node name="mouths" type="Sprite3D" parent="Neck/Camera/Head/head/mouths"]
 transform = Transform( 2.43024, 0, 0, 0, 1.71476, -0.193669, 0, 0.338506, 0.981067, -0.0939222, 0.0203481, -0.396598 )
 pixel_size = 0.02
+shaded = true
 texture = ExtResource( 7 )
 hframes = 5
 

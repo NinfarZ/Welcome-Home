@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://mainMenu.tres" type="Theme" id=1]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://gameOver.gd" type="Script" id=3]
 [ext_resource path="res://audio/phaseTransition.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/monsterClose1.mp3" type="AudioStream" id=5]
+[ext_resource path="res://TransitionScreen.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
@@ -37,12 +39,12 @@ margin_right = 466.0
 margin_bottom = 93.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 30.0
-margin_right = 435.0
+margin_left = 233.0
+margin_right = 233.0
 margin_bottom = 93.0
 custom_fonts/font = SubResource( 1 )
-text = "GAME OVER
- you win~"
+text = "
+"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
@@ -77,9 +79,15 @@ text = "LEAVE"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = 3.0
-autoplay = true
+volume_db = 5.0
+
+[node name="youdied" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 4.0
+
+[node name="TransitionScreen" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/ButtonRetry" to="." method="_on_ButtonRetry_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/ButtonLeave" to="." method="_on_ButtonLeave_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="finished" from="youdied" to="." method="_on_youdied_finished"]

@@ -3,6 +3,7 @@ extends StaticBody
 var state = DISABLED
 var canSpawn = true
 var listOfCandyNearby = []
+var isCursed = false setget setIsCursed, getIsCursed
 
 signal candyPicked
 signal handFull
@@ -44,6 +45,12 @@ func canSpawn():
 		return true
 	else:
 		return false
+
+func setIsCursed(value):
+	isCursed = value
+
+func getIsCursed():
+	return isCursed
 
 		
 

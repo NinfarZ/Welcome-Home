@@ -20,7 +20,7 @@ func setIsPaused(value):
 		
 	
 	for ui in canvasLayer.get_children():
-		if ui != self and not ui.name == "Sanity":
+		if ui != self:
 			ui.visible = !isPaused
 	
 

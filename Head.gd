@@ -17,8 +17,8 @@ func headJumpscare():
 	visible = true
 	if not $deathAnimation.is_playing():
 		for eye in $head/eyes.get_children():
-			eye.frame = RNGTools.pick([0,1,2])
-		$head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
+			eye.frame = RNGTools.pick([0,1,2,3,4])
+		$head/mouths/mouths.frame = RNGTools.pick([0,1,2,3,4])
 		$deathAnimation.play("jumpscareDeath")
 
 

@@ -5,6 +5,8 @@
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 font_data = ExtResource( 3 )
 
 [node name="Letter" type="Control"]
@@ -22,25 +24,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -296.0
-margin_top = -300.0
-margin_right = 292.0
-margin_bottom = 473.0
+margin_left = -235.0
+margin_top = -240.0
+margin_right = 348.0
+margin_bottom = 464.0
+rect_scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
-stretch_mode = 5
+expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -216.0
-margin_right = -9.0
+margin_left = -160.0
+margin_top = 300.0
 theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="MarginContainer"]
-margin_top = 281.0
-margin_right = 207.0
-margin_bottom = 318.0
+margin_top = 71.0
+margin_right = 160.0
+margin_bottom = 108.0
 custom_constants/line_spacing = 5
 custom_fonts/font = SubResource( 1 )
 text = "Press E 

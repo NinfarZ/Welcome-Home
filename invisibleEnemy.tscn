@@ -122,8 +122,8 @@ transform = Transform( 15, 0, 0, 0, 20, 0, 0, 0, 15, 0, 0, 0 )
 collision_mask = 1028
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98564, -0.0723462 )
-aabb = AABB( -0.549117, -3.94098, -0.320682, 1.09823, 7.88197, 0.6482 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0911163, 7.444, 0.0600622 )
+aabb = AABB( -0.231004, -0.60099, -0.320682, 0.462004, 1.22346, 0.6482 )
 
 [node name="RandomAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -4.0
@@ -197,13 +197,11 @@ transform = Transform( 1.1098, 0.187619, -0.0422995, -0.19106, 1.10389, -0.11653
 
 [node name="eye" type="Sprite3D" parent="body/head/eyes"]
 transform = Transform( 1.68648, -0.414459, -0.25087, 0.42815, 1.7422, -1.65775e-07, 0.437065, -0.10741, 0.968021, -0.567503, 1.00598, 0.967163 )
-opacity = 0.5
 texture = ExtResource( 16 )
 hframes = 5
 
 [node name="eye2" type="Sprite3D" parent="body/head/eyes"]
 transform = Transform( 1.97655, -0.546396, 0.177826, 0.561421, 2.00652, -0.0172519, -0.347385, 0.133935, 0.983911, -0.0659888, 1.11674, 0.951128 )
-opacity = 0.5
 texture = ExtResource( 16 )
 hframes = 5
 frame = 1
@@ -213,7 +211,6 @@ transform = Transform( 1.00594, 0.110769, 0, -0.0426813, 0.920852, 0, 0, 0, 2.50
 
 [node name="mouths" type="Sprite3D" parent="body/head/mouths"]
 transform = Transform( 2.43084, -0.0201139, -0.117612, -0.0238222, 1.88023, 0.405173, 0.0420488, 0.209291, 0.972479, -0.0939186, 0.0203466, -0.352695 )
-opacity = 0.5
 pixel_size = 0.02
 shaded = true
 texture = ExtResource( 18 )

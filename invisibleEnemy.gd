@@ -1,8 +1,8 @@
 extends KinematicBody
 
 export var speed = 2
-var maxSpeed = speed + 1
-var minSpeed = speed - 1
+var maxSpeed = speed + 2
+var minSpeed = speed 
 var doorForce = 2
 enum {
 	PATROL,
@@ -35,7 +35,7 @@ var decreaseScale = Vector3(0.01, 0.01, 0.01)
 var invisibleEnemyInview = false
 var gracePeriodOver = false
 var monsterCloseToKill = false
-var monsterChaseVisible = false
+#var monsterChaseVisible = false
 var monsterWantsToOpenDoor = false
 var door = null
 var lockedDoor = null
@@ -114,7 +114,13 @@ func _physics_process(delta):
 									$steps3D.play()
 					if not invisibleEnemyInview:
 						setBodyVisible(true)
-					
+					else:
+						if getDistanceToPlayer() < 10:
+							yield(get_tree().create_timer(0.5),"timeout")
+							setBodyVisible(false)
+							
+							
+
 					if monsterCloseToKill and $monsterKillDelay.is_stopped():
 						playMonsterGrunt()
 						$monsterKillDelay.start()
@@ -168,7 +174,8 @@ func setStateStop():
 func setStateFollow():
 	state = FOLLOWPLAYER
 	#$body.visible = false
-	monsterChaseVisible = false
+	#monsterChaseVisible = false
+	setBodyVisible(false)
 	gracePeriodOver = false
 
 func setStateKillplayer():
@@ -228,8 +235,8 @@ func flickerLightIfClose():
 func setBodyVisible(value):
 	$body.visible = value
 	for eye in $body/head/eyes.get_children():
-		eye.frame = RNGTools.pick([0,1,2])
-	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3])
+		eye.frame = RNGTools.pick([0,1,2,3,4])
+	$body/head/mouths/mouths.frame = RNGTools.pick([0,1,2,3,4])
 	
 
 func getIsInView():
@@ -237,10 +244,14 @@ func getIsInView():
 
 func monsterSpeedUp():
 	if invisibleEnemyInview:
-		speed += 0.01
+		if not state == CHASE:
+			speed += 0.02
+		else:
+			speed += 0.05
 		
 	else:
-		speed -= 0.01
+		if not state == CHASE:
+			speed -= 0.01
 	speed = clamp(speed, minSpeed, maxSpeed)
 	
 
@@ -261,8 +272,8 @@ func getDoorOpeningForce():
 
 func setSpeedIncrease(newSpeed):
 	speed = newSpeed
-	minSpeed = newSpeed - 1
-	maxSpeed = newSpeed + 1
+	minSpeed = newSpeed 
+	maxSpeed = newSpeed + 2
 	#speed += increase -- old version
 
 func setMonsterDoorTimer(newTime):
@@ -270,10 +281,11 @@ func setMonsterDoorTimer(newTime):
 
 func _on_VisibilityNotifier_camera_entered(camera):
 	invisibleEnemyInview = true
-
+	
 
 func _on_VisibilityNotifier_camera_exited(camera):
 	invisibleEnemyInview = false
+	
 
 
 
@@ -374,7 +386,7 @@ func _on_locationSensor_body_exited(body):
 
 func _on_chaseGracePeriod_timeout():
 	gracePeriodOver = true
-	monsterChaseVisible = true
+	#monsterChaseVisible = true
 
 
 func _on_openDoorTimer_timeout():
@@ -382,8 +394,9 @@ func _on_openDoorTimer_timeout():
 
 
 func _on_bodyVisibility_area_entered(area):
-	if area.is_in_group("playerViewCone"):
-		setBodyVisible(false)
+#	if area.is_in_group("playerViewCone"):
+#		setBodyVisible(false)
+	pass
 		#emit_signal("playerViewConeDetected", false)
 	
 func moveToPosition(position):

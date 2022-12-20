@@ -279,6 +279,7 @@ random_volume_range = 1.0
 random_pitch_range = 1.0
 
 [node name="stareDrainSound" type="AudioStreamPlayer" parent="." index="10"]
+volume_db = 5.0
 script = ExtResource( 2 )
 samples = [ ExtResource( 8 ) ]
 random_strategy = 2

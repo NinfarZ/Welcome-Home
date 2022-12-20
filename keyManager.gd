@@ -40,20 +40,16 @@ func removeImpossibleKeys(listOfKeys):
 	var currentLockedDoor = doorManager.getCurrentDoor()
 	var i = 0
 	while i < len(listOfKeys):
-		print(listOfKeys[i].name)
 		if currentLockedDoor.is_in_group(listOfKeys[i].get_groups()[0]):
-			print(listOfKeys[i], " can't be placed because it's beyond reach")
 			listOfKeys.erase(listOfKeys[i])
 		elif player.get_current_location() != null:
 			if listOfKeys[i].is_in_group(player.get_current_location()):
-				print(listOfKeys[i], " can't be placed because it's in the players location")
 				listOfKeys.erase(listOfKeys[i])
 				
 			else:
 				#the index only goes forward if no element is removed
 				i += 1
 			
-		
 
 func distanceToPlayer(key):
 	return key.global_transform.origin.distance_to(player.get_position())

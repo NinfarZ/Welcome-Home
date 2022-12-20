@@ -298,10 +298,13 @@ config/windows_native_icon="res://singleEye.ico"
 [autoload]
 
 GameData="*res://gameData.gd"
-GlobalNode="*res://globalNode.gd"
+GlobalNode="*res://globalNode.tscn"
 
 [display]
 
+window/size/width=640
+window/size/height=480
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

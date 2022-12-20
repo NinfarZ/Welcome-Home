@@ -7,6 +7,7 @@ var isEnemyInside = false
 var state = OFF
 var timerOver = false
 var player = null
+var enemy = null
 
 signal playerInSpotlight(value)
 
@@ -22,25 +23,25 @@ func _ready():
 
 
 func _physics_process(delta):
-	if isPlayerInside:
+	if getIsPlayerInside():
 		emit_signal("playerInSpotlight", true)
-		if self.is_in_group(player.currentLocation):
-			get_tree().call_group("sanityBar", "recoverSanity", 0.07)
+		get_tree().call_group("sanityBar", "recoverSanity", 0.07)
+		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", false)
 			#state = CHANGELIGHT
 	else:
 		emit_signal("playerInSpotlight", false)
+		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", true)
 
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
-		isPlayerInside = true
 		player = body
-		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", false)
+		isPlayerInside = true
+		
 		
 	if body.is_in_group("invisibleEnemy"):
-		if body.get_current_location() != null:
-			if self.is_in_group(body.get_current_location()):
-				isEnemyInside = true
+		enemy = body
+		isEnemyInside = true
 	
 		
 
@@ -48,7 +49,7 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("player"):
 		isPlayerInside = false
-		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", true)
+		
 		
 	if body.is_in_group("invisibleEnemy"):
 		isEnemyInside = false
@@ -78,10 +79,22 @@ func getState():
 	return state
 
 func getIsPlayerInside():
-	return isPlayerInside
+	if player == null:
+		return false
+	if isPlayerInside and self.is_in_group(player.get_current_location()):
+		return true
+	return false
 
 func getIsEnemyInside():
-	return isEnemyInside
+	if enemy == null:
+		return false
+	if enemy.get_current_location() == null:
+		return false
+	if enemy.getState() == 1:
+		return false
+	if isEnemyInside and self.is_in_group(enemy.get_current_location()):
+		return true
+	return false
 
 func superflicker():
 	$AnimationPlayer.play("superFlicker")

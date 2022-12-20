@@ -7,7 +7,6 @@ var lastPosition = null
 onready var availableLocations = $locations.get_children()
 
 func _ready():
-	#$candyBasket/basket.connect("basketFull", self, "changeBasketLocation")
 	$candyBasket/basket.connect("addedCandy", self, "updateCandyCounter")
 
 func changeBasketLocation():

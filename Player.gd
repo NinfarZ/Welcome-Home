@@ -4,7 +4,7 @@ enum {
 	DEFAULT,
 	SEEMONSTER
 }
-const MOUSE_SENSITIVITY: float = 0.16
+const MOUSE_SENSITIVITY: float = 0.20
 const MOVE_SPEED: float = 5.0
 const GRAVITY_ACCELERATION: float = 5.8
 
@@ -76,10 +76,6 @@ func _physics_process(delta):
 		gravity_local += GRAVITY_ACCELERATION * Vector3.DOWN * delta
 	
 	
-	#for raycast in $Neck/Camera.get_children():
-		#if raycast.is_colliding():
-			#print(raycast.get_collider())
-	
 	#crouching
 	if Input.is_action_just_pressed("crouch") and not crouching:
 		$AnimationPlayer.play("crouch")
@@ -97,23 +93,28 @@ func _physics_process(delta):
 		if playerCanRun:
 			isRunning = true
 			moveSpeed = sprintSpeed
+			get_tree().call_group("stamina", "drainStamina")
 				
-			stamina -= 0.4 
-			stamina = clamp(stamina, 0, 100)
-			if stamina == 0:
-				playerCanRun = false
-				isRunning = false
-				moveSpeed = 3.2
+		else:
+			isRunning = false
+			moveSpeed = 3.2
+#			stamina -= 0.4 
+#			stamina = clamp(stamina, 0, 100)
+#			if stamina == 0:
+#				playerCanRun = false
+#				isRunning = false
+#				moveSpeed = 3.2
 	elif Input.is_action_just_released("run") and not crouching:
 		moveSpeed = 3.2
-		
-	elif not playerCanRun:
-		if stamina == 100:
-			playerCanRun = true
+
+#	elif not playerCanRun:
+#		if stamina == 100:
+#			playerCanRun = true
 	
 	if not isRunning or not playerCanRun:
-		stamina += 0.3 
-		stamina = clamp(stamina, 0, 100)
+#		stamina += 0.3 
+#		stamina = clamp(stamina, 0, 100)
+		get_tree().call_group("stamina", "rechargeStamina")
 	
 	move_and_slide(input_move + gravity_local, Vector3.UP)
 	
@@ -147,14 +148,15 @@ func getFlashlightPower():
 	
 func die():
 	$Neck/flashlight/SpotLight.visible = false
-	#$Neck/flashlight.tweenDownLight()
 	$Neck/viewCone/CollisionShape.disabled = true
 	
 	$Neck/Camera/Head.headJumpscare()
-	#state = DEAD
 
 func setDrainSanity(drainValue):
 	drainSanityValue = drainValue
+
+func setPlayerCanRun(value):
+	playerCanRun = value
 
 
 func get_current_location():

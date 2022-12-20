@@ -22,8 +22,7 @@ func pickBunny():
 		print(getDistanceFromPlayer(bunny))
 		bunnyList.erase(bunny)
 		bunny = RNGTools.pick(bunnyList)
-	#bunny.get_node("bunny").setState(0)
-	#bunnyList.erase(bunny)
+
 	return bunny
 
 func startTimer():
@@ -35,7 +34,6 @@ func stopTimer():
 func spawnBunny(bunny):
 	bunnyActive = true
 	bunny.get_node("bunny").setActive(true)
-	#currentBunny.get_node("bunny").displayText(candyAmount)
 	bunny.get_node("bunny").playMusicBox()
 
 func playBunnyMusicBox(bunny):
@@ -44,7 +42,6 @@ func playBunnyMusicBox(bunny):
 func despawnBunny(bunny):
 	bunnyActive = false
 	bunny.stopMusicBox()
-	#yield(get_tree().create_timer(1),"timeout")
 	startTimer()
 	bunny.setActive(false)
 

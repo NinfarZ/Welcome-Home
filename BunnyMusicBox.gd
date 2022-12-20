@@ -1,12 +1,5 @@
 extends Spatial
 
-#enum {
-#	ACTIVE,
-#	INACTIVE
-#}
-
-
-#var state = INACTIVE
 var isActive = false
 var isDeadly = false
 var isMusicBoxFinished = false
@@ -17,15 +10,6 @@ func _ready():
 	get_parent().visible = false
 	$CollisionShape.disabled = true
 
-#func _physics_process(delta):
-#	match state:
-#		ACTIVE:
-#			get_parent().visible = true
-#			$CollisionShape.disabled = false
-#		INACTIVE:
-#			get_parent().visible = false
-#			$CollisionShape.disabled = true
-
 #plays music box
 func playMusicBox():
 	if not get_parent().get_node("AudioStreamPlayer3D").playing:
@@ -35,9 +19,7 @@ func stopMusicBox():
 	get_parent().get_node("AudioStreamPlayer3D").stop()
 
 func interact():
-	#animate and add sound
 	emit_signal("bunnyTurnedOff", self)
-#	get_tree().call_group("gameMaster", "startBunnyTimer")
 
 func setActive(active):
 	if active:

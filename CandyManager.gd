@@ -24,9 +24,7 @@ func randomizeCandy(amount, location):
 	
 	var candiesPicked = 0
 	var locationCandyList = location.get_children()
-	#for candy in $Candy.get_children():
-		#candy.get_node("candy").setState(0)
-	
+
 	#erases candy that has been placed so it doesn't get placed again
 	var i = 0
 	if candiesUsed != []:
@@ -48,7 +46,6 @@ func randomizeCandy(amount, location):
 		if not newCandy in candiesUsed:
 			candiesUsed.append(newCandy)
 		locationCandyList.erase(newCandy)
-		#candyList.erase(newCandy)
 	return true
 
 func activeCandyPicked(candy):
@@ -72,11 +69,20 @@ func resetCandyPicked():
 #makes the radar beep when close to candy
 func getDistanceFromPlayerToCandy():
 	for candy in activeCandy:
-		if candy.get_node("candy").getState() == 0: 
+		if not candy.get_node("candy").getState() == 1:
 			if candy.transform.origin.distance_to(player.get_position()) < 7:
 				candyCounter.playBeep()
 				return
 	candyCounter.stopBeep()
+
+#makes a given amount of candy cursed
+func pickCursedCandy(amount):
+	while amount > 0:
+		var cursedCandy = RNGTools.pick(activeCandy)
+		cursedCandy.get_node("candy").setIsCursed(true)
+		amount -= 1
+	
+	
 		
 
 

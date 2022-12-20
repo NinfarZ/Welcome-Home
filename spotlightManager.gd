@@ -17,12 +17,14 @@ func _ready():
 	player = owner.player
 
 func _physics_process(delta):
-	if currentOnLight != null and invisibleEnemy.get_current_location() != null:
-		if currentOnLight.is_in_group(invisibleEnemy.get_current_location()) and not invisibleEnemy.getState() == 1:
+	if currentOnLight != null:
+		if currentOnLight.getIsEnemyInside():
 			turnOffLight(currentOnLight.name)
 			startTimer()
 		elif not currentOnLight.getIsPlayerInside():
 			get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
+	elif currentOnLight == null:
+		get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
 
 func turnAllLightsOff():
 	for light in $lights.get_children():
@@ -39,7 +41,7 @@ func playerSpotlightControl(value):
 		playerInSpotlight = true
 
 func getIsPlayerInSpotlight():
-	currentOnLight.getIsPlayerInside()
+	return currentOnLight.getIsPlayerInside()
 		
 
 func turnOnLight(lightName):

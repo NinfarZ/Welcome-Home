@@ -1,10 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://audio/Frauds of The Night.wav" type="AudioStream" id=1]
+[ext_resource path="res://audio/deathJumpscare.wav" type="AudioStream" id=1]
 [ext_resource path="res://gameData.gd" type="Script" id=2]
 
 [node name="globalNode" type="Node"]
 script = ExtResource( 2 )
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="deathMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = 5.0
+
+[connection signal="finished" from="deathMusic" to="." method="_on_deathMusic_finished"]
