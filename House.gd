@@ -144,7 +144,7 @@ func _physics_process(delta):
 							monsters.spawnMonster(monsters.get_node("yellowgirl85"))
 							doorManager.get_node("Door").playMonsterLockedDoor()
 							monsterTriggered = true
-							yield(get_tree().create_timer(2),"timeout")
+							yield(get_tree().create_timer(4),"timeout")
 							$Audio/suspencePiano.play()
 		
 					#after door is unlocked, monster can move around

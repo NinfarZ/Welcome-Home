@@ -44,6 +44,7 @@ func addCandy(candyToAdd):
 	emit_signal("addedCandy")
 	if currentCandyCount >= totalCandy:
 		isBasketFull = true
+		get_tree().call_group("sanityBar", "resetSanity")
 		emit_signal("basketFull")
 	
 	get_parent().get_node("candyCountLabel").set_text(str(currentCandyCount) + " / " + str(totalCandy))
@@ -77,8 +78,6 @@ func getCurrentCandyCount():
 	return currentCandyCount
 
 func getIsBasketFull():
-	if isBasketFull:
-		get_tree().call_group("sanityBar", "resetSanity")
 	return isBasketFull
 
 #possible code to fade out basket when full

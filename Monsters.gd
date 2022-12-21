@@ -121,7 +121,7 @@ func _physics_process(delta):
 			#incrementDifficulty()
 			currentMonster.flickerFace(RNGTools.pick([1,2]))
 			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
-			get_tree().call_group("sanityBar", "drainSanity", 1.9)
+			get_tree().call_group("sanityBar", "drainSanity", 2.2)
 			if player.getFlashlightPower():
 				get_tree().call_group("flashlight", "flicker")
 			else:

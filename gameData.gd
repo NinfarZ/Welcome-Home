@@ -26,8 +26,6 @@ func getIsPlayerDead():
 func playDeathMusic():
 	$deathMusic.stream = deathMusic
 	$deathMusic.play()
-	var tween = create_tween()
-	tween.tween_property($deathMusic, "volume_db", -20, 5.0)
 
 
 func _on_deathMusic_finished():

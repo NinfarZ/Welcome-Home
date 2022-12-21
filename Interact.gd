@@ -35,13 +35,10 @@ func _physics_process(delta):
 				else:
 					interactables.front().emitHandFull()
 			elif interactables.front().is_in_group("basket"):
-				if numberOfCandy != 0:
+				if numberOfCandy != 0 and not interactables.front().getIsBasketFull():
 					interactables.front().addCandy(numberOfCandy)
 					numberOfCandy -= 1
-#					if numberOfCandy > interactables.front().getTotalCandy():
-#						numberOfCandy -= interactables.front().getTotalCandy()
-#					else:
-#						numberOfCandy = 0
+#	
 			else:
 				interactables.front().interact()
 			
