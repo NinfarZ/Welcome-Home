@@ -2,6 +2,7 @@ extends Spatial
 
 onready var candyBasket = $candyBasket
 onready var candyCounter = get_parent().get_node("CanvasLayer/candyCounter")
+onready var candyManager = get_parent().get_node("Candy")
 onready var doorManager = get_parent().get_node("Doors")
 var lastPosition = null
 onready var availableLocations = $locations.get_children()
@@ -43,4 +44,5 @@ func setCurrentCandyAmount(amount):
 
 func updateCandyCounter():
 	candyCounter.removeCandy()
+	candyManager.removeCandyPicked()
 

@@ -76,5 +76,8 @@ func removeKey():
 func getHaskey():
 	return hasKey
 
+func setNumberOfCandy(number):
+	numberOfCandy = number
+
 func getNumberOfCandy():
 	return numberOfCandy

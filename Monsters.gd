@@ -70,7 +70,7 @@ func _physics_process(delta):
 					state = STALKING
 				else:
 					validMonsters = []
-					state = COOLDOWN
+					setStateCooldown()
 					
 		STALKING:
 			print(currentMonster.name + " is staking hehe")
@@ -115,7 +115,7 @@ func _physics_process(delta):
 					despawnMonster(currentMonster)
 					monsterCanDespawn = false
 					#get_parent().get_node("TimerMonsterCooldown").start()
-					state = SEARCHING
+					setStateCooldown()
 			
 		ANGER:
 			#incrementDifficulty()
@@ -137,7 +137,6 @@ func _physics_process(delta):
 			#print("player has been killed")
 		
 		COOLDOWN:
-			invisibleMonster.setStateFollow()
 			if get_parent().get_node("TimerMonsterCooldown").is_stopped():
 				get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
 				#print(get_parent().get_node("TimerMonsterCooldown").wait_time)
@@ -163,15 +162,16 @@ func _physics_process(delta):
 			#monster can appear walking behind the player
 			elif rngCreepyBehavior == 0:
 				if not monsterActive:
-					if not invisibleMonster.getIsInView() and invisibleMonster.getDistanceToPlayer() > 15:
+					if not invisibleMonster.getIsInView() and invisibleMonster.getDistanceToPlayer() > 13:
 						print("monster is behind you!!")
 						invisibleMonster.setBodyVisible(true)
 						monsterActive = true
 					
-				elif invisibleMonster.getIsInView() or invisibleMonster.getDistanceToPlayer() < 8:
+				elif invisibleMonster.getIsInView() or invisibleMonster.getDistanceToPlayer() <= 13:
 					if get_parent().get_node("monsterCreepTimer").is_stopped():
 						get_parent().get_node("monsterCreepTimer").wait_time = 0.4
 						get_parent().get_node("monsterCreepTimer").start()
+		
 
 		HUNTING:
 			invisibleMonster.setStateChase()
@@ -210,18 +210,20 @@ func pickRandomMonster():
 	return chosenMonster
 	
 func createSpawnableMonsterList(monster, distance):
-	if monster.isCanSpawn():
-		#monster.enableMonster(true)
-		
-		if monster.isMonsterPositionedToSpawn() and monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()) and monster.getDistanceFromPlayer() > distance and monster != lastMonster: #and monster.isMonsterInPlayerLocation()
-		#monster.enableArea()
-		#print("monster can spawn")
-			add_monster_to_list(monster)
-			
-		else:
-			remove_monster_from_list(monster)
-	else:
+	if not monster.isCanSpawn():
 		return
+		#monster.enableMonster(true)
+	if monster == lastMonster:
+		return
+	if monster.getDistanceFromPlayer() <= distance:
+		return
+	if not monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()):
+		return
+	if monster.isMonsterPositionedToSpawn(): #and monster.isMonsterInPlayerLocation()
+		add_monster_to_list(monster)
+		
+	else:
+		remove_monster_from_list(monster)
 		#monster.enableMonster(false)
 
 func _on_TimerMonsterSwitch_timeout():
@@ -291,13 +293,13 @@ func _removeMonsterOutOfRange(monster):
 		if monster.getIsActive() and not state == IDLE:
 			despawnMonster(monster)
 			get_parent().get_node("TimerMonsterSwitch").stop()
-			state = SEARCHING
+			setStateCooldown()
 
 func _stopMonsterStalking(monster):
 	if not state == COOLDOWN and not state == IDLE:
 		despawnMonster(monster)
 		get_parent().get_node("TimerMonsterSwitch").stop()
-		state = SEARCHING
+		setStateCooldown()
 	
 
 func setStateIdle():
@@ -313,6 +315,8 @@ func setStateSearching():
 	
 func setStateCooldown():
 	state = COOLDOWN
+	invisibleMonster.setStateFollow()
+	
 func setStateHunting():
 	state = HUNTING
 
@@ -327,7 +331,6 @@ func _on_monsterCreepTimer_timeout():
 	if rngCreepyBehavior == 0:
 		invisibleMonster.setBodyVisible(false)
 		monsterActive = false
-	
 
 
 func _on_monsterSoundTimer_timeout():

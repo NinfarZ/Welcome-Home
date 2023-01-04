@@ -13,7 +13,10 @@ func drainStamina():
 
 func rechargeStamina():
 	if staminaBar.value < 100:
-		staminaBar.value += 0.3
+		if staminaDepleted:
+			staminaBar.value += 0.3
+		else:
+			staminaBar.value += 0.5
 	else:
 		staminaDepleted = false
 		get_tree().call_group("player", "setPlayerCanRun", true)

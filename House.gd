@@ -81,9 +81,13 @@ func _physics_process(delta):
 				candyBasket.displayText(5)
 			
 			elif basketManager.get_node("candyBasket/basket").getCurrentCandyCount() >= 3 and not monsterTriggered:
+				$IntroTimer.stop()
 				yield(get_tree().create_timer(5),"timeout")
 				bunnyManager.playBunnyMusicBox(bunnyManager.get_node("Bunnies/Bunny5"))
 				monsterTriggered = true
+			elif player.get_current_location() == "livingroom" and not monsterTriggered:
+				if $IntroTimer.is_stopped():
+					$IntroTimer.start()
 			elif monsterTriggered and bunnyManager.get_node("Bunnies/Bunny5/bunny").getIsMusicBoxFinished():
 				$Audio/darkScaryHorn.play()
 				for label in $TutorialLabels.get_children():
@@ -124,7 +128,8 @@ func _physics_process(delta):
 	
 						basketManager.moveBasketToPosition(basketManager.get_node("locations/bedRoom2"))
 						basketManager.setCurrentCandyAmount(5)
-					
+						
+						candyManager.resetCandyPicked()
 						candyManager.randomizeCandy(2, candyManager.get_node("myBedroom"))
 						candyManager.randomizeCandy(2, candyManager.get_node("corridor"))
 						candyManager.randomizeCandy(2, candyManager.get_node("bedRoom2"))
@@ -170,7 +175,7 @@ func _physics_process(delta):
 						furnitureManager.setBarricade(furnitureManager.get_node("barricade3"), false)
 						furnitureManager.setBarricade(furnitureManager.get_node("barricade4"), false)
 						
-						spreadCandyAcrossMap(13)
+						spreadCandyAcrossMap(12)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -196,7 +201,7 @@ func _physics_process(delta):
 					
 					if not CandyRandomized:
 						furnitureManager.setBarricade(furnitureManager.get_node("barricade2"), false)
-						spreadCandyAcrossMap(12)
+						spreadCandyAcrossMap(8)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -223,7 +228,8 @@ func _physics_process(delta):
 					
 					if not CandyRandomized:
 						$mannequim.visible = false
-						spreadCandyAcrossMap(8)
+						$Audio/lastPhase.play()
+						spreadCandyAcrossMap(4)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -242,15 +248,16 @@ func _physics_process(delta):
 					
 						
 					elif candyBasket.getIsBasketFull():
-						$Audio/basketTransition.play()
 						CandyRandomized = false
+						candyManager.hideCandy()
+						$TransitionScreen.transition()
 						
-						phase = PHASE4
+						set_physics_process(false)
 				PHASE4:
 					
 					if not CandyRandomized:
 						$Audio/lastPhase.play()
-						spreadCandyAcrossMap(6)
+						spreadCandyAcrossMap(5)
 						
 						lockedDoor = doorManager.pickDoor()
 						doorManager.lockDoor(lockedDoor)
@@ -300,7 +307,7 @@ func _physics_process(delta):
 			
 				get_tree().call_group("monsterController", "setStateHunting")
 			
-			elif phase == PHASE4 and candyBasket.getIsBasketFull():
+			elif phase == PHASE3 and candyBasket.getIsBasketFull():
 				punishmentEnd()
 			elif spotlightManager.getCurrentLight() != null:
 				if spotlightManager.getIsPlayerInSpotlight():
@@ -308,6 +315,7 @@ func _physics_process(delta):
 				
 			
 func deathSequence():
+	GameData.setIsPlayerDead(true)
 	$punishmentTimer.stop()
 	player.die()
 	monsters.set_physics_process(false)
@@ -325,7 +333,6 @@ func fade_out():
 
 
 func endGame():
-	GameData.setIsPlayerDead(true)
 	get_tree().change_scene("res://gameOver.tscn")
 
 func setGameState(newState):
@@ -342,7 +349,7 @@ func skipIntro():
 	$FlashlightItem.get_node("flashlight").interact()
 	monsters.setStateSearching()
 	invisibleEnemy.isMonsterActive(true)
-	basketManager.setCurrentCandyAmount(9)
+	basketManager.setCurrentCandyAmount(10)
 
 func spreadCandyAcrossMap(amount):
 	var locationList = candyManager.get_children()
@@ -370,7 +377,7 @@ func controlDifficulty(fear):
 			monsters.changeDifficulty(2,3,-1)
 		PHASE1:
 			invisibleEnemy.setInvisibleEnemyPhase(1)
-			spotlightManager.setSanityDrain(0.014)
+			spotlightManager.setSanityDrain(0.015)
 			match fear:
 				0:
 					monsters.changeDifficulty(2,3,25)
@@ -379,61 +386,61 @@ func controlDifficulty(fear):
 					
 				1:
 					monsters.changeDifficulty(2,4,50)
-					monsters.cooldown(10,25)
+					monsters.cooldown(1,10)
 					invisibleEnemy.setMonsterDoorTimer(4.5)
 				2:
 					monsters.changeDifficulty(3.2,4,70)
 		PHASE2:
-			spotlightManager.setSanityDrain(0.015)
+			spotlightManager.setSanityDrain(0.025)
 			match fear:
 				0:
 					
 					invisibleEnemy.setInvisibleEnemyPhase(1)
-					monsters.changeDifficulty(3.2,3,70)
-					monsters.cooldown(10,15)
-					invisibleEnemy.setMonsterDoorTimer(4.5)
-				1:
-					invisibleEnemy.setInvisibleEnemyPhase(2)
-					monsters.changeDifficulty(3.5,6,80)
-					monsters.cooldown(7,10)
-					invisibleEnemy.setMonsterDoorTimer(4)
-				2:
-					invisibleEnemy.setInvisibleEnemyPhase(2)
-					monsters.changeDifficulty(4.2,10,90)
-					monsters.cooldown(1,7)
-					invisibleEnemy.setMonsterDoorTimer(2.5)
-		PHASE3:
-			invisibleEnemy.setInvisibleEnemyPhase(2)
-			spotlightManager.setSanityDrain(0.015)
-			match fear:
-				0:
-					monsters.changeDifficulty(3.2,3,70)
-					monsters.cooldown(8,10)
+					monsters.changeDifficulty(3.5,3,70)
+					monsters.cooldown(5,15)
 					invisibleEnemy.setMonsterDoorTimer(4)
 				1:
-					monsters.changeDifficulty(3.5,8,80)
-					monsters.cooldown(5,8)
-					invisibleEnemy.setMonsterDoorTimer(3.5)
+					invisibleEnemy.setInvisibleEnemyPhase(2)
+					monsters.changeDifficulty(4.2,6,80)
+					monsters.cooldown(1,8)
+					invisibleEnemy.setMonsterDoorTimer(3)
 				2:
-					monsters.changeDifficulty(4.2,10,90)
+					invisibleEnemy.setInvisibleEnemyPhase(2)
+					monsters.changeDifficulty(5.2,10,90)
 					monsters.cooldown(1,5)
 					invisibleEnemy.setMonsterDoorTimer(2)
-		PHASE4:
+		PHASE3:
 			invisibleEnemy.setInvisibleEnemyPhase(2)
-			spotlightManager.setSanityDrain(0.016)
+			spotlightManager.setSanityDrain(0.035)
 			match fear:
 				0:
-					monsters.changeDifficulty(3.2,3,70)
-					monsters.cooldown(6,8)
+					monsters.changeDifficulty(4.2,3,80)
+					monsters.cooldown(5,10)
 					invisibleEnemy.setMonsterDoorTimer(3)
 				1:
-					monsters.changeDifficulty(3.5,8,80)
-					monsters.cooldown(3,6)
-					invisibleEnemy.setMonsterDoorTimer(2.5)
-				2:
-					monsters.changeDifficulty(4.2,10,90)
-					monsters.cooldown(1,3)
+					monsters.changeDifficulty(5.2,8,90)
+					monsters.cooldown(1,5)
 					invisibleEnemy.setMonsterDoorTimer(2)
+				2:
+					monsters.changeDifficulty(6.2,10,95)
+					monsters.cooldown(1,2)
+					invisibleEnemy.setMonsterDoorTimer(1)
+		PHASE4:
+			invisibleEnemy.setInvisibleEnemyPhase(2)
+			spotlightManager.setSanityDrain(0.03)
+			match fear:
+				0:
+					monsters.changeDifficulty(4.2,3,80)
+					monsters.cooldown(6,8)
+					invisibleEnemy.setMonsterDoorTimer(2.5)
+				1:
+					monsters.changeDifficulty(4.7,8,90)
+					monsters.cooldown(1,6)
+					invisibleEnemy.setMonsterDoorTimer(2)
+				2:
+					monsters.changeDifficulty(5.2,10,100)
+					monsters.cooldown(1,3)
+					invisibleEnemy.setMonsterDoorTimer(1.5)
 
 func _on_bunnySpawnTimer_timeout():
 	var bunnyList = $Bunnies.get_children()
@@ -459,7 +466,7 @@ func playerTransition():
 	if state == START:
 		state = GAME
 		player.set_deferred("translation", positions.get_node("myBedroom").translation)
-	elif phase == PHASE4:
+	elif phase == PHASE3:
 		get_tree().change_scene("res://gameOver.tscn")	
 	
 
@@ -470,3 +477,8 @@ func setPunishmentTimer(time):
 func _on_darkScaryHorn_finished():
 	if state == START:
 		scaryHornSoundFinished = true
+
+
+func _on_IntroTimer_timeout():
+	bunnyManager.playBunnyMusicBox(bunnyManager.get_node("Bunnies/Bunny5"))
+	monsterTriggered = true

@@ -4,7 +4,7 @@ var isPaused = false setget setIsPaused
 onready var canvasLayer = get_parent()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and not GameData.getIsPlayerDead():
 		self.isPaused = !isPaused
 
 func setIsPaused(value):

@@ -147,12 +147,12 @@ random_volume_range = 2.0
 random_pitch_range = 1.0
 
 [node name="running3D" type="AudioStreamPlayer3D" parent="."]
-unit_db = 20.513
+unit_size = 5.0
 script = ExtResource( 7 )
 samples = [ ExtResource( 12 ) ]
 random_strategy = 2
 random_volume_range = 0
-random_pitch_range = 0.359
+random_pitch_range = 0.17
 
 [node name="locationSensor" type="Area" parent="."]
 collision_layer = 32
@@ -241,7 +241,7 @@ random_volume_range = 0
 random_pitch_range = 0.183
 
 [node name="monsterKillDelay" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 1.1
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

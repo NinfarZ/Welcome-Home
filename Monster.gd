@@ -75,11 +75,14 @@ func _physics_process(delta):
 		if not player.getIsUnderFurniture():
 			emit_signal("monsterShouldDespawn", self)
 			
-	if not isMonsterInPlayerLocation():
+#	if not isMonsterInPlayerLocation():
+#		emit_signal("monsterShouldDespawn", self)
+	if not isPlayerInViewcone():
+		if isInView():
+			emit_signal("monsterShouldDespawn", self)
+	if inSpotlight:
 		emit_signal("monsterShouldDespawn", self)
-	elif not isPlayerInViewcone():
-		emit_signal("monsterShouldDespawn", self)
-	elif inSpotlight:
+	if getDistanceFromPlayer() > 15:
 		emit_signal("monsterShouldDespawn", self)
 		
 func lookAtPlayer():
@@ -117,14 +120,14 @@ func isCanSpawn():
 func enableMonster(enable):
 	if enable:
 		set_physics_process(true)
-		$bodyVisibleArea/CollisionShape.disabled = false
+		#$bodyVisibleArea/CollisionShape.disabled = false
 		$Head/headArea/CollisionShape.disabled = false
 		for raycast in $Head/head/raycasts.get_children():
 			raycast.enabled = true
 		
 	elif not enable:
 		set_physics_process(false)
-		$bodyVisibleArea/CollisionShape.disabled = true
+		#$bodyVisibleArea/CollisionShape.disabled = true
 		$Head/headArea/CollisionShape.disabled = true
 		for raycast in $Head/head/raycasts.get_children():
 			raycast.enabled = false
@@ -145,10 +148,15 @@ func getDistanceFromPlayer():
 	return transform.origin.distance_to(player.get_position())
 
 func isMonsterPositionedToSpawn():
-	if not isInView():
-		if canSeePlayer() and isPlayerInViewcone():
+	if getDistanceFromPlayer() > 10:
+		if not monsterInSight:
+			if canSeePlayer() and isPlayerInViewcone():
+				return true
+	else:
+		if not isInView():
+			if canSeePlayer() and isPlayerInViewcone():
 		
-			return true
+				return true
 	return false
 		
 			
@@ -182,6 +190,8 @@ func set_state_hiding():
 	head.get_node("headArea").monitoring = false
 	canMakeSound = true
 	enableArea()
+	if canSeeMonsterFace:
+		get_tree().call_group("flashlight", "blink")
 
 func getIsActive():
 	return isActive
@@ -256,9 +266,9 @@ func canMonsterSpawnNextToDoor():
 	return true
 
 func isPlayerInViewcone():
-	if head.rotation.x >= deg2rad(40) or head.rotation.x <= deg2rad(-40):
+	if head.rotation.x >= deg2rad(60) or head.rotation.x <= deg2rad(-60):
 		return false
-	elif head.rotation.y >= deg2rad(40) or head.rotation.y <= deg2rad(-40):
+	elif head.rotation.y >= deg2rad(50) or head.rotation.y <= deg2rad(-50):
 		return false
 	
 	return true

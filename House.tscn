@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
@@ -66,569 +66,8 @@
 
 [sub_resource type="SpatialMaterial" id=1]
 
-[sub_resource type="ConvexPolygonShape" id=583]
-points = PoolVector3Array( 2, 15, 13, 2, 7, 13, 17, 7, 13, 17, 15, 13, 2, 15, 14, 2, 7, 14, 17, 7, 14, 17, 15, 14 )
-
-[sub_resource type="ConvexPolygonShape" id=584]
-points = PoolVector3Array( 2, 15, 1, 2, 7, 1, 17, 7, 1, 17, 15, 1, 2, 15, 2, 2, 7, 2, 17, 7, 2, 17, 15, 2 )
-
-[sub_resource type="ConvexPolygonShape" id=585]
-points = PoolVector3Array( 3, 15, 2, 3, 14, 2, 16, 14, 2, 16, 15, 2, 3, 15, 13, 3, 14, 13, 16, 14, 13, 16, 15, 13 )
-
-[sub_resource type="ConvexPolygonShape" id=586]
-points = PoolVector3Array( 16, 15, 12, 16, 7, 12, 17, 7, 12, 17, 15, 12, 16, 15, 13, 16, 7, 13, 17, 7, 13, 17, 15, 13 )
-
-[sub_resource type="ConvexPolygonShape" id=587]
-points = PoolVector3Array( 16, 15, 2, 16, 7, 2, 17, 7, 2, 17, 15, 2, 16, 15, 4, 16, 7, 4, 17, 7, 4, 17, 15, 4 )
-
-[sub_resource type="ConvexPolygonShape" id=588]
-points = PoolVector3Array( 16, 15, 4, 16, 14, 4, 17, 14, 4, 17, 15, 4, 16, 15, 12, 16, 14, 12, 17, 14, 12, 17, 15, 12 )
-
-[sub_resource type="ConvexPolygonShape" id=589]
-points = PoolVector3Array( 17, 8, -8.5, 17, 7, -8.5, 20, 7, -8.5, 20, 8, -8.5, 17, 8, 14, 17, 7, 14, 20, 7, 14, 20, 8, 14 )
-
-[sub_resource type="ConvexPolygonShape" id=590]
-points = PoolVector3Array( 17.375, 9, 13.75, 17.375, 8, 13.75, 17.5, 8, 13.75, 17.5, 9, 13.75, 17.375, 9, 13.875, 17.375, 8, 13.875, 17.5, 8, 13.875, 17.5, 9, 13.875 )
-
-[sub_resource type="ConvexPolygonShape" id=591]
-points = PoolVector3Array( 18.375, 9, 13.75, 18.375, 8, 13.75, 18.5, 8, 13.75, 18.5, 9, 13.75, 18.375, 9, 13.875, 18.375, 8, 13.875, 18.5, 8, 13.875, 18.5, 9, 13.875 )
-
-[sub_resource type="ConvexPolygonShape" id=592]
-points = PoolVector3Array( 19.375, 9, 13.75, 19.375, 8, 13.75, 19.5, 8, 13.75, 19.5, 9, 13.75, 19.375, 9, 13.875, 19.375, 8, 13.875, 19.5, 8, 13.875, 19.5, 9, 13.875 )
-
-[sub_resource type="ConvexPolygonShape" id=593]
-points = PoolVector3Array( 19.375, 9, 12.75, 19.375, 8, 12.75, 19.5, 8, 12.75, 19.5, 9, 12.75, 19.375, 9, 12.875, 19.375, 8, 12.875, 19.5, 8, 12.875, 19.5, 9, 12.875 )
-
-[sub_resource type="ConvexPolygonShape" id=594]
-points = PoolVector3Array( 19.375, 9, 11.75, 19.375, 8, 11.75, 19.5, 8, 11.75, 19.5, 9, 11.75, 19.375, 9, 11.875, 19.375, 8, 11.875, 19.5, 8, 11.875, 19.5, 9, 11.875 )
-
-[sub_resource type="ConvexPolygonShape" id=595]
-points = PoolVector3Array( 19.375, 9, 10.75, 19.375, 8, 10.75, 19.5, 8, 10.75, 19.5, 9, 10.75, 19.375, 9, 10.875, 19.375, 8, 10.875, 19.5, 8, 10.875, 19.5, 9, 10.875 )
-
-[sub_resource type="ConvexPolygonShape" id=596]
-points = PoolVector3Array( 19.375, 9, 9.75, 19.375, 8, 9.75, 19.5, 8, 9.75, 19.5, 9, 9.75, 19.375, 9, 9.875, 19.375, 8, 9.875, 19.5, 8, 9.875, 19.5, 9, 9.875 )
-
-[sub_resource type="ConvexPolygonShape" id=597]
-points = PoolVector3Array( 19.375, 9, 8.75, 19.375, 8, 8.75, 19.5, 8, 8.75, 19.5, 9, 8.75, 19.375, 9, 8.875, 19.375, 8, 8.875, 19.5, 8, 8.875, 19.5, 9, 8.875 )
-
-[sub_resource type="ConvexPolygonShape" id=598]
-points = PoolVector3Array( 19.375, 9, 7.75, 19.375, 8, 7.75, 19.5, 8, 7.75, 19.5, 9, 7.75, 19.375, 9, 7.875, 19.375, 8, 7.875, 19.5, 8, 7.875, 19.5, 9, 7.875 )
-
-[sub_resource type="ConvexPolygonShape" id=599]
-points = PoolVector3Array( 19.375, 9, 6.75, 19.375, 8, 6.75, 19.5, 8, 6.75, 19.5, 9, 6.75, 19.375, 9, 6.875, 19.375, 8, 6.875, 19.5, 8, 6.875, 19.5, 9, 6.875 )
-
-[sub_resource type="ConvexPolygonShape" id=600]
-points = PoolVector3Array( 19.375, 9, 5.75, 19.375, 8, 5.75, 19.5, 8, 5.75, 19.5, 9, 5.75, 19.375, 9, 5.875, 19.375, 8, 5.875, 19.5, 8, 5.875, 19.5, 9, 5.875 )
-
-[sub_resource type="ConvexPolygonShape" id=601]
-points = PoolVector3Array( 19.375, 9, 4.75, 19.375, 8, 4.75, 19.5, 8, 4.75, 19.5, 9, 4.75, 19.375, 9, 4.875, 19.375, 8, 4.875, 19.5, 8, 4.875, 19.5, 9, 4.875 )
-
-[sub_resource type="ConvexPolygonShape" id=602]
-points = PoolVector3Array( 19.375, 9, 3.75, 19.375, 8, 3.75, 19.5, 8, 3.75, 19.5, 9, 3.75, 19.375, 9, 3.875, 19.375, 8, 3.875, 19.5, 8, 3.875, 19.5, 9, 3.875 )
-
-[sub_resource type="ConvexPolygonShape" id=603]
-points = PoolVector3Array( 19.375, 9, 2.75, 19.375, 8, 2.75, 19.5, 8, 2.75, 19.5, 9, 2.75, 19.375, 9, 2.875, 19.375, 8, 2.875, 19.5, 8, 2.875, 19.5, 9, 2.875 )
-
-[sub_resource type="ConvexPolygonShape" id=604]
-points = PoolVector3Array( 19.375, 9, 1.75, 19.375, 8, 1.75, 19.5, 8, 1.75, 19.5, 9, 1.75, 19.375, 9, 1.875, 19.375, 8, 1.875, 19.5, 8, 1.875, 19.5, 9, 1.875 )
-
-[sub_resource type="ConvexPolygonShape" id=605]
-points = PoolVector3Array( 17.375, 9.125, 13.75, 17.375, 9, 13.75, 19.5, 9, 13.75, 19.5, 9.125, 13.75, 17.375, 9.125, 13.875, 17.375, 9, 13.875, 19.5, 9, 13.875, 19.5, 9.125, 13.875 )
-
-[sub_resource type="ConvexPolygonShape" id=606]
-points = PoolVector3Array( 19.375, 9.125, 1.75, 19.375, 9, 1.75, 19.5, 9, 1.75, 19.5, 9.125, 1.75, 19.375, 9.125, 13.75, 19.375, 9, 13.75, 19.5, 9, 13.75, 19.5, 9.125, 13.75 )
-
-[sub_resource type="ConvexPolygonShape" id=607]
-points = PoolVector3Array( 2, 15, 5, 2, 7, 5, 3, 7, 5, 3, 15, 5, 2, 15, 13, 2, 7, 13, 3, 7, 13, 3, 15, 13 )
-
-[sub_resource type="ConvexPolygonShape" id=608]
-points = PoolVector3Array( 2, 15, 2, 2, 7, 2, 3, 7, 2, 3, 15, 2, 2, 15, 2.5, 2, 7, 2.5, 3, 7, 2.5, 3, 15, 2.5 )
-
-[sub_resource type="ConvexPolygonShape" id=609]
-points = PoolVector3Array( 2, 15, 2.5, 2, 12.5, 2.5, 3, 12.5, 2.5, 3, 15, 2.5, 2, 15, 5, 2, 12.5, 5, 3, 12.5, 5, 3, 15, 5 )
-
-[sub_resource type="ConvexPolygonShape" id=610]
-points = PoolVector3Array( 3, 14, 12.5, 3, 8, 12.5, 5, 8, 12.5, 5, 14, 12.5, 3, 14, 13, 3, 8, 13, 5, 8, 13, 5, 14, 13 )
-
-[sub_resource type="ConvexPolygonShape" id=611]
-points = PoolVector3Array( 3, 14, 5.5, 3, 8, 5.5, 5, 8, 5.5, 5, 14, 5.5, 3, 14, 6.5, 3, 8, 6.5, 5, 8, 6.5, 5, 14, 6.5 )
-
-[sub_resource type="ConvexPolygonShape" id=612]
-points = PoolVector3Array( 4, 14, 6.5, 4, 13.5, 6.5, 5, 13.5, 6.5, 5, 14, 6.5, 4, 14, 12.5, 4, 13.5, 12.5, 5, 13.5, 12.5, 5, 14, 12.5 )
-
-[sub_resource type="ConvexPolygonShape" id=613]
-points = PoolVector3Array( 3.5, 14, 6.5, 3.5, 13.5, 6.5, 4, 13.5, 6.5, 4, 14, 6.5, 3.5, 14, 12.5, 3.5, 13.5, 12.5, 4, 13.5, 12.5, 4, 14, 12.5 )
-
-[sub_resource type="ConvexPolygonShape" id=614]
-points = PoolVector3Array( 3, 14, 6.5, 3, 13.5, 6.5, 3.5, 13.5, 6.5, 3.5, 14, 6.5, 3, 14, 12.5, 3, 13.5, 12.5, 3.5, 13.5, 12.5, 3.5, 14, 12.5 )
-
-[sub_resource type="ConvexPolygonShape" id=615]
-points = PoolVector3Array( -2.5, 15, 1.5, -2.5, 7, 1.5, -2, 7, 1.5, -2, 15, 1.5, -2.5, 15, 13.5, -2.5, 7, 13.5, -2, 7, 13.5, -2, 15, 13.5 )
-
-[sub_resource type="ConvexPolygonShape" id=616]
-points = PoolVector3Array( -2, 15, 1.5, -2, 14.5, 1.5, 1.5, 14.5, 1.5, 1.5, 15, 1.5, -2, 15, 13.5, -2, 14.5, 13.5, 1.5, 14.5, 13.5, 1.5, 15, 13.5 )
-
-[sub_resource type="ConvexPolygonShape" id=617]
-points = PoolVector3Array( 1.5, 15, 5, 1.5, 7, 5, 2, 7, 5, 2, 15, 5, 1.5, 15, 13.5, 1.5, 7, 13.5, 2, 7, 13.5, 2, 15, 13.5 )
-
-[sub_resource type="ConvexPolygonShape" id=618]
-points = PoolVector3Array( 1.5, 15, 1.5, 1.5, 7, 1.5, 2, 7, 1.5, 2, 15, 1.5, 1.5, 15, 2.5, 1.5, 7, 2.5, 2, 7, 2.5, 2, 15, 2.5 )
-
-[sub_resource type="ConvexPolygonShape" id=619]
-points = PoolVector3Array( 1.5, 15, 2.5, 1.5, 12.5, 2.5, 2, 12.5, 2.5, 2, 15, 2.5, 1.5, 15, 5, 1.5, 12.5, 5, 2, 12.5, 5, 2, 15, 5 )
-
-[sub_resource type="ConvexPolygonShape" id=620]
-points = PoolVector3Array( -2, 15, -8.5, -2, 14.5, -8.5, 16.5, 14.5, -8.5, 16.5, 15, -8.5, -2, 15, 0.5, -2, 14.5, 0.5, 16.5, 14.5, 0.5, 16.5, 15, 0.5 )
-
-[sub_resource type="ConvexPolygonShape" id=621]
-points = PoolVector3Array( -2, 7.5, -8.5, -2, 7, -8.5, 16.5, 7, -8.5, 16.5, 7.5, -8.5, -2, 7.5, 0.5, -2, 7, 0.5, 16.5, 7, 0.5, 16.5, 7.5, 0.5 )
-
-[sub_resource type="ConvexPolygonShape" id=622]
-points = PoolVector3Array( 1.5, 15, 0.5, 1.5, 7, 0.5, 17, 7, 0.5, 17, 15, 0.5, 1.5, 15, 1, 1.5, 7, 1, 17, 7, 1, 17, 15, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=623]
-points = PoolVector3Array( -2.5, 15, 0.5, -2.5, 7, 0.5, -2, 7, 0.5, -2, 15, 0.5, -2.5, 15, 1, -2.5, 7, 1, -2, 7, 1, -2, 15, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=624]
-points = PoolVector3Array( -2, 15, 0.5, -2, 14.5, 0.5, 1.5, 14.5, 0.5, 1.5, 15, 0.5, -2, 15, 1, -2, 14.5, 1, 1.5, 14.5, 1, 1.5, 15, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=625]
-points = PoolVector3Array( 1.5, 15, 1, 1.5, 7, 1, 2, 7, 1, 2, 15, 1, 1.5, 15, 1.5, 1.5, 7, 1.5, 2, 7, 1.5, 2, 15, 1.5 )
-
-[sub_resource type="ConvexPolygonShape" id=626]
-points = PoolVector3Array( -2.5, 15, 1, -2.5, 7, 1, -2, 7, 1, -2, 15, 1, -2.5, 15, 1.5, -2.5, 7, 1.5, -2, 7, 1.5, -2, 15, 1.5 )
-
-[sub_resource type="ConvexPolygonShape" id=627]
-points = PoolVector3Array( -2, 15, 1, -2, 14.5, 1, 1.5, 14.5, 1, 1.5, 15, 1, -2, 15, 1.5, -2, 14.5, 1.5, 1.5, 14.5, 1.5, 1.5, 15, 1.5 )
-
-[sub_resource type="ConvexPolygonShape" id=628]
-points = PoolVector3Array( 1.5, 14.5, -8.5, 1.5, 8, -8.5, 2, 8, -8.5, 2, 14.5, -8.5, 1.5, 14.5, -2, 1.5, 8, -2, 2, 8, -2, 2, 14.5, -2 )
-
-[sub_resource type="ConvexPolygonShape" id=629]
-points = PoolVector3Array( 1.5, 14.5, -2, 1.5, 12.5, -2, 2, 12.5, -2, 2, 14.5, -2, 1.5, 14.5, 0.5, 1.5, 12.5, 0.5, 2, 12.5, 0.5, 2, 14.5, 0.5 )
-
-[sub_resource type="ConvexPolygonShape" id=630]
-points = PoolVector3Array( 16.5, 15, -0.5, 16.5, 7, -0.5, 17, 7, -0.5, 17, 15, -0.5, 16.5, 15, 0.5, 16.5, 7, 0.5, 17, 7, 0.5, 17, 15, 0.5 )
-
-[sub_resource type="ConvexPolygonShape" id=631]
-points = PoolVector3Array( 16.5, 15, -7, 16.5, 13.5, -7, 17, 13.5, -7, 17, 15, -7, 16.5, 15, -0.5, 16.5, 13.5, -0.5, 17, 13.5, -0.5, 17, 15, -0.5 )
-
-[sub_resource type="ConvexPolygonShape" id=632]
-points = PoolVector3Array( 19.375, 9.125, -8.5, 19.375, 9, -8.5, 19.5, 9, -8.5, 19.5, 9.125, -8.5, 19.375, 9.125, 1.75, 19.375, 9, 1.75, 19.5, 9, 1.75, 19.5, 9.125, 1.75 )
-
-[sub_resource type="ConvexPolygonShape" id=633]
-points = PoolVector3Array( 19.375, 9, 0.75, 19.375, 8, 0.75, 19.5, 8, 0.75, 19.5, 9, 0.75, 19.375, 9, 0.875, 19.375, 8, 0.875, 19.5, 8, 0.875, 19.5, 9, 0.875 )
-
-[sub_resource type="ConvexPolygonShape" id=634]
-points = PoolVector3Array( 19.375, 9, -0.25, 19.375, 8, -0.25, 19.5, 8, -0.25, 19.5, 9, -0.25, 19.375, 9, -0.125, 19.375, 8, -0.125, 19.5, 8, -0.125, 19.5, 9, -0.125 )
-
-[sub_resource type="ConvexPolygonShape" id=635]
-points = PoolVector3Array( 19.375, 9, -1.25, 19.375, 8, -1.25, 19.5, 8, -1.25, 19.5, 9, -1.25, 19.375, 9, -1.125, 19.375, 8, -1.125, 19.5, 8, -1.125, 19.5, 9, -1.125 )
-
-[sub_resource type="ConvexPolygonShape" id=636]
-points = PoolVector3Array( 19.375, 9, -2.25, 19.375, 8, -2.25, 19.5, 8, -2.25, 19.5, 9, -2.25, 19.375, 9, -2.125, 19.375, 8, -2.125, 19.5, 8, -2.125, 19.5, 9, -2.125 )
-
-[sub_resource type="ConvexPolygonShape" id=637]
-points = PoolVector3Array( 19.375, 9, -3.25, 19.375, 8, -3.25, 19.5, 8, -3.25, 19.5, 9, -3.25, 19.375, 9, -3.125, 19.375, 8, -3.125, 19.5, 8, -3.125, 19.5, 9, -3.125 )
-
-[sub_resource type="ConvexPolygonShape" id=638]
-points = PoolVector3Array( 19.375, 9, -4.25, 19.375, 8, -4.25, 19.5, 8, -4.25, 19.5, 9, -4.25, 19.375, 9, -4.125, 19.375, 8, -4.125, 19.5, 8, -4.125, 19.5, 9, -4.125 )
-
-[sub_resource type="ConvexPolygonShape" id=639]
-points = PoolVector3Array( 19.375, 9, -5.25, 19.375, 8, -5.25, 19.5, 8, -5.25, 19.5, 9, -5.25, 19.375, 9, -5.125, 19.375, 8, -5.125, 19.5, 8, -5.125, 19.5, 9, -5.125 )
-
-[sub_resource type="ConvexPolygonShape" id=640]
-points = PoolVector3Array( 19.375, 9, -6.25, 19.375, 8, -6.25, 19.5, 8, -6.25, 19.5, 9, -6.25, 19.375, 9, -6.125, 19.375, 8, -6.125, 19.5, 8, -6.125, 19.5, 9, -6.125 )
-
-[sub_resource type="ConvexPolygonShape" id=641]
-points = PoolVector3Array( 19.375, 9, -7.25, 19.375, 8, -7.25, 19.5, 8, -7.25, 19.5, 9, -7.25, 19.375, 9, -7.125, 19.375, 8, -7.125, 19.5, 8, -7.125, 19.5, 9, -7.125 )
-
-[sub_resource type="ConvexPolygonShape" id=642]
-points = PoolVector3Array( 19.375, 9, -8.25, 19.375, 8, -8.25, 19.5, 8, -8.25, 19.5, 9, -8.25, 19.375, 9, -8.125, 19.375, 8, -8.125, 19.5, 8, -8.125, 19.5, 9, -8.125 )
-
-[sub_resource type="ConvexPolygonShape" id=643]
-points = PoolVector3Array( 17.375, 9.125, -8.25, 17.375, 9, -8.25, 19.5, 9, -8.25, 19.5, 9.125, -8.25, 17.375, 9.125, -8.125, 17.375, 9, -8.125, 19.5, 9, -8.125, 19.5, 9.125, -8.125 )
-
-[sub_resource type="ConvexPolygonShape" id=644]
-points = PoolVector3Array( 18.375, 9, -8.25, 18.375, 8, -8.25, 18.5, 8, -8.25, 18.5, 9, -8.25, 18.375, 9, -8.125, 18.375, 8, -8.125, 18.5, 8, -8.125, 18.5, 9, -8.125 )
-
-[sub_resource type="ConvexPolygonShape" id=645]
-points = PoolVector3Array( 17.375, 9, -8.25, 17.375, 8, -8.25, 17.5, 8, -8.25, 17.5, 9, -8.25, 17.375, 9, -8.125, 17.375, 8, -8.125, 17.5, 8, -8.125, 17.5, 9, -8.125 )
-
-[sub_resource type="ConvexPolygonShape" id=646]
-points = PoolVector3Array( 19.5, 9.125, -8.25, 19.5, 9, -8.25, 19.625, 9, -8.25, 19.625, 9.125, -8.25, 19.5, 9.125, -8.125, 19.5, 9, -8.125, 19.625, 9, -8.125, 19.625, 9.125, -8.125 )
-
-[sub_resource type="ConvexPolygonShape" id=647]
-points = PoolVector3Array( 19.375, 9.125, 13.875, 19.375, 9, 13.875, 19.5, 9, 13.875, 19.5, 9.125, 13.875, 19.375, 9.125, 14, 19.375, 9, 14, 19.5, 9, 14, 19.5, 9.125, 14 )
-
-[sub_resource type="ConvexPolygonShape" id=648]
-points = PoolVector3Array( 19.5, 9.125, 13.75, 19.5, 9, 13.75, 19.625, 9, 13.75, 19.625, 9.125, 13.75, 19.5, 9.125, 13.875, 19.5, 9, 13.875, 19.625, 9, 13.875, 19.625, 9.125, 13.875 )
-
-[sub_resource type="ConvexPolygonShape" id=649]
-points = PoolVector3Array( -2.5, 15, 14.5, -2.5, 7, 14.5, -2, 7, 14.5, -2, 15, 14.5, -2.5, 15, 20.5, -2.5, 7, 20.5, -2, 7, 20.5, -2, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=650]
-points = PoolVector3Array( -2, 15, 14.5, -2, 14.5, 14.5, 1.5, 14.5, 14.5, 1.5, 15, 14.5, -2, 15, 20.5, -2, 14.5, 20.5, 1.5, 14.5, 20.5, 1.5, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=651]
-points = PoolVector3Array( 1.5, 15, 13.5, 1.5, 7, 13.5, 2, 7, 13.5, 2, 15, 13.5, 1.5, 15, 14, 1.5, 7, 14, 2, 7, 14, 2, 15, 14 )
-
-[sub_resource type="ConvexPolygonShape" id=652]
-points = PoolVector3Array( -2.5, 15, 13.5, -2.5, 7, 13.5, -2, 7, 13.5, -2, 15, 13.5, -2.5, 15, 14, -2.5, 7, 14, -2, 7, 14, -2, 15, 14 )
-
-[sub_resource type="ConvexPolygonShape" id=653]
-points = PoolVector3Array( -2, 15, 13.5, -2, 14.5, 13.5, 1.5, 14.5, 13.5, 1.5, 15, 13.5, -2, 15, 14, -2, 14.5, 14, 1.5, 14.5, 14, 1.5, 15, 14 )
-
-[sub_resource type="ConvexPolygonShape" id=654]
-points = PoolVector3Array( 1.5, 15, 14, 1.5, 7, 14, 2, 7, 14, 2, 15, 14, 1.5, 15, 14.5, 1.5, 7, 14.5, 2, 7, 14.5, 2, 15, 14.5 )
-
-[sub_resource type="ConvexPolygonShape" id=655]
-points = PoolVector3Array( -2.5, 15, 14, -2.5, 7, 14, -2, 7, 14, -2, 15, 14, -2.5, 15, 14.5, -2.5, 7, 14.5, -2, 7, 14.5, -2, 15, 14.5 )
-
-[sub_resource type="ConvexPolygonShape" id=656]
-points = PoolVector3Array( -2, 15, 14, -2, 14.5, 14, 1.5, 14.5, 14, 1.5, 15, 14, -2, 15, 14.5, -2, 14.5, 14.5, 1.5, 14.5, 14.5, 1.5, 15, 14.5 )
-
-[sub_resource type="ConvexPolygonShape" id=657]
-points = PoolVector3Array( 1, 15, 20, 1, 7, 20, 3.5, 7, 20, 3.5, 15, 20, 1, 15, 20.5, 1, 7, 20.5, 3.5, 7, 20.5, 3.5, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=658]
-points = PoolVector3Array( -2.5, 15, 20, -2.5, 7, 20, -1.5, 7, 20, -1.5, 15, 20, -2.5, 15, 20.5, -2.5, 7, 20.5, -1.5, 7, 20.5, -1.5, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=659]
-points = PoolVector3Array( -1.5, 15, 20, -1.5, 12.5, 20, 1, 12.5, 20, 1, 15, 20, -1.5, 15, 20.5, -1.5, 12.5, 20.5, 1, 12.5, 20.5, 1, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=660]
-points = PoolVector3Array( -3.5, 15, 26.5, -3.5, 7, 26.5, 3, 7, 26.5, 3, 15, 26.5, -3.5, 15, 27, -3.5, 7, 27, 3, 7, 27, 3, 15, 27 )
-
-[sub_resource type="ConvexPolygonShape" id=661]
-points = PoolVector3Array( 2.5, 15, 21, 2.5, 7, 21, 3, 7, 21, 3, 15, 21, 2.5, 15, 26.5, 2.5, 7, 26.5, 3, 7, 26.5, 3, 15, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=662]
-points = PoolVector3Array( -3.5, 15, 21, -3.5, 7, 21, -3, 7, 21, -3, 15, 21, -3.5, 15, 26.5, -3.5, 7, 26.5, -3, 7, 26.5, -3, 15, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=663]
-points = PoolVector3Array( -3, 15, 21, -3, 14.5, 21, 2.5, 14.5, 21, 2.5, 15, 21, -3, 15, 26.5, -3, 14.5, 26.5, 2.5, 14.5, 26.5, 2.5, 15, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=664]
-points = PoolVector3Array( -3, 7.5, 21, -3, 7, 21, 2.5, 7, 21, 2.5, 7.5, 21, -3, 7.5, 26.5, -3, 7, 26.5, 2.5, 7, 26.5, 2.5, 7.5, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=665]
-points = PoolVector3Array( 1, 15, 20.5, 1, 7, 20.5, 3, 7, 20.5, 3, 15, 20.5, 1, 15, 21, 1, 7, 21, 3, 7, 21, 3, 15, 21 )
-
-[sub_resource type="ConvexPolygonShape" id=666]
-points = PoolVector3Array( -3.5, 15, 20.5, -3.5, 7, 20.5, -1.5, 7, 20.5, -1.5, 15, 20.5, -3.5, 15, 21, -3.5, 7, 21, -1.5, 7, 21, -1.5, 15, 21 )
-
-[sub_resource type="ConvexPolygonShape" id=667]
-points = PoolVector3Array( -1.5, 15, 20.5, -1.5, 12.5, 20.5, 1, 12.5, 20.5, 1, 15, 20.5, -1.5, 15, 21, -1.5, 12.5, 21, 1, 12.5, 21, 1, 15, 21 )
-
-[sub_resource type="ConvexPolygonShape" id=668]
-points = PoolVector3Array( 1.5, 15, 14.5, 1.5, 7, 14.5, 2, 7, 14.5, 2, 15, 14.5, 1.5, 15, 15, 1.5, 7, 15, 2, 7, 15, 2, 15, 15 )
-
-[sub_resource type="ConvexPolygonShape" id=669]
-points = PoolVector3Array( 1.5, 15, 15, 1.5, 14.5, 15, 2, 14.5, 15, 2, 15, 15, 1.5, 15, 20, 1.5, 14.5, 20, 2, 14.5, 20, 2, 15, 20 )
-
-[sub_resource type="ConvexPolygonShape" id=670]
-points = PoolVector3Array( 3, 15, 26.5, 3, 7, 26.5, 17, 7, 26.5, 17, 15, 26.5, 3, 15, 27, 3, 7, 27, 17, 7, 27, 17, 15, 27 )
-
-[sub_resource type="ConvexPolygonShape" id=671]
-points = PoolVector3Array( 3.5, 15, 14.5, 3.5, 14.5, 14.5, 16.5, 14.5, 14.5, 16.5, 15, 14.5, 3.5, 15, 26.5, 3.5, 14.5, 26.5, 16.5, 14.5, 26.5, 16.5, 15, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=672]
-points = PoolVector3Array( 2, 15, 14, 2, 14.5, 14, 3, 14.5, 14, 3, 15, 14, 2, 15, 20.5, 2, 14.5, 20.5, 3, 14.5, 20.5, 3, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=673]
-points = PoolVector3Array( 3.5, 15, 14, 3.5, 7, 14, 17, 7, 14, 17, 15, 14, 3.5, 15, 14.5, 3.5, 7, 14.5, 17, 7, 14.5, 17, 15, 14.5 )
-
-[sub_resource type="ConvexPolygonShape" id=674]
-points = PoolVector3Array( 3, 15, 14, 3, 14.5, 14, 3.5, 14.5, 14, 3.5, 15, 14, 3, 15, 14.5, 3, 14.5, 14.5, 3.5, 14.5, 14.5, 3.5, 15, 14.5 )
-
-[sub_resource type="ConvexPolygonShape" id=675]
-points = PoolVector3Array( 3, 8, 14, 3, 7, 14, 3.5, 7, 14, 3.5, 8, 14, 3, 8, 14.5, 3, 7, 14.5, 3.5, 7, 14.5, 3.5, 8, 14.5 )
-
-[sub_resource type="ConvexPolygonShape" id=676]
-points = PoolVector3Array( 3, 15, 20.5, 3, 7, 20.5, 3.5, 7, 20.5, 3.5, 15, 20.5, 3, 15, 26.5, 3, 7, 26.5, 3.5, 7, 26.5, 3.5, 15, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=677]
-points = PoolVector3Array( 3, 15, 14.5, 3, 14.5, 14.5, 3.5, 14.5, 14.5, 3.5, 15, 14.5, 3, 15, 20.5, 3, 14.5, 20.5, 3.5, 14.5, 20.5, 3.5, 15, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=678]
-points = PoolVector3Array( 2, 14.5, 14, 2, 8, 14, 3.5, 8, 14, 3.5, 14.5, 14, 2, 14.5, 15, 2, 8, 15, 3.5, 8, 15, 3.5, 14.5, 15 )
-
-[sub_resource type="ConvexPolygonShape" id=679]
-points = PoolVector3Array( 16.5, 15, 24, 16.5, 7, 24, 17, 7, 24, 17, 15, 24, 16.5, 15, 26.5, 16.5, 7, 26.5, 17, 7, 26.5, 17, 15, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=680]
-points = PoolVector3Array( 16.5, 15, 14.5, 16.5, 7, 14.5, 17, 7, 14.5, 17, 15, 14.5, 16.5, 15, 18, 16.5, 7, 18, 17, 7, 18, 17, 15, 18 )
-
-[sub_resource type="ConvexPolygonShape" id=681]
-points = PoolVector3Array( 16.5, 15, 18, 16.5, 12.5, 18, 17, 12.5, 18, 17, 15, 18, 16.5, 15, 24, 16.5, 12.5, 24, 17, 12.5, 24, 17, 15, 24 )
-
-[sub_resource type="ConvexPolygonShape" id=682]
-points = PoolVector3Array( 16.5, 10, 18, 16.5, 7, 18, 17, 7, 18, 17, 10, 18, 16.5, 10, 24, 16.5, 7, 24, 17, 7, 24, 17, 10, 24 )
-
-[sub_resource type="ConvexPolygonShape" id=683]
-points = PoolVector3Array( 16, 10, 18, 16, 9.5, 18, 16.5, 9.5, 18, 16.5, 10, 18, 16, 10, 24, 16, 9.5, 24, 16.5, 9.5, 24, 16.5, 10, 24 )
-
-[sub_resource type="ConvexPolygonShape" id=684]
-points = PoolVector3Array( -2, 15, -20.5, -2, 14.5, -20.5, 16.5, 14.5, -20.5, 16.5, 15, -20.5, -2, 15, -9.5, -2, 14.5, -9.5, 16.5, 14.5, -9.5, 16.5, 15, -9.5 )
-
-[sub_resource type="ConvexPolygonShape" id=685]
-points = PoolVector3Array( -2, 7.5, -20.5, -2, 7, -20.5, 16.5, 7, -20.5, 16.5, 7.5, -20.5, -2, 7.5, -9.5, -2, 7, -9.5, 16.5, 7, -9.5, 16.5, 7.5, -9.5 )
-
-[sub_resource type="ConvexPolygonShape" id=686]
-points = PoolVector3Array( -2.5, 15, -9, -2.5, 7, -9, -2, 7, -9, -2, 15, -9, -2.5, 15, -8.5, -2.5, 7, -8.5, -2, 7, -8.5, -2, 15, -8.5 )
-
-[sub_resource type="ConvexPolygonShape" id=687]
-points = PoolVector3Array( -2, 15, -9, -2, 14.5, -9, 1.5, 14.5, -9, 1.5, 15, -9, -2, 15, -8.5, -2, 14.5, -8.5, 1.5, 14.5, -8.5, 1.5, 15, -8.5 )
-
-[sub_resource type="ConvexPolygonShape" id=688]
-points = PoolVector3Array( 1.5, 15, -9.5, 1.5, 7, -9.5, 17, 7, -9.5, 17, 15, -9.5, 1.5, 15, -9, 1.5, 7, -9, 17, 7, -9, 17, 15, -9 )
-
-[sub_resource type="ConvexPolygonShape" id=689]
-points = PoolVector3Array( -2.5, 15, -9.5, -2.5, 7, -9.5, -2, 7, -9.5, -2, 15, -9.5, -2.5, 15, -9, -2.5, 7, -9, -2, 7, -9, -2, 15, -9 )
-
-[sub_resource type="ConvexPolygonShape" id=690]
-points = PoolVector3Array( -2, 15, -9.5, -2, 14.5, -9.5, 1.5, 14.5, -9.5, 1.5, 15, -9.5, -2, 15, -9, -2, 14.5, -9, 1.5, 14.5, -9, 1.5, 15, -9 )
-
-[sub_resource type="ConvexPolygonShape" id=691]
-points = PoolVector3Array( 16.5, 15, -12, 16.5, 7, -12, 17, 7, -12, 17, 15, -12, 16.5, 15, -9.5, 16.5, 7, -9.5, 17, 7, -9.5, 17, 15, -9.5 )
-
-[sub_resource type="ConvexPolygonShape" id=692]
-points = PoolVector3Array( 16.5, 15, -20.5, 16.5, 7, -20.5, 17, 7, -20.5, 17, 15, -20.5, 16.5, 15, -19.5, 16.5, 7, -19.5, 17, 7, -19.5, 17, 15, -19.5 )
-
-[sub_resource type="ConvexPolygonShape" id=693]
-points = PoolVector3Array( 16.5, 15, -19.5, 16.5, 14, -19.5, 17, 14, -19.5, 17, 15, -19.5, 16.5, 15, -12, 16.5, 14, -12, 17, 14, -12, 17, 15, -12 )
-
-[sub_resource type="ConvexPolygonShape" id=694]
-points = PoolVector3Array( 16.5, 8, -19.5, 16.5, 7, -19.5, 17, 7, -19.5, 17, 8, -19.5, 16.5, 8, -12, 16.5, 7, -12, 17, 7, -12, 17, 8, -12 )
-
-[sub_resource type="ConvexPolygonShape" id=695]
-points = PoolVector3Array( -2.5, 15, -15, -2.5, 7, -15, -2, 7, -15, -2, 15, -15, -2.5, 15, -9.5, -2.5, 7, -9.5, -2, 7, -9.5, -2, 15, -9.5 )
-
-[sub_resource type="ConvexPolygonShape" id=696]
-points = PoolVector3Array( -2.5, 15, -20.5, -2.5, 14.5, -20.5, -2, 14.5, -20.5, -2, 15, -20.5, -2.5, 15, -15, -2.5, 14.5, -15, -2, 14.5, -15, -2, 15, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=697]
-points = PoolVector3Array( -4.5, 15, -21, -4.5, 7, -21, -2.5, 7, -21, -2.5, 15, -21, -4.5, 15, -20.5, -4.5, 7, -20.5, -2.5, 7, -20.5, -2.5, 15, -20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=698]
-points = PoolVector3Array( -3, 15, -20.5, -3, 14.5, -20.5, -2.5, 14.5, -20.5, -2.5, 15, -20.5, -3, 15, -15, -3, 14.5, -15, -2.5, 14.5, -15, -2.5, 15, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=699]
-points = PoolVector3Array( -4.5, 15, -20.5, -4.5, 7, -20.5, -3.5, 7, -20.5, -3.5, 15, -20.5, -4.5, 15, -15, -4.5, 7, -15, -3.5, 7, -15, -3.5, 15, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=700]
-points = PoolVector3Array( -3.5, 15, -20.5, -3.5, 14.5, -20.5, -3, 14.5, -20.5, -3, 15, -20.5, -3.5, 15, -15, -3.5, 14.5, -15, -3, 14.5, -15, -3, 15, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=701]
-points = PoolVector3Array( -3.5, 14.5, -15.5, -3.5, 8, -15.5, -2.5, 8, -15.5, -2.5, 14.5, -15.5, -3.5, 14.5, -15, -3.5, 8, -15, -2.5, 8, -15, -2.5, 14.5, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=702]
-points = PoolVector3Array( -2.5, 14.5, -15.5, -2.5, 8, -15.5, -2, 8, -15.5, -2, 14.5, -15.5, -2.5, 14.5, -15, -2.5, 8, -15, -2, 8, -15, -2, 14.5, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=703]
-points = PoolVector3Array( -3.5, 10.5, -20.5, -3.5, 10, -20.5, -2, 10, -20.5, -2, 10.5, -20.5, -3.5, 10.5, -15.5, -3.5, 10, -15.5, -2, 10, -15.5, -2, 10.5, -15.5 )
-
-[sub_resource type="ConvexPolygonShape" id=704]
-points = PoolVector3Array( -3.5, 12, -20.5, -3.5, 11.5, -20.5, -2, 11.5, -20.5, -2, 12, -20.5, -3.5, 12, -15.5, -3.5, 11.5, -15.5, -2, 11.5, -15.5, -2, 12, -15.5 )
-
-[sub_resource type="ConvexPolygonShape" id=705]
-points = PoolVector3Array( -3.5, 13.5, -20.5, -3.5, 13, -20.5, -2, 13, -20.5, -2, 13.5, -20.5, -3.5, 13.5, -15.5, -3.5, 13, -15.5, -2, 13, -15.5, -2, 13.5, -15.5 )
-
-[sub_resource type="ConvexPolygonShape" id=706]
-points = PoolVector3Array( 3.5, 15, -21, 3.5, 7, -21, 17, 7, -21, 17, 15, -21, 3.5, 15, -20.5, 3.5, 7, -20.5, 17, 7, -20.5, 17, 15, -20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=707]
-points = PoolVector3Array( -2.5, 15, -21, -2.5, 7, -21, -2, 7, -21, -2, 15, -21, -2.5, 15, -20.5, -2.5, 7, -20.5, -2, 7, -20.5, -2, 15, -20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=708]
-points = PoolVector3Array( -2, 15, -21, -2, 14.5, -21, 3.5, 14.5, -21, 3.5, 15, -21, -2, 15, -20.5, -2, 14.5, -20.5, 3.5, 14.5, -20.5, 3.5, 15, -20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=709]
-points = PoolVector3Array( 3.5, 15, -21.5, 3.5, 7, -21.5, 17, 7, -21.5, 17, 15, -21.5, 3.5, 15, -21, 3.5, 7, -21, 17, 7, -21, 17, 15, -21 )
-
-[sub_resource type="ConvexPolygonShape" id=710]
-points = PoolVector3Array( -4.5, 15, -21.5, -4.5, 7, -21.5, -2, 7, -21.5, -2, 15, -21.5, -4.5, 15, -21, -4.5, 7, -21, -2, 7, -21, -2, 15, -21 )
-
-[sub_resource type="ConvexPolygonShape" id=711]
-points = PoolVector3Array( -2, 15, -21.5, -2, 14.5, -21.5, 3.5, 14.5, -21.5, 3.5, 15, -21.5, -2, 15, -21, -2, 14.5, -21, 3.5, 14.5, -21, 3.5, 15, -21 )
-
-[sub_resource type="ConvexPolygonShape" id=712]
-points = PoolVector3Array( 3.5, 15, -22, 3.5, 7, -22, 17, 7, -22, 17, 15, -22, 3.5, 15, -21.5, 3.5, 7, -21.5, 17, 7, -21.5, 17, 15, -21.5 )
-
-[sub_resource type="ConvexPolygonShape" id=713]
-points = PoolVector3Array( -4.5, 15, -22, -4.5, 7, -22, -2, 7, -22, -2, 15, -22, -4.5, 15, -21.5, -4.5, 7, -21.5, -2, 7, -21.5, -2, 15, -21.5 )
-
-[sub_resource type="ConvexPolygonShape" id=714]
-points = PoolVector3Array( -2, 15, -22, -2, 14.5, -22, 3.5, 14.5, -22, 3.5, 15, -22, -2, 15, -21.5, -2, 14.5, -21.5, 3.5, 14.5, -21.5, 3.5, 15, -21.5 )
-
-[sub_resource type="ConvexPolygonShape" id=715]
-points = PoolVector3Array( -4.5, 15, -32.5, -4.5, 7, -32.5, -4, 7, -32.5, -4, 15, -32.5, -4.5, 15, -22.5, -4.5, 7, -22.5, -4, 7, -22.5, -4, 15, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=716]
-points = PoolVector3Array( -4, 15, -32.5, -4, 14.5, -32.5, 16.5, 14.5, -32.5, 16.5, 15, -32.5, -4, 15, -22.5, -4, 14.5, -22.5, 16.5, 14.5, -22.5, 16.5, 15, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=717]
-points = PoolVector3Array( -4, 7.5, -32.5, -4, 7, -32.5, 16.5, 7, -32.5, 16.5, 7.5, -32.5, -4, 7.5, -22.5, -4, 7, -22.5, 16.5, 7, -22.5, 16.5, 7.5, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=718]
-points = PoolVector3Array( 3.5, 15, -22.5, 3.5, 7, -22.5, 17, 7, -22.5, 17, 15, -22.5, 3.5, 15, -22, 3.5, 7, -22, 17, 7, -22, 17, 15, -22 )
-
-[sub_resource type="ConvexPolygonShape" id=719]
-points = PoolVector3Array( -4.5, 15, -22.5, -4.5, 7, -22.5, -2, 7, -22.5, -2, 15, -22.5, -4.5, 15, -22, -4.5, 7, -22, -2, 7, -22, -2, 15, -22 )
-
-[sub_resource type="ConvexPolygonShape" id=720]
-points = PoolVector3Array( -2, 15, -22.5, -2, 14.5, -22.5, 3.5, 14.5, -22.5, 3.5, 15, -22.5, -2, 15, -22, -2, 14.5, -22, 3.5, 14.5, -22, 3.5, 15, -22 )
-
-[sub_resource type="ConvexPolygonShape" id=721]
-points = PoolVector3Array( 16, 10.5, -32.5, 16, 8, -32.5, 16.5, 8, -32.5, 16.5, 10.5, -32.5, 16, 10.5, -22.5, 16, 8, -22.5, 16.5, 8, -22.5, 16.5, 10.5, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=722]
-points = PoolVector3Array( 16.5, 15, -23, 16.5, 7, -23, 17, 7, -23, 17, 15, -23, 16.5, 15, -22.5, 16.5, 7, -22.5, 17, 7, -22.5, 17, 15, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=723]
-points = PoolVector3Array( 16.5, 15, -32.5, 16.5, 7, -32.5, 17, 7, -32.5, 17, 15, -32.5, 16.5, 15, -32, 16.5, 7, -32, 17, 7, -32, 17, 15, -32 )
-
-[sub_resource type="ConvexPolygonShape" id=724]
-points = PoolVector3Array( 16.5, 15, -32, 16.5, 14, -32, 17, 14, -32, 17, 15, -32, 16.5, 15, -23, 16.5, 14, -23, 17, 14, -23, 17, 15, -23 )
-
-[sub_resource type="ConvexPolygonShape" id=725]
-points = PoolVector3Array( 16.5, 11, -32, 16.5, 7, -32, 17, 7, -32, 17, 11, -32, 16.5, 11, -23, 16.5, 7, -23, 17, 7, -23, 17, 11, -23 )
-
-[sub_resource type="ConvexPolygonShape" id=726]
-points = PoolVector3Array( 15.5, 10.5, -32.5, 15.5, 10, -32.5, 16, 10, -32.5, 16, 10.5, -32.5, 15.5, 10.5, -22.5, 15.5, 10, -22.5, 16, 10, -22.5, 16, 10.5, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=727]
-points = PoolVector3Array( -1, 15, -33, -1, 7, -33, 17, 7, -33, 17, 15, -33, -1, 15, -32.5, -1, 7, -32.5, 17, 7, -32.5, 17, 15, -32.5 )
-
-[sub_resource type="ConvexPolygonShape" id=728]
-points = PoolVector3Array( -4.5, 15, -33, -4.5, 7, -33, -3.5, 7, -33, -3.5, 15, -33, -4.5, 15, -32.5, -4.5, 7, -32.5, -3.5, 7, -32.5, -3.5, 15, -32.5 )
-
-[sub_resource type="ConvexPolygonShape" id=729]
-points = PoolVector3Array( -3.5, 15, -33, -3.5, 12.5, -33, -1, 12.5, -33, -1, 15, -33, -3.5, 15, -32.5, -3.5, 12.5, -32.5, -1, 12.5, -32.5, -1, 15, -32.5 )
-
-[sub_resource type="ConvexPolygonShape" id=730]
-points = PoolVector3Array( 3.5, 14.5, -25.5, 3.5, 8, -25.5, 4, 8, -25.5, 4, 14.5, -25.5, 3.5, 14.5, -22.5, 3.5, 8, -22.5, 4, 8, -22.5, 4, 14.5, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=731]
-points = PoolVector3Array( 3.5, 14.5, -32.5, 3.5, 8, -32.5, 4, 8, -32.5, 4, 14.5, -32.5, 3.5, 14.5, -28, 3.5, 8, -28, 4, 8, -28, 4, 14.5, -28 )
-
-[sub_resource type="ConvexPolygonShape" id=732]
-points = PoolVector3Array( 3.5, 14.5, -28, 3.5, 12.5, -28, 4, 12.5, -28, 4, 14.5, -28, 3.5, 14.5, -25.5, 3.5, 12.5, -25.5, 4, 12.5, -25.5, 4, 14.5, -25.5 )
-
-[sub_resource type="ConvexPolygonShape" id=733]
-points = PoolVector3Array( 3, 13, -39, 3, 7, -39, 3.5, 7, -39, 3.5, 13, -39, 3, 13, -33.5, 3, 7, -33.5, 3.5, 7, -33.5, 3.5, 13, -33.5 )
-
-[sub_resource type="ConvexPolygonShape" id=734]
-points = PoolVector3Array( -4.5, 13, -39, -4.5, 7, -39, -4, 7, -39, -4, 13, -39, -4.5, 13, -33.5, -4.5, 7, -33.5, -4, 7, -33.5, -4, 13, -33.5 )
-
-[sub_resource type="ConvexPolygonShape" id=735]
-points = PoolVector3Array( -4, 13, -39, -4, 12.5, -39, 3, 12.5, -39, 3, 13, -39, -4, 13, -33.5, -4, 12.5, -33.5, 3, 12.5, -33.5, 3, 13, -33.5 )
-
-[sub_resource type="ConvexPolygonShape" id=736]
-points = PoolVector3Array( -4, 7.5, -39, -4, 7, -39, 3, 7, -39, 3, 7.5, -39, -4, 7.5, -33.5, -4, 7, -33.5, 3, 7, -33.5, 3, 7.5, -33.5 )
-
-[sub_resource type="ConvexPolygonShape" id=737]
-points = PoolVector3Array( -1, 13, -33.5, -1, 7, -33.5, 3.5, 7, -33.5, 3.5, 13, -33.5, -1, 13, -33, -1, 7, -33, 3.5, 7, -33, 3.5, 13, -33 )
-
-[sub_resource type="ConvexPolygonShape" id=738]
-points = PoolVector3Array( -4.5, 13, -33.5, -4.5, 7, -33.5, -3.5, 7, -33.5, -3.5, 13, -33.5, -4.5, 13, -33, -4.5, 7, -33, -3.5, 7, -33, -3.5, 13, -33 )
-
-[sub_resource type="ConvexPolygonShape" id=739]
-points = PoolVector3Array( -3.5, 13, -33.5, -3.5, 12.5, -33.5, -1, 12.5, -33.5, -1, 13, -33.5, -3.5, 13, -33, -3.5, 12.5, -33, -1, 12.5, -33, -1, 13, -33 )
-
-[sub_resource type="ConvexPolygonShape" id=740]
-points = PoolVector3Array( -4.5, 13, -40.5, -4.5, 7, -40.5, 3.5, 7, -40.5, 3.5, 13, -40.5, -4.5, 13, -39.5, -4.5, 7, -39.5, 3.5, 7, -39.5, 3.5, 13, -39.5 )
-
-[sub_resource type="ConvexPolygonShape" id=741]
-points = PoolVector3Array( 3, 13, -39.5, 3, 7, -39.5, 3.5, 7, -39.5, 3.5, 13, -39.5, 3, 13, -39, 3, 7, -39, 3.5, 7, -39, 3.5, 13, -39 )
-
-[sub_resource type="ConvexPolygonShape" id=742]
-points = PoolVector3Array( -4.5, 13, -39.5, -4.5, 7, -39.5, -4, 7, -39.5, -4, 13, -39.5, -4.5, 13, -39, -4.5, 7, -39, -4, 7, -39, -4, 13, -39 )
-
-[sub_resource type="ConvexPolygonShape" id=743]
-points = PoolVector3Array( -4, 13, -39.5, -4, 12.5, -39.5, 3, 12.5, -39.5, 3, 13, -39.5, -4, 13, -39, -4, 12.5, -39, 3, 12.5, -39, 3, 13, -39 )
-
-[sub_resource type="ConvexPolygonShape" id=744]
-points = PoolVector3Array( -4, 8, -39.5, -4, 7, -39.5, 3, 7, -39.5, 3, 8, -39.5, -4, 8, -39, -4, 7, -39, 3, 7, -39, 3, 8, -39 )
-
-[sub_resource type="ConvexPolygonShape" id=745]
-points = PoolVector3Array( -4, 9, -37.6875, -4, 8, -37.6875, 3, 8, -37.6875, 3, 9, -37.6875, -4, 9, -37.5, -4, 8, -37.5, 3, 8, -37.5, 3, 9, -37.5 )
-
-[sub_resource type="ConvexPolygonShape" id=746]
-points = PoolVector3Array( -4, 9, -39.75, -4, 8, -39.75, 3, 8, -39.75, 3, 9, -39.75, -4, 9, -39.375, -4, 8, -39.375, 3, 8, -39.375, 3, 9, -39.375 )
-
-[sub_resource type="ConvexPolygonShape" id=747]
-points = PoolVector3Array( 1.875, 9, -39.375, 1.875, 8, -39.375, 3, 8, -39.375, 3, 9, -39.375, 1.875, 9, -37.6875, 1.875, 8, -37.6875, 3, 8, -37.6875, 3, 9, -37.6875 )
-
-[sub_resource type="ConvexPolygonShape" id=748]
-points = PoolVector3Array( -4, 9, -39.375, -4, 8, -39.375, -3.1875, 8, -39.375, -3.1875, 9, -39.375, -4, 9, -37.6875, -4, 8, -37.6875, -3.1875, 8, -37.6875, -3.1875, 9, -37.6875 )
-
-[sub_resource type="ConvexPolygonShape" id=749]
-points = PoolVector3Array( -3.1875, 8.1875, -39.375, -3.1875, 8, -39.375, 1.875, 8, -39.375, 1.875, 8.1875, -39.375, -3.1875, 8.1875, -37.6875, -3.1875, 8, -37.6875, 1.875, 8, -37.6875, 1.875, 8.1875, -37.6875 )
-
-[sub_resource type="ConvexPolygonShape" id=750]
-points = PoolVector3Array( 1, 13, -9, 1, 8, -9, 1.5, 8, -9, 1.5, 13, -9, 1, 13, -8.5, 1, 8, -8.5, 1.5, 8, -8.5, 1.5, 13, -8.5 )
-
-[sub_resource type="ConvexPolygonShape" id=751]
-points = PoolVector3Array( -2, 13, -9, -2, 8, -9, -1.5, 8, -9, -1.5, 13, -9, -2, 13, -8.5, -2, 8, -8.5, -1.5, 8, -8.5, -1.5, 13, -8.5 )
-
-[sub_resource type="ConvexPolygonShape" id=752]
-points = PoolVector3Array( -2, 14.5, -9, -2, 13, -9, 1.5, 13, -9, 1.5, 14.5, -9, -2, 14.5, -8.5, -2, 13, -8.5, 1.5, 13, -8.5, 1.5, 14.5, -8.5 )
-
-[sub_resource type="ConvexPolygonShape" id=753]
-points = PoolVector3Array( -2, 14.5, -15.5, -2, 8, -15.5, -1.5, 8, -15.5, -1.5, 14.5, -15.5, -2, 14.5, -15, -2, 8, -15, -1.5, 8, -15, -1.5, 14.5, -15 )
-
-[sub_resource type="ConvexPolygonShape" id=754]
-points = PoolVector3Array( -2, 14.5, -21, -2, 8, -21, -1.5, 8, -21, -1.5, 14.5, -21, -2, 14.5, -20.5, -2, 8, -20.5, -1.5, 8, -20.5, -1.5, 14.5, -20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=755]
-points = PoolVector3Array( -2, 13, 13, -2, 8, 13, -1.5, 8, 13, -1.5, 13, 13, -2, 13, 13.5, -2, 8, 13.5, -1.5, 8, 13.5, -1.5, 13, 13.5 )
-
-[sub_resource type="ConvexPolygonShape" id=756]
-points = PoolVector3Array( 1, 13, 13, 1, 8, 13, 1.5, 8, 13, 1.5, 13, 13, 1, 13, 13.5, 1, 8, 13.5, 1.5, 8, 13.5, 1.5, 13, 13.5 )
-
-[sub_resource type="ConvexPolygonShape" id=757]
-points = PoolVector3Array( -2, 14.5, 13, -2, 13, 13, 1.5, 13, 13, 1.5, 14.5, 13, -2, 14.5, 13.5, -2, 13, 13.5, 1.5, 13, 13.5, 1.5, 14.5, 13.5 )
-
-[sub_resource type="ConvexPolygonShape" id=758]
-points = PoolVector3Array( -4, 7.5, -33.5, -4, 7, -33.5, 16.5, 7, -33.5, 16.5, 7.5, -33.5, -4, 7.5, -23.5, -4, 7, -23.5, 16.5, 7, -23.5, 16.5, 7.5, -23.5 )
-
-[sub_resource type="ConvexPolygonShape" id=759]
-points = PoolVector3Array( -4, 7.5, -40, -4, 7, -40, 3, 7, -40, 3, 7.5, -40, -4, 7.5, -34.5, -4, 7, -34.5, 3, 7, -34.5, 3, 7.5, -34.5 )
-
-[sub_resource type="ConvexPolygonShape" id=760]
-points = PoolVector3Array( -4, 8, -33, -4, 7.5, -33, 16.5, 7.5, -33, 16.5, 8, -33, -4, 8, -22.5, -4, 7.5, -22.5, 16.5, 7.5, -22.5, 16.5, 8, -22.5 )
-
-[sub_resource type="ConvexPolygonShape" id=761]
-points = PoolVector3Array( -4, 8, -22.5, -4, 7.5, -22.5, 16.5, 7.5, -22.5, 16.5, 8, -22.5, -4, 8, -9, -4, 7.5, -9, 16.5, 7.5, -9, 16.5, 8, -9 )
-
-[sub_resource type="ConvexPolygonShape" id=762]
-points = PoolVector3Array( -4, 8, -39, -4, 7.5, -39, 3, 7.5, -39, 3, 8, -39, -4, 8, -33, -4, 7.5, -33, 3, 7.5, -33, 3, 8, -33 )
-
-[sub_resource type="ConvexPolygonShape" id=763]
-points = PoolVector3Array( -3, 8, 21, -3, 7.5, 21, 2.5, 7.5, 21, 2.5, 8, 21, -3, 8, 26.5, -3, 7.5, 26.5, 2.5, 7.5, 26.5, 2.5, 8, 26.5 )
-
-[sub_resource type="ConvexPolygonShape" id=764]
-points = PoolVector3Array( -1.5, 8, 20.5, -1.5, 7, 20.5, 1, 7, 20.5, 1, 8, 20.5, -1.5, 8, 21, -1.5, 7, 21, 1, 7, 21, 1, 8, 21 )
-
-[sub_resource type="ConvexPolygonShape" id=765]
-points = PoolVector3Array( -1.5, 8, 20, -1.5, 7, 20, 1, 7, 20, 1, 8, 20, -1.5, 8, 20.5, -1.5, 7, 20.5, 1, 7, 20.5, 1, 8, 20.5 )
-
-[sub_resource type="ConvexPolygonShape" id=766]
-points = PoolVector3Array( -2, 8, 1.5, -2, 7.5, 1.5, 17, 7.5, 1.5, 17, 8, 1.5, -2, 8, 20, -2, 7.5, 20, 17, 7.5, 20, 17, 8, 20 )
-
-[sub_resource type="ConvexPolygonShape" id=767]
-points = PoolVector3Array( -2.5, 15, -8.5, -2.5, 7, -8.5, -2, 7, -8.5, -2, 15, -8.5, -2.5, 15, 0.5, -2.5, 7, 0.5, -2, 7, 0.5, -2, 15, 0.5 )
-
-[sub_resource type="ConvexPolygonShape" id=768]
-points = PoolVector3Array( 16.5, 15, -9, 16.5, 7, -9, 17, 7, -9, 17, 15, -9, 16.5, 15, -7, 16.5, 7, -7, 17, 7, -7, 17, 15, -7 )
-
-[sub_resource type="ConvexPolygonShape" id=769]
-points = PoolVector3Array( -2, 8, -9, -2, 7.5, -9, 17, 7.5, -9, 17, 8, -9, -2, 8, 1.5, -2, 7.5, 1.5, 17, 7.5, 1.5, 17, 8, 1.5 )
-
-[sub_resource type="ConvexPolygonShape" id=770]
-points = PoolVector3Array( 3.5, 8, 20, 3.5, 7.5, 20, 16.5, 7.5, 20, 16.5, 8, 20, 3.5, 8, 26.5, 3.5, 7.5, 26.5, 16.5, 7.5, 26.5, 16.5, 8, 26.5 )
+[sub_resource type="ConcavePolygonShape" id=783]
+data = PoolVector3Array( 2, 15, 13, 2, 7, 13, 17, 7, 13, 2, 15, 13, 17, 7, 13, 17, 15, 13, 2, 15, 2, 17, 15, 2, 17, 7, 2, 2, 15, 2, 17, 7, 2, 2, 7, 2, 16, 15, 12, 16, 7, 12, 17, 7, 12, 16, 15, 12, 17, 7, 12, 17, 15, 12, 16, 15, 12, 16, 15, 13, 16, 7, 13, 16, 15, 12, 16, 7, 13, 16, 7, 12, 16, 15, 2, 16, 15, 4, 16, 7, 4, 16, 15, 2, 16, 7, 4, 16, 7, 2, 16, 15, 4, 17, 15, 4, 17, 7, 4, 16, 15, 4, 17, 7, 4, 16, 7, 4, 17, 14, 4, 16, 14, 4, 16, 14, 12, 17, 14, 4, 16, 14, 12, 17, 14, 12, 2, 15, 5, 2, 7, 5, 3, 7, 5, 2, 15, 5, 3, 7, 5, 3, 15, 5, 3, 15, 5, 3, 7, 5, 3, 7, 13, 3, 15, 5, 3, 7, 13, 3, 15, 13, 2, 15, 2, 2, 7, 2, 3, 7, 2, 2, 15, 2, 3, 7, 2, 3, 15, 2, 2, 15, 2, 2, 15, 2.5, 2, 7, 2.5, 2, 15, 2, 2, 7, 2.5, 2, 7, 2, 3, 7, 2, 2, 7, 2, 2, 7, 2.5, 3, 7, 2, 2, 7, 2.5, 3, 7, 2.5, 3, 15, 2, 3, 15, 2.5, 2, 15, 2.5, 3, 15, 2, 2, 15, 2.5, 2, 15, 2, 3, 15, 2, 3, 7, 2, 3, 7, 2.5, 3, 15, 2, 3, 7, 2.5, 3, 15, 2.5, 2, 15, 2.5, 3, 15, 2.5, 3, 7, 2.5, 2, 15, 2.5, 3, 7, 2.5, 2, 7, 2.5, 3, 12.5, 2.5, 2, 12.5, 2.5, 2, 12.5, 5, 3, 12.5, 2.5, 2, 12.5, 5, 3, 12.5, 5, 3, 15, 2.5, 3, 12.5, 2.5, 3, 12.5, 5, 3, 15, 2.5, 3, 12.5, 5, 3, 15, 5, 3, 14, 12.5, 3, 8, 12.5, 5, 8, 12.5, 3, 14, 12.5, 5, 8, 12.5, 5, 14, 12.5, 3, 14, 12.5, 3, 14, 13, 3, 8, 13, 3, 14, 12.5, 3, 8, 13, 3, 8, 12.5, 5, 8, 12.5, 3, 8, 12.5, 3, 8, 13, 5, 8, 12.5, 3, 8, 13, 5, 8, 13, 5, 14, 12.5, 5, 14, 13, 3, 14, 13, 5, 14, 12.5, 3, 14, 13, 3, 14, 12.5, 5, 14, 12.5, 5, 8, 12.5, 5, 8, 13, 5, 14, 12.5, 5, 8, 13, 5, 14, 13, 3, 14, 13, 5, 14, 13, 5, 8, 13, 3, 14, 13, 5, 8, 13, 3, 8, 13, 3, 14, 5.5, 3, 8, 5.5, 5, 8, 5.5, 3, 14, 5.5, 5, 8, 5.5, 5, 14, 5.5, 5, 14, 5.5, 5, 8, 5.5, 5, 8, 6.5, 5, 14, 5.5, 5, 8, 6.5, 5, 14, 6.5, 3, 14, 6.5, 5, 14, 6.5, 5, 8, 6.5, 3, 14, 6.5, 5, 8, 6.5, 3, 8, 6.5, 5, 13.5, 6.5, 4, 13.5, 6.5, 4, 13.5, 12.5, 5, 13.5, 6.5, 4, 13.5, 12.5, 5, 13.5, 12.5, 5, 14, 6.5, 5, 13.5, 6.5, 5, 13.5, 12.5, 5, 14, 6.5, 5, 13.5, 12.5, 5, 14, 12.5, 4, 13.5, 6.5, 3.5, 13.5, 6.5, 3.5, 13.5, 12.5, 4, 13.5, 6.5, 3.5, 13.5, 12.5, 4, 13.5, 12.5, 3.5, 13.5, 6.5, 3, 13.5, 6.5, 3, 13.5, 12.5, 3.5, 13.5, 6.5, 3, 13.5, 12.5, 3.5, 13.5, 12.5, 1.5, 15, 5, 1.5, 7, 5, 2, 7, 5, 1.5, 15, 5, 2, 7, 5, 2, 15, 5, 1.5, 15, 1.5, 1.5, 7, 1.5, 2, 7, 1.5, 1.5, 15, 1.5, 2, 7, 1.5, 2, 15, 1.5, 2, 7, 1.5, 1.5, 7, 1.5, 1.5, 7, 2.5, 2, 7, 1.5, 1.5, 7, 2.5, 2, 7, 2.5, 2, 15, 1.5, 2, 15, 2.5, 1.5, 15, 2.5, 2, 15, 1.5, 1.5, 15, 2.5, 1.5, 15, 1.5, 2, 15, 1.5, 2, 7, 1.5, 2, 7, 2.5, 2, 15, 1.5, 2, 7, 2.5, 2, 15, 2.5, 1.5, 15, 2.5, 2, 15, 2.5, 2, 7, 2.5, 1.5, 15, 2.5, 2, 7, 2.5, 1.5, 7, 2.5, 1.5, 15, 2.5, 1.5, 12.5, 2.5, 2, 12.5, 2.5, 1.5, 15, 2.5, 2, 12.5, 2.5, 2, 15, 2.5, 2, 12.5, 2.5, 1.5, 12.5, 2.5, 1.5, 12.5, 5, 2, 12.5, 2.5, 1.5, 12.5, 5, 2, 12.5, 5, 2, 15, 2.5, 2, 15, 5, 1.5, 15, 5, 2, 15, 2.5, 1.5, 15, 5, 1.5, 15, 2.5, 2, 15, 2.5, 2, 12.5, 2.5, 2, 12.5, 5, 2, 15, 2.5, 2, 12.5, 5, 2, 15, 5, 1.5, 15, 5, 2, 15, 5, 2, 12.5, 5, 1.5, 15, 5, 2, 12.5, 5, 1.5, 12.5, 5, 1.5, 15, 0.5, 1.5, 7, 0.5, 17, 7, 0.5, 1.5, 15, 0.5, 17, 7, 0.5, 17, 15, 0.5, 17, 7, 0.5, 1.5, 7, 0.5, 1.5, 7, 1, 17, 7, 0.5, 1.5, 7, 1, 17, 7, 1, 17, 15, 0.5, 17, 15, 1, 1.5, 15, 1, 17, 15, 0.5, 1.5, 15, 1, 1.5, 15, 0.5, 1.5, 15, 1, 17, 15, 1, 17, 7, 1, 1.5, 15, 1, 17, 7, 1, 1.5, 7, 1, -2.5, 15, 0.5, -2.5, 7, 0.5, -2, 7, 0.5, -2.5, 15, 0.5, -2, 7, 0.5, -2, 15, 0.5, -2.5, 15, 0.5, -2.5, 15, 1, -2.5, 7, 1, -2.5, 15, 0.5, -2.5, 7, 1, -2.5, 7, 0.5, -2, 7, 0.5, -2.5, 7, 0.5, -2.5, 7, 1, -2, 7, 0.5, -2.5, 7, 1, -2, 7, 1, -2, 15, 0.5, -2, 15, 1, -2.5, 15, 1, -2, 15, 0.5, -2.5, 15, 1, -2.5, 15, 0.5, -2.5, 15, 1, -2, 15, 1, -2, 7, 1, -2.5, 15, 1, -2, 7, 1, -2.5, 7, 1, 2, 14.5, -8.5, 2, 8, -8.5, 2, 8, -2, 2, 14.5, -8.5, 2, 8, -2, 2, 14.5, -2, 1.5, 14.5, -2, 2, 14.5, -2, 2, 8, -2, 1.5, 14.5, -2, 2, 8, -2, 1.5, 8, -2, 1.5, 14.5, -2, 1.5, 12.5, -2, 2, 12.5, -2, 1.5, 14.5, -2, 2, 12.5, -2, 2, 14.5, -2, 2, 12.5, -2, 1.5, 12.5, -2, 1.5, 12.5, 0.5, 2, 12.5, -2, 1.5, 12.5, 0.5, 2, 12.5, 0.5, 2, 14.5, -2, 2, 14.5, 0.5, 1.5, 14.5, 0.5, 2, 14.5, -2, 1.5, 14.5, 0.5, 1.5, 14.5, -2, 2, 14.5, -2, 2, 12.5, -2, 2, 12.5, 0.5, 2, 14.5, -2, 2, 12.5, 0.5, 2, 14.5, 0.5, 1.5, 14.5, 0.5, 2, 14.5, 0.5, 2, 12.5, 0.5, 1.5, 14.5, 0.5, 2, 12.5, 0.5, 1.5, 12.5, 0.5, 16.5, 15, -0.5, 16.5, 7, -0.5, 17, 7, -0.5, 16.5, 15, -0.5, 17, 7, -0.5, 17, 15, -0.5, 16.5, 15, -0.5, 16.5, 15, 0.5, 16.5, 7, 0.5, 16.5, 15, -0.5, 16.5, 7, 0.5, 16.5, 7, -0.5, 17, 7, -0.5, 16.5, 7, -0.5, 16.5, 7, 0.5, 17, 7, -0.5, 16.5, 7, 0.5, 17, 7, 0.5, 17, 15, -0.5, 17, 15, 0.5, 16.5, 15, 0.5, 17, 15, -0.5, 16.5, 15, 0.5, 16.5, 15, -0.5, 16.5, 15, 0.5, 17, 15, 0.5, 17, 7, 0.5, 16.5, 15, 0.5, 17, 7, 0.5, 16.5, 7, 0.5, 16.5, 15, -7, 16.5, 13.5, -7, 17, 13.5, -7, 16.5, 15, -7, 17, 13.5, -7, 17, 15, -7, 16.5, 15, -7, 16.5, 15, -0.5, 16.5, 13.5, -0.5, 16.5, 15, -7, 16.5, 13.5, -0.5, 16.5, 13.5, -7, 17, 13.5, -7, 16.5, 13.5, -7, 16.5, 13.5, -0.5, 17, 13.5, -7, 16.5, 13.5, -0.5, 17, 13.5, -0.5, 17, 15, -7, 17, 15, -0.5, 16.5, 15, -0.5, 17, 15, -7, 16.5, 15, -0.5, 16.5, 15, -7, 16.5, 15, -0.5, 17, 15, -0.5, 17, 13.5, -0.5, 16.5, 15, -0.5, 17, 13.5, -0.5, 16.5, 13.5, -0.5, -2, 15, 14.5, -2, 7, 14.5, -2, 7, 20.5, -2, 15, 14.5, -2, 7, 20.5, -2, 15, 20.5, -2, 15, 13.5, -2, 7, 13.5, -2, 7, 14, -2, 15, 13.5, -2, 7, 14, -2, 15, 14, -2, 15, 14, -2, 7, 14, -2, 7, 14.5, -2, 15, 14, -2, 7, 14.5, -2, 15, 14.5, 1, 15, 20, 1, 7, 20, 3.5, 7, 20, 1, 15, 20, 3.5, 7, 20, 3.5, 15, 20, 1, 15, 20, 1, 15, 20.5, 1, 7, 20.5, 1, 15, 20, 1, 7, 20.5, 1, 7, 20, 3.5, 15, 20, 3.5, 7, 20, 3.5, 7, 20.5, 3.5, 15, 20, 3.5, 7, 20.5, 3.5, 15, 20.5, -2.5, 15, 20, -2.5, 7, 20, -1.5, 7, 20, -2.5, 15, 20, -1.5, 7, 20, -1.5, 15, 20, -1.5, 15, 20, -1.5, 7, 20, -1.5, 7, 20.5, -1.5, 15, 20, -1.5, 7, 20.5, -1.5, 15, 20.5, -1.5, 15, 20, -1.5, 12.5, 20, 1, 12.5, 20, -1.5, 15, 20, 1, 12.5, 20, 1, 15, 20, 1, 12.5, 20, -1.5, 12.5, 20, -1.5, 12.5, 20.5, 1, 12.5, 20, -1.5, 12.5, 20.5, 1, 12.5, 20.5, 1, 15, 20.5, 1, 7, 20.5, 3, 7, 20.5, 1, 15, 20.5, 3, 7, 20.5, 3, 15, 20.5, 3, 15, 26.5, 3, 7, 26.5, 17, 7, 26.5, 3, 15, 26.5, 17, 7, 26.5, 17, 15, 26.5, 3.5, 15, 14, 3.5, 7, 14, 17, 7, 14, 3.5, 15, 14, 17, 7, 14, 17, 15, 14, 3.5, 15, 14, 3.5, 15, 14.5, 3.5, 7, 14.5, 3.5, 15, 14, 3.5, 7, 14.5, 3.5, 7, 14, 17, 7, 14, 3.5, 7, 14, 3.5, 7, 14.5, 17, 7, 14, 3.5, 7, 14.5, 17, 7, 14.5, 17, 15, 14, 17, 15, 14.5, 3.5, 15, 14.5, 17, 15, 14, 3.5, 15, 14.5, 3.5, 15, 14, 3.5, 15, 14.5, 17, 15, 14.5, 17, 7, 14.5, 3.5, 15, 14.5, 17, 7, 14.5, 3.5, 7, 14.5, 3, 15, 20.5, 3, 7, 20.5, 3.5, 7, 20.5, 3, 15, 20.5, 3.5, 7, 20.5, 3.5, 15, 20.5, 3.5, 15, 20.5, 3.5, 7, 20.5, 3.5, 7, 26.5, 3.5, 15, 20.5, 3.5, 7, 26.5, 3.5, 15, 26.5, 16.5, 15, 24, 16.5, 15, 26.5, 16.5, 7, 26.5, 16.5, 15, 24, 16.5, 7, 26.5, 16.5, 7, 24, 16.5, 15, 14.5, 16.5, 15, 18, 16.5, 7, 18, 16.5, 15, 14.5, 16.5, 7, 18, 16.5, 7, 14.5, 16.5, 15, 18, 16.5, 15, 24, 16.5, 12.5, 24, 16.5, 15, 18, 16.5, 12.5, 24, 16.5, 12.5, 18, 16.5, 10, 18, 16.5, 10, 24, 16.5, 7, 24, 16.5, 10, 18, 16.5, 7, 24, 16.5, 7, 18, 16, 10, 18, 16, 9.5, 18, 16.5, 9.5, 18, 16, 10, 18, 16.5, 9.5, 18, 16.5, 10, 18, 16, 10, 18, 16, 10, 24, 16, 9.5, 24, 16, 10, 18, 16, 9.5, 24, 16, 9.5, 18, 16, 10, 24, 16.5, 10, 24, 16.5, 9.5, 24, 16, 10, 24, 16.5, 9.5, 24, 16, 9.5, 24, 16.5, 15, -12, 16.5, 15, -9.5, 16.5, 7, -9.5, 16.5, 15, -12, 16.5, 7, -9.5, 16.5, 7, -12, 16.5, 15, -20.5, 16.5, 15, -19.5, 16.5, 7, -19.5, 16.5, 15, -20.5, 16.5, 7, -19.5, 16.5, 7, -20.5, 16.5, 15, -19.5, 16.5, 15, -12, 16.5, 14, -12, 16.5, 15, -19.5, 16.5, 14, -12, 16.5, 14, -19.5, -4.5, 15, -21, -4.5, 7, -21, -2.5, 7, -21, -4.5, 15, -21, -2.5, 7, -21, -2.5, 15, -21, -4.5, 15, -21, -4.5, 15, -20.5, -4.5, 7, -20.5, -4.5, 15, -21, -4.5, 7, -20.5, -4.5, 7, -21, -2.5, 7, -21, -4.5, 7, -21, -4.5, 7, -20.5, -2.5, 7, -21, -4.5, 7, -20.5, -2.5, 7, -20.5, -2.5, 15, -21, -2.5, 15, -20.5, -4.5, 15, -20.5, -2.5, 15, -21, -4.5, 15, -20.5, -4.5, 15, -21, -2.5, 15, -21, -2.5, 7, -21, -2.5, 7, -20.5, -2.5, 15, -21, -2.5, 7, -20.5, -2.5, 15, -20.5, -4.5, 15, -20.5, -2.5, 15, -20.5, -2.5, 7, -20.5, -4.5, 15, -20.5, -2.5, 7, -20.5, -4.5, 7, -20.5, -3.5, 14.5, -15.5, -3.5, 8, -15.5, -2.5, 8, -15.5, -3.5, 14.5, -15.5, -2.5, 8, -15.5, -2.5, 14.5, -15.5, -3.5, 14.5, -15.5, -3.5, 14.5, -15, -3.5, 8, -15, -3.5, 14.5, -15.5, -3.5, 8, -15, -3.5, 8, -15.5, -2.5, 8, -15.5, -3.5, 8, -15.5, -3.5, 8, -15, -2.5, 8, -15.5, -3.5, 8, -15, -2.5, 8, -15, -2.5, 14.5, -15.5, -2.5, 14.5, -15, -3.5, 14.5, -15, -2.5, 14.5, -15.5, -3.5, 14.5, -15, -3.5, 14.5, -15.5, -2.5, 14.5, -15.5, -2.5, 8, -15.5, -2.5, 8, -15, -2.5, 14.5, -15.5, -2.5, 8, -15, -2.5, 14.5, -15, -3.5, 14.5, -15, -2.5, 14.5, -15, -2.5, 8, -15, -3.5, 14.5, -15, -2.5, 8, -15, -3.5, 8, -15, -2.5, 14.5, -15.5, -2.5, 8, -15.5, -2, 8, -15.5, -2.5, 14.5, -15.5, -2, 8, -15.5, -2, 14.5, -15.5, -2.5, 14.5, -15.5, -2.5, 14.5, -15, -2.5, 8, -15, -2.5, 14.5, -15.5, -2.5, 8, -15, -2.5, 8, -15.5, -2, 8, -15.5, -2.5, 8, -15.5, -2.5, 8, -15, -2, 8, -15.5, -2.5, 8, -15, -2, 8, -15, -2, 14.5, -15.5, -2, 14.5, -15, -2.5, 14.5, -15, -2, 14.5, -15.5, -2.5, 14.5, -15, -2.5, 14.5, -15.5, -2, 14.5, -15.5, -2, 8, -15.5, -2, 8, -15, -2, 14.5, -15.5, -2, 8, -15, -2, 14.5, -15, -2.5, 14.5, -15, -2, 14.5, -15, -2, 8, -15, -2.5, 14.5, -15, -2, 8, -15, -2.5, 8, -15, -3.5, 10.5, -20.5, -3.5, 10, -20.5, -2, 10, -20.5, -3.5, 10.5, -20.5, -2, 10, -20.5, -2, 10.5, -20.5, -3.5, 10.5, -20.5, -3.5, 10.5, -15.5, -3.5, 10, -15.5, -3.5, 10.5, -20.5, -3.5, 10, -15.5, -3.5, 10, -20.5, -2, 10, -20.5, -3.5, 10, -20.5, -3.5, 10, -15.5, -2, 10, -20.5, -3.5, 10, -15.5, -2, 10, -15.5, -2, 10.5, -20.5, -2, 10.5, -15.5, -3.5, 10.5, -15.5, -2, 10.5, -20.5, -3.5, 10.5, -15.5, -3.5, 10.5, -20.5, -2, 10.5, -20.5, -2, 10, -20.5, -2, 10, -15.5, -2, 10.5, -20.5, -2, 10, -15.5, -2, 10.5, -15.5, -3.5, 10.5, -15.5, -2, 10.5, -15.5, -2, 10, -15.5, -3.5, 10.5, -15.5, -2, 10, -15.5, -3.5, 10, -15.5, -3.5, 12, -20.5, -3.5, 11.5, -20.5, -2, 11.5, -20.5, -3.5, 12, -20.5, -2, 11.5, -20.5, -2, 12, -20.5, -3.5, 12, -20.5, -3.5, 12, -15.5, -3.5, 11.5, -15.5, -3.5, 12, -20.5, -3.5, 11.5, -15.5, -3.5, 11.5, -20.5, -2, 11.5, -20.5, -3.5, 11.5, -20.5, -3.5, 11.5, -15.5, -2, 11.5, -20.5, -3.5, 11.5, -15.5, -2, 11.5, -15.5, -2, 12, -20.5, -2, 12, -15.5, -3.5, 12, -15.5, -2, 12, -20.5, -3.5, 12, -15.5, -3.5, 12, -20.5, -2, 12, -20.5, -2, 11.5, -20.5, -2, 11.5, -15.5, -2, 12, -20.5, -2, 11.5, -15.5, -2, 12, -15.5, -3.5, 12, -15.5, -2, 12, -15.5, -2, 11.5, -15.5, -3.5, 12, -15.5, -2, 11.5, -15.5, -3.5, 11.5, -15.5, -3.5, 13.5, -20.5, -3.5, 13, -20.5, -2, 13, -20.5, -3.5, 13.5, -20.5, -2, 13, -20.5, -2, 13.5, -20.5, -3.5, 13.5, -20.5, -3.5, 13.5, -15.5, -3.5, 13, -15.5, -3.5, 13.5, -20.5, -3.5, 13, -15.5, -3.5, 13, -20.5, -2, 13, -20.5, -3.5, 13, -20.5, -3.5, 13, -15.5, -2, 13, -20.5, -3.5, 13, -15.5, -2, 13, -15.5, -2, 13.5, -20.5, -2, 13.5, -15.5, -3.5, 13.5, -15.5, -2, 13.5, -20.5, -3.5, 13.5, -15.5, -3.5, 13.5, -20.5, -2, 13.5, -20.5, -2, 13, -20.5, -2, 13, -15.5, -2, 13.5, -20.5, -2, 13, -15.5, -2, 13.5, -15.5, -3.5, 13.5, -15.5, -2, 13.5, -15.5, -2, 13, -15.5, -3.5, 13.5, -15.5, -2, 13, -15.5, -3.5, 13, -15.5, -2.5, 15, -21, -2.5, 7, -21, -2, 7, -21, -2.5, 15, -21, -2, 7, -21, -2, 15, -21, -2.5, 15, -21, -2.5, 15, -20.5, -2.5, 7, -20.5, -2.5, 15, -21, -2.5, 7, -20.5, -2.5, 7, -21, -2, 7, -21, -2.5, 7, -21, -2.5, 7, -20.5, -2, 7, -21, -2.5, 7, -20.5, -2, 7, -20.5, -2, 15, -21, -2, 15, -20.5, -2.5, 15, -20.5, -2, 15, -21, -2.5, 15, -20.5, -2.5, 15, -21, -2, 15, -21, -2, 7, -21, -2, 7, -20.5, -2, 15, -21, -2, 7, -20.5, -2, 15, -20.5, -2.5, 15, -20.5, -2, 15, -20.5, -2, 7, -20.5, -2.5, 15, -20.5, -2, 7, -20.5, -2.5, 7, -20.5, -2, 15, -21.5, -2, 7, -21.5, -2, 7, -21, -2, 15, -21.5, -2, 7, -21, -2, 15, -21, -4.5, 15, -22, -4.5, 7, -22, -2, 7, -22, -4.5, 15, -22, -2, 7, -22, -2, 15, -22, -4.5, 15, -22, -4.5, 15, -21.5, -4.5, 7, -21.5, -4.5, 15, -22, -4.5, 7, -21.5, -4.5, 7, -22, -2, 7, -22, -4.5, 7, -22, -4.5, 7, -21.5, -2, 7, -22, -4.5, 7, -21.5, -2, 7, -21.5, -2, 15, -22, -2, 15, -21.5, -4.5, 15, -21.5, -2, 15, -22, -4.5, 15, -21.5, -4.5, 15, -22, -2, 15, -22, -2, 7, -22, -2, 7, -21.5, -2, 15, -22, -2, 7, -21.5, -2, 15, -21.5, -4.5, 15, -21.5, -2, 15, -21.5, -2, 7, -21.5, -4.5, 15, -21.5, -2, 7, -21.5, -4.5, 7, -21.5, -4.5, 15, -22.5, -4.5, 7, -22.5, -2, 7, -22.5, -4.5, 15, -22.5, -2, 7, -22.5, -2, 15, -22.5, -2, 15, -22.5, -2, 7, -22.5, -2, 7, -22, -2, 15, -22.5, -2, 7, -22, -2, 15, -22, 16, 10.5, -32.5, 16, 10.5, -22.5, 16, 8, -22.5, 16, 10.5, -32.5, 16, 8, -22.5, 16, 8, -32.5, -1, 15, -32.5, 17, 15, -32.5, 17, 7, -32.5, -1, 15, -32.5, 17, 7, -32.5, -1, 7, -32.5, -4.5, 15, -32.5, -3.5, 15, -32.5, -3.5, 7, -32.5, -4.5, 15, -32.5, -3.5, 7, -32.5, -4.5, 7, -32.5, -3.5, 15, -32.5, -1, 15, -32.5, -1, 12.5, -32.5, -3.5, 15, -32.5, -1, 12.5, -32.5, -3.5, 12.5, -32.5, 3.5, 14.5, -25.5, 3.5, 8, -25.5, 4, 8, -25.5, 3.5, 14.5, -25.5, 4, 8, -25.5, 4, 14.5, -25.5, 4, 14.5, -25.5, 4, 8, -25.5, 4, 8, -22.5, 4, 14.5, -25.5, 4, 8, -22.5, 4, 14.5, -22.5, 4, 14.5, -32.5, 4, 8, -32.5, 4, 8, -28, 4, 14.5, -32.5, 4, 8, -28, 4, 14.5, -28, 3.5, 14.5, -28, 4, 14.5, -28, 4, 8, -28, 3.5, 14.5, -28, 4, 8, -28, 3.5, 8, -28, 4, 12.5, -28, 3.5, 12.5, -28, 3.5, 12.5, -25.5, 4, 12.5, -28, 3.5, 12.5, -25.5, 4, 12.5, -25.5, 4, 14.5, -28, 4, 12.5, -28, 4, 12.5, -25.5, 4, 14.5, -28, 4, 12.5, -25.5, 4, 14.5, -25.5, -2, 14.5, -15.5, -2, 8, -15.5, -1.5, 8, -15.5, -2, 14.5, -15.5, -1.5, 8, -15.5, -1.5, 14.5, -15.5, -2, 14.5, -15.5, -2, 14.5, -15, -2, 8, -15, -2, 14.5, -15.5, -2, 8, -15, -2, 8, -15.5, -1.5, 8, -15.5, -2, 8, -15.5, -2, 8, -15, -1.5, 8, -15.5, -2, 8, -15, -1.5, 8, -15, -1.5, 14.5, -15.5, -1.5, 14.5, -15, -2, 14.5, -15, -1.5, 14.5, -15.5, -2, 14.5, -15, -2, 14.5, -15.5, -1.5, 14.5, -15.5, -1.5, 8, -15.5, -1.5, 8, -15, -1.5, 14.5, -15.5, -1.5, 8, -15, -1.5, 14.5, -15, -2, 14.5, -15, -1.5, 14.5, -15, -1.5, 8, -15, -2, 14.5, -15, -1.5, 8, -15, -2, 8, -15, -2, 14.5, -21, -2, 8, -21, -1.5, 8, -21, -2, 14.5, -21, -1.5, 8, -21, -1.5, 14.5, -21, -2, 14.5, -21, -2, 14.5, -20.5, -2, 8, -20.5, -2, 14.5, -21, -2, 8, -20.5, -2, 8, -21, -1.5, 8, -21, -2, 8, -21, -2, 8, -20.5, -1.5, 8, -21, -2, 8, -20.5, -1.5, 8, -20.5, -1.5, 14.5, -21, -1.5, 14.5, -20.5, -2, 14.5, -20.5, -1.5, 14.5, -21, -2, 14.5, -20.5, -2, 14.5, -21, -1.5, 14.5, -21, -1.5, 8, -21, -1.5, 8, -20.5, -1.5, 14.5, -21, -1.5, 8, -20.5, -1.5, 14.5, -20.5, -2, 14.5, -20.5, -1.5, 14.5, -20.5, -1.5, 8, -20.5, -2, 14.5, -20.5, -1.5, 8, -20.5, -2, 8, -20.5, -2, 13, 13, -2, 13, 13.5, -2, 8, 13.5, -2, 13, 13, -2, 8, 13.5, -2, 8, 13, -1.5, 8, 13, -2, 8, 13, -2, 8, 13.5, -1.5, 8, 13, -2, 8, 13.5, -1.5, 8, 13.5, -1.5, 13, 13, -1.5, 13, 13.5, -2, 13, 13.5, -1.5, 13, 13, -2, 13, 13.5, -2, 13, 13, -1.5, 13, 13, -1.5, 8, 13, -1.5, 8, 13.5, -1.5, 13, 13, -1.5, 8, 13.5, -1.5, 13, 13.5, -2, 13, 13.5, -1.5, 13, 13.5, -1.5, 8, 13.5, -2, 13, 13.5, -1.5, 8, 13.5, -2, 8, 13.5, 1, 13, 13, 1, 13, 13.5, 1, 8, 13.5, 1, 13, 13, 1, 8, 13.5, 1, 8, 13, 1.5, 8, 13, 1, 8, 13, 1, 8, 13.5, 1.5, 8, 13, 1, 8, 13.5, 1.5, 8, 13.5, 1.5, 13, 13, 1.5, 13, 13.5, 1, 13, 13.5, 1.5, 13, 13, 1, 13, 13.5, 1, 13, 13, 1.5, 13, 13, 1.5, 8, 13, 1.5, 8, 13.5, 1.5, 13, 13, 1.5, 8, 13.5, 1.5, 13, 13.5, 1, 13, 13.5, 1.5, 13, 13.5, 1.5, 8, 13.5, 1, 13, 13.5, 1.5, 8, 13.5, 1, 8, 13.5, -2, 14.5, 13, -2, 14.5, 13.5, -2, 13, 13.5, -2, 14.5, 13, -2, 13, 13.5, -2, 13, 13, 1.5, 13, 13, -2, 13, 13, -2, 13, 13.5, 1.5, 13, 13, -2, 13, 13.5, 1.5, 13, 13.5, 1.5, 14.5, 13, 1.5, 14.5, 13.5, -2, 14.5, 13.5, 1.5, 14.5, 13, -2, 14.5, 13.5, -2, 14.5, 13, 1.5, 14.5, 13, 1.5, 13, 13, 1.5, 13, 13.5, 1.5, 14.5, 13, 1.5, 13, 13.5, 1.5, 14.5, 13.5, -2, 14.5, 13.5, 1.5, 14.5, 13.5, 1.5, 13, 13.5, -2, 14.5, 13.5, 1.5, 13, 13.5, -2, 13, 13.5, -2.5, 15, -8.5, -2.5, 7, -8.5, -2, 7, -8.5, -2.5, 15, -8.5, -2, 7, -8.5, -2, 15, -8.5, -2.5, 15, -8.5, -2.5, 15, 0.5, -2.5, 7, 0.5, -2.5, 15, -8.5, -2.5, 7, 0.5, -2.5, 7, -8.5, -2, 7, -8.5, -2.5, 7, -8.5, -2.5, 7, 0.5, -2, 7, -8.5, -2.5, 7, 0.5, -2, 7, 0.5, -2, 15, -8.5, -2, 15, 0.5, -2.5, 15, 0.5, -2, 15, -8.5, -2.5, 15, 0.5, -2.5, 15, -8.5, -2.5, 15, 0.5, -2, 15, 0.5, -2, 7, 0.5, -2.5, 15, 0.5, -2, 7, 0.5, -2.5, 7, 0.5, 16.5, 15, -9, 16.5, 7, -9, 17, 7, -9, 16.5, 15, -9, 17, 7, -9, 17, 15, -9, 16.5, 15, -9, 16.5, 15, -7, 16.5, 7, -7, 16.5, 15, -9, 16.5, 7, -7, 16.5, 7, -9, 17, 7, -9, 16.5, 7, -9, 16.5, 7, -7, 17, 7, -9, 16.5, 7, -7, 17, 7, -7, 17, 15, -9, 17, 15, -7, 16.5, 15, -7, 17, 15, -9, 16.5, 15, -7, 16.5, 15, -9, 16.5, 15, -7, 17, 15, -7, 17, 7, -7, 16.5, 15, -7, 17, 7, -7, 16.5, 7, -7, 2, 15, 13, 2, 15, 14, 2, 7, 14, 2, 15, 13, 2, 7, 14, 2, 7, 13, 17, 7, 13, 2, 7, 13, 2, 7, 14, 17, 7, 13, 2, 7, 14, 17, 7, 14, 17, 15, 13, 17, 15, 14, 2, 15, 14, 17, 15, 13, 2, 15, 14, 2, 15, 13, 2, 15, 14, 17, 15, 14, 17, 7, 14, 2, 15, 14, 17, 7, 14, 2, 7, 14, 17, 7, 12, 16, 7, 12, 16, 7, 13, 17, 7, 12, 16, 7, 13, 17, 7, 13, 17, 15, 12, 17, 15, 13, 16, 15, 13, 17, 15, 12, 16, 15, 13, 16, 15, 12, 16, 15, 13, 17, 15, 13, 17, 7, 13, 16, 15, 13, 17, 7, 13, 16, 7, 13, 2, 15, 5, 2, 15, 13, 2, 7, 13, 2, 15, 5, 2, 7, 13, 2, 7, 5, 3, 7, 5, 2, 7, 5, 2, 7, 13, 3, 7, 5, 2, 7, 13, 3, 7, 13, 3, 15, 5, 3, 15, 13, 2, 15, 13, 3, 15, 5, 2, 15, 13, 2, 15, 5, 2, 15, 13, 3, 15, 13, 3, 7, 13, 2, 15, 13, 3, 7, 13, 2, 7, 13, 2, 15, 2.5, 2, 12.5, 2.5, 3, 12.5, 2.5, 2, 15, 2.5, 3, 12.5, 2.5, 3, 15, 2.5, 2, 15, 2.5, 2, 15, 5, 2, 12.5, 5, 2, 15, 2.5, 2, 12.5, 5, 2, 12.5, 2.5, 3, 15, 2.5, 3, 15, 5, 2, 15, 5, 3, 15, 2.5, 2, 15, 5, 2, 15, 2.5, 2, 15, 5, 3, 15, 5, 3, 12.5, 5, 2, 15, 5, 3, 12.5, 5, 2, 12.5, 5, 3, 14, 5.5, 3, 14, 6.5, 3, 8, 6.5, 3, 14, 5.5, 3, 8, 6.5, 3, 8, 5.5, 5, 8, 5.5, 3, 8, 5.5, 3, 8, 6.5, 5, 8, 5.5, 3, 8, 6.5, 5, 8, 6.5, 5, 14, 5.5, 5, 14, 6.5, 3, 14, 6.5, 5, 14, 5.5, 3, 14, 6.5, 3, 14, 5.5, 4, 14, 6.5, 4, 13.5, 6.5, 5, 13.5, 6.5, 4, 14, 6.5, 5, 13.5, 6.5, 5, 14, 6.5, 4, 14, 6.5, 4, 14, 12.5, 4, 13.5, 12.5, 4, 14, 6.5, 4, 13.5, 12.5, 4, 13.5, 6.5, 5, 14, 6.5, 5, 14, 12.5, 4, 14, 12.5, 5, 14, 6.5, 4, 14, 12.5, 4, 14, 6.5, 4, 14, 12.5, 5, 14, 12.5, 5, 13.5, 12.5, 4, 14, 12.5, 5, 13.5, 12.5, 4, 13.5, 12.5, 3.5, 14, 6.5, 3.5, 13.5, 6.5, 4, 13.5, 6.5, 3.5, 14, 6.5, 4, 13.5, 6.5, 4, 14, 6.5, 3.5, 14, 6.5, 3.5, 14, 12.5, 3.5, 13.5, 12.5, 3.5, 14, 6.5, 3.5, 13.5, 12.5, 3.5, 13.5, 6.5, 4, 14, 6.5, 4, 14, 12.5, 3.5, 14, 12.5, 4, 14, 6.5, 3.5, 14, 12.5, 3.5, 14, 6.5, 4, 14, 6.5, 4, 13.5, 6.5, 4, 13.5, 12.5, 4, 14, 6.5, 4, 13.5, 12.5, 4, 14, 12.5, 3.5, 14, 12.5, 4, 14, 12.5, 4, 13.5, 12.5, 3.5, 14, 12.5, 4, 13.5, 12.5, 3.5, 13.5, 12.5, 3, 14, 6.5, 3, 13.5, 6.5, 3.5, 13.5, 6.5, 3, 14, 6.5, 3.5, 13.5, 6.5, 3.5, 14, 6.5, 3, 14, 6.5, 3, 14, 12.5, 3, 13.5, 12.5, 3, 14, 6.5, 3, 13.5, 12.5, 3, 13.5, 6.5, 3.5, 14, 6.5, 3.5, 14, 12.5, 3, 14, 12.5, 3.5, 14, 6.5, 3, 14, 12.5, 3, 14, 6.5, 3.5, 14, 6.5, 3.5, 13.5, 6.5, 3.5, 13.5, 12.5, 3.5, 14, 6.5, 3.5, 13.5, 12.5, 3.5, 14, 12.5, 3, 14, 12.5, 3.5, 14, 12.5, 3.5, 13.5, 12.5, 3, 14, 12.5, 3.5, 13.5, 12.5, 3, 13.5, 12.5, -2.5, 15, 1.5, -2.5, 7, 1.5, -2, 7, 1.5, -2.5, 15, 1.5, -2, 7, 1.5, -2, 15, 1.5, -2.5, 15, 1.5, -2.5, 15, 13.5, -2.5, 7, 13.5, -2.5, 15, 1.5, -2.5, 7, 13.5, -2.5, 7, 1.5, -2, 7, 1.5, -2.5, 7, 1.5, -2.5, 7, 13.5, -2, 7, 1.5, -2.5, 7, 13.5, -2, 7, 13.5, -2, 15, 1.5, -2, 15, 13.5, -2.5, 15, 13.5, -2, 15, 1.5, -2.5, 15, 13.5, -2.5, 15, 1.5, -2.5, 15, 13.5, -2, 15, 13.5, -2, 7, 13.5, -2.5, 15, 13.5, -2, 7, 13.5, -2.5, 7, 13.5, 2, 7, 5, 1.5, 7, 5, 1.5, 7, 13.5, 2, 7, 5, 1.5, 7, 13.5, 2, 7, 13.5, 2, 15, 5, 2, 15, 13.5, 1.5, 15, 13.5, 2, 15, 5, 1.5, 15, 13.5, 1.5, 15, 5, 2, 15, 5, 2, 7, 5, 2, 7, 13.5, 2, 15, 5, 2, 7, 13.5, 2, 15, 13.5, 1.5, 15, 13.5, 2, 15, 13.5, 2, 7, 13.5, 1.5, 15, 13.5, 2, 7, 13.5, 1.5, 7, 13.5, 1.5, 15, 1, 1.5, 7, 1, 2, 7, 1, 1.5, 15, 1, 2, 7, 1, 2, 15, 1, 2, 7, 1, 1.5, 7, 1, 1.5, 7, 1.5, 2, 7, 1, 1.5, 7, 1.5, 2, 7, 1.5, 2, 15, 1, 2, 15, 1.5, 1.5, 15, 1.5, 2, 15, 1, 1.5, 15, 1.5, 1.5, 15, 1, 2, 15, 1, 2, 7, 1, 2, 7, 1.5, 2, 15, 1, 2, 7, 1.5, 2, 15, 1.5, 1.5, 15, 1.5, 2, 15, 1.5, 2, 7, 1.5, 1.5, 15, 1.5, 2, 7, 1.5, 1.5, 7, 1.5, -2.5, 15, 1, -2.5, 7, 1, -2, 7, 1, -2.5, 15, 1, -2, 7, 1, -2, 15, 1, -2.5, 15, 1, -2.5, 15, 1.5, -2.5, 7, 1.5, -2.5, 15, 1, -2.5, 7, 1.5, -2.5, 7, 1, -2, 7, 1, -2.5, 7, 1, -2.5, 7, 1.5, -2, 7, 1, -2.5, 7, 1.5, -2, 7, 1.5, -2, 15, 1, -2, 15, 1.5, -2.5, 15, 1.5, -2, 15, 1, -2.5, 15, 1.5, -2.5, 15, 1, -2.5, 15, 1.5, -2, 15, 1.5, -2, 7, 1.5, -2.5, 15, 1.5, -2, 7, 1.5, -2.5, 7, 1.5, 1.5, 14.5, -8.5, 1.5, 8, -8.5, 2, 8, -8.5, 1.5, 14.5, -8.5, 2, 8, -8.5, 2, 14.5, -8.5, 2, 8, -8.5, 1.5, 8, -8.5, 1.5, 8, -2, 2, 8, -8.5, 1.5, 8, -2, 2, 8, -2, 2, 14.5, -8.5, 2, 14.5, -2, 1.5, 14.5, -2, 2, 14.5, -8.5, 1.5, 14.5, -2, 1.5, 14.5, -8.5, -2.5, 15, 14.5, -2.5, 7, 14.5, -2, 7, 14.5, -2.5, 15, 14.5, -2, 7, 14.5, -2, 15, 14.5, -2.5, 15, 14.5, -2.5, 15, 20.5, -2.5, 7, 20.5, -2.5, 15, 14.5, -2.5, 7, 20.5, -2.5, 7, 14.5, -2, 7, 14.5, -2.5, 7, 14.5, -2.5, 7, 20.5, -2, 7, 14.5, -2.5, 7, 20.5, -2, 7, 20.5, -2, 15, 14.5, -2, 15, 20.5, -2.5, 15, 20.5, -2, 15, 14.5, -2.5, 15, 20.5, -2.5, 15, 14.5, -2.5, 15, 20.5, -2, 15, 20.5, -2, 7, 20.5, -2.5, 15, 20.5, -2, 7, 20.5, -2.5, 7, 20.5, 1.5, 15, 13.5, 1.5, 7, 13.5, 2, 7, 13.5, 1.5, 15, 13.5, 2, 7, 13.5, 2, 15, 13.5, 1.5, 15, 13.5, 1.5, 15, 14, 1.5, 7, 14, 1.5, 15, 13.5, 1.5, 7, 14, 1.5, 7, 13.5, 2, 7, 13.5, 1.5, 7, 13.5, 1.5, 7, 14, 2, 7, 13.5, 1.5, 7, 14, 2, 7, 14, 2, 15, 13.5, 2, 15, 14, 1.5, 15, 14, 2, 15, 13.5, 1.5, 15, 14, 1.5, 15, 13.5, 2, 15, 13.5, 2, 7, 13.5, 2, 7, 14, 2, 15, 13.5, 2, 7, 14, 2, 15, 14, 1.5, 15, 14, 2, 15, 14, 2, 7, 14, 1.5, 15, 14, 2, 7, 14, 1.5, 7, 14, -2.5, 15, 13.5, -2.5, 7, 13.5, -2, 7, 13.5, -2.5, 15, 13.5, -2, 7, 13.5, -2, 15, 13.5, -2.5, 15, 13.5, -2.5, 15, 14, -2.5, 7, 14, -2.5, 15, 13.5, -2.5, 7, 14, -2.5, 7, 13.5, -2, 7, 13.5, -2.5, 7, 13.5, -2.5, 7, 14, -2, 7, 13.5, -2.5, 7, 14, -2, 7, 14, -2, 15, 13.5, -2, 15, 14, -2.5, 15, 14, -2, 15, 13.5, -2.5, 15, 14, -2.5, 15, 13.5, -2.5, 15, 14, -2, 15, 14, -2, 7, 14, -2.5, 15, 14, -2, 7, 14, -2.5, 7, 14, 1.5, 15, 14, 1.5, 7, 14, 2, 7, 14, 1.5, 15, 14, 2, 7, 14, 2, 15, 14, 1.5, 15, 14, 1.5, 15, 14.5, 1.5, 7, 14.5, 1.5, 15, 14, 1.5, 7, 14.5, 1.5, 7, 14, 2, 7, 14, 1.5, 7, 14, 1.5, 7, 14.5, 2, 7, 14, 1.5, 7, 14.5, 2, 7, 14.5, 2, 15, 14, 2, 15, 14.5, 1.5, 15, 14.5, 2, 15, 14, 1.5, 15, 14.5, 1.5, 15, 14, 2, 15, 14, 2, 7, 14, 2, 7, 14.5, 2, 15, 14, 2, 7, 14.5, 2, 15, 14.5, 1.5, 15, 14.5, 2, 15, 14.5, 2, 7, 14.5, 1.5, 15, 14.5, 2, 7, 14.5, 1.5, 7, 14.5, -2.5, 15, 14, -2.5, 7, 14, -2, 7, 14, -2.5, 15, 14, -2, 7, 14, -2, 15, 14, -2.5, 15, 14, -2.5, 15, 14.5, -2.5, 7, 14.5, -2.5, 15, 14, -2.5, 7, 14.5, -2.5, 7, 14, -2, 7, 14, -2.5, 7, 14, -2.5, 7, 14.5, -2, 7, 14, -2.5, 7, 14.5, -2, 7, 14.5, -2, 15, 14, -2, 15, 14.5, -2.5, 15, 14.5, -2, 15, 14, -2.5, 15, 14.5, -2.5, 15, 14, -2.5, 15, 14.5, -2, 15, 14.5, -2, 7, 14.5, -2.5, 15, 14.5, -2, 7, 14.5, -2.5, 7, 14.5, 3.5, 7, 20, 1, 7, 20, 1, 7, 20.5, 3.5, 7, 20, 1, 7, 20.5, 3.5, 7, 20.5, 3.5, 15, 20, 3.5, 15, 20.5, 1, 15, 20.5, 3.5, 15, 20, 1, 15, 20.5, 1, 15, 20, 1, 15, 20.5, 3.5, 15, 20.5, 3.5, 7, 20.5, 1, 15, 20.5, 3.5, 7, 20.5, 1, 7, 20.5, -2.5, 15, 20, -2.5, 15, 20.5, -2.5, 7, 20.5, -2.5, 15, 20, -2.5, 7, 20.5, -2.5, 7, 20, -1.5, 7, 20, -2.5, 7, 20, -2.5, 7, 20.5, -1.5, 7, 20, -2.5, 7, 20.5, -1.5, 7, 20.5, -1.5, 15, 20, -1.5, 15, 20.5, -2.5, 15, 20.5, -1.5, 15, 20, -2.5, 15, 20.5, -2.5, 15, 20, -2.5, 15, 20.5, -1.5, 15, 20.5, -1.5, 7, 20.5, -2.5, 15, 20.5, -1.5, 7, 20.5, -2.5, 7, 20.5, -1.5, 15, 20, -1.5, 15, 20.5, -1.5, 12.5, 20.5, -1.5, 15, 20, -1.5, 12.5, 20.5, -1.5, 12.5, 20, 1, 15, 20, 1, 15, 20.5, -1.5, 15, 20.5, 1, 15, 20, -1.5, 15, 20.5, -1.5, 15, 20, 1, 15, 20, 1, 12.5, 20, 1, 12.5, 20.5, 1, 15, 20, 1, 12.5, 20.5, 1, 15, 20.5, -1.5, 15, 20.5, 1, 15, 20.5, 1, 12.5, 20.5, -1.5, 15, 20.5, 1, 12.5, 20.5, -1.5, 12.5, 20.5, -3.5, 15, 26.5, -3.5, 7, 26.5, 3, 7, 26.5, -3.5, 15, 26.5, 3, 7, 26.5, 3, 15, 26.5, 2.5, 15, 21, 2.5, 15, 26.5, 2.5, 7, 26.5, 2.5, 15, 21, 2.5, 7, 26.5, 2.5, 7, 21, -3, 15, 21, -3, 7, 21, -3, 7, 26.5, -3, 15, 21, -3, 7, 26.5, -3, 15, 26.5, 2.5, 14.5, 21, -3, 14.5, 21, -3, 14.5, 26.5, 2.5, 14.5, 21, -3, 14.5, 26.5, 2.5, 14.5, 26.5, 1, 15, 20.5, 1, 15, 21, 1, 7, 21, 1, 15, 20.5, 1, 7, 21, 1, 7, 20.5, 3, 7, 20.5, 1, 7, 20.5, 1, 7, 21, 3, 7, 20.5, 1, 7, 21, 3, 7, 21, 3, 15, 20.5, 3, 15, 21, 1, 15, 21, 3, 15, 20.5, 1, 15, 21, 1, 15, 20.5, 3, 15, 20.5, 3, 7, 20.5, 3, 7, 21, 3, 15, 20.5, 3, 7, 21, 3, 15, 21, 1, 15, 21, 3, 15, 21, 3, 7, 21, 1, 15, 21, 3, 7, 21, 1, 7, 21, -3.5, 15, 20.5, -3.5, 7, 20.5, -1.5, 7, 20.5, -3.5, 15, 20.5, -1.5, 7, 20.5, -1.5, 15, 20.5, -3.5, 15, 20.5, -3.5, 15, 21, -3.5, 7, 21, -3.5, 15, 20.5, -3.5, 7, 21, -3.5, 7, 20.5, -1.5, 7, 20.5, -3.5, 7, 20.5, -3.5, 7, 21, -1.5, 7, 20.5, -3.5, 7, 21, -1.5, 7, 21, -1.5, 15, 20.5, -1.5, 15, 21, -3.5, 15, 21, -1.5, 15, 20.5, -3.5, 15, 21, -3.5, 15, 20.5, -1.5, 15, 20.5, -1.5, 7, 20.5, -1.5, 7, 21, -1.5, 15, 20.5, -1.5, 7, 21, -1.5, 15, 21, -3.5, 15, 21, -1.5, 15, 21, -1.5, 7, 21, -3.5, 15, 21, -1.5, 7, 21, -3.5, 7, 21, -1.5, 15, 20.5, -1.5, 12.5, 20.5, 1, 12.5, 20.5, -1.5, 15, 20.5, 1, 12.5, 20.5, 1, 15, 20.5, -1.5, 15, 20.5, -1.5, 15, 21, -1.5, 12.5, 21, -1.5, 15, 20.5, -1.5, 12.5, 21, -1.5, 12.5, 20.5, 1, 12.5, 20.5, -1.5, 12.5, 20.5, -1.5, 12.5, 21, 1, 12.5, 20.5, -1.5, 12.5, 21, 1, 12.5, 21, 1, 15, 20.5, 1, 15, 21, -1.5, 15, 21, 1, 15, 20.5, -1.5, 15, 21, -1.5, 15, 20.5, 1, 15, 20.5, 1, 12.5, 20.5, 1, 12.5, 21, 1, 15, 20.5, 1, 12.5, 21, 1, 15, 21, -1.5, 15, 21, 1, 15, 21, 1, 12.5, 21, -1.5, 15, 21, 1, 12.5, 21, -1.5, 12.5, 21, 1.5, 15, 14.5, 1.5, 7, 14.5, 2, 7, 14.5, 1.5, 15, 14.5, 2, 7, 14.5, 2, 15, 14.5, 1.5, 15, 14.5, 1.5, 15, 15, 1.5, 7, 15, 1.5, 15, 14.5, 1.5, 7, 15, 1.5, 7, 14.5, 2, 7, 14.5, 1.5, 7, 14.5, 1.5, 7, 15, 2, 7, 14.5, 1.5, 7, 15, 2, 7, 15, 2, 15, 14.5, 2, 15, 15, 1.5, 15, 15, 2, 15, 14.5, 1.5, 15, 15, 1.5, 15, 14.5, 2, 15, 14.5, 2, 7, 14.5, 2, 7, 15, 2, 15, 14.5, 2, 7, 15, 2, 15, 15, 1.5, 15, 15, 2, 15, 15, 2, 7, 15, 1.5, 15, 15, 2, 7, 15, 1.5, 7, 15, 3, 15, 26.5, 3, 15, 27, 3, 7, 27, 3, 15, 26.5, 3, 7, 27, 3, 7, 26.5, 17, 7, 26.5, 3, 7, 26.5, 3, 7, 27, 17, 7, 26.5, 3, 7, 27, 17, 7, 27, 17, 15, 26.5, 17, 15, 27, 3, 15, 27, 17, 15, 26.5, 3, 15, 27, 3, 15, 26.5, 17, 15, 26.5, 17, 7, 26.5, 17, 7, 27, 17, 15, 26.5, 17, 7, 27, 17, 15, 27, 3, 15, 27, 17, 15, 27, 17, 7, 27, 3, 15, 27, 17, 7, 27, 3, 7, 27, 3, 15, 20.5, 3, 15, 26.5, 3, 7, 26.5, 3, 15, 20.5, 3, 7, 26.5, 3, 7, 20.5, 3.5, 7, 20.5, 3, 7, 20.5, 3, 7, 26.5, 3.5, 7, 20.5, 3, 7, 26.5, 3.5, 7, 26.5, 3.5, 15, 20.5, 3.5, 15, 26.5, 3, 15, 26.5, 3.5, 15, 20.5, 3, 15, 26.5, 3, 15, 20.5, 3, 15, 26.5, 3.5, 15, 26.5, 3.5, 7, 26.5, 3, 15, 26.5, 3.5, 7, 26.5, 3, 7, 26.5, 2, 14.5, 14, 2, 8, 14, 3.5, 8, 14, 2, 14.5, 14, 3.5, 8, 14, 3.5, 14.5, 14, 2, 14.5, 14, 2, 14.5, 15, 2, 8, 15, 2, 14.5, 14, 2, 8, 15, 2, 8, 14, 3.5, 8, 14, 2, 8, 14, 2, 8, 15, 3.5, 8, 14, 2, 8, 15, 3.5, 8, 15, 3.5, 14.5, 14, 3.5, 14.5, 15, 2, 14.5, 15, 3.5, 14.5, 14, 2, 14.5, 15, 2, 14.5, 14, 3.5, 14.5, 14, 3.5, 8, 14, 3.5, 8, 15, 3.5, 14.5, 14, 3.5, 8, 15, 3.5, 14.5, 15, 2, 14.5, 15, 3.5, 14.5, 15, 3.5, 8, 15, 2, 14.5, 15, 3.5, 8, 15, 2, 8, 15, 17, 7, 24, 16.5, 7, 24, 16.5, 7, 26.5, 17, 7, 24, 16.5, 7, 26.5, 17, 7, 26.5, 17, 15, 24, 17, 15, 26.5, 16.5, 15, 26.5, 17, 15, 24, 16.5, 15, 26.5, 16.5, 15, 24, 16.5, 15, 26.5, 17, 15, 26.5, 17, 7, 26.5, 16.5, 15, 26.5, 17, 7, 26.5, 16.5, 7, 26.5, 16.5, 15, 14.5, 16.5, 7, 14.5, 17, 7, 14.5, 16.5, 15, 14.5, 17, 7, 14.5, 17, 15, 14.5, 17, 7, 14.5, 16.5, 7, 14.5, 16.5, 7, 18, 17, 7, 14.5, 16.5, 7, 18, 17, 7, 18, 17, 15, 14.5, 17, 15, 18, 16.5, 15, 18, 17, 15, 14.5, 16.5, 15, 18, 16.5, 15, 14.5, 16.5, 15, 18, 16.5, 12.5, 18, 17, 12.5, 18, 16.5, 15, 18, 17, 12.5, 18, 17, 15, 18, 17, 15, 18, 17, 15, 24, 16.5, 15, 24, 17, 15, 18, 16.5, 15, 24, 16.5, 15, 18, 16.5, 15, 24, 17, 15, 24, 17, 12.5, 24, 16.5, 15, 24, 17, 12.5, 24, 16.5, 12.5, 24, 16.5, 10, 18, 16.5, 7, 18, 17, 7, 18, 16.5, 10, 18, 17, 7, 18, 17, 10, 18, 17, 7, 18, 16.5, 7, 18, 16.5, 7, 24, 17, 7, 18, 16.5, 7, 24, 17, 7, 24, 16.5, 10, 24, 17, 10, 24, 17, 7, 24, 16.5, 10, 24, 17, 7, 24, 16.5, 7, 24, 3.5, 15, -22.5, 3.5, 7, -22.5, 17, 7, -22.5, 3.5, 15, -22.5, 17, 7, -22.5, 17, 15, -22.5, -1, 15, -33, -1, 15, -32.5, -1, 7, -32.5, -1, 15, -33, -1, 7, -32.5, -1, 7, -33, -3.5, 15, -33, -3.5, 7, -33, -3.5, 7, -32.5, -3.5, 15, -33, -3.5, 7, -32.5, -3.5, 15, -32.5, -1, 12.5, -33, -3.5, 12.5, -33, -3.5, 12.5, -32.5, -1, 12.5, -33, -3.5, 12.5, -32.5, -1, 12.5, -32.5, 3, 13, -39, 3, 13, -33.5, 3, 7, -33.5, 3, 13, -39, 3, 7, -33.5, 3, 7, -39, -4, 13, -39, -4, 7, -39, -4, 7, -33.5, -4, 13, -39, -4, 7, -33.5, -4, 13, -33.5, 3, 12.5, -39, -4, 12.5, -39, -4, 12.5, -33.5, 3, 12.5, -39, -4, 12.5, -33.5, 3, 12.5, -33.5, -1, 13, -33.5, -1, 7, -33.5, 3.5, 7, -33.5, -1, 13, -33.5, 3.5, 7, -33.5, 3.5, 13, -33.5, -1, 13, -33.5, -1, 13, -33, -1, 7, -33, -1, 13, -33.5, -1, 7, -33, -1, 7, -33.5, -4.5, 13, -33.5, -4.5, 7, -33.5, -3.5, 7, -33.5, -4.5, 13, -33.5, -3.5, 7, -33.5, -3.5, 13, -33.5, -3.5, 13, -33.5, -3.5, 7, -33.5, -3.5, 7, -33, -3.5, 13, -33.5, -3.5, 7, -33, -3.5, 13, -33, -1, 12.5, -33.5, -3.5, 12.5, -33.5, -3.5, 12.5, -33, -1, 12.5, -33.5, -3.5, 12.5, -33, -1, 12.5, -33, -4.5, 13, -39.5, 3.5, 13, -39.5, 3.5, 7, -39.5, -4.5, 13, -39.5, 3.5, 7, -39.5, -4.5, 7, -39.5, 3, 13, -39.5, 3, 13, -39, 3, 7, -39, 3, 13, -39.5, 3, 7, -39, 3, 7, -39.5, -4, 13, -39.5, -4, 7, -39.5, -4, 7, -39, -4, 13, -39.5, -4, 7, -39, -4, 13, -39, 3, 12.5, -39.5, -4, 12.5, -39.5, -4, 12.5, -39, 3, 12.5, -39.5, -4, 12.5, -39, 3, 12.5, -39, 3, 9, -37.6875, 3, 9, -37.5, -4, 9, -37.5, 3, 9, -37.6875, -4, 9, -37.5, -4, 9, -37.6875, -4, 9, -37.5, 3, 9, -37.5, 3, 8, -37.5, -4, 9, -37.5, 3, 8, -37.5, -4, 8, -37.5, 3, 9, -39.75, 3, 9, -39.375, -4, 9, -39.375, 3, 9, -39.75, -4, 9, -39.375, -4, 9, -39.75, 3, 9, -39.375, 3, 9, -37.6875, 1.875, 9, -37.6875, 3, 9, -39.375, 1.875, 9, -37.6875, 1.875, 9, -39.375, -3.1875, 9, -39.375, -3.1875, 9, -37.6875, -4, 9, -37.6875, -3.1875, 9, -39.375, -4, 9, -37.6875, -4, 9, -39.375, 17, 15, 13, 17, 7, 13, 17, 7, 14, 17, 15, 13, 17, 7, 14, 17, 15, 14, 2, 15, 1, 2, 7, 1, 17, 7, 1, 2, 15, 1, 17, 7, 1, 17, 15, 1, 2, 15, 1, 2, 15, 2, 2, 7, 2, 2, 15, 1, 2, 7, 2, 2, 7, 1, 17, 7, 1, 2, 7, 1, 2, 7, 2, 17, 7, 1, 2, 7, 2, 17, 7, 2, 17, 15, 1, 17, 15, 2, 2, 15, 2, 17, 15, 1, 2, 15, 2, 2, 15, 1, 17, 15, 1, 17, 7, 1, 17, 7, 2, 17, 15, 1, 17, 7, 2, 17, 15, 2, 17, 15, 12, 17, 7, 12, 17, 7, 13, 17, 15, 12, 17, 7, 13, 17, 15, 13, 16, 15, 2, 16, 7, 2, 17, 7, 2, 16, 15, 2, 17, 7, 2, 17, 15, 2, 17, 7, 2, 16, 7, 2, 16, 7, 4, 17, 7, 2, 16, 7, 4, 17, 7, 4, 17, 15, 2, 17, 15, 4, 16, 15, 4, 17, 15, 2, 16, 15, 4, 16, 15, 2, 17, 15, 2, 17, 7, 2, 17, 7, 4, 17, 15, 2, 17, 7, 4, 17, 15, 4, 17, 15, 4, 17, 14, 4, 17, 14, 12, 17, 15, 4, 17, 14, 12, 17, 15, 12, 17, 8, -8.5, 17, 7, -8.5, 20, 7, -8.5, 17, 8, -8.5, 20, 7, -8.5, 20, 8, -8.5, 17, 8, -8.5, 17, 8, 14, 17, 7, 14, 17, 8, -8.5, 17, 7, 14, 17, 7, -8.5, 20, 7, -8.5, 17, 7, -8.5, 17, 7, 14, 20, 7, -8.5, 17, 7, 14, 20, 7, 14, 20, 8, -8.5, 20, 8, 14, 17, 8, 14, 20, 8, -8.5, 17, 8, 14, 17, 8, -8.5, 20, 8, -8.5, 20, 7, -8.5, 20, 7, 14, 20, 8, -8.5, 20, 7, 14, 20, 8, 14, 17, 8, 14, 20, 8, 14, 20, 7, 14, 17, 8, 14, 20, 7, 14, 17, 7, 14, 17.375, 9.125, 13.75, 17.375, 9, 13.75, 19.5, 9, 13.75, 17.375, 9.125, 13.75, 19.5, 9, 13.75, 19.5, 9.125, 13.75, 17.375, 9.125, 13.75, 17.375, 9.125, 13.875, 17.375, 9, 13.875, 17.375, 9.125, 13.75, 17.375, 9, 13.875, 17.375, 9, 13.75, 19.5, 9, 13.75, 17.375, 9, 13.75, 17.375, 9, 13.875, 19.5, 9, 13.75, 17.375, 9, 13.875, 19.5, 9, 13.875, 19.5, 9.125, 13.75, 19.5, 9.125, 13.875, 17.375, 9.125, 13.875, 19.5, 9.125, 13.75, 17.375, 9.125, 13.875, 17.375, 9.125, 13.75, 19.5, 9.125, 13.75, 19.5, 9, 13.75, 19.5, 9, 13.875, 19.5, 9.125, 13.75, 19.5, 9, 13.875, 19.5, 9.125, 13.875, 17.375, 9.125, 13.875, 19.5, 9.125, 13.875, 19.5, 9, 13.875, 17.375, 9.125, 13.875, 19.5, 9, 13.875, 17.375, 9, 13.875, 19.375, 9.125, 1.75, 19.375, 9, 1.75, 19.5, 9, 1.75, 19.375, 9.125, 1.75, 19.5, 9, 1.75, 19.5, 9.125, 1.75, 19.375, 9.125, 1.75, 19.375, 9.125, 13.75, 19.375, 9, 13.75, 19.375, 9.125, 1.75, 19.375, 9, 13.75, 19.375, 9, 1.75, 19.5, 9, 1.75, 19.375, 9, 1.75, 19.375, 9, 13.75, 19.5, 9, 1.75, 19.375, 9, 13.75, 19.5, 9, 13.75, 19.5, 9.125, 1.75, 19.5, 9.125, 13.75, 19.375, 9.125, 13.75, 19.5, 9.125, 1.75, 19.375, 9.125, 13.75, 19.375, 9.125, 1.75, 19.5, 9.125, 1.75, 19.5, 9, 1.75, 19.5, 9, 13.75, 19.5, 9.125, 1.75, 19.5, 9, 13.75, 19.5, 9.125, 13.75, 19.375, 9.125, 13.75, 19.5, 9.125, 13.75, 19.5, 9, 13.75, 19.375, 9.125, 13.75, 19.5, 9, 13.75, 19.375, 9, 13.75, 17, 15, 0.5, 17, 7, 0.5, 17, 7, 1, 17, 15, 0.5, 17, 7, 1, 17, 15, 1, 17, 15, -0.5, 17, 7, -0.5, 17, 7, 0.5, 17, 15, -0.5, 17, 7, 0.5, 17, 15, 0.5, 17, 15, -7, 17, 13.5, -7, 17, 13.5, -0.5, 17, 15, -7, 17, 13.5, -0.5, 17, 15, -0.5, 19.375, 9.125, -8.5, 19.375, 9, -8.5, 19.5, 9, -8.5, 19.375, 9.125, -8.5, 19.5, 9, -8.5, 19.5, 9.125, -8.5, 19.375, 9.125, -8.5, 19.375, 9.125, 1.75, 19.375, 9, 1.75, 19.375, 9.125, -8.5, 19.375, 9, 1.75, 19.375, 9, -8.5, 19.5, 9, -8.5, 19.375, 9, -8.5, 19.375, 9, 1.75, 19.5, 9, -8.5, 19.375, 9, 1.75, 19.5, 9, 1.75, 19.5, 9.125, -8.5, 19.5, 9.125, 1.75, 19.375, 9.125, 1.75, 19.5, 9.125, -8.5, 19.375, 9.125, 1.75, 19.375, 9.125, -8.5, 19.5, 9.125, -8.5, 19.5, 9, -8.5, 19.5, 9, 1.75, 19.5, 9.125, -8.5, 19.5, 9, 1.75, 19.5, 9.125, 1.75, 19.375, 9.125, 1.75, 19.5, 9.125, 1.75, 19.5, 9, 1.75, 19.375, 9.125, 1.75, 19.5, 9, 1.75, 19.375, 9, 1.75, 17.375, 9.125, -8.25, 17.375, 9, -8.25, 19.5, 9, -8.25, 17.375, 9.125, -8.25, 19.5, 9, -8.25, 19.5, 9.125, -8.25, 17.375, 9.125, -8.25, 17.375, 9.125, -8.125, 17.375, 9, -8.125, 17.375, 9.125, -8.25, 17.375, 9, -8.125, 17.375, 9, -8.25, 19.5, 9, -8.25, 17.375, 9, -8.25, 17.375, 9, -8.125, 19.5, 9, -8.25, 17.375, 9, -8.125, 19.5, 9, -8.125, 19.5, 9.125, -8.25, 19.5, 9.125, -8.125, 17.375, 9.125, -8.125, 19.5, 9.125, -8.25, 17.375, 9.125, -8.125, 17.375, 9.125, -8.25, 19.5, 9.125, -8.25, 19.5, 9, -8.25, 19.5, 9, -8.125, 19.5, 9.125, -8.25, 19.5, 9, -8.125, 19.5, 9.125, -8.125, 17.375, 9.125, -8.125, 19.5, 9.125, -8.125, 19.5, 9, -8.125, 17.375, 9.125, -8.125, 19.5, 9, -8.125, 17.375, 9, -8.125, 17, 15, 14, 17, 7, 14, 17, 7, 14.5, 17, 15, 14, 17, 7, 14.5, 17, 15, 14.5, 17, 15, 24, 17, 7, 24, 17, 7, 26.5, 17, 15, 24, 17, 7, 26.5, 17, 15, 26.5, 17, 15, 14.5, 17, 7, 14.5, 17, 7, 18, 17, 15, 14.5, 17, 7, 18, 17, 15, 18, 17, 15, 18, 17, 12.5, 18, 17, 12.5, 24, 17, 15, 18, 17, 12.5, 24, 17, 15, 24, 17, 10, 18, 17, 7, 18, 17, 7, 24, 17, 10, 18, 17, 7, 24, 17, 10, 24, 17, 15, -9.5, 17, 7, -9.5, 17, 7, -9, 17, 15, -9.5, 17, 7, -9, 17, 15, -9, 17, 15, -12, 17, 7, -12, 17, 7, -9.5, 17, 15, -12, 17, 7, -9.5, 17, 15, -9.5, 17, 15, -20.5, 17, 7, -20.5, 17, 7, -19.5, 17, 15, -20.5, 17, 7, -19.5, 17, 15, -19.5, 17, 15, -19.5, 17, 14, -19.5, 17, 14, -12, 17, 15, -19.5, 17, 14, -12, 17, 15, -12, 17, 8, -19.5, 17, 7, -19.5, 17, 7, -12, 17, 8, -19.5, 17, 7, -12, 17, 8, -12, 3.5, 15, -21, 3.5, 7, -21, 17, 7, -21, 3.5, 15, -21, 17, 7, -21, 17, 15, -21, 17, 7, -21, 3.5, 7, -21, 3.5, 7, -20.5, 17, 7, -21, 3.5, 7, -20.5, 17, 7, -20.5, 17, 15, -21, 17, 15, -20.5, 3.5, 15, -20.5, 17, 15, -21, 3.5, 15, -20.5, 3.5, 15, -21, 17, 15, -21, 17, 7, -21, 17, 7, -20.5, 17, 15, -21, 17, 7, -20.5, 17, 15, -20.5, 17, 15, -21.5, 17, 7, -21.5, 17, 7, -21, 17, 15, -21.5, 17, 7, -21, 17, 15, -21, 17, 15, -22, 17, 7, -22, 17, 7, -21.5, 17, 15, -22, 17, 7, -21.5, 17, 15, -21.5, 17, 15, -9, 17, 7, -9, 17, 7, -7, 17, 15, -9, 17, 7, -7, 17, 15, -7, 17, 8, -9, 17, 7.5, -9, 17, 7.5, 1.5, 17, 8, -9, 17, 7.5, 1.5, 17, 8, 1.5, 3, 15, 2, 3, 14, 2, 16, 14, 2, 3, 15, 2, 16, 14, 2, 16, 15, 2, 3, 15, 2, 3, 15, 13, 3, 14, 13, 3, 15, 2, 3, 14, 13, 3, 14, 2, 16, 15, 2, 16, 15, 13, 3, 15, 13, 16, 15, 2, 3, 15, 13, 3, 15, 2, 16, 15, 2, 16, 14, 2, 16, 14, 13, 16, 15, 2, 16, 14, 13, 16, 15, 13, 3, 15, 13, 16, 15, 13, 16, 14, 13, 3, 15, 13, 16, 14, 13, 3, 14, 13, 16, 15, 4, 16, 14, 4, 17, 14, 4, 16, 15, 4, 17, 14, 4, 17, 15, 4, 16, 15, 4, 16, 15, 12, 16, 14, 12, 16, 15, 4, 16, 14, 12, 16, 14, 4, 17, 15, 4, 17, 15, 12, 16, 15, 12, 17, 15, 4, 16, 15, 12, 16, 15, 4, 16, 15, 12, 17, 15, 12, 17, 14, 12, 16, 15, 12, 17, 14, 12, 16, 14, 12, 17.375, 9, 13.75, 17.375, 8, 13.75, 17.5, 8, 13.75, 17.375, 9, 13.75, 17.5, 8, 13.75, 17.5, 9, 13.75, 17.375, 9, 13.75, 17.375, 9, 13.875, 17.375, 8, 13.875, 17.375, 9, 13.75, 17.375, 8, 13.875, 17.375, 8, 13.75, 17.5, 8, 13.75, 17.375, 8, 13.75, 17.375, 8, 13.875, 17.5, 8, 13.75, 17.375, 8, 13.875, 17.5, 8, 13.875, 17.5, 9, 13.75, 17.5, 9, 13.875, 17.375, 9, 13.875, 17.5, 9, 13.75, 17.375, 9, 13.875, 17.375, 9, 13.75, 17.5, 9, 13.75, 17.5, 8, 13.75, 17.5, 8, 13.875, 17.5, 9, 13.75, 17.5, 8, 13.875, 17.5, 9, 13.875, 17.375, 9, 13.875, 17.5, 9, 13.875, 17.5, 8, 13.875, 17.375, 9, 13.875, 17.5, 8, 13.875, 17.375, 8, 13.875, 18.375, 9, 13.75, 18.375, 8, 13.75, 18.5, 8, 13.75, 18.375, 9, 13.75, 18.5, 8, 13.75, 18.5, 9, 13.75, 18.375, 9, 13.75, 18.375, 9, 13.875, 18.375, 8, 13.875, 18.375, 9, 13.75, 18.375, 8, 13.875, 18.375, 8, 13.75, 18.5, 8, 13.75, 18.375, 8, 13.75, 18.375, 8, 13.875, 18.5, 8, 13.75, 18.375, 8, 13.875, 18.5, 8, 13.875, 18.5, 9, 13.75, 18.5, 9, 13.875, 18.375, 9, 13.875, 18.5, 9, 13.75, 18.375, 9, 13.875, 18.375, 9, 13.75, 18.5, 9, 13.75, 18.5, 8, 13.75, 18.5, 8, 13.875, 18.5, 9, 13.75, 18.5, 8, 13.875, 18.5, 9, 13.875, 18.375, 9, 13.875, 18.5, 9, 13.875, 18.5, 8, 13.875, 18.375, 9, 13.875, 18.5, 8, 13.875, 18.375, 8, 13.875, 19.375, 9, 13.75, 19.375, 8, 13.75, 19.5, 8, 13.75, 19.375, 9, 13.75, 19.5, 8, 13.75, 19.5, 9, 13.75, 19.375, 9, 13.75, 19.375, 9, 13.875, 19.375, 8, 13.875, 19.375, 9, 13.75, 19.375, 8, 13.875, 19.375, 8, 13.75, 19.5, 8, 13.75, 19.375, 8, 13.75, 19.375, 8, 13.875, 19.5, 8, 13.75, 19.375, 8, 13.875, 19.5, 8, 13.875, 19.5, 9, 13.75, 19.5, 9, 13.875, 19.375, 9, 13.875, 19.5, 9, 13.75, 19.375, 9, 13.875, 19.375, 9, 13.75, 19.5, 9, 13.75, 19.5, 8, 13.75, 19.5, 8, 13.875, 19.5, 9, 13.75, 19.5, 8, 13.875, 19.5, 9, 13.875, 19.375, 9, 13.875, 19.5, 9, 13.875, 19.5, 8, 13.875, 19.375, 9, 13.875, 19.5, 8, 13.875, 19.375, 8, 13.875, 19.375, 9, 12.75, 19.375, 8, 12.75, 19.5, 8, 12.75, 19.375, 9, 12.75, 19.5, 8, 12.75, 19.5, 9, 12.75, 19.375, 9, 12.75, 19.375, 9, 12.875, 19.375, 8, 12.875, 19.375, 9, 12.75, 19.375, 8, 12.875, 19.375, 8, 12.75, 19.5, 8, 12.75, 19.375, 8, 12.75, 19.375, 8, 12.875, 19.5, 8, 12.75, 19.375, 8, 12.875, 19.5, 8, 12.875, 19.5, 9, 12.75, 19.5, 9, 12.875, 19.375, 9, 12.875, 19.5, 9, 12.75, 19.375, 9, 12.875, 19.375, 9, 12.75, 19.5, 9, 12.75, 19.5, 8, 12.75, 19.5, 8, 12.875, 19.5, 9, 12.75, 19.5, 8, 12.875, 19.5, 9, 12.875, 19.375, 9, 12.875, 19.5, 9, 12.875, 19.5, 8, 12.875, 19.375, 9, 12.875, 19.5, 8, 12.875, 19.375, 8, 12.875, 19.375, 9, 11.75, 19.375, 8, 11.75, 19.5, 8, 11.75, 19.375, 9, 11.75, 19.5, 8, 11.75, 19.5, 9, 11.75, 19.375, 9, 11.75, 19.375, 9, 11.875, 19.375, 8, 11.875, 19.375, 9, 11.75, 19.375, 8, 11.875, 19.375, 8, 11.75, 19.5, 8, 11.75, 19.375, 8, 11.75, 19.375, 8, 11.875, 19.5, 8, 11.75, 19.375, 8, 11.875, 19.5, 8, 11.875, 19.5, 9, 11.75, 19.5, 9, 11.875, 19.375, 9, 11.875, 19.5, 9, 11.75, 19.375, 9, 11.875, 19.375, 9, 11.75, 19.5, 9, 11.75, 19.5, 8, 11.75, 19.5, 8, 11.875, 19.5, 9, 11.75, 19.5, 8, 11.875, 19.5, 9, 11.875, 19.375, 9, 11.875, 19.5, 9, 11.875, 19.5, 8, 11.875, 19.375, 9, 11.875, 19.5, 8, 11.875, 19.375, 8, 11.875, 19.375, 9, 10.75, 19.375, 8, 10.75, 19.5, 8, 10.75, 19.375, 9, 10.75, 19.5, 8, 10.75, 19.5, 9, 10.75, 19.375, 9, 10.75, 19.375, 9, 10.875, 19.375, 8, 10.875, 19.375, 9, 10.75, 19.375, 8, 10.875, 19.375, 8, 10.75, 19.5, 8, 10.75, 19.375, 8, 10.75, 19.375, 8, 10.875, 19.5, 8, 10.75, 19.375, 8, 10.875, 19.5, 8, 10.875, 19.5, 9, 10.75, 19.5, 9, 10.875, 19.375, 9, 10.875, 19.5, 9, 10.75, 19.375, 9, 10.875, 19.375, 9, 10.75, 19.5, 9, 10.75, 19.5, 8, 10.75, 19.5, 8, 10.875, 19.5, 9, 10.75, 19.5, 8, 10.875, 19.5, 9, 10.875, 19.375, 9, 10.875, 19.5, 9, 10.875, 19.5, 8, 10.875, 19.375, 9, 10.875, 19.5, 8, 10.875, 19.375, 8, 10.875, 19.375, 9, 9.75, 19.375, 8, 9.75, 19.5, 8, 9.75, 19.375, 9, 9.75, 19.5, 8, 9.75, 19.5, 9, 9.75, 19.375, 9, 9.75, 19.375, 9, 9.875, 19.375, 8, 9.875, 19.375, 9, 9.75, 19.375, 8, 9.875, 19.375, 8, 9.75, 19.5, 8, 9.75, 19.375, 8, 9.75, 19.375, 8, 9.875, 19.5, 8, 9.75, 19.375, 8, 9.875, 19.5, 8, 9.875, 19.5, 9, 9.75, 19.5, 9, 9.875, 19.375, 9, 9.875, 19.5, 9, 9.75, 19.375, 9, 9.875, 19.375, 9, 9.75, 19.5, 9, 9.75, 19.5, 8, 9.75, 19.5, 8, 9.875, 19.5, 9, 9.75, 19.5, 8, 9.875, 19.5, 9, 9.875, 19.375, 9, 9.875, 19.5, 9, 9.875, 19.5, 8, 9.875, 19.375, 9, 9.875, 19.5, 8, 9.875, 19.375, 8, 9.875, 19.375, 9, 8.75, 19.375, 8, 8.75, 19.5, 8, 8.75, 19.375, 9, 8.75, 19.5, 8, 8.75, 19.5, 9, 8.75, 19.375, 9, 8.75, 19.375, 9, 8.875, 19.375, 8, 8.875, 19.375, 9, 8.75, 19.375, 8, 8.875, 19.375, 8, 8.75, 19.5, 8, 8.75, 19.375, 8, 8.75, 19.375, 8, 8.875, 19.5, 8, 8.75, 19.375, 8, 8.875, 19.5, 8, 8.875, 19.5, 9, 8.75, 19.5, 9, 8.875, 19.375, 9, 8.875, 19.5, 9, 8.75, 19.375, 9, 8.875, 19.375, 9, 8.75, 19.5, 9, 8.75, 19.5, 8, 8.75, 19.5, 8, 8.875, 19.5, 9, 8.75, 19.5, 8, 8.875, 19.5, 9, 8.875, 19.375, 9, 8.875, 19.5, 9, 8.875, 19.5, 8, 8.875, 19.375, 9, 8.875, 19.5, 8, 8.875, 19.375, 8, 8.875, 19.375, 9, 7.75, 19.375, 8, 7.75, 19.5, 8, 7.75, 19.375, 9, 7.75, 19.5, 8, 7.75, 19.5, 9, 7.75, 19.375, 9, 7.75, 19.375, 9, 7.875, 19.375, 8, 7.875, 19.375, 9, 7.75, 19.375, 8, 7.875, 19.375, 8, 7.75, 19.5, 8, 7.75, 19.375, 8, 7.75, 19.375, 8, 7.875, 19.5, 8, 7.75, 19.375, 8, 7.875, 19.5, 8, 7.875, 19.5, 9, 7.75, 19.5, 9, 7.875, 19.375, 9, 7.875, 19.5, 9, 7.75, 19.375, 9, 7.875, 19.375, 9, 7.75, 19.5, 9, 7.75, 19.5, 8, 7.75, 19.5, 8, 7.875, 19.5, 9, 7.75, 19.5, 8, 7.875, 19.5, 9, 7.875, 19.375, 9, 7.875, 19.5, 9, 7.875, 19.5, 8, 7.875, 19.375, 9, 7.875, 19.5, 8, 7.875, 19.375, 8, 7.875, 19.375, 9, 6.75, 19.375, 8, 6.75, 19.5, 8, 6.75, 19.375, 9, 6.75, 19.5, 8, 6.75, 19.5, 9, 6.75, 19.375, 9, 6.75, 19.375, 9, 6.875, 19.375, 8, 6.875, 19.375, 9, 6.75, 19.375, 8, 6.875, 19.375, 8, 6.75, 19.5, 8, 6.75, 19.375, 8, 6.75, 19.375, 8, 6.875, 19.5, 8, 6.75, 19.375, 8, 6.875, 19.5, 8, 6.875, 19.5, 9, 6.75, 19.5, 9, 6.875, 19.375, 9, 6.875, 19.5, 9, 6.75, 19.375, 9, 6.875, 19.375, 9, 6.75, 19.5, 9, 6.75, 19.5, 8, 6.75, 19.5, 8, 6.875, 19.5, 9, 6.75, 19.5, 8, 6.875, 19.5, 9, 6.875, 19.375, 9, 6.875, 19.5, 9, 6.875, 19.5, 8, 6.875, 19.375, 9, 6.875, 19.5, 8, 6.875, 19.375, 8, 6.875, 19.375, 9, 5.75, 19.375, 8, 5.75, 19.5, 8, 5.75, 19.375, 9, 5.75, 19.5, 8, 5.75, 19.5, 9, 5.75, 19.375, 9, 5.75, 19.375, 9, 5.875, 19.375, 8, 5.875, 19.375, 9, 5.75, 19.375, 8, 5.875, 19.375, 8, 5.75, 19.5, 8, 5.75, 19.375, 8, 5.75, 19.375, 8, 5.875, 19.5, 8, 5.75, 19.375, 8, 5.875, 19.5, 8, 5.875, 19.5, 9, 5.75, 19.5, 9, 5.875, 19.375, 9, 5.875, 19.5, 9, 5.75, 19.375, 9, 5.875, 19.375, 9, 5.75, 19.5, 9, 5.75, 19.5, 8, 5.75, 19.5, 8, 5.875, 19.5, 9, 5.75, 19.5, 8, 5.875, 19.5, 9, 5.875, 19.375, 9, 5.875, 19.5, 9, 5.875, 19.5, 8, 5.875, 19.375, 9, 5.875, 19.5, 8, 5.875, 19.375, 8, 5.875, 19.375, 9, 4.75, 19.375, 8, 4.75, 19.5, 8, 4.75, 19.375, 9, 4.75, 19.5, 8, 4.75, 19.5, 9, 4.75, 19.375, 9, 4.75, 19.375, 9, 4.875, 19.375, 8, 4.875, 19.375, 9, 4.75, 19.375, 8, 4.875, 19.375, 8, 4.75, 19.5, 8, 4.75, 19.375, 8, 4.75, 19.375, 8, 4.875, 19.5, 8, 4.75, 19.375, 8, 4.875, 19.5, 8, 4.875, 19.5, 9, 4.75, 19.5, 9, 4.875, 19.375, 9, 4.875, 19.5, 9, 4.75, 19.375, 9, 4.875, 19.375, 9, 4.75, 19.5, 9, 4.75, 19.5, 8, 4.75, 19.5, 8, 4.875, 19.5, 9, 4.75, 19.5, 8, 4.875, 19.5, 9, 4.875, 19.375, 9, 4.875, 19.5, 9, 4.875, 19.5, 8, 4.875, 19.375, 9, 4.875, 19.5, 8, 4.875, 19.375, 8, 4.875, 19.375, 9, 3.75, 19.375, 8, 3.75, 19.5, 8, 3.75, 19.375, 9, 3.75, 19.5, 8, 3.75, 19.5, 9, 3.75, 19.375, 9, 3.75, 19.375, 9, 3.875, 19.375, 8, 3.875, 19.375, 9, 3.75, 19.375, 8, 3.875, 19.375, 8, 3.75, 19.5, 8, 3.75, 19.375, 8, 3.75, 19.375, 8, 3.875, 19.5, 8, 3.75, 19.375, 8, 3.875, 19.5, 8, 3.875, 19.5, 9, 3.75, 19.5, 9, 3.875, 19.375, 9, 3.875, 19.5, 9, 3.75, 19.375, 9, 3.875, 19.375, 9, 3.75, 19.5, 9, 3.75, 19.5, 8, 3.75, 19.5, 8, 3.875, 19.5, 9, 3.75, 19.5, 8, 3.875, 19.5, 9, 3.875, 19.375, 9, 3.875, 19.5, 9, 3.875, 19.5, 8, 3.875, 19.375, 9, 3.875, 19.5, 8, 3.875, 19.375, 8, 3.875, 19.375, 9, 2.75, 19.375, 8, 2.75, 19.5, 8, 2.75, 19.375, 9, 2.75, 19.5, 8, 2.75, 19.5, 9, 2.75, 19.375, 9, 2.75, 19.375, 9, 2.875, 19.375, 8, 2.875, 19.375, 9, 2.75, 19.375, 8, 2.875, 19.375, 8, 2.75, 19.5, 8, 2.75, 19.375, 8, 2.75, 19.375, 8, 2.875, 19.5, 8, 2.75, 19.375, 8, 2.875, 19.5, 8, 2.875, 19.5, 9, 2.75, 19.5, 9, 2.875, 19.375, 9, 2.875, 19.5, 9, 2.75, 19.375, 9, 2.875, 19.375, 9, 2.75, 19.5, 9, 2.75, 19.5, 8, 2.75, 19.5, 8, 2.875, 19.5, 9, 2.75, 19.5, 8, 2.875, 19.5, 9, 2.875, 19.375, 9, 2.875, 19.5, 9, 2.875, 19.5, 8, 2.875, 19.375, 9, 2.875, 19.5, 8, 2.875, 19.375, 8, 2.875, 19.375, 9, 1.75, 19.375, 8, 1.75, 19.5, 8, 1.75, 19.375, 9, 1.75, 19.5, 8, 1.75, 19.5, 9, 1.75, 19.375, 9, 1.75, 19.375, 9, 1.875, 19.375, 8, 1.875, 19.375, 9, 1.75, 19.375, 8, 1.875, 19.375, 8, 1.75, 19.5, 8, 1.75, 19.375, 8, 1.75, 19.375, 8, 1.875, 19.5, 8, 1.75, 19.375, 8, 1.875, 19.5, 8, 1.875, 19.5, 9, 1.75, 19.5, 9, 1.875, 19.375, 9, 1.875, 19.5, 9, 1.75, 19.375, 9, 1.875, 19.375, 9, 1.75, 19.5, 9, 1.75, 19.5, 8, 1.75, 19.5, 8, 1.875, 19.5, 9, 1.75, 19.5, 8, 1.875, 19.5, 9, 1.875, 19.375, 9, 1.875, 19.5, 9, 1.875, 19.5, 8, 1.875, 19.375, 9, 1.875, 19.5, 8, 1.875, 19.375, 8, 1.875, -2, 15, 1.5, -2, 14.5, 1.5, 1.5, 14.5, 1.5, -2, 15, 1.5, 1.5, 14.5, 1.5, 1.5, 15, 1.5, -2, 15, 1.5, -2, 15, 13.5, -2, 14.5, 13.5, -2, 15, 1.5, -2, 14.5, 13.5, -2, 14.5, 1.5, 1.5, 15, 1.5, 1.5, 15, 13.5, -2, 15, 13.5, 1.5, 15, 1.5, -2, 15, 13.5, -2, 15, 1.5, 1.5, 15, 1.5, 1.5, 14.5, 1.5, 1.5, 14.5, 13.5, 1.5, 15, 1.5, 1.5, 14.5, 13.5, 1.5, 15, 13.5, -2, 15, 13.5, 1.5, 15, 13.5, 1.5, 14.5, 13.5, -2, 15, 13.5, 1.5, 14.5, 13.5, -2, 14.5, 13.5, -2, 15, -8.5, -2, 14.5, -8.5, 16.5, 14.5, -8.5, -2, 15, -8.5, 16.5, 14.5, -8.5, 16.5, 15, -8.5, -2, 15, -8.5, -2, 15, 0.5, -2, 14.5, 0.5, -2, 15, -8.5, -2, 14.5, 0.5, -2, 14.5, -8.5, 16.5, 15, -8.5, 16.5, 15, 0.5, -2, 15, 0.5, 16.5, 15, -8.5, -2, 15, 0.5, -2, 15, -8.5, 16.5, 15, -8.5, 16.5, 14.5, -8.5, 16.5, 14.5, 0.5, 16.5, 15, -8.5, 16.5, 14.5, 0.5, 16.5, 15, 0.5, -2, 15, 0.5, 16.5, 15, 0.5, 16.5, 14.5, 0.5, -2, 15, 0.5, 16.5, 14.5, 0.5, -2, 14.5, 0.5, -2, 7.5, -8.5, -2, 7, -8.5, 16.5, 7, -8.5, -2, 7.5, -8.5, 16.5, 7, -8.5, 16.5, 7.5, -8.5, -2, 7.5, -8.5, -2, 7.5, 0.5, -2, 7, 0.5, -2, 7.5, -8.5, -2, 7, 0.5, -2, 7, -8.5, 16.5, 7, -8.5, -2, 7, -8.5, -2, 7, 0.5, 16.5, 7, -8.5, -2, 7, 0.5, 16.5, 7, 0.5, 16.5, 7.5, -8.5, 16.5, 7.5, 0.5, -2, 7.5, 0.5, 16.5, 7.5, -8.5, -2, 7.5, 0.5, -2, 7.5, -8.5, 16.5, 7.5, -8.5, 16.5, 7, -8.5, 16.5, 7, 0.5, 16.5, 7.5, -8.5, 16.5, 7, 0.5, 16.5, 7.5, 0.5, -2, 7.5, 0.5, 16.5, 7.5, 0.5, 16.5, 7, 0.5, -2, 7.5, 0.5, 16.5, 7, 0.5, -2, 7, 0.5, -2, 15, 0.5, -2, 14.5, 0.5, 1.5, 14.5, 0.5, -2, 15, 0.5, 1.5, 14.5, 0.5, 1.5, 15, 0.5, -2, 15, 0.5, -2, 15, 1, -2, 14.5, 1, -2, 15, 0.5, -2, 14.5, 1, -2, 14.5, 0.5, 1.5, 15, 0.5, 1.5, 15, 1, -2, 15, 1, 1.5, 15, 0.5, -2, 15, 1, -2, 15, 0.5, 1.5, 15, 0.5, 1.5, 14.5, 0.5, 1.5, 14.5, 1, 1.5, 15, 0.5, 1.5, 14.5, 1, 1.5, 15, 1, -2, 15, 1, 1.5, 15, 1, 1.5, 14.5, 1, -2, 15, 1, 1.5, 14.5, 1, -2, 14.5, 1, 19.375, 9, 0.75, 19.375, 8, 0.75, 19.5, 8, 0.75, 19.375, 9, 0.75, 19.5, 8, 0.75, 19.5, 9, 0.75, 19.375, 9, 0.75, 19.375, 9, 0.875, 19.375, 8, 0.875, 19.375, 9, 0.75, 19.375, 8, 0.875, 19.375, 8, 0.75, 19.5, 8, 0.75, 19.375, 8, 0.75, 19.375, 8, 0.875, 19.5, 8, 0.75, 19.375, 8, 0.875, 19.5, 8, 0.875, 19.5, 9, 0.75, 19.5, 9, 0.875, 19.375, 9, 0.875, 19.5, 9, 0.75, 19.375, 9, 0.875, 19.375, 9, 0.75, 19.5, 9, 0.75, 19.5, 8, 0.75, 19.5, 8, 0.875, 19.5, 9, 0.75, 19.5, 8, 0.875, 19.5, 9, 0.875, 19.375, 9, 0.875, 19.5, 9, 0.875, 19.5, 8, 0.875, 19.375, 9, 0.875, 19.5, 8, 0.875, 19.375, 8, 0.875, 19.375, 9, -0.25, 19.375, 8, -0.25, 19.5, 8, -0.25, 19.375, 9, -0.25, 19.5, 8, -0.25, 19.5, 9, -0.25, 19.375, 9, -0.25, 19.375, 9, -0.125, 19.375, 8, -0.125, 19.375, 9, -0.25, 19.375, 8, -0.125, 19.375, 8, -0.25, 19.5, 8, -0.25, 19.375, 8, -0.25, 19.375, 8, -0.125, 19.5, 8, -0.25, 19.375, 8, -0.125, 19.5, 8, -0.125, 19.5, 9, -0.25, 19.5, 9, -0.125, 19.375, 9, -0.125, 19.5, 9, -0.25, 19.375, 9, -0.125, 19.375, 9, -0.25, 19.5, 9, -0.25, 19.5, 8, -0.25, 19.5, 8, -0.125, 19.5, 9, -0.25, 19.5, 8, -0.125, 19.5, 9, -0.125, 19.375, 9, -0.125, 19.5, 9, -0.125, 19.5, 8, -0.125, 19.375, 9, -0.125, 19.5, 8, -0.125, 19.375, 8, -0.125, 19.375, 9, -1.25, 19.375, 8, -1.25, 19.5, 8, -1.25, 19.375, 9, -1.25, 19.5, 8, -1.25, 19.5, 9, -1.25, 19.375, 9, -1.25, 19.375, 9, -1.125, 19.375, 8, -1.125, 19.375, 9, -1.25, 19.375, 8, -1.125, 19.375, 8, -1.25, 19.5, 8, -1.25, 19.375, 8, -1.25, 19.375, 8, -1.125, 19.5, 8, -1.25, 19.375, 8, -1.125, 19.5, 8, -1.125, 19.5, 9, -1.25, 19.5, 9, -1.125, 19.375, 9, -1.125, 19.5, 9, -1.25, 19.375, 9, -1.125, 19.375, 9, -1.25, 19.5, 9, -1.25, 19.5, 8, -1.25, 19.5, 8, -1.125, 19.5, 9, -1.25, 19.5, 8, -1.125, 19.5, 9, -1.125, 19.375, 9, -1.125, 19.5, 9, -1.125, 19.5, 8, -1.125, 19.375, 9, -1.125, 19.5, 8, -1.125, 19.375, 8, -1.125, 19.375, 9, -2.25, 19.375, 8, -2.25, 19.5, 8, -2.25, 19.375, 9, -2.25, 19.5, 8, -2.25, 19.5, 9, -2.25, 19.375, 9, -2.25, 19.375, 9, -2.125, 19.375, 8, -2.125, 19.375, 9, -2.25, 19.375, 8, -2.125, 19.375, 8, -2.25, 19.5, 8, -2.25, 19.375, 8, -2.25, 19.375, 8, -2.125, 19.5, 8, -2.25, 19.375, 8, -2.125, 19.5, 8, -2.125, 19.5, 9, -2.25, 19.5, 9, -2.125, 19.375, 9, -2.125, 19.5, 9, -2.25, 19.375, 9, -2.125, 19.375, 9, -2.25, 19.5, 9, -2.25, 19.5, 8, -2.25, 19.5, 8, -2.125, 19.5, 9, -2.25, 19.5, 8, -2.125, 19.5, 9, -2.125, 19.375, 9, -2.125, 19.5, 9, -2.125, 19.5, 8, -2.125, 19.375, 9, -2.125, 19.5, 8, -2.125, 19.375, 8, -2.125, 19.375, 9, -3.25, 19.375, 8, -3.25, 19.5, 8, -3.25, 19.375, 9, -3.25, 19.5, 8, -3.25, 19.5, 9, -3.25, 19.375, 9, -3.25, 19.375, 9, -3.125, 19.375, 8, -3.125, 19.375, 9, -3.25, 19.375, 8, -3.125, 19.375, 8, -3.25, 19.5, 8, -3.25, 19.375, 8, -3.25, 19.375, 8, -3.125, 19.5, 8, -3.25, 19.375, 8, -3.125, 19.5, 8, -3.125, 19.5, 9, -3.25, 19.5, 9, -3.125, 19.375, 9, -3.125, 19.5, 9, -3.25, 19.375, 9, -3.125, 19.375, 9, -3.25, 19.5, 9, -3.25, 19.5, 8, -3.25, 19.5, 8, -3.125, 19.5, 9, -3.25, 19.5, 8, -3.125, 19.5, 9, -3.125, 19.375, 9, -3.125, 19.5, 9, -3.125, 19.5, 8, -3.125, 19.375, 9, -3.125, 19.5, 8, -3.125, 19.375, 8, -3.125, 19.375, 9, -4.25, 19.375, 8, -4.25, 19.5, 8, -4.25, 19.375, 9, -4.25, 19.5, 8, -4.25, 19.5, 9, -4.25, 19.375, 9, -4.25, 19.375, 9, -4.125, 19.375, 8, -4.125, 19.375, 9, -4.25, 19.375, 8, -4.125, 19.375, 8, -4.25, 19.5, 8, -4.25, 19.375, 8, -4.25, 19.375, 8, -4.125, 19.5, 8, -4.25, 19.375, 8, -4.125, 19.5, 8, -4.125, 19.5, 9, -4.25, 19.5, 9, -4.125, 19.375, 9, -4.125, 19.5, 9, -4.25, 19.375, 9, -4.125, 19.375, 9, -4.25, 19.5, 9, -4.25, 19.5, 8, -4.25, 19.5, 8, -4.125, 19.5, 9, -4.25, 19.5, 8, -4.125, 19.5, 9, -4.125, 19.375, 9, -4.125, 19.5, 9, -4.125, 19.5, 8, -4.125, 19.375, 9, -4.125, 19.5, 8, -4.125, 19.375, 8, -4.125, 19.375, 9, -5.25, 19.375, 8, -5.25, 19.5, 8, -5.25, 19.375, 9, -5.25, 19.5, 8, -5.25, 19.5, 9, -5.25, 19.375, 9, -5.25, 19.375, 9, -5.125, 19.375, 8, -5.125, 19.375, 9, -5.25, 19.375, 8, -5.125, 19.375, 8, -5.25, 19.5, 8, -5.25, 19.375, 8, -5.25, 19.375, 8, -5.125, 19.5, 8, -5.25, 19.375, 8, -5.125, 19.5, 8, -5.125, 19.5, 9, -5.25, 19.5, 9, -5.125, 19.375, 9, -5.125, 19.5, 9, -5.25, 19.375, 9, -5.125, 19.375, 9, -5.25, 19.5, 9, -5.25, 19.5, 8, -5.25, 19.5, 8, -5.125, 19.5, 9, -5.25, 19.5, 8, -5.125, 19.5, 9, -5.125, 19.375, 9, -5.125, 19.5, 9, -5.125, 19.5, 8, -5.125, 19.375, 9, -5.125, 19.5, 8, -5.125, 19.375, 8, -5.125, 19.375, 9, -6.25, 19.375, 8, -6.25, 19.5, 8, -6.25, 19.375, 9, -6.25, 19.5, 8, -6.25, 19.5, 9, -6.25, 19.375, 9, -6.25, 19.375, 9, -6.125, 19.375, 8, -6.125, 19.375, 9, -6.25, 19.375, 8, -6.125, 19.375, 8, -6.25, 19.5, 8, -6.25, 19.375, 8, -6.25, 19.375, 8, -6.125, 19.5, 8, -6.25, 19.375, 8, -6.125, 19.5, 8, -6.125, 19.5, 9, -6.25, 19.5, 9, -6.125, 19.375, 9, -6.125, 19.5, 9, -6.25, 19.375, 9, -6.125, 19.375, 9, -6.25, 19.5, 9, -6.25, 19.5, 8, -6.25, 19.5, 8, -6.125, 19.5, 9, -6.25, 19.5, 8, -6.125, 19.5, 9, -6.125, 19.375, 9, -6.125, 19.5, 9, -6.125, 19.5, 8, -6.125, 19.375, 9, -6.125, 19.5, 8, -6.125, 19.375, 8, -6.125, 19.375, 9, -7.25, 19.375, 8, -7.25, 19.5, 8, -7.25, 19.375, 9, -7.25, 19.5, 8, -7.25, 19.5, 9, -7.25, 19.375, 9, -7.25, 19.375, 9, -7.125, 19.375, 8, -7.125, 19.375, 9, -7.25, 19.375, 8, -7.125, 19.375, 8, -7.25, 19.5, 8, -7.25, 19.375, 8, -7.25, 19.375, 8, -7.125, 19.5, 8, -7.25, 19.375, 8, -7.125, 19.5, 8, -7.125, 19.5, 9, -7.25, 19.5, 9, -7.125, 19.375, 9, -7.125, 19.5, 9, -7.25, 19.375, 9, -7.125, 19.375, 9, -7.25, 19.5, 9, -7.25, 19.5, 8, -7.25, 19.5, 8, -7.125, 19.5, 9, -7.25, 19.5, 8, -7.125, 19.5, 9, -7.125, 19.375, 9, -7.125, 19.5, 9, -7.125, 19.5, 8, -7.125, 19.375, 9, -7.125, 19.5, 8, -7.125, 19.375, 8, -7.125, 19.375, 9, -8.25, 19.375, 8, -8.25, 19.5, 8, -8.25, 19.375, 9, -8.25, 19.5, 8, -8.25, 19.5, 9, -8.25, 19.375, 9, -8.25, 19.375, 9, -8.125, 19.375, 8, -8.125, 19.375, 9, -8.25, 19.375, 8, -8.125, 19.375, 8, -8.25, 19.5, 8, -8.25, 19.375, 8, -8.25, 19.375, 8, -8.125, 19.5, 8, -8.25, 19.375, 8, -8.125, 19.5, 8, -8.125, 19.5, 9, -8.25, 19.5, 9, -8.125, 19.375, 9, -8.125, 19.5, 9, -8.25, 19.375, 9, -8.125, 19.375, 9, -8.25, 19.5, 9, -8.25, 19.5, 8, -8.25, 19.5, 8, -8.125, 19.5, 9, -8.25, 19.5, 8, -8.125, 19.5, 9, -8.125, 19.375, 9, -8.125, 19.5, 9, -8.125, 19.5, 8, -8.125, 19.375, 9, -8.125, 19.5, 8, -8.125, 19.375, 8, -8.125, 18.375, 9, -8.25, 18.375, 8, -8.25, 18.5, 8, -8.25, 18.375, 9, -8.25, 18.5, 8, -8.25, 18.5, 9, -8.25, 18.375, 9, -8.25, 18.375, 9, -8.125, 18.375, 8, -8.125, 18.375, 9, -8.25, 18.375, 8, -8.125, 18.375, 8, -8.25, 18.5, 8, -8.25, 18.375, 8, -8.25, 18.375, 8, -8.125, 18.5, 8, -8.25, 18.375, 8, -8.125, 18.5, 8, -8.125, 18.5, 9, -8.25, 18.5, 9, -8.125, 18.375, 9, -8.125, 18.5, 9, -8.25, 18.375, 9, -8.125, 18.375, 9, -8.25, 18.5, 9, -8.25, 18.5, 8, -8.25, 18.5, 8, -8.125, 18.5, 9, -8.25, 18.5, 8, -8.125, 18.5, 9, -8.125, 18.375, 9, -8.125, 18.5, 9, -8.125, 18.5, 8, -8.125, 18.375, 9, -8.125, 18.5, 8, -8.125, 18.375, 8, -8.125, 17.375, 9, -8.25, 17.375, 8, -8.25, 17.5, 8, -8.25, 17.375, 9, -8.25, 17.5, 8, -8.25, 17.5, 9, -8.25, 17.375, 9, -8.25, 17.375, 9, -8.125, 17.375, 8, -8.125, 17.375, 9, -8.25, 17.375, 8, -8.125, 17.375, 8, -8.25, 17.5, 8, -8.25, 17.375, 8, -8.25, 17.375, 8, -8.125, 17.5, 8, -8.25, 17.375, 8, -8.125, 17.5, 8, -8.125, 17.5, 9, -8.25, 17.5, 9, -8.125, 17.375, 9, -8.125, 17.5, 9, -8.25, 17.375, 9, -8.125, 17.375, 9, -8.25, 17.5, 9, -8.25, 17.5, 8, -8.25, 17.5, 8, -8.125, 17.5, 9, -8.25, 17.5, 8, -8.125, 17.5, 9, -8.125, 17.375, 9, -8.125, 17.5, 9, -8.125, 17.5, 8, -8.125, 17.375, 9, -8.125, 17.5, 8, -8.125, 17.375, 8, -8.125, 19.5, 9.125, -8.25, 19.5, 9, -8.25, 19.625, 9, -8.25, 19.5, 9.125, -8.25, 19.625, 9, -8.25, 19.625, 9.125, -8.25, 19.5, 9.125, -8.25, 19.5, 9.125, -8.125, 19.5, 9, -8.125, 19.5, 9.125, -8.25, 19.5, 9, -8.125, 19.5, 9, -8.25, 19.625, 9, -8.25, 19.5, 9, -8.25, 19.5, 9, -8.125, 19.625, 9, -8.25, 19.5, 9, -8.125, 19.625, 9, -8.125, 19.625, 9.125, -8.25, 19.625, 9.125, -8.125, 19.5, 9.125, -8.125, 19.625, 9.125, -8.25, 19.5, 9.125, -8.125, 19.5, 9.125, -8.25, 19.625, 9.125, -8.25, 19.625, 9, -8.25, 19.625, 9, -8.125, 19.625, 9.125, -8.25, 19.625, 9, -8.125, 19.625, 9.125, -8.125, 19.5, 9.125, -8.125, 19.625, 9.125, -8.125, 19.625, 9, -8.125, 19.5, 9.125, -8.125, 19.625, 9, -8.125, 19.5, 9, -8.125, 19.375, 9.125, 13.875, 19.375, 9, 13.875, 19.5, 9, 13.875, 19.375, 9.125, 13.875, 19.5, 9, 13.875, 19.5, 9.125, 13.875, 19.375, 9.125, 13.875, 19.375, 9.125, 14, 19.375, 9, 14, 19.375, 9.125, 13.875, 19.375, 9, 14, 19.375, 9, 13.875, 19.5, 9, 13.875, 19.375, 9, 13.875, 19.375, 9, 14, 19.5, 9, 13.875, 19.375, 9, 14, 19.5, 9, 14, 19.5, 9.125, 13.875, 19.5, 9.125, 14, 19.375, 9.125, 14, 19.5, 9.125, 13.875, 19.375, 9.125, 14, 19.375, 9.125, 13.875, 19.5, 9.125, 13.875, 19.5, 9, 13.875, 19.5, 9, 14, 19.5, 9.125, 13.875, 19.5, 9, 14, 19.5, 9.125, 14, 19.375, 9.125, 14, 19.5, 9.125, 14, 19.5, 9, 14, 19.375, 9.125, 14, 19.5, 9, 14, 19.375, 9, 14, 19.5, 9.125, 13.75, 19.5, 9, 13.75, 19.625, 9, 13.75, 19.5, 9.125, 13.75, 19.625, 9, 13.75, 19.625, 9.125, 13.75, 19.5, 9.125, 13.75, 19.5, 9.125, 13.875, 19.5, 9, 13.875, 19.5, 9.125, 13.75, 19.5, 9, 13.875, 19.5, 9, 13.75, 19.625, 9, 13.75, 19.5, 9, 13.75, 19.5, 9, 13.875, 19.625, 9, 13.75, 19.5, 9, 13.875, 19.625, 9, 13.875, 19.625, 9.125, 13.75, 19.625, 9.125, 13.875, 19.5, 9.125, 13.875, 19.625, 9.125, 13.75, 19.5, 9.125, 13.875, 19.5, 9.125, 13.75, 19.625, 9.125, 13.75, 19.625, 9, 13.75, 19.625, 9, 13.875, 19.625, 9.125, 13.75, 19.625, 9, 13.875, 19.625, 9.125, 13.875, 19.5, 9.125, 13.875, 19.625, 9.125, 13.875, 19.625, 9, 13.875, 19.5, 9.125, 13.875, 19.625, 9, 13.875, 19.5, 9, 13.875, -2, 15, 14.5, -2, 14.5, 14.5, 1.5, 14.5, 14.5, -2, 15, 14.5, 1.5, 14.5, 14.5, 1.5, 15, 14.5, -2, 15, 14.5, -2, 15, 20.5, -2, 14.5, 20.5, -2, 15, 14.5, -2, 14.5, 20.5, -2, 14.5, 14.5, 1.5, 15, 14.5, 1.5, 15, 20.5, -2, 15, 20.5, 1.5, 15, 14.5, -2, 15, 20.5, -2, 15, 14.5, 1.5, 15, 14.5, 1.5, 14.5, 14.5, 1.5, 14.5, 20.5, 1.5, 15, 14.5, 1.5, 14.5, 20.5, 1.5, 15, 20.5, -2, 15, 20.5, 1.5, 15, 20.5, 1.5, 14.5, 20.5, -2, 15, 20.5, 1.5, 14.5, 20.5, -2, 14.5, 20.5, -2, 15, 13.5, -2, 14.5, 13.5, 1.5, 14.5, 13.5, -2, 15, 13.5, 1.5, 14.5, 13.5, 1.5, 15, 13.5, -2, 15, 13.5, -2, 15, 14, -2, 14.5, 14, -2, 15, 13.5, -2, 14.5, 14, -2, 14.5, 13.5, 1.5, 15, 13.5, 1.5, 15, 14, -2, 15, 14, 1.5, 15, 13.5, -2, 15, 14, -2, 15, 13.5, 1.5, 15, 13.5, 1.5, 14.5, 13.5, 1.5, 14.5, 14, 1.5, 15, 13.5, 1.5, 14.5, 14, 1.5, 15, 14, -2, 15, 14, 1.5, 15, 14, 1.5, 14.5, 14, -2, 15, 14, 1.5, 14.5, 14, -2, 14.5, 14, -2, 15, 14, -2, 14.5, 14, 1.5, 14.5, 14, -2, 15, 14, 1.5, 14.5, 14, 1.5, 15, 14, -2, 15, 14, -2, 15, 14.5, -2, 14.5, 14.5, -2, 15, 14, -2, 14.5, 14.5, -2, 14.5, 14, 1.5, 15, 14, 1.5, 15, 14.5, -2, 15, 14.5, 1.5, 15, 14, -2, 15, 14.5, -2, 15, 14, 1.5, 15, 14, 1.5, 14.5, 14, 1.5, 14.5, 14.5, 1.5, 15, 14, 1.5, 14.5, 14.5, 1.5, 15, 14.5, -2, 15, 14.5, 1.5, 15, 14.5, 1.5, 14.5, 14.5, -2, 15, 14.5, 1.5, 14.5, 14.5, -2, 14.5, 14.5, -3.5, 15, 26.5, -3.5, 15, 27, -3.5, 7, 27, -3.5, 15, 26.5, -3.5, 7, 27, -3.5, 7, 26.5, 3, 7, 26.5, -3.5, 7, 26.5, -3.5, 7, 27, 3, 7, 26.5, -3.5, 7, 27, 3, 7, 27, 3, 15, 26.5, 3, 15, 27, -3.5, 15, 27, 3, 15, 26.5, -3.5, 15, 27, -3.5, 15, 26.5, 3, 15, 26.5, 3, 7, 26.5, 3, 7, 27, 3, 15, 26.5, 3, 7, 27, 3, 15, 27, -3.5, 15, 27, 3, 15, 27, 3, 7, 27, -3.5, 15, 27, 3, 7, 27, -3.5, 7, 27, 2.5, 15, 21, 2.5, 7, 21, 3, 7, 21, 2.5, 15, 21, 3, 7, 21, 3, 15, 21, 3, 7, 21, 2.5, 7, 21, 2.5, 7, 26.5, 3, 7, 21, 2.5, 7, 26.5, 3, 7, 26.5, 3, 15, 21, 3, 15, 26.5, 2.5, 15, 26.5, 3, 15, 21, 2.5, 15, 26.5, 2.5, 15, 21, 3, 15, 21, 3, 7, 21, 3, 7, 26.5, 3, 15, 21, 3, 7, 26.5, 3, 15, 26.5, 2.5, 15, 26.5, 3, 15, 26.5, 3, 7, 26.5, 2.5, 15, 26.5, 3, 7, 26.5, 2.5, 7, 26.5, -3.5, 15, 21, -3.5, 7, 21, -3, 7, 21, -3.5, 15, 21, -3, 7, 21, -3, 15, 21, -3.5, 15, 21, -3.5, 15, 26.5, -3.5, 7, 26.5, -3.5, 15, 21, -3.5, 7, 26.5, -3.5, 7, 21, -3, 7, 21, -3.5, 7, 21, -3.5, 7, 26.5, -3, 7, 21, -3.5, 7, 26.5, -3, 7, 26.5, -3, 15, 21, -3, 15, 26.5, -3.5, 15, 26.5, -3, 15, 21, -3.5, 15, 26.5, -3.5, 15, 21, -3.5, 15, 26.5, -3, 15, 26.5, -3, 7, 26.5, -3.5, 15, 26.5, -3, 7, 26.5, -3.5, 7, 26.5, -3, 15, 21, -3, 14.5, 21, 2.5, 14.5, 21, -3, 15, 21, 2.5, 14.5, 21, 2.5, 15, 21, -3, 15, 21, -3, 15, 26.5, -3, 14.5, 26.5, -3, 15, 21, -3, 14.5, 26.5, -3, 14.5, 21, 2.5, 15, 21, 2.5, 15, 26.5, -3, 15, 26.5, 2.5, 15, 21, -3, 15, 26.5, -3, 15, 21, 2.5, 15, 21, 2.5, 14.5, 21, 2.5, 14.5, 26.5, 2.5, 15, 21, 2.5, 14.5, 26.5, 2.5, 15, 26.5, -3, 15, 26.5, 2.5, 15, 26.5, 2.5, 14.5, 26.5, -3, 15, 26.5, 2.5, 14.5, 26.5, -3, 14.5, 26.5, -3, 7.5, 21, -3, 7, 21, 2.5, 7, 21, -3, 7.5, 21, 2.5, 7, 21, 2.5, 7.5, 21, -3, 7.5, 21, -3, 7.5, 26.5, -3, 7, 26.5, -3, 7.5, 21, -3, 7, 26.5, -3, 7, 21, 2.5, 7, 21, -3, 7, 21, -3, 7, 26.5, 2.5, 7, 21, -3, 7, 26.5, 2.5, 7, 26.5, 2.5, 7.5, 21, 2.5, 7.5, 26.5, -3, 7.5, 26.5, 2.5, 7.5, 21, -3, 7.5, 26.5, -3, 7.5, 21, 2.5, 7.5, 21, 2.5, 7, 21, 2.5, 7, 26.5, 2.5, 7.5, 21, 2.5, 7, 26.5, 2.5, 7.5, 26.5, -3, 7.5, 26.5, 2.5, 7.5, 26.5, 2.5, 7, 26.5, -3, 7.5, 26.5, 2.5, 7, 26.5, -3, 7, 26.5, 1.5, 15, 15, 1.5, 14.5, 15, 2, 14.5, 15, 1.5, 15, 15, 2, 14.5, 15, 2, 15, 15, 1.5, 15, 15, 1.5, 15, 20, 1.5, 14.5, 20, 1.5, 15, 15, 1.5, 14.5, 20, 1.5, 14.5, 15, 2, 15, 15, 2, 15, 20, 1.5, 15, 20, 2, 15, 15, 1.5, 15, 20, 1.5, 15, 15, 2, 15, 15, 2, 14.5, 15, 2, 14.5, 20, 2, 15, 15, 2, 14.5, 20, 2, 15, 20, 1.5, 15, 20, 2, 15, 20, 2, 14.5, 20, 1.5, 15, 20, 2, 14.5, 20, 1.5, 14.5, 20, 3.5, 15, 14.5, 3.5, 14.5, 14.5, 16.5, 14.5, 14.5, 3.5, 15, 14.5, 16.5, 14.5, 14.5, 16.5, 15, 14.5, 3.5, 15, 14.5, 3.5, 15, 26.5, 3.5, 14.5, 26.5, 3.5, 15, 14.5, 3.5, 14.5, 26.5, 3.5, 14.5, 14.5, 16.5, 15, 14.5, 16.5, 15, 26.5, 3.5, 15, 26.5, 16.5, 15, 14.5, 3.5, 15, 26.5, 3.5, 15, 14.5, 16.5, 15, 14.5, 16.5, 14.5, 14.5, 16.5, 14.5, 26.5, 16.5, 15, 14.5, 16.5, 14.5, 26.5, 16.5, 15, 26.5, 3.5, 15, 26.5, 16.5, 15, 26.5, 16.5, 14.5, 26.5, 3.5, 15, 26.5, 16.5, 14.5, 26.5, 3.5, 14.5, 26.5, 2, 15, 14, 2, 14.5, 14, 3, 14.5, 14, 2, 15, 14, 3, 14.5, 14, 3, 15, 14, 2, 15, 14, 2, 15, 20.5, 2, 14.5, 20.5, 2, 15, 14, 2, 14.5, 20.5, 2, 14.5, 14, 3, 15, 14, 3, 15, 20.5, 2, 15, 20.5, 3, 15, 14, 2, 15, 20.5, 2, 15, 14, 3, 15, 14, 3, 14.5, 14, 3, 14.5, 20.5, 3, 15, 14, 3, 14.5, 20.5, 3, 15, 20.5, 2, 15, 20.5, 3, 15, 20.5, 3, 14.5, 20.5, 2, 15, 20.5, 3, 14.5, 20.5, 2, 14.5, 20.5, 3, 15, 14, 3, 14.5, 14, 3.5, 14.5, 14, 3, 15, 14, 3.5, 14.5, 14, 3.5, 15, 14, 3, 15, 14, 3, 15, 14.5, 3, 14.5, 14.5, 3, 15, 14, 3, 14.5, 14.5, 3, 14.5, 14, 3.5, 14.5, 14, 3, 14.5, 14, 3, 14.5, 14.5, 3.5, 14.5, 14, 3, 14.5, 14.5, 3.5, 14.5, 14.5, 3.5, 15, 14, 3.5, 15, 14.5, 3, 15, 14.5, 3.5, 15, 14, 3, 15, 14.5, 3, 15, 14, 3.5, 15, 14, 3.5, 14.5, 14, 3.5, 14.5, 14.5, 3.5, 15, 14, 3.5, 14.5, 14.5, 3.5, 15, 14.5, 3, 15, 14.5, 3.5, 15, 14.5, 3.5, 14.5, 14.5, 3, 15, 14.5, 3.5, 14.5, 14.5, 3, 14.5, 14.5, 3, 8, 14, 3, 7, 14, 3.5, 7, 14, 3, 8, 14, 3.5, 7, 14, 3.5, 8, 14, 3, 8, 14, 3, 8, 14.5, 3, 7, 14.5, 3, 8, 14, 3, 7, 14.5, 3, 7, 14, 3.5, 7, 14, 3, 7, 14, 3, 7, 14.5, 3.5, 7, 14, 3, 7, 14.5, 3.5, 7, 14.5, 3.5, 8, 14, 3.5, 8, 14.5, 3, 8, 14.5, 3.5, 8, 14, 3, 8, 14.5, 3, 8, 14, 3.5, 8, 14, 3.5, 7, 14, 3.5, 7, 14.5, 3.5, 8, 14, 3.5, 7, 14.5, 3.5, 8, 14.5, 3, 8, 14.5, 3.5, 8, 14.5, 3.5, 7, 14.5, 3, 8, 14.5, 3.5, 7, 14.5, 3, 7, 14.5, 3, 15, 14.5, 3, 14.5, 14.5, 3.5, 14.5, 14.5, 3, 15, 14.5, 3.5, 14.5, 14.5, 3.5, 15, 14.5, 3, 15, 14.5, 3, 15, 20.5, 3, 14.5, 20.5, 3, 15, 14.5, 3, 14.5, 20.5, 3, 14.5, 14.5, 3.5, 15, 14.5, 3.5, 15, 20.5, 3, 15, 20.5, 3.5, 15, 14.5, 3, 15, 20.5, 3, 15, 14.5, 3.5, 15, 14.5, 3.5, 14.5, 14.5, 3.5, 14.5, 20.5, 3.5, 15, 14.5, 3.5, 14.5, 20.5, 3.5, 15, 20.5, 3, 15, 20.5, 3.5, 15, 20.5, 3.5, 14.5, 20.5, 3, 15, 20.5, 3.5, 14.5, 20.5, 3, 14.5, 20.5, -2, 15, -20.5, -2, 14.5, -20.5, 16.5, 14.5, -20.5, -2, 15, -20.5, 16.5, 14.5, -20.5, 16.5, 15, -20.5, -2, 15, -20.5, -2, 15, -9.5, -2, 14.5, -9.5, -2, 15, -20.5, -2, 14.5, -9.5, -2, 14.5, -20.5, 16.5, 15, -20.5, 16.5, 15, -9.5, -2, 15, -9.5, 16.5, 15, -20.5, -2, 15, -9.5, -2, 15, -20.5, 16.5, 15, -20.5, 16.5, 14.5, -20.5, 16.5, 14.5, -9.5, 16.5, 15, -20.5, 16.5, 14.5, -9.5, 16.5, 15, -9.5, -2, 15, -9.5, 16.5, 15, -9.5, 16.5, 14.5, -9.5, -2, 15, -9.5, 16.5, 14.5, -9.5, -2, 14.5, -9.5, -2, 7.5, -20.5, -2, 7, -20.5, 16.5, 7, -20.5, -2, 7.5, -20.5, 16.5, 7, -20.5, 16.5, 7.5, -20.5, -2, 7.5, -20.5, -2, 7.5, -9.5, -2, 7, -9.5, -2, 7.5, -20.5, -2, 7, -9.5, -2, 7, -20.5, 16.5, 7, -20.5, -2, 7, -20.5, -2, 7, -9.5, 16.5, 7, -20.5, -2, 7, -9.5, 16.5, 7, -9.5, 16.5, 7.5, -20.5, 16.5, 7.5, -9.5, -2, 7.5, -9.5, 16.5, 7.5, -20.5, -2, 7.5, -9.5, -2, 7.5, -20.5, 16.5, 7.5, -20.5, 16.5, 7, -20.5, 16.5, 7, -9.5, 16.5, 7.5, -20.5, 16.5, 7, -9.5, 16.5, 7.5, -9.5, -2, 7.5, -9.5, 16.5, 7.5, -9.5, 16.5, 7, -9.5, -2, 7.5, -9.5, 16.5, 7, -9.5, -2, 7, -9.5, -2.5, 15, -9, -2.5, 7, -9, -2, 7, -9, -2.5, 15, -9, -2, 7, -9, -2, 15, -9, -2.5, 15, -9, -2.5, 15, -8.5, -2.5, 7, -8.5, -2.5, 15, -9, -2.5, 7, -8.5, -2.5, 7, -9, -2, 7, -9, -2.5, 7, -9, -2.5, 7, -8.5, -2, 7, -9, -2.5, 7, -8.5, -2, 7, -8.5, -2, 15, -9, -2, 15, -8.5, -2.5, 15, -8.5, -2, 15, -9, -2.5, 15, -8.5, -2.5, 15, -9, -2, 15, -9, -2, 7, -9, -2, 7, -8.5, -2, 15, -9, -2, 7, -8.5, -2, 15, -8.5, -2.5, 15, -8.5, -2, 15, -8.5, -2, 7, -8.5, -2.5, 15, -8.5, -2, 7, -8.5, -2.5, 7, -8.5, -2, 15, -9, -2, 14.5, -9, 1.5, 14.5, -9, -2, 15, -9, 1.5, 14.5, -9, 1.5, 15, -9, -2, 15, -9, -2, 15, -8.5, -2, 14.5, -8.5, -2, 15, -9, -2, 14.5, -8.5, -2, 14.5, -9, 1.5, 14.5, -9, -2, 14.5, -9, -2, 14.5, -8.5, 1.5, 14.5, -9, -2, 14.5, -8.5, 1.5, 14.5, -8.5, 1.5, 15, -9, 1.5, 15, -8.5, -2, 15, -8.5, 1.5, 15, -9, -2, 15, -8.5, -2, 15, -9, 1.5, 15, -9, 1.5, 14.5, -9, 1.5, 14.5, -8.5, 1.5, 15, -9, 1.5, 14.5, -8.5, 1.5, 15, -8.5, -2, 15, -8.5, 1.5, 15, -8.5, 1.5, 14.5, -8.5, -2, 15, -8.5, 1.5, 14.5, -8.5, -2, 14.5, -8.5, -2.5, 15, -9.5, -2.5, 7, -9.5, -2, 7, -9.5, -2.5, 15, -9.5, -2, 7, -9.5, -2, 15, -9.5, -2.5, 15, -9.5, -2.5, 15, -9, -2.5, 7, -9, -2.5, 15, -9.5, -2.5, 7, -9, -2.5, 7, -9.5, -2, 7, -9.5, -2.5, 7, -9.5, -2.5, 7, -9, -2, 7, -9.5, -2.5, 7, -9, -2, 7, -9, -2, 15, -9.5, -2, 15, -9, -2.5, 15, -9, -2, 15, -9.5, -2.5, 15, -9, -2.5, 15, -9.5, -2.5, 15, -9, -2, 15, -9, -2, 7, -9, -2.5, 15, -9, -2, 7, -9, -2.5, 7, -9, -2, 15, -9.5, -2, 14.5, -9.5, 1.5, 14.5, -9.5, -2, 15, -9.5, 1.5, 14.5, -9.5, 1.5, 15, -9.5, -2, 15, -9.5, -2, 15, -9, -2, 14.5, -9, -2, 15, -9.5, -2, 14.5, -9, -2, 14.5, -9.5, 1.5, 15, -9.5, 1.5, 15, -9, -2, 15, -9, 1.5, 15, -9.5, -2, 15, -9, -2, 15, -9.5, 1.5, 15, -9.5, 1.5, 14.5, -9.5, 1.5, 14.5, -9, 1.5, 15, -9.5, 1.5, 14.5, -9, 1.5, 15, -9, -2, 15, -9, 1.5, 15, -9, 1.5, 14.5, -9, -2, 15, -9, 1.5, 14.5, -9, -2, 14.5, -9, 16.5, 15, -20.5, 16.5, 7, -20.5, 17, 7, -20.5, 16.5, 15, -20.5, 17, 7, -20.5, 17, 15, -20.5, 17, 7, -20.5, 16.5, 7, -20.5, 16.5, 7, -19.5, 17, 7, -20.5, 16.5, 7, -19.5, 17, 7, -19.5, 17, 15, -20.5, 17, 15, -19.5, 16.5, 15, -19.5, 17, 15, -20.5, 16.5, 15, -19.5, 16.5, 15, -20.5, 16.5, 8, -19.5, 16.5, 7, -19.5, 17, 7, -19.5, 16.5, 8, -19.5, 17, 7, -19.5, 17, 8, -19.5, 16.5, 8, -19.5, 16.5, 8, -12, 16.5, 7, -12, 16.5, 8, -19.5, 16.5, 7, -12, 16.5, 7, -19.5, 17, 7, -19.5, 16.5, 7, -19.5, 16.5, 7, -12, 17, 7, -19.5, 16.5, 7, -12, 17, 7, -12, 16.5, 8, -12, 17, 8, -12, 17, 7, -12, 16.5, 8, -12, 17, 7, -12, 16.5, 7, -12, -2.5, 15, -15, -2.5, 7, -15, -2, 7, -15, -2.5, 15, -15, -2, 7, -15, -2, 15, -15, -2.5, 15, -15, -2.5, 15, -9.5, -2.5, 7, -9.5, -2.5, 15, -15, -2.5, 7, -9.5, -2.5, 7, -15, -2, 7, -15, -2.5, 7, -15, -2.5, 7, -9.5, -2, 7, -15, -2.5, 7, -9.5, -2, 7, -9.5, -2, 15, -15, -2, 15, -9.5, -2.5, 15, -9.5, -2, 15, -15, -2.5, 15, -9.5, -2.5, 15, -15, -2.5, 15, -9.5, -2, 15, -9.5, -2, 7, -9.5, -2.5, 15, -9.5, -2, 7, -9.5, -2.5, 7, -9.5, -2.5, 15, -20.5, -2.5, 14.5, -20.5, -2, 14.5, -20.5, -2.5, 15, -20.5, -2, 14.5, -20.5, -2, 15, -20.5, -2.5, 15, -20.5, -2.5, 15, -15, -2.5, 14.5, -15, -2.5, 15, -20.5, -2.5, 14.5, -15, -2.5, 14.5, -20.5, -2, 15, -20.5, -2, 15, -15, -2.5, 15, -15, -2, 15, -20.5, -2.5, 15, -15, -2.5, 15, -20.5, -2, 15, -20.5, -2, 14.5, -20.5, -2, 14.5, -15, -2, 15, -20.5, -2, 14.5, -15, -2, 15, -15, -2.5, 15, -15, -2, 15, -15, -2, 14.5, -15, -2.5, 15, -15, -2, 14.5, -15, -2.5, 14.5, -15, -3, 15, -20.5, -3, 14.5, -20.5, -2.5, 14.5, -20.5, -3, 15, -20.5, -2.5, 14.5, -20.5, -2.5, 15, -20.5, -3, 15, -20.5, -3, 15, -15, -3, 14.5, -15, -3, 15, -20.5, -3, 14.5, -15, -3, 14.5, -20.5, -2.5, 15, -20.5, -2.5, 15, -15, -3, 15, -15, -2.5, 15, -20.5, -3, 15, -15, -3, 15, -20.5, -2.5, 15, -20.5, -2.5, 14.5, -20.5, -2.5, 14.5, -15, -2.5, 15, -20.5, -2.5, 14.5, -15, -2.5, 15, -15, -3, 15, -15, -2.5, 15, -15, -2.5, 14.5, -15, -3, 15, -15, -2.5, 14.5, -15, -3, 14.5, -15, -4.5, 15, -20.5, -4.5, 7, -20.5, -3.5, 7, -20.5, -4.5, 15, -20.5, -3.5, 7, -20.5, -3.5, 15, -20.5, -4.5, 15, -20.5, -4.5, 15, -15, -4.5, 7, -15, -4.5, 15, -20.5, -4.5, 7, -15, -4.5, 7, -20.5, -3.5, 7, -20.5, -4.5, 7, -20.5, -4.5, 7, -15, -3.5, 7, -20.5, -4.5, 7, -15, -3.5, 7, -15, -3.5, 15, -20.5, -3.5, 15, -15, -4.5, 15, -15, -3.5, 15, -20.5, -4.5, 15, -15, -4.5, 15, -20.5, -4.5, 15, -15, -3.5, 15, -15, -3.5, 7, -15, -4.5, 15, -15, -3.5, 7, -15, -4.5, 7, -15, -3.5, 15, -20.5, -3.5, 14.5, -20.5, -3, 14.5, -20.5, -3.5, 15, -20.5, -3, 14.5, -20.5, -3, 15, -20.5, -3.5, 15, -20.5, -3.5, 15, -15, -3.5, 14.5, -15, -3.5, 15, -20.5, -3.5, 14.5, -15, -3.5, 14.5, -20.5, -3, 15, -20.5, -3, 15, -15, -3.5, 15, -15, -3, 15, -20.5, -3.5, 15, -15, -3.5, 15, -20.5, -3, 15, -20.5, -3, 14.5, -20.5, -3, 14.5, -15, -3, 15, -20.5, -3, 14.5, -15, -3, 15, -15, -3.5, 15, -15, -3, 15, -15, -3, 14.5, -15, -3.5, 15, -15, -3, 14.5, -15, -3.5, 14.5, -15, -2, 15, -21, -2, 14.5, -21, 3.5, 14.5, -21, -2, 15, -21, 3.5, 14.5, -21, 3.5, 15, -21, -2, 15, -21, -2, 15, -20.5, -2, 14.5, -20.5, -2, 15, -21, -2, 14.5, -20.5, -2, 14.5, -21, 3.5, 15, -21, 3.5, 15, -20.5, -2, 15, -20.5, 3.5, 15, -21, -2, 15, -20.5, -2, 15, -21, 3.5, 15, -21, 3.5, 14.5, -21, 3.5, 14.5, -20.5, 3.5, 15, -21, 3.5, 14.5, -20.5, 3.5, 15, -20.5, -2, 15, -20.5, 3.5, 15, -20.5, 3.5, 14.5, -20.5, -2, 15, -20.5, 3.5, 14.5, -20.5, -2, 14.5, -20.5, 3.5, 15, -21.5, 3.5, 7, -21.5, 17, 7, -21.5, 3.5, 15, -21.5, 17, 7, -21.5, 17, 15, -21.5, 17, 7, -21.5, 3.5, 7, -21.5, 3.5, 7, -21, 17, 7, -21.5, 3.5, 7, -21, 17, 7, -21, 17, 15, -21.5, 17, 15, -21, 3.5, 15, -21, 17, 15, -21.5, 3.5, 15, -21, 3.5, 15, -21.5, 3.5, 15, -21, 17, 15, -21, 17, 7, -21, 3.5, 15, -21, 17, 7, -21, 3.5, 7, -21, -4.5, 15, -21.5, -4.5, 7, -21.5, -2, 7, -21.5, -4.5, 15, -21.5, -2, 7, -21.5, -2, 15, -21.5, -4.5, 15, -21.5, -4.5, 15, -21, -4.5, 7, -21, -4.5, 15, -21.5, -4.5, 7, -21, -4.5, 7, -21.5, -2, 7, -21.5, -4.5, 7, -21.5, -4.5, 7, -21, -2, 7, -21.5, -4.5, 7, -21, -2, 7, -21, -2, 15, -21.5, -2, 15, -21, -4.5, 15, -21, -2, 15, -21.5, -4.5, 15, -21, -4.5, 15, -21.5, -4.5, 15, -21, -2, 15, -21, -2, 7, -21, -4.5, 15, -21, -2, 7, -21, -4.5, 7, -21, -2, 15, -21.5, -2, 14.5, -21.5, 3.5, 14.5, -21.5, -2, 15, -21.5, 3.5, 14.5, -21.5, 3.5, 15, -21.5, -2, 15, -21.5, -2, 15, -21, -2, 14.5, -21, -2, 15, -21.5, -2, 14.5, -21, -2, 14.5, -21.5, 3.5, 15, -21.5, 3.5, 15, -21, -2, 15, -21, 3.5, 15, -21.5, -2, 15, -21, -2, 15, -21.5, 3.5, 15, -21.5, 3.5, 14.5, -21.5, 3.5, 14.5, -21, 3.5, 15, -21.5, 3.5, 14.5, -21, 3.5, 15, -21, -2, 15, -21, 3.5, 15, -21, 3.5, 14.5, -21, -2, 15, -21, 3.5, 14.5, -21, -2, 14.5, -21, 3.5, 15, -22, 3.5, 7, -22, 17, 7, -22, 3.5, 15, -22, 17, 7, -22, 17, 15, -22, 17, 7, -22, 3.5, 7, -22, 3.5, 7, -21.5, 17, 7, -22, 3.5, 7, -21.5, 17, 7, -21.5, 17, 15, -22, 17, 15, -21.5, 3.5, 15, -21.5, 17, 15, -22, 3.5, 15, -21.5, 3.5, 15, -22, 3.5, 15, -21.5, 17, 15, -21.5, 17, 7, -21.5, 3.5, 15, -21.5, 17, 7, -21.5, 3.5, 7, -21.5, -2, 15, -22, -2, 14.5, -22, 3.5, 14.5, -22, -2, 15, -22, 3.5, 14.5, -22, 3.5, 15, -22, -2, 15, -22, -2, 15, -21.5, -2, 14.5, -21.5, -2, 15, -22, -2, 14.5, -21.5, -2, 14.5, -22, 3.5, 15, -22, 3.5, 15, -21.5, -2, 15, -21.5, 3.5, 15, -22, -2, 15, -21.5, -2, 15, -22, 3.5, 15, -22, 3.5, 14.5, -22, 3.5, 14.5, -21.5, 3.5, 15, -22, 3.5, 14.5, -21.5, 3.5, 15, -21.5, -2, 15, -21.5, 3.5, 15, -21.5, 3.5, 14.5, -21.5, -2, 15, -21.5, 3.5, 14.5, -21.5, -2, 14.5, -21.5, -4.5, 15, -32.5, -4.5, 7, -32.5, -4, 7, -32.5, -4.5, 15, -32.5, -4, 7, -32.5, -4, 15, -32.5, -4.5, 15, -32.5, -4.5, 15, -22.5, -4.5, 7, -22.5, -4.5, 15, -32.5, -4.5, 7, -22.5, -4.5, 7, -32.5, -4, 7, -32.5, -4.5, 7, -32.5, -4.5, 7, -22.5, -4, 7, -32.5, -4.5, 7, -22.5, -4, 7, -22.5, -4, 15, -32.5, -4, 15, -22.5, -4.5, 15, -22.5, -4, 15, -32.5, -4.5, 15, -22.5, -4.5, 15, -32.5, -4.5, 15, -22.5, -4, 15, -22.5, -4, 7, -22.5, -4.5, 15, -22.5, -4, 7, -22.5, -4.5, 7, -22.5, -4, 15, -32.5, -4, 14.5, -32.5, 16.5, 14.5, -32.5, -4, 15, -32.5, 16.5, 14.5, -32.5, 16.5, 15, -32.5, -4, 15, -32.5, -4, 15, -22.5, -4, 14.5, -22.5, -4, 15, -32.5, -4, 14.5, -22.5, -4, 14.5, -32.5, 16.5, 15, -32.5, 16.5, 15, -22.5, -4, 15, -22.5, 16.5, 15, -32.5, -4, 15, -22.5, -4, 15, -32.5, 16.5, 15, -32.5, 16.5, 14.5, -32.5, 16.5, 14.5, -22.5, 16.5, 15, -32.5, 16.5, 14.5, -22.5, 16.5, 15, -22.5, -4, 15, -22.5, 16.5, 15, -22.5, 16.5, 14.5, -22.5, -4, 15, -22.5, 16.5, 14.5, -22.5, -4, 14.5, -22.5, -4, 7.5, -32.5, -4, 7, -32.5, 16.5, 7, -32.5, -4, 7.5, -32.5, 16.5, 7, -32.5, 16.5, 7.5, -32.5, -4, 7.5, -32.5, -4, 7.5, -22.5, -4, 7, -22.5, -4, 7.5, -32.5, -4, 7, -22.5, -4, 7, -32.5, 16.5, 7, -32.5, -4, 7, -32.5, -4, 7, -22.5, 16.5, 7, -32.5, -4, 7, -22.5, 16.5, 7, -22.5, 16.5, 7.5, -32.5, 16.5, 7.5, -22.5, -4, 7.5, -22.5, 16.5, 7.5, -32.5, -4, 7.5, -22.5, -4, 7.5, -32.5, 16.5, 7.5, -32.5, 16.5, 7, -32.5, 16.5, 7, -22.5, 16.5, 7.5, -32.5, 16.5, 7, -22.5, 16.5, 7.5, -22.5, -4, 7.5, -22.5, 16.5, 7.5, -22.5, 16.5, 7, -22.5, -4, 7.5, -22.5, 16.5, 7, -22.5, -4, 7, -22.5, 17, 7, -22.5, 3.5, 7, -22.5, 3.5, 7, -22, 17, 7, -22.5, 3.5, 7, -22, 17, 7, -22, 17, 15, -22.5, 17, 15, -22, 3.5, 15, -22, 17, 15, -22.5, 3.5, 15, -22, 3.5, 15, -22.5, 17, 15, -22.5, 17, 7, -22.5, 17, 7, -22, 17, 15, -22.5, 17, 7, -22, 17, 15, -22, 3.5, 15, -22, 17, 15, -22, 17, 7, -22, 3.5, 15, -22, 17, 7, -22, 3.5, 7, -22, -4.5, 15, -22.5, -4.5, 15, -22, -4.5, 7, -22, -4.5, 15, -22.5, -4.5, 7, -22, -4.5, 7, -22.5, -2, 7, -22.5, -4.5, 7, -22.5, -4.5, 7, -22, -2, 7, -22.5, -4.5, 7, -22, -2, 7, -22, -2, 15, -22.5, -2, 15, -22, -4.5, 15, -22, -2, 15, -22.5, -4.5, 15, -22, -4.5, 15, -22.5, -4.5, 15, -22, -2, 15, -22, -2, 7, -22, -4.5, 15, -22, -2, 7, -22, -4.5, 7, -22, -2, 15, -22.5, -2, 14.5, -22.5, 3.5, 14.5, -22.5, -2, 15, -22.5, 3.5, 14.5, -22.5, 3.5, 15, -22.5, -2, 15, -22.5, -2, 15, -22, -2, 14.5, -22, -2, 15, -22.5, -2, 14.5, -22, -2, 14.5, -22.5, 3.5, 15, -22.5, 3.5, 15, -22, -2, 15, -22, 3.5, 15, -22.5, -2, 15, -22, -2, 15, -22.5, 3.5, 15, -22.5, 3.5, 14.5, -22.5, 3.5, 14.5, -22, 3.5, 15, -22.5, 3.5, 14.5, -22, 3.5, 15, -22, -2, 15, -22, 3.5, 15, -22, 3.5, 14.5, -22, -2, 15, -22, 3.5, 14.5, -22, -2, 14.5, -22, 16, 10.5, -32.5, 16, 8, -32.5, 16.5, 8, -32.5, 16, 10.5, -32.5, 16.5, 8, -32.5, 16.5, 10.5, -32.5, 16.5, 8, -32.5, 16, 8, -32.5, 16, 8, -22.5, 16.5, 8, -32.5, 16, 8, -22.5, 16.5, 8, -22.5, 16.5, 10.5, -32.5, 16.5, 8, -32.5, 16.5, 8, -22.5, 16.5, 10.5, -32.5, 16.5, 8, -22.5, 16.5, 10.5, -22.5, 16, 10.5, -22.5, 16.5, 10.5, -22.5, 16.5, 8, -22.5, 16, 10.5, -22.5, 16.5, 8, -22.5, 16, 8, -22.5, 17, 7, -23, 16.5, 7, -23, 16.5, 7, -22.5, 17, 7, -23, 16.5, 7, -22.5, 17, 7, -22.5, 17, 15, -23, 17, 15, -22.5, 16.5, 15, -22.5, 17, 15, -23, 16.5, 15, -22.5, 16.5, 15, -23, 17, 15, -23, 17, 7, -23, 17, 7, -22.5, 17, 15, -23, 17, 7, -22.5, 17, 15, -22.5, 16.5, 15, -22.5, 17, 15, -22.5, 17, 7, -22.5, 16.5, 15, -22.5, 17, 7, -22.5, 16.5, 7, -22.5, 16.5, 15, -32, 16.5, 14, -32, 17, 14, -32, 16.5, 15, -32, 17, 14, -32, 17, 15, -32, 17, 15, -32, 17, 15, -23, 16.5, 15, -23, 17, 15, -32, 16.5, 15, -23, 16.5, 15, -32, 17, 15, -32, 17, 14, -32, 17, 14, -23, 17, 15, -32, 17, 14, -23, 17, 15, -23, 16.5, 15, -23, 17, 15, -23, 17, 14, -23, 16.5, 15, -23, 17, 14, -23, 16.5, 14, -23, 16.5, 11, -32, 16.5, 7, -32, 17, 7, -32, 16.5, 11, -32, 17, 7, -32, 17, 11, -32, 17, 7, -32, 16.5, 7, -32, 16.5, 7, -23, 17, 7, -32, 16.5, 7, -23, 17, 7, -23, 17, 11, -32, 17, 7, -32, 17, 7, -23, 17, 11, -32, 17, 7, -23, 17, 11, -23, 16.5, 11, -23, 17, 11, -23, 17, 7, -23, 16.5, 11, -23, 17, 7, -23, 16.5, 7, -23, -1, 15, -33, -1, 7, -33, 17, 7, -33, -1, 15, -33, 17, 7, -33, 17, 15, -33, 17, 7, -33, -1, 7, -33, -1, 7, -32.5, 17, 7, -33, -1, 7, -32.5, 17, 7, -32.5, 17, 15, -33, 17, 15, -32.5, -1, 15, -32.5, 17, 15, -33, -1, 15, -32.5, -1, 15, -33, 17, 15, -33, 17, 7, -33, 17, 7, -32.5, 17, 15, -33, 17, 7, -32.5, 17, 15, -32.5, -4.5, 15, -33, -4.5, 7, -33, -3.5, 7, -33, -4.5, 15, -33, -3.5, 7, -33, -3.5, 15, -33, -4.5, 15, -33, -4.5, 15, -32.5, -4.5, 7, -32.5, -4.5, 15, -33, -4.5, 7, -32.5, -4.5, 7, -33, -3.5, 7, -33, -4.5, 7, -33, -4.5, 7, -32.5, -3.5, 7, -33, -4.5, 7, -32.5, -3.5, 7, -32.5, -3.5, 15, -33, -3.5, 15, -32.5, -4.5, 15, -32.5, -3.5, 15, -33, -4.5, 15, -32.5, -4.5, 15, -33, -3.5, 15, -33, -3.5, 12.5, -33, -1, 12.5, -33, -3.5, 15, -33, -1, 12.5, -33, -1, 15, -33, -3.5, 15, -33, -3.5, 15, -32.5, -3.5, 12.5, -32.5, -3.5, 15, -33, -3.5, 12.5, -32.5, -3.5, 12.5, -33, -1, 15, -33, -1, 15, -32.5, -3.5, 15, -32.5, -1, 15, -33, -3.5, 15, -32.5, -3.5, 15, -33, -1, 15, -33, -1, 12.5, -33, -1, 12.5, -32.5, -1, 15, -33, -1, 12.5, -32.5, -1, 15, -32.5, 4, 8, -25.5, 3.5, 8, -25.5, 3.5, 8, -22.5, 4, 8, -25.5, 3.5, 8, -22.5, 4, 8, -22.5, 4, 14.5, -25.5, 4, 14.5, -22.5, 3.5, 14.5, -22.5, 4, 14.5, -25.5, 3.5, 14.5, -22.5, 3.5, 14.5, -25.5, 3.5, 14.5, -22.5, 4, 14.5, -22.5, 4, 8, -22.5, 3.5, 14.5, -22.5, 4, 8, -22.5, 3.5, 8, -22.5, 3.5, 14.5, -32.5, 3.5, 8, -32.5, 4, 8, -32.5, 3.5, 14.5, -32.5, 4, 8, -32.5, 4, 14.5, -32.5, 4, 8, -32.5, 3.5, 8, -32.5, 3.5, 8, -28, 4, 8, -32.5, 3.5, 8, -28, 4, 8, -28, 4, 14.5, -32.5, 4, 14.5, -28, 3.5, 14.5, -28, 4, 14.5, -32.5, 3.5, 14.5, -28, 3.5, 14.5, -32.5, 3.5, 14.5, -28, 3.5, 12.5, -28, 4, 12.5, -28, 3.5, 14.5, -28, 4, 12.5, -28, 4, 14.5, -28, 4, 14.5, -28, 4, 14.5, -25.5, 3.5, 14.5, -25.5, 4, 14.5, -28, 3.5, 14.5, -25.5, 3.5, 14.5, -28, 3.5, 14.5, -25.5, 4, 14.5, -25.5, 4, 12.5, -25.5, 3.5, 14.5, -25.5, 4, 12.5, -25.5, 3.5, 12.5, -25.5, 3, 13, -39, 3, 7, -39, 3.5, 7, -39, 3, 13, -39, 3.5, 7, -39, 3.5, 13, -39, 3.5, 7, -39, 3, 7, -39, 3, 7, -33.5, 3.5, 7, -39, 3, 7, -33.5, 3.5, 7, -33.5, 3.5, 13, -39, 3.5, 13, -33.5, 3, 13, -33.5, 3.5, 13, -39, 3, 13, -33.5, 3, 13, -39, 3.5, 13, -39, 3.5, 7, -39, 3.5, 7, -33.5, 3.5, 13, -39, 3.5, 7, -33.5, 3.5, 13, -33.5, 3, 13, -33.5, 3.5, 13, -33.5, 3.5, 7, -33.5, 3, 13, -33.5, 3.5, 7, -33.5, 3, 7, -33.5, -4.5, 13, -39, -4.5, 7, -39, -4, 7, -39, -4.5, 13, -39, -4, 7, -39, -4, 13, -39, -4.5, 13, -39, -4.5, 13, -33.5, -4.5, 7, -33.5, -4.5, 13, -39, -4.5, 7, -33.5, -4.5, 7, -39, -4, 7, -39, -4.5, 7, -39, -4.5, 7, -33.5, -4, 7, -39, -4.5, 7, -33.5, -4, 7, -33.5, -4, 13, -39, -4, 13, -33.5, -4.5, 13, -33.5, -4, 13, -39, -4.5, 13, -33.5, -4.5, 13, -39, -4.5, 13, -33.5, -4, 13, -33.5, -4, 7, -33.5, -4.5, 13, -33.5, -4, 7, -33.5, -4.5, 7, -33.5, -4, 13, -39, -4, 12.5, -39, 3, 12.5, -39, -4, 13, -39, 3, 12.5, -39, 3, 13, -39, -4, 13, -39, -4, 13, -33.5, -4, 12.5, -33.5, -4, 13, -39, -4, 12.5, -33.5, -4, 12.5, -39, 3, 13, -39, 3, 13, -33.5, -4, 13, -33.5, 3, 13, -39, -4, 13, -33.5, -4, 13, -39, 3, 13, -39, 3, 12.5, -39, 3, 12.5, -33.5, 3, 13, -39, 3, 12.5, -33.5, 3, 13, -33.5, -4, 13, -33.5, 3, 13, -33.5, 3, 12.5, -33.5, -4, 13, -33.5, 3, 12.5, -33.5, -4, 12.5, -33.5, -4, 7.5, -39, -4, 7, -39, 3, 7, -39, -4, 7.5, -39, 3, 7, -39, 3, 7.5, -39, -4, 7.5, -39, -4, 7.5, -33.5, -4, 7, -33.5, -4, 7.5, -39, -4, 7, -33.5, -4, 7, -39, 3, 7, -39, -4, 7, -39, -4, 7, -33.5, 3, 7, -39, -4, 7, -33.5, 3, 7, -33.5, 3, 7.5, -39, 3, 7.5, -33.5, -4, 7.5, -33.5, 3, 7.5, -39, -4, 7.5, -33.5, -4, 7.5, -39, 3, 7.5, -39, 3, 7, -39, 3, 7, -33.5, 3, 7.5, -39, 3, 7, -33.5, 3, 7.5, -33.5, -4, 7.5, -33.5, 3, 7.5, -33.5, 3, 7, -33.5, -4, 7.5, -33.5, 3, 7, -33.5, -4, 7, -33.5, 3.5, 7, -33.5, -1, 7, -33.5, -1, 7, -33, 3.5, 7, -33.5, -1, 7, -33, 3.5, 7, -33, 3.5, 13, -33.5, 3.5, 13, -33, -1, 13, -33, 3.5, 13, -33.5, -1, 13, -33, -1, 13, -33.5, 3.5, 13, -33.5, 3.5, 7, -33.5, 3.5, 7, -33, 3.5, 13, -33.5, 3.5, 7, -33, 3.5, 13, -33, -1, 13, -33, 3.5, 13, -33, 3.5, 7, -33, -1, 13, -33, 3.5, 7, -33, -1, 7, -33, -4.5, 13, -33.5, -4.5, 13, -33, -4.5, 7, -33, -4.5, 13, -33.5, -4.5, 7, -33, -4.5, 7, -33.5, -3.5, 7, -33.5, -4.5, 7, -33.5, -4.5, 7, -33, -3.5, 7, -33.5, -4.5, 7, -33, -3.5, 7, -33, -3.5, 13, -33.5, -3.5, 13, -33, -4.5, 13, -33, -3.5, 13, -33.5, -4.5, 13, -33, -4.5, 13, -33.5, -4.5, 13, -33, -3.5, 13, -33, -3.5, 7, -33, -4.5, 13, -33, -3.5, 7, -33, -4.5, 7, -33, -3.5, 13, -33.5, -3.5, 12.5, -33.5, -1, 12.5, -33.5, -3.5, 13, -33.5, -1, 12.5, -33.5, -1, 13, -33.5, -3.5, 13, -33.5, -3.5, 13, -33, -3.5, 12.5, -33, -3.5, 13, -33.5, -3.5, 12.5, -33, -3.5, 12.5, -33.5, -1, 13, -33.5, -1, 13, -33, -3.5, 13, -33, -1, 13, -33.5, -3.5, 13, -33, -3.5, 13, -33.5, -1, 13, -33.5, -1, 12.5, -33.5, -1, 12.5, -33, -1, 13, -33.5, -1, 12.5, -33, -1, 13, -33, -3.5, 13, -33, -1, 13, -33, -1, 12.5, -33, -3.5, 13, -33, -1, 12.5, -33, -3.5, 12.5, -33, -4.5, 13, -40.5, -4.5, 7, -40.5, 3.5, 7, -40.5, -4.5, 13, -40.5, 3.5, 7, -40.5, 3.5, 13, -40.5, -4.5, 13, -40.5, -4.5, 13, -39.5, -4.5, 7, -39.5, -4.5, 13, -40.5, -4.5, 7, -39.5, -4.5, 7, -40.5, 3.5, 7, -40.5, -4.5, 7, -40.5, -4.5, 7, -39.5, 3.5, 7, -40.5, -4.5, 7, -39.5, 3.5, 7, -39.5, 3.5, 13, -40.5, 3.5, 13, -39.5, -4.5, 13, -39.5, 3.5, 13, -40.5, -4.5, 13, -39.5, -4.5, 13, -40.5, 3.5, 13, -40.5, 3.5, 7, -40.5, 3.5, 7, -39.5, 3.5, 13, -40.5, 3.5, 7, -39.5, 3.5, 13, -39.5, 3, 13, -39.5, 3, 7, -39.5, 3.5, 7, -39.5, 3, 13, -39.5, 3.5, 7, -39.5, 3.5, 13, -39.5, 3.5, 7, -39.5, 3, 7, -39.5, 3, 7, -39, 3.5, 7, -39.5, 3, 7, -39, 3.5, 7, -39, 3.5, 13, -39.5, 3.5, 13, -39, 3, 13, -39, 3.5, 13, -39.5, 3, 13, -39, 3, 13, -39.5, 3.5, 13, -39.5, 3.5, 7, -39.5, 3.5, 7, -39, 3.5, 13, -39.5, 3.5, 7, -39, 3.5, 13, -39, 3, 13, -39, 3.5, 13, -39, 3.5, 7, -39, 3, 13, -39, 3.5, 7, -39, 3, 7, -39, -4.5, 13, -39.5, -4.5, 7, -39.5, -4, 7, -39.5, -4.5, 13, -39.5, -4, 7, -39.5, -4, 13, -39.5, -4.5, 13, -39.5, -4.5, 13, -39, -4.5, 7, -39, -4.5, 13, -39.5, -4.5, 7, -39, -4.5, 7, -39.5, -4, 7, -39.5, -4.5, 7, -39.5, -4.5, 7, -39, -4, 7, -39.5, -4.5, 7, -39, -4, 7, -39, -4, 13, -39.5, -4, 13, -39, -4.5, 13, -39, -4, 13, -39.5, -4.5, 13, -39, -4.5, 13, -39.5, -4.5, 13, -39, -4, 13, -39, -4, 7, -39, -4.5, 13, -39, -4, 7, -39, -4.5, 7, -39, -4, 13, -39.5, -4, 12.5, -39.5, 3, 12.5, -39.5, -4, 13, -39.5, 3, 12.5, -39.5, 3, 13, -39.5, -4, 13, -39.5, -4, 13, -39, -4, 12.5, -39, -4, 13, -39.5, -4, 12.5, -39, -4, 12.5, -39.5, 3, 13, -39.5, 3, 13, -39, -4, 13, -39, 3, 13, -39.5, -4, 13, -39, -4, 13, -39.5, 3, 13, -39.5, 3, 12.5, -39.5, 3, 12.5, -39, 3, 13, -39.5, 3, 12.5, -39, 3, 13, -39, -4, 13, -39, 3, 13, -39, 3, 12.5, -39, -4, 13, -39, 3, 12.5, -39, -4, 12.5, -39, -4, 8, -39.5, -4, 7, -39.5, 3, 7, -39.5, -4, 8, -39.5, 3, 7, -39.5, 3, 8, -39.5, -4, 8, -39.5, -4, 8, -39, -4, 7, -39, -4, 8, -39.5, -4, 7, -39, -4, 7, -39.5, 3, 7, -39.5, -4, 7, -39.5, -4, 7, -39, 3, 7, -39.5, -4, 7, -39, 3, 7, -39, 3, 8, -39.5, 3, 8, -39, -4, 8, -39, 3, 8, -39.5, -4, 8, -39, -4, 8, -39.5, 3, 8, -39.5, 3, 7, -39.5, 3, 7, -39, 3, 8, -39.5, 3, 7, -39, 3, 8, -39, -4, 8, -39, 3, 8, -39, 3, 7, -39, -4, 8, -39, 3, 7, -39, -4, 7, -39, -4, 9, -37.6875, -4, 8, -37.6875, 3, 8, -37.6875, -4, 9, -37.6875, 3, 8, -37.6875, 3, 9, -37.6875, -4, 9, -37.6875, -4, 9, -37.5, -4, 8, -37.5, -4, 9, -37.6875, -4, 8, -37.5, -4, 8, -37.6875, 3, 8, -37.6875, -4, 8, -37.6875, -4, 8, -37.5, 3, 8, -37.6875, -4, 8, -37.5, 3, 8, -37.5, 3, 9, -37.6875, 3, 8, -37.6875, 3, 8, -37.5, 3, 9, -37.6875, 3, 8, -37.5, 3, 9, -37.5, -4, 9, -39.75, -4, 8, -39.75, 3, 8, -39.75, -4, 9, -39.75, 3, 8, -39.75, 3, 9, -39.75, -4, 9, -39.75, -4, 9, -39.375, -4, 8, -39.375, -4, 9, -39.75, -4, 8, -39.375, -4, 8, -39.75, 3, 8, -39.75, -4, 8, -39.75, -4, 8, -39.375, 3, 8, -39.75, -4, 8, -39.375, 3, 8, -39.375, 3, 9, -39.75, 3, 8, -39.75, 3, 8, -39.375, 3, 9, -39.75, 3, 8, -39.375, 3, 9, -39.375, -4, 9, -39.375, 3, 9, -39.375, 3, 8, -39.375, -4, 9, -39.375, 3, 8, -39.375, -4, 8, -39.375, 1.875, 9, -39.375, 1.875, 8, -39.375, 3, 8, -39.375, 1.875, 9, -39.375, 3, 8, -39.375, 3, 9, -39.375, 1.875, 9, -39.375, 1.875, 9, -37.6875, 1.875, 8, -37.6875, 1.875, 9, -39.375, 1.875, 8, -37.6875, 1.875, 8, -39.375, 3, 8, -39.375, 1.875, 8, -39.375, 1.875, 8, -37.6875, 3, 8, -39.375, 1.875, 8, -37.6875, 3, 8, -37.6875, 3, 9, -39.375, 3, 8, -39.375, 3, 8, -37.6875, 3, 9, -39.375, 3, 8, -37.6875, 3, 9, -37.6875, 1.875, 9, -37.6875, 3, 9, -37.6875, 3, 8, -37.6875, 1.875, 9, -37.6875, 3, 8, -37.6875, 1.875, 8, -37.6875, -4, 9, -39.375, -4, 8, -39.375, -3.1875, 8, -39.375, -4, 9, -39.375, -3.1875, 8, -39.375, -3.1875, 9, -39.375, -4, 9, -39.375, -4, 9, -37.6875, -4, 8, -37.6875, -4, 9, -39.375, -4, 8, -37.6875, -4, 8, -39.375, -3.1875, 8, -39.375, -4, 8, -39.375, -4, 8, -37.6875, -3.1875, 8, -39.375, -4, 8, -37.6875, -3.1875, 8, -37.6875, -3.1875, 9, -39.375, -3.1875, 8, -39.375, -3.1875, 8, -37.6875, -3.1875, 9, -39.375, -3.1875, 8, -37.6875, -3.1875, 9, -37.6875, -4, 9, -37.6875, -3.1875, 9, -37.6875, -3.1875, 8, -37.6875, -4, 9, -37.6875, -3.1875, 8, -37.6875, -4, 8, -37.6875, -3.1875, 8.1875, -39.375, -3.1875, 8, -39.375, 1.875, 8, -39.375, -3.1875, 8.1875, -39.375, 1.875, 8, -39.375, 1.875, 8.1875, -39.375, -3.1875, 8.1875, -39.375, -3.1875, 8.1875, -37.6875, -3.1875, 8, -37.6875, -3.1875, 8.1875, -39.375, -3.1875, 8, -37.6875, -3.1875, 8, -39.375, 1.875, 8, -39.375, -3.1875, 8, -39.375, -3.1875, 8, -37.6875, 1.875, 8, -39.375, -3.1875, 8, -37.6875, 1.875, 8, -37.6875, 1.875, 8.1875, -39.375, 1.875, 8.1875, -37.6875, -3.1875, 8.1875, -37.6875, 1.875, 8.1875, -39.375, -3.1875, 8.1875, -37.6875, -3.1875, 8.1875, -39.375, 1.875, 8.1875, -39.375, 1.875, 8, -39.375, 1.875, 8, -37.6875, 1.875, 8.1875, -39.375, 1.875, 8, -37.6875, 1.875, 8.1875, -37.6875, -3.1875, 8.1875, -37.6875, 1.875, 8.1875, -37.6875, 1.875, 8, -37.6875, -3.1875, 8.1875, -37.6875, 1.875, 8, -37.6875, -3.1875, 8, -37.6875, -2, 14.5, -9, -2, 14.5, -8.5, -2, 13, -8.5, -2, 14.5, -9, -2, 13, -8.5, -2, 13, -9, 1.5, 14.5, -9, 1.5, 14.5, -8.5, -2, 14.5, -8.5, 1.5, 14.5, -9, -2, 14.5, -8.5, -2, 14.5, -9, 1.5, 14.5, -9, 1.5, 13, -9, 1.5, 13, -8.5, 1.5, 14.5, -9, 1.5, 13, -8.5, 1.5, 14.5, -8.5, -4, 7.5, -33.5, -4, 7, -33.5, 16.5, 7, -33.5, -4, 7.5, -33.5, 16.5, 7, -33.5, 16.5, 7.5, -33.5, -4, 7.5, -33.5, -4, 7.5, -23.5, -4, 7, -23.5, -4, 7.5, -33.5, -4, 7, -23.5, -4, 7, -33.5, 16.5, 7, -33.5, -4, 7, -33.5, -4, 7, -23.5, 16.5, 7, -33.5, -4, 7, -23.5, 16.5, 7, -23.5, 16.5, 7.5, -33.5, 16.5, 7.5, -23.5, -4, 7.5, -23.5, 16.5, 7.5, -33.5, -4, 7.5, -23.5, -4, 7.5, -33.5, 16.5, 7.5, -33.5, 16.5, 7, -33.5, 16.5, 7, -23.5, 16.5, 7.5, -33.5, 16.5, 7, -23.5, 16.5, 7.5, -23.5, -4, 7.5, -23.5, 16.5, 7.5, -23.5, 16.5, 7, -23.5, -4, 7.5, -23.5, 16.5, 7, -23.5, -4, 7, -23.5, -4, 7.5, -40, -4, 7, -40, 3, 7, -40, -4, 7.5, -40, 3, 7, -40, 3, 7.5, -40, -4, 7.5, -40, -4, 7.5, -34.5, -4, 7, -34.5, -4, 7.5, -40, -4, 7, -34.5, -4, 7, -40, 3, 7, -40, -4, 7, -40, -4, 7, -34.5, 3, 7, -40, -4, 7, -34.5, 3, 7, -34.5, 3, 7.5, -40, 3, 7.5, -34.5, -4, 7.5, -34.5, 3, 7.5, -40, -4, 7.5, -34.5, -4, 7.5, -40, 3, 7.5, -40, 3, 7, -40, 3, 7, -34.5, 3, 7.5, -40, 3, 7, -34.5, 3, 7.5, -34.5, -4, 7.5, -34.5, 3, 7.5, -34.5, 3, 7, -34.5, -4, 7.5, -34.5, 3, 7, -34.5, -4, 7, -34.5, -4, 8, -33, -4, 7.5, -33, 16.5, 7.5, -33, -4, 8, -33, 16.5, 7.5, -33, 16.5, 8, -33, -4, 8, -33, -4, 8, -22.5, -4, 7.5, -22.5, -4, 8, -33, -4, 7.5, -22.5, -4, 7.5, -33, 16.5, 7.5, -33, -4, 7.5, -33, -4, 7.5, -22.5, 16.5, 7.5, -33, -4, 7.5, -22.5, 16.5, 7.5, -22.5, 16.5, 8, -33, 16.5, 7.5, -33, 16.5, 7.5, -22.5, 16.5, 8, -33, 16.5, 7.5, -22.5, 16.5, 8, -22.5, -4, 8, -22.5, 16.5, 8, -22.5, 16.5, 7.5, -22.5, -4, 8, -22.5, 16.5, 7.5, -22.5, -4, 7.5, -22.5, -4, 8, -22.5, -4, 7.5, -22.5, 16.5, 7.5, -22.5, -4, 8, -22.5, 16.5, 7.5, -22.5, 16.5, 8, -22.5, -4, 8, -22.5, -4, 8, -9, -4, 7.5, -9, -4, 8, -22.5, -4, 7.5, -9, -4, 7.5, -22.5, 16.5, 7.5, -22.5, -4, 7.5, -22.5, -4, 7.5, -9, 16.5, 7.5, -22.5, -4, 7.5, -9, 16.5, 7.5, -9, 16.5, 8, -22.5, 16.5, 7.5, -22.5, 16.5, 7.5, -9, 16.5, 8, -22.5, 16.5, 7.5, -9, 16.5, 8, -9, -4, 8, -9, 16.5, 8, -9, 16.5, 7.5, -9, -4, 8, -9, 16.5, 7.5, -9, -4, 7.5, -9, -4, 8, -39, -4, 7.5, -39, 3, 7.5, -39, -4, 8, -39, 3, 7.5, -39, 3, 8, -39, -4, 8, -39, -4, 8, -33, -4, 7.5, -33, -4, 8, -39, -4, 7.5, -33, -4, 7.5, -39, 3, 7.5, -39, -4, 7.5, -39, -4, 7.5, -33, 3, 7.5, -39, -4, 7.5, -33, 3, 7.5, -33, 3, 8, -39, 3, 7.5, -39, 3, 7.5, -33, 3, 8, -39, 3, 7.5, -33, 3, 8, -33, -4, 8, -33, 3, 8, -33, 3, 7.5, -33, -4, 8, -33, 3, 7.5, -33, -4, 7.5, -33, -3, 8, 21, -3, 7.5, 21, 2.5, 7.5, 21, -3, 8, 21, 2.5, 7.5, 21, 2.5, 8, 21, -3, 8, 21, -3, 8, 26.5, -3, 7.5, 26.5, -3, 8, 21, -3, 7.5, 26.5, -3, 7.5, 21, 2.5, 7.5, 21, -3, 7.5, 21, -3, 7.5, 26.5, 2.5, 7.5, 21, -3, 7.5, 26.5, 2.5, 7.5, 26.5, 2.5, 8, 21, 2.5, 7.5, 21, 2.5, 7.5, 26.5, 2.5, 8, 21, 2.5, 7.5, 26.5, 2.5, 8, 26.5, -3, 8, 26.5, 2.5, 8, 26.5, 2.5, 7.5, 26.5, -3, 8, 26.5, 2.5, 7.5, 26.5, -3, 7.5, 26.5, -1.5, 8, 20.5, -1.5, 7, 20.5, 1, 7, 20.5, -1.5, 8, 20.5, 1, 7, 20.5, 1, 8, 20.5, -1.5, 8, 20.5, -1.5, 8, 21, -1.5, 7, 21, -1.5, 8, 20.5, -1.5, 7, 21, -1.5, 7, 20.5, 1, 7, 20.5, -1.5, 7, 20.5, -1.5, 7, 21, 1, 7, 20.5, -1.5, 7, 21, 1, 7, 21, 1, 8, 20.5, 1, 7, 20.5, 1, 7, 21, 1, 8, 20.5, 1, 7, 21, 1, 8, 21, -1.5, 8, 21, 1, 8, 21, 1, 7, 21, -1.5, 8, 21, 1, 7, 21, -1.5, 7, 21, -1.5, 8, 20, -1.5, 7, 20, 1, 7, 20, -1.5, 8, 20, 1, 7, 20, 1, 8, 20, -1.5, 8, 20, -1.5, 8, 20.5, -1.5, 7, 20.5, -1.5, 8, 20, -1.5, 7, 20.5, -1.5, 7, 20, 1, 7, 20, -1.5, 7, 20, -1.5, 7, 20.5, 1, 7, 20, -1.5, 7, 20.5, 1, 7, 20.5, 1, 8, 20, 1, 7, 20, 1, 7, 20.5, 1, 8, 20, 1, 7, 20.5, 1, 8, 20.5, -1.5, 8, 20.5, 1, 8, 20.5, 1, 7, 20.5, -1.5, 8, 20.5, 1, 7, 20.5, -1.5, 7, 20.5, -2, 8, 1.5, -2, 7.5, 1.5, 17, 7.5, 1.5, -2, 8, 1.5, 17, 7.5, 1.5, 17, 8, 1.5, -2, 8, 1.5, -2, 8, 20, -2, 7.5, 20, -2, 8, 1.5, -2, 7.5, 20, -2, 7.5, 1.5, 17, 7.5, 1.5, -2, 7.5, 1.5, -2, 7.5, 20, 17, 7.5, 1.5, -2, 7.5, 20, 17, 7.5, 20, 17, 8, 1.5, 17, 7.5, 1.5, 17, 7.5, 20, 17, 8, 1.5, 17, 7.5, 20, 17, 8, 20, -2, 8, 20, 17, 8, 20, 17, 7.5, 20, -2, 8, 20, 17, 7.5, 20, -2, 7.5, 20, -2, 8, -9, -2, 7.5, -9, 17, 7.5, -9, -2, 8, -9, 17, 7.5, -9, 17, 8, -9, -2, 8, -9, -2, 8, 1.5, -2, 7.5, 1.5, -2, 8, -9, -2, 7.5, 1.5, -2, 7.5, -9, 17, 7.5, -9, -2, 7.5, -9, -2, 7.5, 1.5, 17, 7.5, -9, -2, 7.5, 1.5, 17, 7.5, 1.5, -2, 8, 1.5, 17, 8, 1.5, 17, 7.5, 1.5, -2, 8, 1.5, 17, 7.5, 1.5, -2, 7.5, 1.5, 16, 14, 2, 3, 14, 2, 3, 14, 13, 16, 14, 2, 3, 14, 13, 16, 14, 13, 1.5, 14.5, 1.5, -2, 14.5, 1.5, -2, 14.5, 13.5, 1.5, 14.5, 1.5, -2, 14.5, 13.5, 1.5, 14.5, 13.5, 16.5, 14.5, -8.5, -2, 14.5, -8.5, -2, 14.5, 0.5, 16.5, 14.5, -8.5, -2, 14.5, 0.5, 16.5, 14.5, 0.5, 1.5, 14.5, 0.5, -2, 14.5, 0.5, -2, 14.5, 1, 1.5, 14.5, 0.5, -2, 14.5, 1, 1.5, 14.5, 1, -2, 15, 1, -2, 14.5, 1, 1.5, 14.5, 1, -2, 15, 1, 1.5, 14.5, 1, 1.5, 15, 1, -2, 15, 1, -2, 15, 1.5, -2, 14.5, 1.5, -2, 15, 1, -2, 14.5, 1.5, -2, 14.5, 1, 1.5, 14.5, 1, -2, 14.5, 1, -2, 14.5, 1.5, 1.5, 14.5, 1, -2, 14.5, 1.5, 1.5, 14.5, 1.5, 1.5, 15, 1, 1.5, 15, 1.5, -2, 15, 1.5, 1.5, 15, 1, -2, 15, 1.5, -2, 15, 1, 1.5, 15, 1, 1.5, 14.5, 1, 1.5, 14.5, 1.5, 1.5, 15, 1, 1.5, 14.5, 1.5, 1.5, 15, 1.5, -2, 15, 1.5, 1.5, 15, 1.5, 1.5, 14.5, 1.5, -2, 15, 1.5, 1.5, 14.5, 1.5, -2, 14.5, 1.5, 1.5, 14.5, 14.5, -2, 14.5, 14.5, -2, 14.5, 20.5, 1.5, 14.5, 14.5, -2, 14.5, 20.5, 1.5, 14.5, 20.5, 1.5, 14.5, 13.5, -2, 14.5, 13.5, -2, 14.5, 14, 1.5, 14.5, 13.5, -2, 14.5, 14, 1.5, 14.5, 14, 1.5, 14.5, 14, -2, 14.5, 14, -2, 14.5, 14.5, 1.5, 14.5, 14, -2, 14.5, 14.5, 1.5, 14.5, 14.5, 2, 14.5, 15, 1.5, 14.5, 15, 1.5, 14.5, 20, 2, 14.5, 15, 1.5, 14.5, 20, 2, 14.5, 20, 16.5, 14.5, 14.5, 3.5, 14.5, 14.5, 3.5, 14.5, 26.5, 16.5, 14.5, 14.5, 3.5, 14.5, 26.5, 16.5, 14.5, 26.5, 3, 14.5, 14, 2, 14.5, 14, 2, 14.5, 20.5, 3, 14.5, 14, 2, 14.5, 20.5, 3, 14.5, 20.5, 3.5, 14.5, 14.5, 3, 14.5, 14.5, 3, 14.5, 20.5, 3.5, 14.5, 14.5, 3, 14.5, 20.5, 3.5, 14.5, 20.5, 16.5, 14.5, -20.5, -2, 14.5, -20.5, -2, 14.5, -9.5, 16.5, 14.5, -20.5, -2, 14.5, -9.5, 16.5, 14.5, -9.5, 1.5, 14.5, -9.5, -2, 14.5, -9.5, -2, 14.5, -9, 1.5, 14.5, -9.5, -2, 14.5, -9, 1.5, 14.5, -9, -2, 14.5, -20.5, -2.5, 14.5, -20.5, -2.5, 14.5, -15, -2, 14.5, -20.5, -2.5, 14.5, -15, -2, 14.5, -15, -2.5, 14.5, -20.5, -3, 14.5, -20.5, -3, 14.5, -15, -2.5, 14.5, -20.5, -3, 14.5, -15, -2.5, 14.5, -15, -3, 14.5, -20.5, -3.5, 14.5, -20.5, -3.5, 14.5, -15, -3, 14.5, -20.5, -3.5, 14.5, -15, -3, 14.5, -15, 3.5, 14.5, -21, -2, 14.5, -21, -2, 14.5, -20.5, 3.5, 14.5, -21, -2, 14.5, -20.5, 3.5, 14.5, -20.5, 3.5, 14.5, -21.5, -2, 14.5, -21.5, -2, 14.5, -21, 3.5, 14.5, -21.5, -2, 14.5, -21, 3.5, 14.5, -21, 3.5, 14.5, -22, -2, 14.5, -22, -2, 14.5, -21.5, 3.5, 14.5, -22, -2, 14.5, -21.5, 3.5, 14.5, -21.5, 16.5, 14.5, -32.5, -4, 14.5, -32.5, -4, 14.5, -22.5, 16.5, 14.5, -32.5, -4, 14.5, -22.5, 16.5, 14.5, -22.5, 3.5, 14.5, -22.5, -2, 14.5, -22.5, -2, 14.5, -22, 3.5, 14.5, -22.5, -2, 14.5, -22, 3.5, 14.5, -22, -2, 15, 1.5, -2, 7, 1.5, -2, 7, 13.5, -2, 15, 1.5, -2, 7, 13.5, -2, 15, 13.5, 1.5, 15, 2.5, 1.5, 15, 5, 1.5, 12.5, 5, 1.5, 15, 2.5, 1.5, 12.5, 5, 1.5, 12.5, 2.5, -2, 15, 0.5, -2, 7, 0.5, -2, 7, 1, -2, 15, 0.5, -2, 7, 1, -2, 15, 1, -2, 15, 1, -2, 7, 1, -2, 7, 1.5, -2, 15, 1, -2, 7, 1.5, -2, 15, 1.5, 1.5, 14.5, -2, 1.5, 14.5, 0.5, 1.5, 12.5, 0.5, 1.5, 14.5, -2, 1.5, 12.5, 0.5, 1.5, 12.5, -2, 3.5, 15, -21, 3.5, 15, -20.5, 3.5, 7, -20.5, 3.5, 15, -21, 3.5, 7, -20.5, 3.5, 7, -21, 3.5, 15, -21.5, 3.5, 15, -21, 3.5, 7, -21, 3.5, 15, -21.5, 3.5, 7, -21, 3.5, 7, -21.5, 3.5, 15, -22, 3.5, 15, -21.5, 3.5, 7, -21.5, 3.5, 15, -22, 3.5, 7, -21.5, 3.5, 7, -22, -4, 15, -32.5, -4, 7, -32.5, -4, 7, -22.5, -4, 15, -32.5, -4, 7, -22.5, -4, 15, -22.5, 3.5, 15, -22.5, 3.5, 15, -22, 3.5, 7, -22, 3.5, 15, -22.5, 3.5, 7, -22, 3.5, 7, -22.5, 3.5, 14.5, -25.5, 3.5, 14.5, -22.5, 3.5, 8, -22.5, 3.5, 14.5, -25.5, 3.5, 8, -22.5, 3.5, 8, -25.5, 3.5, 14.5, -32.5, 3.5, 14.5, -28, 3.5, 8, -28, 3.5, 14.5, -32.5, 3.5, 8, -28, 3.5, 8, -32.5, 3.5, 14.5, -28, 3.5, 14.5, -25.5, 3.5, 12.5, -25.5, 3.5, 14.5, -28, 3.5, 12.5, -25.5, 3.5, 12.5, -28, 1, 13, -9, 1, 13, -8.5, 1, 8, -8.5, 1, 13, -9, 1, 8, -8.5, 1, 8, -9, 1, 13, -8.5, 1.5, 13, -8.5, 1.5, 8, -8.5, 1, 13, -8.5, 1.5, 8, -8.5, 1, 8, -8.5, -2, 13, -9, -2, 8, -9, -1.5, 8, -9, -2, 13, -9, -1.5, 8, -9, -1.5, 13, -9, -2, 13, -9, -2, 13, -8.5, -2, 8, -8.5, -2, 13, -9, -2, 8, -8.5, -2, 8, -9, -1.5, 8, -9, -2, 8, -9, -2, 8, -8.5, -1.5, 8, -9, -2, 8, -8.5, -1.5, 8, -8.5, -1.5, 13, -9, -1.5, 13, -8.5, -2, 13, -8.5, -1.5, 13, -9, -2, 13, -8.5, -2, 13, -9, -1.5, 13, -9, -1.5, 8, -9, -1.5, 8, -8.5, -1.5, 13, -9, -1.5, 8, -8.5, -1.5, 13, -8.5, -2, 13, -8.5, -1.5, 13, -8.5, -1.5, 8, -8.5, -2, 13, -8.5, -1.5, 8, -8.5, -2, 8, -8.5, 1.5, 13, -9, -2, 13, -9, -2, 13, -8.5, 1.5, 13, -9, -2, 13, -8.5, 1.5, 13, -8.5, -2, 14.5, -8.5, 1.5, 14.5, -8.5, 1.5, 13, -8.5, -2, 14.5, -8.5, 1.5, 13, -8.5, -2, 13, -8.5, -2, 15, -8.5, -2, 7, -8.5, -2, 7, 0.5, -2, 15, -8.5, -2, 7, 0.5, -2, 15, 0.5, 1.5, 15, 5, 1.5, 15, 13.5, 1.5, 7, 13.5, 1.5, 15, 5, 1.5, 7, 13.5, 1.5, 7, 5, 1.5, 15, 1.5, 1.5, 15, 2.5, 1.5, 7, 2.5, 1.5, 15, 1.5, 1.5, 7, 2.5, 1.5, 7, 1.5, 1.5, 15, 0.5, 1.5, 15, 1, 1.5, 7, 1, 1.5, 15, 0.5, 1.5, 7, 1, 1.5, 7, 0.5, 1.5, 15, 1, 1.5, 15, 1.5, 1.5, 7, 1.5, 1.5, 15, 1, 1.5, 7, 1.5, 1.5, 7, 1, 1.5, 14.5, -8.5, 1.5, 14.5, -2, 1.5, 8, -2, 1.5, 14.5, -8.5, 1.5, 8, -2, 1.5, 8, -8.5, 1.5, 15, -9.5, 1.5, 7, -9.5, 17, 7, -9.5, 1.5, 15, -9.5, 17, 7, -9.5, 17, 15, -9.5, 1.5, 15, -9.5, 1.5, 15, -9, 1.5, 7, -9, 1.5, 15, -9.5, 1.5, 7, -9, 1.5, 7, -9.5, 17, 7, -9.5, 1.5, 7, -9.5, 1.5, 7, -9, 17, 7, -9.5, 1.5, 7, -9, 17, 7, -9, 17, 15, -9.5, 17, 15, -9, 1.5, 15, -9, 17, 15, -9.5, 1.5, 15, -9, 1.5, 15, -9.5, 1.5, 15, -9, 17, 15, -9, 17, 7, -9, 1.5, 15, -9, 17, 7, -9, 1.5, 7, -9, -2, 15, -9.5, -2, 7, -9.5, -2, 7, -9, -2, 15, -9.5, -2, 7, -9, -2, 15, -9, 17, 7, -12, 16.5, 7, -12, 16.5, 7, -9.5, 17, 7, -12, 16.5, 7, -9.5, 17, 7, -9.5, 17, 15, -12, 17, 15, -9.5, 16.5, 15, -9.5, 17, 15, -12, 16.5, 15, -9.5, 16.5, 15, -12, 16.5, 15, -9.5, 17, 15, -9.5, 17, 7, -9.5, 16.5, 15, -9.5, 17, 7, -9.5, 16.5, 7, -9.5, -2, 15, -15, -2, 7, -15, -2, 7, -9.5, -2, 15, -15, -2, 7, -9.5, -2, 15, -9.5, -3.5, 15, -20.5, -3.5, 7, -20.5, -3.5, 7, -15, -3.5, 15, -20.5, -3.5, 7, -15, -3.5, 15, -15, 3.5, 15, -20.5, 17, 15, -20.5, 17, 7, -20.5, 3.5, 15, -20.5, 17, 7, -20.5, 3.5, 7, -20.5, 1, 13, -9, 1, 8, -9, 1.5, 8, -9, 1, 13, -9, 1.5, 8, -9, 1.5, 13, -9, 1.5, 8, -9, 1, 8, -9, 1, 8, -8.5, 1.5, 8, -9, 1, 8, -8.5, 1.5, 8, -8.5, 1.5, 13, -9, 1.5, 13, -8.5, 1, 13, -8.5, 1.5, 13, -9, 1, 13, -8.5, 1, 13, -9, 1.5, 13, -9, 1.5, 8, -9, 1.5, 8, -8.5, 1.5, 13, -9, 1.5, 8, -8.5, 1.5, 13, -8.5, -2, 14.5, -9, -2, 13, -9, 1.5, 13, -9, -2, 14.5, -9, 1.5, 13, -9, 1.5, 14.5, -9, -2, 13, 13, -2, 8, 13, -1.5, 8, 13, -2, 13, 13, -1.5, 8, 13, -1.5, 13, 13, 1, 13, 13, 1, 8, 13, 1.5, 8, 13, 1, 13, 13, 1.5, 8, 13, 1.5, 13, 13, -2, 14.5, 13, -2, 13, 13, 1.5, 13, 13, -2, 14.5, 13, 1.5, 13, 13, 1.5, 14.5, 13, 16.5, 15, 24, 16.5, 7, 24, 17, 7, 24, 16.5, 15, 24, 17, 7, 24, 17, 15, 24, 16.5, 15, 18, 17, 15, 18, 17, 7, 18, 16.5, 15, 18, 17, 7, 18, 16.5, 7, 18, 17, 12.5, 18, 16.5, 12.5, 18, 16.5, 12.5, 24, 17, 12.5, 18, 16.5, 12.5, 24, 17, 12.5, 24, 17, 10, 18, 17, 10, 24, 16.5, 10, 24, 17, 10, 18, 16.5, 10, 24, 16.5, 10, 18, 16.5, 10, 18, 16.5, 10, 24, 16, 10, 24, 16.5, 10, 18, 16, 10, 24, 16, 10, 18, 16.5, 15, -12, 16.5, 7, -12, 17, 7, -12, 16.5, 15, -12, 17, 7, -12, 17, 15, -12, 16.5, 15, -19.5, 17, 15, -19.5, 17, 7, -19.5, 16.5, 15, -19.5, 17, 7, -19.5, 16.5, 7, -19.5, 16.5, 15, -19.5, 16.5, 14, -19.5, 17, 14, -19.5, 16.5, 15, -19.5, 17, 14, -19.5, 17, 15, -19.5, 17, 14, -19.5, 16.5, 14, -19.5, 16.5, 14, -12, 17, 14, -19.5, 16.5, 14, -12, 17, 14, -12, 17, 15, -19.5, 17, 15, -12, 16.5, 15, -12, 17, 15, -19.5, 16.5, 15, -12, 16.5, 15, -19.5, 16.5, 15, -12, 17, 15, -12, 17, 14, -12, 16.5, 15, -12, 17, 14, -12, 16.5, 14, -12, 17, 8, -19.5, 17, 8, -12, 16.5, 8, -12, 17, 8, -19.5, 16.5, 8, -12, 16.5, 8, -19.5, 16.5, 10.5, -32.5, 16.5, 10.5, -22.5, 16, 10.5, -22.5, 16.5, 10.5, -32.5, 16, 10.5, -22.5, 16, 10.5, -32.5, 16.5, 15, -23, 16.5, 7, -23, 17, 7, -23, 16.5, 15, -23, 17, 7, -23, 17, 15, -23, 16.5, 15, -32.5, 16.5, 7, -32.5, 17, 7, -32.5, 16.5, 15, -32.5, 17, 7, -32.5, 17, 15, -32.5, 17, 7, -32.5, 16.5, 7, -32.5, 16.5, 7, -32, 17, 7, -32.5, 16.5, 7, -32, 17, 7, -32, 17, 15, -32.5, 17, 15, -32, 16.5, 15, -32, 17, 15, -32.5, 16.5, 15, -32, 16.5, 15, -32.5, 17, 15, -32.5, 17, 7, -32.5, 17, 7, -32, 17, 15, -32.5, 17, 7, -32, 17, 15, -32, 16.5, 15, -32, 17, 15, -32, 17, 7, -32, 16.5, 15, -32, 17, 7, -32, 16.5, 7, -32, 17, 14, -32, 16.5, 14, -32, 16.5, 14, -23, 17, 14, -32, 16.5, 14, -23, 17, 14, -23, 17, 11, -32, 17, 11, -23, 16.5, 11, -23, 17, 11, -32, 16.5, 11, -23, 16.5, 11, -32, 15.5, 10.5, -32.5, 15.5, 10, -32.5, 16, 10, -32.5, 15.5, 10.5, -32.5, 16, 10, -32.5, 16, 10.5, -32.5, 16, 10, -32.5, 15.5, 10, -32.5, 15.5, 10, -22.5, 16, 10, -32.5, 15.5, 10, -22.5, 16, 10, -22.5, 16, 10.5, -32.5, 16, 10.5, -22.5, 15.5, 10.5, -22.5, 16, 10.5, -32.5, 15.5, 10.5, -22.5, 15.5, 10.5, -32.5, 16, 10.5, -32.5, 16, 10, -32.5, 16, 10, -22.5, 16, 10.5, -32.5, 16, 10, -22.5, 16, 10.5, -22.5, 15.5, 10.5, -22.5, 16, 10.5, -22.5, 16, 10, -22.5, 15.5, 10.5, -22.5, 16, 10, -22.5, 15.5, 10, -22.5, 3, 8, -39, 3, 8, -33, -4, 8, -33, 3, 8, -39, -4, 8, -33, -4, 8, -39, 2.5, 8, 21, 2.5, 8, 26.5, -3, 8, 26.5, 2.5, 8, 21, -3, 8, 26.5, -3, 8, 21, 1, 8, 20.5, 1, 8, 21, -1.5, 8, 21, 1, 8, 20.5, -1.5, 8, 21, -1.5, 8, 20.5, 1, 8, 20, 1, 8, 20.5, -1.5, 8, 20.5, 1, 8, 20, -1.5, 8, 20.5, -1.5, 8, 20, 16.5, 9.5, 18, 16, 9.5, 18, 16, 9.5, 24, 16.5, 9.5, 18, 16, 9.5, 24, 16.5, 9.5, 24, 16.5, 10, 18, 16.5, 9.5, 18, 16.5, 9.5, 24, 16.5, 10, 18, 16.5, 9.5, 24, 16.5, 10, 24, 17, 8, 1.5, 17, 8, 20, -2, 8, 20, 17, 8, 1.5, -2, 8, 20, -2, 8, 1.5, 17, 8, -9, 17, 8, 1.5, -2, 8, 1.5, 17, 8, -9, -2, 8, 1.5, -2, 8, -9, 3.5, 8, 20, 3.5, 7.5, 20, 16.5, 7.5, 20, 3.5, 8, 20, 16.5, 7.5, 20, 16.5, 8, 20, 3.5, 8, 20, 3.5, 8, 26.5, 3.5, 7.5, 26.5, 3.5, 8, 20, 3.5, 7.5, 26.5, 3.5, 7.5, 20, 16.5, 7.5, 20, 3.5, 7.5, 20, 3.5, 7.5, 26.5, 16.5, 7.5, 20, 3.5, 7.5, 26.5, 16.5, 7.5, 26.5, 16.5, 8, 20, 16.5, 8, 26.5, 3.5, 8, 26.5, 16.5, 8, 20, 3.5, 8, 26.5, 3.5, 8, 20, 16.5, 8, 20, 16.5, 7.5, 20, 16.5, 7.5, 26.5, 16.5, 8, 20, 16.5, 7.5, 26.5, 16.5, 8, 26.5, 3.5, 8, 26.5, 16.5, 8, 26.5, 16.5, 7.5, 26.5, 3.5, 8, 26.5, 16.5, 7.5, 26.5, 3.5, 7.5, 26.5, 16.5, 15, -23, 16.5, 15, -22.5, 16.5, 7, -22.5, 16.5, 15, -23, 16.5, 7, -22.5, 16.5, 7, -23, 16.5, 15, -32.5, 16.5, 15, -32, 16.5, 7, -32, 16.5, 15, -32.5, 16.5, 7, -32, 16.5, 7, -32.5, 16.5, 15, -32, 16.5, 15, -23, 16.5, 14, -23, 16.5, 15, -32, 16.5, 14, -23, 16.5, 14, -32, 16.5, 11, -32, 16.5, 11, -23, 16.5, 7, -23, 16.5, 11, -32, 16.5, 7, -23, 16.5, 7, -32, 15.5, 10.5, -32.5, 15.5, 10.5, -22.5, 15.5, 10, -22.5, 15.5, 10.5, -32.5, 15.5, 10, -22.5, 15.5, 10, -32.5, 16.5, 8, -33, 16.5, 8, -22.5, -4, 8, -22.5, 16.5, 8, -33, -4, 8, -22.5, -4, 8, -33, 16.5, 8, -22.5, 16.5, 8, -9, -4, 8, -9, 16.5, 8, -22.5, -4, 8, -9, -4, 8, -22.5 )
 
 [sub_resource type="NavigationMesh" id=577]
 vertices = PoolVector3Array( -5.75, 20, -59.75, -5.75, 20, -50.5, 4.25, 20, -50.5, 4.25, 20, -59.75, -4, 12.5, -49.5, -2.5, 12.5, -49.5, -2.5, 12.5, -50.5, -4, 12.5, -50.5, -1.75, 12.5, -51.25, 3.5, 12.5, -51.25, 3.5, 12.5, -55, -4.75, 12.5, -55, -4.75, 12.5, -51, -4, 12.5, -50.5, -2.5, 12.5, -50.5, -1.75, 12.5, -51.25, -4.75, 12.5, -55, 5, 12.5, -39.25, 5.75, 12.5, -39.25, 5.75, 12.5, -40.75, 5, 12.5, -40.75, -2.5, 12.5, -34.75, -1.75, 12.5, -34, 4.25, 12.5, -38.5, 4.25, 12.5, -41.5, -1.75, 12.5, -47.5, -4.75, 12.5, -41.5, -2.5, 12.5, -49.5, -4, 12.5, -49.5, -4, 12.5, -48.5, -2.5, 12.5, -48.25, 4.25, 12.5, -41.5, 4.25, 12.5, -47.5, -1.75, 12.5, -47.5, -2.5, 12.5, -48.25, -4, 12.5, -48.5, -4.75, 12.5, -48, -4.75, 12.5, -41.5, -1.75, 12.5, -47.5, 4.25, 12.5, -38.5, 5, 12.5, -39.25, 5, 12.5, -40.75, 4.25, 12.5, -41.5, -1.75, 12.5, -34, -1.75, 12.5, -32.25, -1, 12.5, -31.25, 4.25, 12.5, -31.25, 4.25, 12.5, -38.5, -4.75, 12.5, -41.5, -4.75, 12.5, -34.75, -2.5, 12.5, -34.75, -2.75, 23, -13, 1.5, 23, -13, 2.25, 23, -14.25, -2.75, 23, -22.5, -5.75, 23, -29.75, -5.75, 23, -23.25, -3.5, 23, -23.25, -5.75, 23, -29.75, -3.5, 23, -23.25, -2.75, 23, -22.5, -5.75, 23, -36, 24.5, 23, -31.5, 24.5, 23, -40, 9.25, 23, -48.5, -5.75, 23, -36, -2.75, 23, -22.5, 13.25, 23, -14.25, 1.75, 23, -48.5, -5.75, 23, -48.5, -5.75, 23, -42.25, 24.5, 23, -40, 24.5, 23, -48.5, 16.75, 23, -48.5, 13.25, 23, -14.25, 24.5, 23, -23, 24.5, 23, -31.5, 13.25, 23, -14.25, 24.5, 23, -14.25, 24.5, 23, -23, 1.75, 23, -48.5, -5.75, 23, -42.25, -5.75, 23, -36, 9.25, 23, -48.5, 24.5, 23, -40, 16.75, 23, -48.5, 9.25, 23, -48.5, -2.75, 23, -22.5, 2.25, 23, -14.25, 13.25, 23, -14.25, 5.75, 12.5, -40.75, 5.75, 12.5, -39.25, 6.5, 12.5, -39.25, 7.25, 12.5, -41.75, 5.75, 12.5, -40.75, 6.5, 12.5, -39.25, 7.25, 12.5, -38.5, 14.75, 12.5, -34.75, 22.25, 12.5, -34.75, 22.25, 12.5, -41.25, 14.75, 12.5, -47.5, 7.25, 12.5, -41.75, 7.25, 12.5, -38.5, 7.25, 12.5, -38.5, 7.25, 12.5, -34.75, 14.75, 12.5, -34.75, 14.75, 12.5, -47.5, 7.25, 12.5, -47.5, 7.25, 12.5, -41.75, 22.25, 12.5, -41.25, 22.25, 12.5, -47.5, 14.75, 12.5, -47.5, -1.75, 12.5, -14.25, -1, 12.5, -13.25, 0.5, 12.5, -13.25, 2, 12.5, -15.25, -1, 12.5, -22.25, -1.75, 12.5, -21.75, 12.75, 12.5, -15.25, 23.75, 12.5, -15.25, 23.75, 12.5, -18.25, 4.25, 12.5, -31.25, -1, 12.5, -31.25, -1, 12.5, -30.5, 4.25, 12.5, -30.25, 23.75, 12.5, -18.25, 24.5, 12.5, -18.75, 24.5, 12.5, -28.25, 23.75, 12.5, -28.75, 14.25, 12.5, -29.5, 12.75, 12.5, -15.25, 4.25, 12.5, -30.25, -1, 12.5, -30.5, -1.75, 12.5, -30, -1.75, 12.5, -24, -1, 12.5, -23.5, 5, 12.5, -29.5, -1, 12.5, -23.5, -1, 12.5, -22.25, 2, 12.5, -15.25, 12.75, 12.5, -15.25, 14.25, 12.5, -29.5, 5, 12.5, -29.5, 23.75, 12.5, -28.75, 23.75, 12.5, -29.5, 14.25, 12.5, -29.5, 2, 12.5, -0.25, 2.75, 12.5, -0.25, 2.75, 12.5, -1.75, 2, 12.5, -1.75, -1.75, 12.5, 2.25, 1.25, 12.5, 2.25, 1.25, 12.5, 0.5, 0.5, 12.5, -13.25, -1, 12.5, -13.25, -1, 12.5, -12.5, 0.5, 12.5, -12.25, 1.25, 12.5, 0.5, 2, 12.5, -0.25, 2, 12.5, -1.75, 1.25, 12.5, -2.5, -1.75, 12.5, -5, -1.75, 12.5, 2.25, 0.5, 12.5, -12.25, -1, 12.5, -12.5, -1.75, 12.5, -12, -1.75, 12.5, -5, 1.25, 12.5, -2.5, 1.25, 12.5, -11.75, 2.25, 23, -11.75, 1.5, 23, -13, -2.75, 23, -13, -2.75, 23, -2, -3.5, 23, 31.75, -4.25, 23, 31.75, -4.25, 23, 39.5, -2.75, 23, 31, -3.5, 23, 31.75, -4.25, 23, 39.5, 2.75, 23, 39.5, 17.25, 23, 39.5, 24.5, 23, 39.5, 24.5, 23, 32.75, 24.5, 23, 7.25, 24.5, 23, 1.25, 13.25, 23, -11.75, 10, 23, 39.5, 17.25, 23, 39.5, 24.5, 23, 26.25, 24.5, 23, 13.75, -2.75, 23, 9, -2.75, 23, 20, 24.5, 23, 26.25, 24.75, 23, 20, 24.5, 23, 13.75, 24.5, 23, -5.25, 24.5, 23, -11.75, 13.25, 23, -11.75, 17.25, 23, 39.5, 24.5, 23, 32.75, 24.5, 23, 26.25, -2.75, 23, 31, 2.75, 23, 39.5, 10, 23, 39.5, -2.75, 23, 20, 24.5, 23, 1.25, 24.5, 23, -5.25, 13.25, 23, -11.75, 13.25, 23, -11.75, 2.25, 23, -11.75, -2.75, 23, -2, -2.75, 23, 9, 24.5, 23, 13.75, 24.5, 23, 7.25, 28, 12.5, -11, 26.75, 12.5, -11, 26.75, 12.5, -10.25, 28, 12.5, -11, 26.75, 12.5, -10.25, 25.75, 12.5, -9.25, 28, 12.5, -3.25, 4.25, 12.5, -2.75, 2.75, 12.5, -1.75, 2.75, 12.5, -0.25, 13.25, 12.5, -0.25, 26.75, 12.5, -1, 26.75, 12.5, 4.5, 28, 12.5, 4.75, 28, 12.5, -3.25, 23.75, 12.5, -10, 23.75, 12.5, -12.25, 14, 12.5, -12.25, 26, 12.5, -1.75, 26.75, 12.5, -1, 28, 12.5, -3.25, 24.5, 12.5, -1.75, 26, 12.5, -1.75, 28, 12.5, -3.25, 25.75, 12.5, -9.25, 24.5, 12.5, -9.25, 23.75, 12.5, -1, 24.5, 12.5, -1.75, 24.5, 12.5, -9.25, 23.75, 12.5, -10, 14, 12.5, -12.25, 4.25, 12.5, -12.25, 4.25, 12.5, -2.75, 13.25, 12.5, -0.25, 23.75, 12.5, -1, 23.75, 12.5, -10, 13.25, 12.5, -0.25, 23.75, 12.5, -0.25, 23.75, 12.5, -1, 2, 12.5, 6.5, 3.5, 12.5, 6.5, 3.5, 12.5, 5, 2, 12.5, 5, -1.75, 12.5, 9.25, 1.25, 12.5, 9.25, 1.25, 12.5, 7.25, 1.25, 12.5, 7.25, 2, 12.5, 6.5, 2, 12.5, 5, 1.25, 12.5, 4.25, -1.75, 12.5, 2.25, -1.75, 12.5, 9.25, 1.25, 12.5, 4.25, 1.25, 12.5, 2.25, -1.75, 12.5, 2.25, 28, 12.5, 4.75, 26.75, 12.5, 4.5, 26.75, 12.5, 6.25, 28, 12.5, 12, 4.75, 12.5, 5, 3.5, 12.5, 5, 3.5, 12.5, 6.5, 5, 12.5, 6.5, 15.75, 12.5, 18.5, 23, 12.5, 18.5, 23, 12.5, 17.75, 26.75, 12.5, 17.75, 26.75, 12.5, 19.5, 28, 12.5, 19.5, 28, 12.5, 12, 5.25, 12.5, 4.25, 4.75, 12.5, 5, 5, 12.5, 6.5, 5.5, 12.5, 7.25, 8, 12.5, 7.25, 23, 12.5, 17.75, 23.75, 12.5, 17, 28, 12.5, 12, 14, 12.5, 4.25, 8.75, 12.5, 8, 8.75, 12.5, 10, 5.25, 12.5, 4.25, 8, 12.5, 7.25, 8.75, 12.5, 8, 14, 12.5, 4.25, 7.75, 12.5, 11, 8, 12.5, 17.75, 8.5, 12.5, 18.5, 15.75, 12.5, 18.5, 8.75, 12.5, 10, 26, 12.5, 17, 26.75, 12.5, 17.75, 28, 12.5, 12, 28, 12.5, 12, 23.75, 12.5, 7.25, 23, 12.5, 6.5, 28, 12.5, 12, 26.75, 12.5, 6.25, 25.75, 12.5, 7.25, 28, 12.5, 12, 25.75, 12.5, 7.25, 23.75, 12.5, 7.25, 23, 12.5, 17.75, 28, 12.5, 12, 23, 12.5, 6.5, 14, 12.5, 4.25, 8.75, 12.5, 10, 15.75, 12.5, 18.5, 23.75, 12.5, 17, 26, 12.5, 17, 28, 12.5, 12, 7.75, 12.5, 11, 5.75, 12.5, 11, 5.75, 12.5, 17.75, 8, 12.5, 17.75, 23, 12.5, 6.5, 23, 12.5, 4.25, 14, 12.5, 4.25, -1, 12.5, 20, 0.5, 12.5, 20, 0.5, 12.5, 19.25, -1, 12.5, 19.25, -1.75, 12.5, 18.75, -1, 12.5, 19.25, 0.5, 12.5, 19.25, 1.25, 12.5, 18.75, 1.25, 12.5, 9.25, -1.75, 12.5, 9.25, 0.5, 12.5, 20.75, 0.5, 12.5, 20, -1, 12.5, 20, -1, 12.5, 30.75, 0.5, 12.5, 30.75, 0.5, 12.5, 29.75, -1, 12.5, 29.75, -1.75, 12.5, 29.25, 0.5, 12.5, 29.75, 1.25, 12.5, 29, 2, 12.5, 23.75, 1.25, 12.5, 23, -1.75, 12.5, 21, 0.5, 12.5, 20.75, -1, 12.5, 20, -1.75, 12.5, 21, 1.25, 12.5, 23, 1.25, 12.5, 21.25, -1.75, 12.5, 29.25, -1, 12.5, 29.75, 0.5, 12.5, 29.75, 5.75, 12.5, 29, 5.75, 12.5, 23.5, 2, 12.5, 23.75, 1.25, 12.5, 29, 23.75, 12.5, 38.75, 23.75, 12.5, 37, 23, 12.5, 36.5, 15, 12.5, 38.75, 23, 12.5, 26.75, 23.75, 12.5, 26.25, 23.75, 12.5, 23, 14.75, 12.5, 23, 6, 12.5, 23, 5.75, 12.5, 23.5, 5.75, 12.5, 29, 6.5, 12.5, 29.75, 14.75, 12.5, 23, 6.5, 12.5, 29.75, 6.5, 12.5, 38.75, 15, 12.5, 38.75, 23, 12.5, 36.5, 23, 12.5, 26.75, 14.75, 12.5, 23, 0.5, 12.5, 30.75, -1, 12.5, 30.75, -1, 12.5, 31.75, 0.5, 12.5, 32, -2, 12.5, 32.75, -3.25, 12.5, 32.75, -3.25, 12.5, 38.75, 1.25, 12.5, 32.75, 0.5, 12.5, 32, -1, 12.5, 31.75, -2, 12.5, 32.75, -3.25, 12.5, 38.75, 2.75, 12.5, 38.75, 2.75, 12.5, 38.75, 2.75, 12.5, 32.75, 1.25, 12.5, 32.75 )
@@ -832,570 +271,11 @@ tree_attach_batch_size = 16
 set_owner_batch_size = 16
 
 [node name="entity_0_worldspawn" type="StaticBody" parent="QodotMap"]
-
-[node name="entity_0_brush_0_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 583 )
-
-[node name="entity_0_brush_1_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 584 )
-
-[node name="entity_0_brush_2_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 585 )
-
-[node name="entity_0_brush_3_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 586 )
-
-[node name="entity_0_brush_4_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 587 )
-
-[node name="entity_0_brush_5_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 588 )
-
-[node name="entity_0_brush_6_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 589 )
-
-[node name="entity_0_brush_7_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 590 )
-
-[node name="entity_0_brush_8_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 591 )
-
-[node name="entity_0_brush_9_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 592 )
-
-[node name="entity_0_brush_10_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 593 )
-
-[node name="entity_0_brush_11_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 594 )
-
-[node name="entity_0_brush_12_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 595 )
-
-[node name="entity_0_brush_13_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 596 )
-
-[node name="entity_0_brush_14_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 597 )
-
-[node name="entity_0_brush_15_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 598 )
-
-[node name="entity_0_brush_16_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 599 )
-
-[node name="entity_0_brush_17_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 600 )
-
-[node name="entity_0_brush_18_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 601 )
-
-[node name="entity_0_brush_19_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 602 )
-
-[node name="entity_0_brush_20_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 603 )
-
-[node name="entity_0_brush_21_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 604 )
-
-[node name="entity_0_brush_22_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 605 )
-
-[node name="entity_0_brush_23_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 606 )
-
-[node name="entity_0_brush_24_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 607 )
-
-[node name="entity_0_brush_25_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 608 )
-
-[node name="entity_0_brush_26_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 609 )
-
-[node name="entity_0_brush_27_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 610 )
-
-[node name="entity_0_brush_28_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 611 )
-
-[node name="entity_0_brush_29_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 612 )
-
-[node name="entity_0_brush_30_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 613 )
-
-[node name="entity_0_brush_31_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 614 )
-
-[node name="entity_0_brush_32_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 615 )
-
-[node name="entity_0_brush_33_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 616 )
-
-[node name="entity_0_brush_34_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 617 )
-
-[node name="entity_0_brush_35_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 618 )
-
-[node name="entity_0_brush_36_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 619 )
-
-[node name="entity_0_brush_37_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 620 )
-
-[node name="entity_0_brush_38_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 621 )
-
-[node name="entity_0_brush_39_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 622 )
-
-[node name="entity_0_brush_40_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 623 )
-
-[node name="entity_0_brush_41_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 624 )
-
-[node name="entity_0_brush_42_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 625 )
-
-[node name="entity_0_brush_43_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 626 )
-
-[node name="entity_0_brush_44_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 627 )
-
-[node name="entity_0_brush_45_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 628 )
-
-[node name="entity_0_brush_46_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 629 )
-
-[node name="entity_0_brush_47_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 630 )
-
-[node name="entity_0_brush_48_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 631 )
-
-[node name="entity_0_brush_49_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 632 )
-
-[node name="entity_0_brush_50_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 633 )
-
-[node name="entity_0_brush_51_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 634 )
-
-[node name="entity_0_brush_52_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 635 )
-
-[node name="entity_0_brush_53_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 636 )
-
-[node name="entity_0_brush_54_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 637 )
-
-[node name="entity_0_brush_55_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 638 )
-
-[node name="entity_0_brush_56_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 639 )
-
-[node name="entity_0_brush_57_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 640 )
-
-[node name="entity_0_brush_58_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 641 )
-
-[node name="entity_0_brush_59_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 642 )
-
-[node name="entity_0_brush_60_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 643 )
-
-[node name="entity_0_brush_61_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 644 )
-
-[node name="entity_0_brush_62_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 645 )
-
-[node name="entity_0_brush_63_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 646 )
-
-[node name="entity_0_brush_64_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 647 )
-
-[node name="entity_0_brush_65_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 648 )
-
-[node name="entity_0_brush_66_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 649 )
-
-[node name="entity_0_brush_67_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 650 )
-
-[node name="entity_0_brush_68_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 651 )
-
-[node name="entity_0_brush_69_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 652 )
-
-[node name="entity_0_brush_70_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 653 )
-
-[node name="entity_0_brush_71_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 654 )
-
-[node name="entity_0_brush_72_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 655 )
-
-[node name="entity_0_brush_73_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 656 )
-
-[node name="entity_0_brush_74_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 657 )
-
-[node name="entity_0_brush_75_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 658 )
-
-[node name="entity_0_brush_76_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 659 )
-
-[node name="entity_0_brush_77_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 660 )
-
-[node name="entity_0_brush_78_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 661 )
-
-[node name="entity_0_brush_79_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 662 )
-
-[node name="entity_0_brush_80_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 663 )
-
-[node name="entity_0_brush_81_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 664 )
-
-[node name="entity_0_brush_82_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 665 )
-
-[node name="entity_0_brush_83_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 666 )
-
-[node name="entity_0_brush_84_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 667 )
-
-[node name="entity_0_brush_85_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 668 )
-
-[node name="entity_0_brush_86_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 669 )
-
-[node name="entity_0_brush_87_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 670 )
-
-[node name="entity_0_brush_88_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 671 )
-
-[node name="entity_0_brush_89_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 672 )
-
-[node name="entity_0_brush_90_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 673 )
-
-[node name="entity_0_brush_91_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 674 )
-
-[node name="entity_0_brush_92_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 675 )
-
-[node name="entity_0_brush_93_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 676 )
-
-[node name="entity_0_brush_94_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 677 )
-
-[node name="entity_0_brush_95_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 678 )
-
-[node name="entity_0_brush_96_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 679 )
-
-[node name="entity_0_brush_97_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 680 )
-
-[node name="entity_0_brush_98_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 681 )
-
-[node name="entity_0_brush_99_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 682 )
-
-[node name="entity_0_brush_100_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 683 )
-
-[node name="entity_0_brush_101_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 684 )
-
-[node name="entity_0_brush_102_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 685 )
-
-[node name="entity_0_brush_103_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 686 )
-
-[node name="entity_0_brush_104_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 687 )
-
-[node name="entity_0_brush_105_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 688 )
-
-[node name="entity_0_brush_106_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 689 )
-
-[node name="entity_0_brush_107_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 690 )
-
-[node name="entity_0_brush_108_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 691 )
-
-[node name="entity_0_brush_109_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 692 )
-
-[node name="entity_0_brush_110_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 693 )
-
-[node name="entity_0_brush_111_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 694 )
-
-[node name="entity_0_brush_112_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 695 )
-
-[node name="entity_0_brush_113_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 696 )
-
-[node name="entity_0_brush_114_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 697 )
-
-[node name="entity_0_brush_115_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 698 )
-
-[node name="entity_0_brush_116_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 699 )
-
-[node name="entity_0_brush_117_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 700 )
-
-[node name="entity_0_brush_118_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 701 )
-
-[node name="entity_0_brush_119_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 702 )
-
-[node name="entity_0_brush_120_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 703 )
-
-[node name="entity_0_brush_121_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 704 )
-
-[node name="entity_0_brush_122_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 705 )
-
-[node name="entity_0_brush_123_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 706 )
-
-[node name="entity_0_brush_124_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 707 )
-
-[node name="entity_0_brush_125_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 708 )
-
-[node name="entity_0_brush_126_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 709 )
-
-[node name="entity_0_brush_127_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 710 )
-
-[node name="entity_0_brush_128_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 711 )
-
-[node name="entity_0_brush_129_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 712 )
-
-[node name="entity_0_brush_130_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 713 )
-
-[node name="entity_0_brush_131_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 714 )
-
-[node name="entity_0_brush_132_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 715 )
-
-[node name="entity_0_brush_133_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 716 )
-
-[node name="entity_0_brush_134_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 717 )
-
-[node name="entity_0_brush_135_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 718 )
-
-[node name="entity_0_brush_136_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 719 )
-
-[node name="entity_0_brush_137_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 720 )
-
-[node name="entity_0_brush_138_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 721 )
-
-[node name="entity_0_brush_139_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 722 )
-
-[node name="entity_0_brush_140_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 723 )
-
-[node name="entity_0_brush_141_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 724 )
-
-[node name="entity_0_brush_142_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 725 )
-
-[node name="entity_0_brush_143_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 726 )
-
-[node name="entity_0_brush_144_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 727 )
-
-[node name="entity_0_brush_145_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 728 )
-
-[node name="entity_0_brush_146_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 729 )
-
-[node name="entity_0_brush_147_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 730 )
-
-[node name="entity_0_brush_148_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 731 )
-
-[node name="entity_0_brush_149_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 732 )
-
-[node name="entity_0_brush_150_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 733 )
-
-[node name="entity_0_brush_151_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 734 )
-
-[node name="entity_0_brush_152_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 735 )
-
-[node name="entity_0_brush_153_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 736 )
-
-[node name="entity_0_brush_154_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 737 )
-
-[node name="entity_0_brush_155_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 738 )
-
-[node name="entity_0_brush_156_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 739 )
-
-[node name="entity_0_brush_157_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 740 )
-
-[node name="entity_0_brush_158_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 741 )
-
-[node name="entity_0_brush_159_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 742 )
-
-[node name="entity_0_brush_160_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 743 )
-
-[node name="entity_0_brush_161_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 744 )
-
-[node name="entity_0_brush_162_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 745 )
-
-[node name="entity_0_brush_163_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 746 )
-
-[node name="entity_0_brush_164_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 747 )
-
-[node name="entity_0_brush_165_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 748 )
-
-[node name="entity_0_brush_166_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 749 )
-
-[node name="entity_0_brush_167_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 750 )
-
-[node name="entity_0_brush_168_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 751 )
-
-[node name="entity_0_brush_169_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 752 )
-
-[node name="entity_0_brush_170_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 753 )
-
-[node name="entity_0_brush_171_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 754 )
-
-[node name="entity_0_brush_172_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 755 )
-
-[node name="entity_0_brush_173_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 756 )
-
-[node name="entity_0_brush_174_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 757 )
-
-[node name="entity_0_brush_175_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 758 )
-
-[node name="entity_0_brush_176_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 759 )
-
-[node name="entity_0_brush_177_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 760 )
-
-[node name="entity_0_brush_178_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 761 )
-
-[node name="entity_0_brush_179_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 762 )
-
-[node name="entity_0_brush_180_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 763 )
-
-[node name="entity_0_brush_181_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 764 )
-
-[node name="entity_0_brush_182_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 765 )
-
-[node name="entity_0_brush_183_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 766 )
-
-[node name="entity_0_brush_184_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 767 )
-
-[node name="entity_0_brush_185_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 768 )
-
-[node name="entity_0_brush_186_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 769 )
-
-[node name="entity_0_brush_187_collision_shape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
-shape = SubResource( 770 )
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="QodotMap/entity_0_worldspawn"]
+shape = SubResource( 783 )
 
 [node name="Navigation" type="Navigation" parent="."]
 __meta__ = {
@@ -1478,6 +358,14 @@ transform = Transform( -0.187061, -0.124908, 0.974376, 0.0665427, 0.987993, 0.13
 [node name="yellowgirl49" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.991945, -0.0560585, -0.113583, 0.0548711, 0.998401, -0.0135564, 0.114161, 0.0072148, 0.993437, 1.92523, 12.1763, -12.0343 )
 
+[node name="yellowgirl57" parent="Monsters" groups=["livingroom", "monstercorridor2"] instance=ExtResource( 4 )]
+transform = Transform( -0.989763, -0.139421, -0.0304868, -0.13965, 0.990185, 0.0055111, 0.0294192, 0.00971216, -0.999521, 1.72001, 12.1862, -7.4691 )
+
+[node name="yellowgirl159" parent="Monsters" groups=["livingroom", "monstercorridor2"] instance=ExtResource( 4 )]
+transform = Transform( -0.999054, 0.0309759, -0.0304868, 0.0308218, 0.999509, 0.0055111, 0.0306425, 0.00456623, -0.999521, -2.2489, 13.9683, -9.12168 )
+monsterNearDoor = true
+needsDoor = true
+
 [node name="yellowgirl106" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.878524, 0.466163, -0.104342, -0.463856, 0.884669, 0.0468795, 0.114161, 0.0072148, 0.993437, -2.1567, 14.2164, -8.03602 )
 
@@ -1507,6 +395,9 @@ transform = Transform( -0.966668, 0.142393, -0.212776, -0.124029, -0.987489, -0.
 
 [node name="yellowgirl75" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.99927, -0.0350689, -0.0150311, -0.0346648, -0.99905, 0.0263512, -0.0159408, -0.025811, -0.999538, 1.19008, 21.5391, 3.72512 )
+
+[node name="yellowgirl160" parent="Monsters" groups=["corridor1", "corridor3", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
+transform = Transform( -0.991602, -0.0350687, -0.124464, 0.0380006, -0.99905, -0.0212597, -0.1236, -0.0258109, 0.991995, 0.474577, 20.1448, 1.55513 )
 
 [node name="yellowgirl111" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor2"] instance=ExtResource( 4 )]
 transform = Transform( 0.99927, -0.0350689, -0.0150311, -0.0363412, -0.994814, -0.0949808, -0.0116221, 0.0954578, -0.995364, 1.19008, 21.4256, -7.40635 )
@@ -1540,6 +431,11 @@ transform = Transform( 0.955409, -0.207333, -0.210249, 0.2096, 0.977717, -0.0116
 monsterNearDoor = true
 needsDoor = true
 
+[node name="yellowgirl163" parent="Monsters" groups=["bathroom2", "corridor3", "monsterbathroom2", "monsterbedRoom3", "monstercorridor3"] instance=ExtResource( 4 )]
+transform = Transform( 0.11956, -0.0338558, -0.992249, 0.356724, 0.934143, 0.0111099, 0.926526, -0.355288, 0.123763, 1.96336, 14.0518, 27.6006 )
+monsterNearDoor = true
+needsDoor = true
+
 [node name="yellowgirl87" parent="Monsters" groups=["bedRoom3", "corridor3", "monsterbedRoom3", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( 0.00486186, 0.00229321, -0.999984, -0.4266, 0.90444, -1.19301e-11, 0.904426, 0.426594, 0.00537555, 24.3286, 13.6465, 23.8771 )
 
@@ -1561,6 +457,9 @@ transform = Transform( 0.258819, 0, 0.965924, 0, 1, 0, -0.965925, 0, 0.258819, 1
 [node name="yellowgirl139" parent="Monsters" groups=["bedRoom3", "monsterbedRoom3", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( -0.22005, 0.00730453, 0.975459, 0.134939, 0.990586, 0.0230227, -0.966109, 0.136694, -0.218965, 4.89868, 13.9619, 23.0033 )
 
+[node name="yellowgirl165" parent="Monsters" groups=["bedRoom3", "monsterbedRoom3", "monstercorridor3"] instance=ExtResource( 4 )]
+transform = Transform( 0.520807, -0.0906735, 0.848843, 0.134939, 0.990586, 0.0230227, -0.84294, 0.102552, 0.528139, 4.89868, 11.8045, 27.5196 )
+
 [node name="yellowgirl148" parent="Monsters" groups=["bedRoom3", "monsterbedRoom3", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( -0.999483, -0.0199223, 0.0251768, -0.0200644, 0.999784, -0.00540647, -0.0250639, -0.00590886, -0.999666, 7.88898, 13.185, 35.1108 )
 
@@ -1579,11 +478,17 @@ transform = Transform( 0.982376, 0.168303, 0.0813006, -0.170416, 0.985176, 0.019
 [node name="yellowgirl118" parent="Monsters" groups=["bathroom2", "corridor3", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( 0.97611, 0.16604, 0.140135, -0.170416, 0.985176, 0.0197446, -0.134779, -0.0431542, 0.989936, -2.78611, 12.9699, 23.4982 )
 
+[node name="yellowgirl162" parent="Monsters" groups=["bathroom2", "corridor3", "monstercorridor3"] instance=ExtResource( 4 )]
+transform = Transform( -0.0901975, 0.985406, -0.144369, 0.995485, 0.0849077, -0.0424057, -0.0295285, -0.147542, -0.988615, -2.87195, 12.9699, 25.6244 )
+
 [node name="yellowgirl84" parent="Monsters" groups=["bathroom2", "corridor3", "monstercorridor1", "monstercorridor2", "monstercorridor3"] instance=ExtResource( 4 )]
-transform = Transform( 0.941666, -0.327963, 0.0755138, 0.327206, 0.944686, 0.0225314, -0.0787261, 0.00349147, 0.99689, 0.737369, 14.1808, 9.3818 )
+transform = Transform( 0.944474, -0.327706, 0.0239698, 0.327206, 0.944686, 0.0225314, -0.0300276, -0.0134374, 0.999459, 0.737369, 14.1808, 9.3818 )
 
 [node name="yellowgirl108" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( -0.850971, -0.482966, -0.206377, -0.493736, 0.869613, 0.000794925, 0.179083, 0.102572, -0.978472, 1.19087, 14.1808, 18.4254 )
+
+[node name="yellowgirl161" parent="Monsters" groups=["corridor1", "corridor2", "monstercorridor1", "monstercorridor3"] instance=ExtResource( 4 )]
+transform = Transform( -0.946305, 0.320202, 0.0444571, 0.321868, 0.94605, 0.0373286, -0.0301065, 0.0496331, -0.998313, -3.09613, 14.0052, 20.5539 )
 
 [node name="yellowgirl109" parent="Monsters" groups=["corridor1", "monstercorridor1", "monstercorridor3"] instance=ExtResource( 4 )]
 transform = Transform( 0.0266058, 0.0160196, -0.999517, 0.816784, 0.576111, 0.0309752, 0.576327, -0.817217, 0.00224331, 2.16371, 14.1808, 16.2354 )
@@ -1736,6 +641,9 @@ transform = Transform( 0.140676, -0.0156947, -0.989931, 0.0244177, 0.999625, -0.
 [node name="yellowgirl2" parent="Monsters" groups=["corridor1", "corridor3", "monsterbathroom2"] instance=ExtResource( 4 )]
 transform = Transform( -0.976017, 0.173714, 0.131201, 0.175229, 0.984527, -3.54535e-09, -0.129171, 0.0229903, -0.991356, -3.01793, 14.0521, 31.844 )
 
+[node name="yellowgirl164" parent="Monsters" groups=["corridor1", "corridor3", "monsterbathroom2"] instance=ExtResource( 4 )]
+transform = Transform( -0.875519, -0.472049, 0.103131, -0.465597, 0.881272, 0.0811034, -0.129171, 0.0229903, -0.991356, 2.34826, 14.0521, 31.7824 )
+
 [node name="yellowgirl3" parent="Monsters" groups=["livingroom", "livingroom2", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.159903, -0.00643967, -0.987112, 0.00527905, -0.999959, 0.00737864, -0.987119, -0.00639087, -0.159862, 25.98, 23.7289, -23.8484 )
 
@@ -1767,8 +675,14 @@ transform = Transform( -0.816809, -0.566352, -0.109856, -0.560683, 0.824155, -0.
 [node name="yellowgirl21" parent="Monsters" groups=["bathroom1", "entrance", "monsterentrance", "monsterlivingroom"] instance=ExtResource( 4 )]
 transform = Transform( -0.727559, 0.679815, -0.0922503, 0.678942, 0.732787, 0.0454061, 0.0984667, -0.0295968, -0.994701, -1.13661, 13.6488, -33.9272 )
 
+[node name="yellowgirl56" parent="Monsters" groups=["entrance", "monsterentrance", "monsterlivingroom"] instance=ExtResource( 4 )]
+transform = Transform( -0.0249268, 0.0364508, 0.999025, -0.300494, 0.952847, -0.042264, -0.953458, -0.301255, -0.0127989, -4.41051, 13.6488, -35.4007 )
+
 [node name="yellowgirl69" parent="Monsters" groups=["livingroom", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.0264467, -0.130569, -0.991087, 0.999598, 0.0136031, 0.0248817, 0.010233, -0.991346, 0.130877, 1.15246, 12.7242, -24.0634 )
+
+[node name="yellowgirl157" parent="Monsters" groups=["livingroom", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
+transform = Transform( 0.0264467, -0.130569, -0.991087, 0.425559, 0.89858, -0.107027, 0.904544, -0.418935, 0.0793296, 0.66548, 14.3602, -25.1047 )
 
 [node name="yellowgirl70" parent="Monsters" groups=["corridor2", "livingroom", "monsterentrance", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.986083, 0.166252, 0, -0.166252, 0.986084, 0, 0, 0, 1, -0.393799, 14.0827, -26.1712 )
@@ -1783,16 +697,19 @@ transform = Transform( 0.797535, 0.60227, 0.0347602, 0.039354, 0.00555649, -0.99
 transform = Transform( 0.383353, -0.337103, 0.859886, 0.69903, 0.714396, -0.031575, -0.603654, 0.613189, 0.50951, 5.87035, 13.7148, -32.8716 )
 
 [node name="yellowgirl48" parent="Monsters" groups=["livingroom", "livingroom2", "monsterentrance", "monsterlivingroom"] instance=ExtResource( 4 )]
-transform = Transform( 0.696002, 0.23189, 0.679566, -0.336017, 0.941579, 0.0228461, -0.634566, -0.244246, 0.733261, -1.36871, 14.4146, -31.6472 )
+transform = Transform( 0.662127, 0.317553, 0.678785, -0.398639, 0.916245, -0.0397865, -0.634566, -0.244246, 0.733261, -1.21755, 14.3725, -31.6087 )
 
 [node name="yellowgirl73" parent="Monsters" groups=["livingroom", "livingroom2", "monsterentrance", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( -0.069979, 0.017456, 0.997397, 0.183755, 0.982962, -0.00431077, -0.980478, 0.182975, -0.0719945, -1.77121, 14.0959, -28.8003 )
 
 [node name="yellowgirl141" parent="Monsters" groups=["livingroom", "livingroom2", "monsterentrance", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( -0.0693576, -0.04644, 0.996512, -0.33111, 0.94336, 0.0209177, -0.94104, -0.328503, -0.0808061, -1.33575, 14.6565, -19.4285 )
+transform = Transform( -0.0693576, -0.04644, 0.996512, -0.33111, 0.94336, 0.0209177, -0.94104, -0.328503, -0.0808061, -1.34759, 15.4684, -19.3644 )
+
+[node name="yellowgirl158" parent="Monsters" groups=["livingroom", "livingroom2", "monsterentrance", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
+transform = Transform( 0.0800763, 0.0235574, 0.996512, 0.0336459, -0.999214, 0.0209178, 0.996221, 0.0318534, -0.0808061, -1.34321, 16.4178, -19.0646 )
 
 [node name="yellowgirl142" parent="Monsters" groups=["livingroom", "livingroom2", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
-transform = Transform( -0.965015, 0.242198, 0.100431, 0.243429, 0.969918, 2.97741e-09, -0.0974102, 0.0244479, -0.994945, -1.66753, 14.0418, -17.3354 )
+transform = Transform( -0.958218, 0.267828, 0.100431, 0.269189, 0.963087, 2.95311e-08, -0.0967241, 0.027035, -0.994945, -1.66753, 14.0418, -17.3354 )
 
 [node name="yellowgirl46" parent="Monsters" groups=["livingroom2", "monsterlivingroom", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( -0.00482816, 0.0622586, -0.998049, 0.0124199, -0.997979, -0.0623144, -0.999912, -0.0126965, 0.00404511, 17.1336, 17.5109, -29.6021 )
@@ -1835,6 +752,9 @@ transform = Transform( 0.117728, -0.109456, 0.986994, 0.75167, 0.659332, -0.0165
 [node name="yellowgirl91" parent="Monsters" groups=["livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.959857, 0.271844, 0.069111, -0.265658, 0.960133, -0.0870054, -0.0900078, 0.0651528, 0.993807, 17.8726, 13.8188, -23.4506 )
 
+[node name="yellowgirl166" parent="Monsters" groups=["livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
+transform = Transform( -0.898144, 0.437678, 0.0421323, 0.437161, 0.899131, -0.0212967, -0.0472036, -0.0007089, -0.998884, 17.4768, 13.8188, -14.3355 )
+
 [node name="yellowgirl92" parent="Monsters" groups=["livingroom2", "monsterlivingroom2"] instance=ExtResource( 4 )]
 transform = Transform( 0.869748, 0.491294, 0.0465632, -0.485218, 0.868553, -0.100887, -0.0900078, 0.0651528, 0.993807, 12.9495, 13.8188, -23.4506 )
 
@@ -1851,7 +771,7 @@ transform = Transform( 0.944791, -0.32545, -0.0380903, 0.324339, 0.945378, -0.03
 transform = Transform( 0.863238, -0.504795, -0.00134127, 0.504753, 0.863195, -0.0108752, 0.0066475, 0.00871095, 0.999939, 17.896, 14.0852, -23.0739 )
 
 [node name="yellowgirl28" parent="Monsters" groups=["entrance", "kitchen", "monsterKitchen"] instance=ExtResource( 4 )]
-transform = Transform( 0.419841, 0.0239003, -0.907283, 0.0908601, 0.993524, 0.0682173, 0.903039, -0.111076, 0.414951, 25.7921, 13.544, -47.2871 )
+transform = Transform( 0.0575719, -0.0529011, -0.996939, 0.0981552, 0.994056, -0.0470798, 0.993505, -0.0951441, 0.0624228, 25.8219, 14.0611, -41.629 )
 
 [node name="yellowgirl29" parent="Monsters" groups=["entrance", "monsterentrance", "monsterkitchen"] instance=ExtResource( 4 )]
 transform = Transform( 0.041766, 0.0418853, -0.99825, -0.520222, 0.853914, 0.0140636, 0.85301, 0.518723, 0.0574543, 9.469, 14.6426, -43.4399 )
@@ -1868,6 +788,21 @@ isCrouchMonster = true
 
 [node name="yellowgirl123" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
 transform = Transform( 0.912239, -0.398495, 0.0949859, 0.40141, 0.915805, -0.0130152, -0.0818022, 0.0500011, 0.995394, 12.89, 13.2314, -43.3554 )
+
+[node name="yellowgirl152" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
+transform = Transform( 0.826452, 0.561605, 0.0397075, -0.557034, 0.825891, -0.0872642, -0.0818022, 0.0500011, 0.995394, 16.2451, 13.2314, -43.3554 )
+
+[node name="yellowgirl154" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
+transform = Transform( 0.826452, 0.561605, 0.0397075, -0.557034, 0.825891, -0.0872642, -0.0818022, 0.0500011, 0.995394, 18.7539, 13.2314, -45.0342 )
+
+[node name="yellowgirl153" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
+transform = Transform( -0.896833, 0.430995, 0.0996716, 0.433647, 0.901065, 0.00554513, -0.0874208, 0.0481952, -0.995005, 16.6045, 13.2314, -39.5307 )
+
+[node name="yellowgirl155" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
+transform = Transform( -0.896833, 0.430995, 0.0996716, 0.433647, 0.901065, 0.00554513, -0.0874208, 0.0481952, -0.995005, 19.0233, 13.2314, -38.1025 )
+
+[node name="yellowgirl156" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
+transform = Transform( -0.0645416, 0.997906, -0.00389168, -0.0568539, 0.000216365, 0.998383, 0.996295, 0.0646588, 0.0567209, 18.3747, 13.8774, -40.9321 )
 
 [node name="yellowgirl124" parent="Monsters" groups=["kitchen", "monsterkitchen"] instance=ExtResource( 4 )]
 transform = Transform( -0.00386113, -0.0234114, 0.999719, -0.412787, 0.910613, 0.0197306, -0.91082, -0.412594, -0.0131799, 11.4065, 13.2314, -41.7251 )
@@ -2432,7 +1367,7 @@ shape = SubResource( 581 )
 script = ExtResource( 41 )
 
 [node name="lightCoolDown" type="Timer" parent="spotlights"]
-wait_time = 7.0
+wait_time = 5.0
 one_shot = true
 
 [node name="lights" type="Spatial" parent="spotlights"]
@@ -2461,10 +1396,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3329, 13.7956, 2.3066 )
 [node name="spotlightMyBedroom" parent="spotlights/lights" groups=["balcony", "myBedroom"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3616, 15.1548, 11.2164 )
 
-[node name="spotlightWardrobe" parent="spotlights/lights" groups=["myBedroom", "wardrobe"] instance=ExtResource( 21 )]
+[node name="spotlightWardrobe" parent="spotlights/lights" groups=["wardrobe"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79702, 17.023, 12.7023 )
 
-[node name="spotlightLivingroom" parent="spotlights/lights" groups=["livingroom"] instance=ExtResource( 21 )]
+[node name="spotlightLivingroom" parent="spotlights/lights" groups=["livingroom", "livingroom2"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.54165, 15.1548, -22.5893 )
 
 [node name="spotlightKitchen" parent="spotlights/lights" groups=["kitchen"] instance=ExtResource( 21 )]
@@ -3045,6 +1980,10 @@ texture = ExtResource( 59 )
 [node name="VoidDoor" parent="." instance=ExtResource( 63 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.94492, 15.1105, -40.6698 )
 
+[node name="IntroTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
 [connection signal="timeout" from="TimerMonsterSwitch" to="Monsters" method="_on_TimerMonsterSwitch_timeout"]
 [connection signal="timeout" from="monsterCreepTimer" to="Monsters" method="_on_monsterCreepTimer_timeout"]
 [connection signal="timeout" from="TimerMonsterCooldown" to="Monsters" method="_on_TimerMonsterCooldown_timeout"]
@@ -3054,3 +1993,4 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.9449
 [connection signal="timeout" from="BunnyManager/bunnySpawnTimer" to="BunnyManager" method="_on_bunnySpawnTimer_timeout"]
 [connection signal="timeout" from="punishmentTimer" to="." method="_on_punishmentTimer_timeout"]
 [connection signal="timeout" from="monsterSoundTimer" to="Monsters" method="_on_monsterSoundTimer_timeout"]
+[connection signal="timeout" from="IntroTimer" to="." method="_on_IntroTimer_timeout"]

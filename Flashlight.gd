@@ -17,6 +17,13 @@ func flicker2():
 	if not $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("flicker2")
 
+func blink():
+	if $SpotLight.visible == false:
+		return
+		
+	if not $AnimationPlayer.is_playing():
+		$AnimationPlayer.play("blink")
+
 func stopFlicker():
 	$AnimationPlayer.stop()
 

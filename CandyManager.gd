@@ -53,6 +53,10 @@ func activeCandyPicked(candy):
 	candyCounter.addCandy()
 	currentCandyAmount += 1
 
+func removeCandyPicked():
+	currentCandyAmount -= 1
+	
+
 func getCurrentCandyAmount():
 	return currentCandyAmount
 
@@ -65,6 +69,7 @@ func playHandFull():
 func resetCandyPicked():
 	candyCounter.resetCounter()
 	currentCandyAmount = 0
+	get_tree().call_group("interact", "setNumberOfCandy", 0)
 
 #makes the radar beep when close to candy
 func getDistanceFromPlayerToCandy():

@@ -25,7 +25,7 @@ func _ready():
 func _physics_process(delta):
 	if getIsPlayerInside():
 		emit_signal("playerInSpotlight", true)
-		get_tree().call_group("sanityBar", "recoverSanity", 0.07)
+		get_tree().call_group("sanityBar", "recoverSanity", 0.13)
 		get_tree().call_group("invisibleEnemy", "setMonsterSpawner", false)
 			#state = CHANGELIGHT
 	else:

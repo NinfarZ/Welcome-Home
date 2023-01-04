@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://3DModels/Lantern/flashlight.glb" type="PackedScene" id=1]
 [ext_resource path="res://Flashlight.gd" type="Script" id=2]
@@ -76,6 +76,22 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 3.36358 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "blink"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpotLight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -202,6 +218,7 @@ spot_angle_attenuation = 2.14355
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "default"
 anims/RESET = SubResource( 2 )
+anims/blink = SubResource( 5 )
 anims/default = SubResource( 3 )
 anims/flicker = SubResource( 1 )
 anims/flicker2 = SubResource( 4 )

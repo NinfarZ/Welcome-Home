@@ -1,11 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://monsterSpawner.gd" type="Script" id=1]
 
 [sub_resource type="SphereShape" id=1]
 
-[node name="monsterSpawner" type="Area"]
+[sub_resource type="Animation" id=2]
+resource_name = "highFear"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.6 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "lowFear"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="monsterSpawner" type="Area" groups=["monsterSpawner"]]
 collision_layer = 4
 collision_mask = 6
+script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "lowFear"
+anims/highFear = SubResource( 2 )
+anims/lowFear = SubResource( 3 )

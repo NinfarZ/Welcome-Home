@@ -118,8 +118,7 @@ func _physics_process(delta):
 						if getDistanceToPlayer() < 10:
 							yield(get_tree().create_timer(0.5),"timeout")
 							setBodyVisible(false)
-							
-							
+
 
 					if monsterCloseToKill and $monsterKillDelay.is_stopped():
 						playMonsterGrunt()
@@ -247,12 +246,16 @@ func monsterSpeedUp():
 		if not state == CHASE:
 			speed += 0.02
 		else:
-			speed += 0.05
+			speed += 0.1
+		speed = clamp(speed, minSpeed, maxSpeed)
 		
 	else:
 		if not state == CHASE:
 			speed -= 0.01
-	speed = clamp(speed, minSpeed, maxSpeed)
+		else:
+			speed += 0.02
+		speed = clamp(speed, minSpeed, maxSpeed - 1)
+	
 	
 
 func getSpeed():
@@ -352,36 +355,49 @@ func playRunningAudio():
 	$running3D.play()
 
 func playMonsterGrunt():
-	$monsterNoise.play()
+	if not $monsterNoise.playing:
+		$monsterNoise.play()
 
 
 func _on_locationSensor_body_entered(body):
+	if not body.is_in_group("door"):
+		return
+	if body.isOpen():
+		return
+		
+	door = body
+	if body.isLocked():
+		body.interact(getDoorOpeningForce())
+		yield(get_tree().create_timer(5.0),"timeout")
+		var positionToMove = getClosestPositionToTarget()
+		moveToPosition(positionToMove)
+		return
+		
+	if currentLocation != target.get_current_location():
+		if RNGTools.pick([1,0,0]) == 1:
+			door.monsterKnocking(speed)
+	if RNGTools.randi_range(0, 100) <= 25 and not door.name in ["Door6", "Door3", "Door8", "Door7"]:
+		yield(get_tree().create_timer(3.0),"timeout")
+		var positionToMove = getClosestPositionToTarget()
+		moveToPosition(positionToMove)
+	else:
+		if $openDoorTimer.is_stopped():
+			$openDoorTimer.start()
 
-	if body.is_in_group("door"):
-		if not body.isOpen():
-			door = body
-			if $openDoorTimer.is_stopped():
-				if currentLocation != target.get_current_location():
-					if RNGTools.pick([1,0,0]) == 1:
-						door.monsterKnocking(speed)
-					if body.isLocked():
-						body.interact(getDoorOpeningForce())
-						yield(get_tree().create_timer(5.0),"timeout")
-						var positionToMove = getClosestPositionToTarget()
-						moveToPosition(positionToMove)
-					elif RNGTools.randi_range(0, 100) <= 25 and not door.name in ["Door6", "Door3", "Door8", "Door7"]:
-						yield(get_tree().create_timer(5.0),"timeout")
-						var positionToMove = getClosestPositionToTarget()
-						moveToPosition(positionToMove)
-					else:
-						$openDoorTimer.start()
+func teleportSomewhere():
+	if getDistanceToPlayer() < 10:
+		return
+	if RNGTools.randi_range(0, 100) <= 15 and not currentLocation in ["bathroom1", "bathroom2", "wardrobe"]:
+		var positionToMove = getClosestPositionToTarget()
+		moveToPosition(positionToMove)
 			
 
 
 func _on_locationSensor_body_exited(body):
 	$openDoorTimer.stop()
-	door = null
 	monsterWantsToOpenDoor = false
+	door = null
+	
 
 
 func _on_chaseGracePeriod_timeout():

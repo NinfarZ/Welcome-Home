@@ -25,6 +25,7 @@ func _physics_process(delta):
 			get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
 	elif currentOnLight == null:
 		get_tree().call_group("sanityBar", "drainSanity", sanityDrain)
+	print(sanityDrain)
 
 func turnAllLightsOff():
 	for light in $lights.get_children():

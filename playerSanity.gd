@@ -63,11 +63,15 @@ func resetSanity():
 
 
 func _on_ProgressBar_value_changed(value):
-	if value < 50:
+	if value == 0:
+		if not fear == null:
+			fear = null
+	elif value < 50 and value > 0:
 		if not fear == LOW:
 			var tween = create_tween()
 			fear = LOW
 			emit_signal("sanityThreshold", fear)
+			get_tree().call_group("monsterSpawner", "setSpawnAreaRadius", fear)
 			get_tree().call_group("flashlight", "changeLightColor", Color(0.77,0,1.0))
 			tween.tween_property(heartbeat, "volume_db", -80.0, 5.0)
 			
@@ -76,6 +80,7 @@ func _on_ProgressBar_value_changed(value):
 			var tween = create_tween()
 			fear = MEDIUM
 			emit_signal("sanityThreshold", fear)
+			get_tree().call_group("monsterSpawner", "setSpawnAreaRadius", fear)
 			get_tree().call_group("flashlight", "changeLightColor", Color(0.8,0.19,0.19))
 			heartbeat.play()
 			tween.tween_property(heartbeat, "volume_db", -4.0, 3.0)

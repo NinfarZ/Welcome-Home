@@ -213,7 +213,7 @@ albedo_color = Color( 0.898039, 0.898039, 0.898039, 1 )
 extents = Vector3( 0.209224, 0.301543, 0.214893 )
 
 [sub_resource type="BoxShape" id=17]
-extents = Vector3( 1, 2.23799, 0.540962 )
+extents = Vector3( 0.459712, 2.40464, 0.540962 )
 
 [node name="monster" groups=["monster"] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -394,7 +394,7 @@ collision_layer = 0
 collision_mask = 16384
 
 [node name="CollisionShape" type="CollisionShape" parent="bodyVisibleArea" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04153, -0.0364747 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09721, -0.0364747 )
 shape = SubResource( 17 )
 
 [connection signal="camera_entered" from="Visible" to="." method="_on_Visible_camera_entered"]
