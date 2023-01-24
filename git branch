@@ -1,0 +1,396 @@
+[33mcommit 897704e8a4e0144a92368ac2cb921799afb2dbbe[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Jan 4 15:45:08 2023 +0000
+
+    0.2.2
+
+[33mcommit 7e5f06eda605f1262b473915700c0316e774befc[m
+Merge: 2541b9b eebb7e8
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Dec 21 20:06:57 2022 +0000
+
+    Merge branch 'master' of https://github.com/NinfarZ/Welcome-Home
+
+[33mcommit 2541b9b94acabd32792a4624f943ecb53f7b1c2f[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Dec 21 20:05:27 2022 +0000
+
+    0.2.0
+
+[33mcommit 9ac5c3d28c5ce3a872491e8b61e54fcf1b41e407[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Dec 20 02:19:11 2022 +0000
+
+    update 0.2
+
+[33mcommit 5a92e2d93bf0570d50b5df6b275aeca04a10ea08[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Dec 10 17:23:59 2022 +0000
+
+    same as last one but this time with actual staged changes
+
+[33mcommit 99ab8b68d5cb24020b9d1bed63c9c7fe5a2321f6[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Dec 10 17:22:35 2022 +0000
+
+    New monster faces. New music box sound. New monster grunt. Monster spawn difficulty changes
+
+[33mcommit 4fc2df509b28695ab6fa46ee6fd84d78e5274931[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Dec 7 13:24:40 2022 +0000
+
+    RELEASE VERSION
+
+[33mcommit 3b52016ead8f8ed7d06451acba2d6589d93b444d[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Dec 7 01:07:29 2022 +0000
+
+    new candy randomizer. Sanity drains with darkness
+
+[33mcommit 3387a290d79a963c561306bd1fe4dc8d07f5627d[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Dec 5 02:19:17 2022 +0000
+
+    new difficulty controller
+
+[33mcommit 29a7583a413867c3099cdafa841812a38eb3c882[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Dec 3 19:13:48 2022 +0000
+
+    basket filling textures. Commit before changing game mode to random
+
+[33mcommit 9297b342ef0641428772fdce86a16208db0690ff[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Dec 3 01:51:30 2022 +0000
+
+    icon. Void door, more polish
+
+[33mcommit c3c48be9857d04761e98c0d1ed7b0d58fd8315bb[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Dec 2 18:15:07 2022 +0000
+
+    game exports. Monster makes noise?
+
+[33mcommit 0096e38f4cf57427fb387f529f3ca6d632924a1a[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Dec 2 16:38:40 2022 +0000
+
+    latest build
+
+[33mcommit 8421951e28c0aa2b412f9af6c1c07c9ec4ae7295[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Dec 1 20:23:34 2022 +0000
+
+    FIXED LAG!!
+
+[33mcommit 43874b4a0b55134c1019f25af24d8ba0d96c4c67[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Nov 30 17:22:16 2022 +0000
+
+    early release testing. Letter added. End screen added
+
+[33mcommit bfdeae1932bec2b0b644a838ed9f3d04f1964fa3[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Nov 29 01:04:57 2022 +0000
+
+    transition screen and balancing
+
+[33mcommit cbe09025fe0709c30a6aebd6164af7a0c4f7f1c4[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Nov 29 01:03:37 2022 +0000
+
+    transition screen. Tutorial. Close to release
+
+[33mcommit b847faa2c82674aae168a0d70c1efd8cb75b184f[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Nov 25 01:10:01 2022 +0000
+
+    interactable label. Intro changed to livingroom
+
+[33mcommit eebb7e830bb95490d46cbefb44d595ea32dd0c6c[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Nov 24 11:47:40 2022 +0000
+
+    Update README.md
+
+[33mcommit e556f2eeada42c67f823f6ce84223b1f5f07e068[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Nov 24 11:42:20 2022 +0000
+
+    Update README.md
+
+[33mcommit 84d26576318468d856d5cfb25b47ca6c7657bd50[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Nov 24 11:11:40 2022 +0000
+
+    updated version
+
+[33mcommit ce24e1a33cb22dd15e1adc89ad4cdfbedca750c9[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Nov 22 00:40:16 2022 +0000
+
+    initial pause menu. New furniture changes and placed. Heartbeat sound and code optimizations
+
+[33mcommit 7fe7f67604d7593e8a29dd6de0001d0e90e37b53[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Nov 18 20:48:59 2022 +0000
+
+    flashlight item. Scary horn sound. Beginning updates
+
+[33mcommit 0c273ca3cd5e39944bf5a64f04b6ef6da4a85c3b[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Nov 17 18:17:01 2022 +0000
+
+    stamina, radar, and other stuff
+
+[33mcommit 5c430d9f617ed0f8b641f53e063911355b8f8e15[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Nov 16 01:55:43 2022 +0000
+
+    main gameplay loop development. More sounds
+
+[33mcommit f24ab67d7023225415971f1f488cc4bce22da510[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Nov 14 16:59:39 2022 +0000
+
+    TEXTURES EVERYWHERE
+
+[33mcommit d0c5e784c51378378804e7daaf967cb6edcea3db[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sun Nov 13 23:51:40 2022 +0000
+
+    new monster stare sound. Spotlight manager. Spotlight still has bugs
+
+[33mcommit 82c846f41544fd467df42e9b292832c4166b7b87[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sun Nov 6 01:15:03 2022 +0000
+
+    door lock sound and new start
+
+[33mcommit d19d4fe59003a3209bc456f047cef60003a13c05[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Nov 4 01:11:13 2022 +0000
+
+    gameplay changes
+
+[33mcommit 05019884c7565c6b4bc402d1b94b640e8f488c92[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Nov 2 22:58:13 2022 +0000
+
+    new sound effects and sanity behavior
+
+[33mcommit 8d5bcae9ce928392f4ea75f2421d84fefa51f6d6[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Nov 2 01:40:00 2022 +0000
+
+    invisible monster body now appears behind you sometimes. other changes
+
+[33mcommit 81123b20820a48e3754e363edcdbce718217565b[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sun Oct 30 01:41:11 2022 +0100
+
+    SHINY ITEMS
+
+[33mcommit 640459da704574e004e87e74f9707b97de841a1e[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Oct 29 23:44:51 2022 +0100
+
+    candy counter. New changes. New font
+
+[33mcommit 9de880272d3c242430e5b099878bdf3643f8ca8e[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Oct 29 03:21:41 2022 +0100
+
+    key manager added. Keys and doors spawn, works fine.
+
+[33mcommit cd3d97f107ad28f0d33ffd6858030de7e46f744d[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Oct 28 21:11:35 2022 +0100
+
+    lots of changes. New colors. Monster chase. etc
+
+[33mcommit 92bce32487dedaa6858be52dafcdac871c7b4e48[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Oct 26 01:44:33 2022 +0100
+
+    code improvements, new monster cooldown experiments
+
+[33mcommit dae1857bb7cffe39ee2b0741a1ab990cccfac056[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sun Oct 16 03:02:47 2022 +0100
+
+    new furniture
+
+[33mcommit 8873e34e456a65ccfcc4e81e446a8f60d56c03c7[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Oct 14 17:15:28 2022 +0100
+
+    added shelf, color pallete fun, candy spawning changes
+
+[33mcommit ecd9eb825c5d337583544f841e19472017faecbd[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Oct 14 00:47:59 2022 +0100
+
+    furniture updated
+
+[33mcommit 0fd7e4c3dacbf498e8f2b62b9de74630cd11ffb4[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Oct 13 01:42:23 2022 +0100
+
+    new punishment idea
+
+[33mcommit ab82794221b9d0ef3b6f2df766a1e92de1e9abca[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Oct 12 00:46:35 2022 +0100
+
+    bunny candy sanity changes, player crouching fixed, smaller player collision box
+
+[33mcommit 992cb06ddff97b0b07bb01c0d28b6e1167bfcd66[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Oct 11 16:43:09 2022 +0100
+
+    new beds added, bunny box works better now, player speed adjusted
+
+[33mcommit 8d3b9bb9c19fcc05cd0d5d92e8336a880ddb3109[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Oct 10 16:45:17 2022 +0100
+
+    monster model changed
+
+[33mcommit ef9c47da2e7416e5b2c2b865b321e329bd062ec2[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Oct 7 01:55:20 2022 +0100
+
+    some monster spawning balancing
+
+[33mcommit df69e87bc1a09c7992a2ef7e9213089fe63f9346[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Oct 4 02:17:24 2022 +0100
+
+    monster look at experiments, looking at player head
+
+[33mcommit 9d553f62a22f8a0ae787b932d6a3d9fe108f14c2[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Oct 1 02:48:17 2022 +0100
+
+    random changes
+
+[33mcommit 2565af78d0bf7f60910b44f2eb6cad1e4b0bb430[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Sep 29 15:44:46 2022 +0100
+
+    new bed model, gameplay loop tweaks
+
+[33mcommit 40fa0282a705ffac91d4f7099685dcfff5204658[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Sep 28 19:30:07 2022 +0100
+
+    inital gameplay loop done
+
+[33mcommit b7f740d380eeeb1f7ea71e37c780aa663b355bac[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Sep 27 18:14:28 2022 +0100
+
+    inital candy code for delivering to bunny
+
+[33mcommit 0162131ae2a572ee15acc13de46280fc3d369977[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Sep 27 02:59:21 2022 +0100
+
+    invisibleEnemy sound phases, cady everywhere etc
+
+[33mcommit 81e70eb1f28f12d8479e34b57c48e7452f685f6f[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Sep 26 23:46:11 2022 +0100
+
+    new sound effects!! And other changes
+
+[33mcommit a4ad1ec49bdc5ab5c007b91bbce4230298e1093e[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Sep 26 15:21:55 2022 +0100
+
+    monsters can peek when player is under table. Door bug that doesnt show locked animation. Initial candy randomizer code
+
+[33mcommit 8235eac7dae8282e618d74f502d125cf005c088e[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Sep 26 02:40:58 2022 +0100
+
+    new bunny model, monster sanity behaviours tweeked
+
+[33mcommit 7f77e95feb846006028b244ab50f999975071707[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sun Sep 25 17:36:29 2022 +0100
+
+    difficulty increase tied to sanity drain
+
+[33mcommit ed2b2dbc0e36e39679ec514c32d2c2dc5ca06e1a[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sat Sep 24 22:06:19 2022 +0100
+
+    added toilet, spotlight monster spawn changes
+
+[33mcommit b1918bc1289098a7b444ab563542b16c0306a652[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Fri Sep 23 15:14:08 2022 +0100
+
+    flashlight toggle and other things
+
+[33mcommit 1e45756e86a0305946f3969fc57538502c01a678[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Sep 22 23:49:58 2022 +0100
+
+    crouch added
+
+[33mcommit d6978a54379b233cdbc4402d4740467465474546[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Sep 21 17:29:51 2022 +0100
+
+    candy test
+
+[33mcommit 8d882bc70de96489a5fbdab4613906a3fae0833d[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Sep 20 21:38:15 2022 +0100
+
+    new monster model, flickering lights
+
+[33mcommit 8d54727af60a7e682091e1e0984ae42f2851fa4d[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Sep 19 17:29:17 2022 +0100
+
+    light system update
+
+[33mcommit 10e2566f523822590b5da42dc6ca979011aa1d9d[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Sun Sep 18 02:00:26 2022 +0100
+
+    returning to the project. New spotlight goal
+
+[33mcommit 9ecad26166407d0e96743ec347eaf4d8858751b4[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Aug 18 14:39:40 2022 +0100
+
+    DEMO 2
+
+[33mcommit 5839f26aec3a652eaf97cf323c96df90d09f8349[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Mon Aug 15 02:36:27 2022 +0100
+
+    monsters can now see through other monsters. Was a problem because they'd despawn for having another monster in front of them and not being able to see the player
+
+[33mcommit d69690afab956d7b79b2565da6f55a5e47d0aab9[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Thu Aug 11 01:49:33 2022 +0100
+
+    door and invisible monster changes
+
+[33mcommit 739b63e8f9af663420706abb11f34c1839bf38fb[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Wed Aug 10 01:33:26 2022 +0100
+
+    added drawers and changed player and invisible monster location checking code
+
+[33mcommit 4400b4bd65890cda874ae72eea28c803385b6072[m
+Author: NinfarZ <65355075+NinfarZ@users.noreply.github.com>
+Date:   Tue Aug 9 12:26:51 2022 +0100
+
+    Initial Commit

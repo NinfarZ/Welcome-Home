@@ -90,6 +90,7 @@ anims/RESET = SubResource( 1 )
 anims/writeText = SubResource( 2 )
 
 [node name="Sanity" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="candyCounter" parent="." instance=ExtResource( 5 )]
 
