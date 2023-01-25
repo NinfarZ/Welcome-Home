@@ -63,7 +63,7 @@ func _physics_process(delta):
 		INTRO:
 			if not CandyRandomized:
 				monsters.setStateIdle()
-				invisibleEnemy.isMonsterActive(false)
+				invisibleEnemy.setMonsterActive(false)
 				lightsToTurnOn = ["Entrance", "Livingroom", "Bathroom1", "Corridor2"]
 				for light in lightsToTurnOn:
 					spotlightManager.turnOnLight("spotlight" + light)
@@ -159,7 +159,7 @@ func _physics_process(delta):
 							spotlightManager.turnAllLightsOff()
 							spotlightManager.startTimer()
 							monsters.setStateSearching()
-							invisibleEnemy.isMonsterActive(true)
+							invisibleEnemy.setMonsterActive(true)
 							monsterTriggered = false
 					
 
@@ -348,7 +348,7 @@ func skipIntro():
 	spotlightManager.startTimer()
 	$FlashlightItem.get_node("flashlight").interact()
 	monsters.setStateSearching()
-	invisibleEnemy.isMonsterActive(true)
+	invisibleEnemy.setMonsterActive(true)
 	basketManager.setCurrentCandyAmount(10)
 
 func spreadCandyAcrossMap(amount):

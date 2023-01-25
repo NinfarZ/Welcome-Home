@@ -1,12 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://pauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/pauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://textures/key.png" type="Texture" id=2]
-[ext_resource path="res://keyHandler.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/keyHandler.gd" type="Script" id=3]
 [ext_resource path="res://pauseMenu.tres" type="Theme" id=4]
 [ext_resource path="res://candyCounter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Stamina.tscn" type="PackedScene" id=6]
 [ext_resource path="res://playerSanity.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="Animation" id=1]
 length = 0.001

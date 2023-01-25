@@ -63,7 +63,7 @@ func _physics_process(delta):
 
 	if not isActive:
 		return
-	#handle monster collision with door
+	
 	if monsterNearDoor:
 		if needsDoor:
 			if not collidingWithDoor:
@@ -74,9 +74,7 @@ func _physics_process(delta):
 	if isCrouchMonster:
 		if not player.getIsUnderFurniture():
 			emit_signal("monsterShouldDespawn", self)
-			
-#	if not isMonsterInPlayerLocation():
-#		emit_signal("monsterShouldDespawn", self)
+
 	if not isPlayerInViewcone():
 		if isInView():
 			emit_signal("monsterShouldDespawn", self)
@@ -120,14 +118,14 @@ func isCanSpawn():
 func enableMonster(enable):
 	if enable:
 		set_physics_process(true)
-		#$bodyVisibleArea/CollisionShape.disabled = false
+		
 		$Head/headArea/CollisionShape.disabled = false
 		for raycast in $Head/head/raycasts.get_children():
 			raycast.enabled = true
 		
 	elif not enable:
 		set_physics_process(false)
-		#$bodyVisibleArea/CollisionShape.disabled = true
+		
 		$Head/headArea/CollisionShape.disabled = true
 		for raycast in $Head/head/raycasts.get_children():
 			raycast.enabled = false

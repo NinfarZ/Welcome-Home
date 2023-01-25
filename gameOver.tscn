@@ -2,10 +2,11 @@
 
 [ext_resource path="res://mainMenu.tres" type="Theme" id=1]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://gameOver.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/gameOver.gd" type="Script" id=3]
 [ext_resource path="res://audio/phaseTransition.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/monsterClose1.mp3" type="AudioStream" id=5]
 [ext_resource path="res://TransitionScreen.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 45

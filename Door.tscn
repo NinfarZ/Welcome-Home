@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Door.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Door.gd" type="Script" id=1]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=2]
 [ext_resource path="res://audio/doorOpen1.wav" type="AudioStream" id=3]
 [ext_resource path="res://textures/lock.png" type="Texture" id=4]
@@ -13,6 +13,7 @@
 [ext_resource path="res://audio/doorClosed.wav" type="AudioStream" id=11]
 [ext_resource path="res://audio/doorUnlock.wav" type="AudioStream" id=12]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=13]
+
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 3, 6, 0.2 )

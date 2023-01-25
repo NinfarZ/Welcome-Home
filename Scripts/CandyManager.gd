@@ -26,28 +26,34 @@ func randomizeCandy(amount, location):
 	var locationCandyList = location.get_children()
 
 	#erases candy that has been placed so it doesn't get placed again
-	var i = 0
-	if candiesUsed != []:
-		while i < len(locationCandyList):
-			if locationCandyList[i] in candiesUsed and locationCandyList[i] in activeCandy:
-				locationCandyList.erase(locationCandyList[i])
-			else:
-				i += 1
+	if not candiesUsed == []:
+		erasesUsedCandiesFromList(locationCandyList)
 		#if the amount of available candy is less than required, assume that value
 		if len(locationCandyList) < amount:
 			amount = len(locationCandyList)
 			if amount == 0: 
 				return false #unable to place candy in location, they're still active
 	while candiesPicked < amount:
-		var newCandy = RNGTools.pick(locationCandyList)
-		newCandy.get_node("candy").setState(0)
+		var candy = placeCandy(locationCandyList)
 		candiesPicked += 1
-		activeCandy.append(newCandy)
-		if not newCandy in candiesUsed:
-			candiesUsed.append(newCandy)
-		locationCandyList.erase(newCandy)
+		if not candy in candiesUsed:
+			candiesUsed.append(candy)
+		locationCandyList.erase(candy)
 	return true
 
+func erasesUsedCandiesFromList(candyList):
+	var i = 0
+	while i < len(candyList):
+		if candyList[i] in candiesUsed and candyList[i] in activeCandy:
+			candyList.erase(candyList[i])
+		else:
+			i += 1
+func placeCandy(candyList):
+	var newCandy = RNGTools.pick(candyList)
+	newCandy.get_node("candy").setState(0)
+	activeCandy.append(newCandy)
+	return newCandy
+	
 func activeCandyPicked(candy):
 	activeCandy.erase(candy)
 	candyCounter.addCandy()

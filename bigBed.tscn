@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://table.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/table.gd" type="Script" id=1]
 [ext_resource path="res://3DModels/Furniture/bigBed.glb" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=2]

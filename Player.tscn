@@ -1,14 +1,14 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Flashlight.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Interact.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Interact.gd" type="Script" id=3]
 [ext_resource path="res://3DModels/viewCone/viewCone.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://3DModels/Mannequin/Material.material" type="Material" id=5]
 [ext_resource path="res://3DModels/Mannequin/mouth.material" type="Material" id=6]
 [ext_resource path="res://3DModels/Monster/mouths.png" type="Texture" id=7]
 [ext_resource path="res://3DModels/Monster/eye.png" type="Texture" id=8]
-[ext_resource path="res://Head.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Head.gd" type="Script" id=9]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_3D.gd" type="Script" id=10]
 [ext_resource path="res://audio/walking3.wav" type="AudioStream" id=11]
 [ext_resource path="res://audio/walking4.wav" type="AudioStream" id=12]
@@ -17,6 +17,7 @@
 [ext_resource path="res://audio/walking6.wav" type="AudioStream" id=15]
 [ext_resource path="res://audio/walking5.wav" type="AudioStream" id=16]
 [ext_resource path="res://audio/running.wav" type="AudioStream" id=17]
+
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.718534

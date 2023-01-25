@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://audio/deathJumpscare.wav" type="AudioStream" id=1]
-[ext_resource path="res://gameData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/gameData.gd" type="Script" id=2]
+
 
 [node name="globalNode" type="Node"]
 script = ExtResource( 2 )

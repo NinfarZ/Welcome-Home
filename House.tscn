@@ -4,8 +4,8 @@
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Monster.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Monsters.gd" type="Script" id=5]
-[ext_resource path="res://House.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Monsters.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/House.gd" type="Script" id=6]
 [ext_resource path="res://invisibleEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://mannequim.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/ambientNoise.wav" type="AudioStream" id=9]
@@ -18,7 +18,7 @@
 [ext_resource path="res://audio/deathJumpscare.wav" type="AudioStream" id=16]
 [ext_resource path="res://wardrobe.tscn" type="PackedScene" id=17]
 [ext_resource path="res://drawer.tscn" type="PackedScene" id=18]
-[ext_resource path="res://furniture.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/Furniture.gd" type="Script" id=19]
 [ext_resource path="res://chair.tscn" type="PackedScene" id=20]
 [ext_resource path="res://spotlight.tscn" type="PackedScene" id=21]
 [ext_resource path="res://candy.tscn" type="PackedScene" id=22]
@@ -26,7 +26,7 @@
 [ext_resource path="res://singleBed.tscn" type="PackedScene" id=24]
 [ext_resource path="res://toilet.tscn" type="PackedScene" id=25]
 [ext_resource path="res://audio/fearNoise.wav" type="AudioStream" id=26]
-[ext_resource path="res://Audio.gd" type="Script" id=27]
+[ext_resource path="res://Scripts/Audio.gd" type="Script" id=27]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=28]
 [ext_resource path="res://bigBed.tscn" type="PackedScene" id=29]
 [ext_resource path="res://candyBasket.tscn" type="PackedScene" id=30]
@@ -34,13 +34,13 @@
 [ext_resource path="res://twoStoryBedblend.tscn" type="PackedScene" id=32]
 [ext_resource path="res://shelf.tscn" type="PackedScene" id=33]
 [ext_resource path="res://bathroomSink.tscn" type="PackedScene" id=34]
-[ext_resource path="res://CandyManager.gd" type="Script" id=35]
-[ext_resource path="res://BasketManager.gd" type="Script" id=36]
-[ext_resource path="res://DoorManager.gd" type="Script" id=37]
-[ext_resource path="res://keyManager.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/CandyManager.gd" type="Script" id=35]
+[ext_resource path="res://Scripts/BasketManager.gd" type="Script" id=36]
+[ext_resource path="res://Scripts/DoorManager.gd" type="Script" id=37]
+[ext_resource path="res://Scripts/keyManager.gd" type="Script" id=38]
 [ext_resource path="res://TransitionScreen.tscn" type="PackedScene" id=39]
 [ext_resource path="res://audio/monsterClose1.mp3" type="AudioStream" id=40]
-[ext_resource path="res://spotlightManager.gd" type="Script" id=41]
+[ext_resource path="res://Scripts/spotlightManager.gd" type="Script" id=41]
 [ext_resource path="res://audio/ambientDark.mp3" type="AudioStream" id=42]
 [ext_resource path="res://textures/houseTextureYellow.png" type="Texture" id=43]
 [ext_resource path="res://textures/wall2.png" type="Texture" id=44]
@@ -51,7 +51,7 @@
 [ext_resource path="res://textures/houseDarkTexture.png" type="Texture" id=49]
 [ext_resource path="res://textures/redBlock.png" type="Texture" id=50]
 [ext_resource path="res://textures/ceiling1.png" type="Texture" id=51]
-[ext_resource path="res://BunnyManager.gd" type="Script" id=52]
+[ext_resource path="res://Scripts/BunnyManager.gd" type="Script" id=52]
 [ext_resource path="res://audio/darkScaryHorn.wav" type="AudioStream" id=53]
 [ext_resource path="res://FlashlightItem.tscn" type="PackedScene" id=54]
 [ext_resource path="res://audio/heartbeat.mp3" type="AudioStream" id=55]
@@ -1058,63 +1058,48 @@ script = ExtResource( 19 )
 
 [node name="drawer" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0975, 11.83, -28.5614 )
-script = null
 
 [node name="drawer2" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92368, 11.83, -47.3976 )
-script = null
 
 [node name="drawer3" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.0242056, 0, -0.569429, 0, 1, 0, 0.999707, 0, -0.0137874, 1.50513, 11.83, -9.83449 )
-script = null
 
 [node name="drawer9" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.999988, -0.00479926, 0, 0.00479926, -0.999988, 0, 0, 0, 0.569596, 0.662767, 21.8915, -8.14231 )
-script = null
 
 [node name="drawer11" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 0.999988, 0.00479926, 4.97957e-08, 0.00479926, -0.999988, 0, 8.74217e-08, 4.19565e-10, -0.569596, 0.662767, 21.8915, 2.53822 )
-script = null
 
 [node name="drawer5" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -2.48978e-08, 0, 0.569596, 0, 1, 0, -1, 0, -4.37114e-08, -1.67324, 11.83, 3.58441 )
-script = null
 
 [node name="drawer8" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -2.48978e-08, 0, 0.569596, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 24.9816, 13.8727, -0.501923 )
-script = null
 
 [node name="drawer12" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 1.91069e-15, 4.37114e-08, 0.569596, 1, -4.37114e-08, 0, 4.37114e-08, 1, -2.48978e-08, 24.9816, 13.8727, -10.668 )
-script = null
 
 [node name="drawer6" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 0.992012, 0, -0.0718528, 0, 1, 0, 0.126147, 0, 0.565046, 7.13081, 11.83, 22.9133 )
-script = null
 
 [node name="drawer15" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 0.992012, 0, -0.0718528, 0, 1, 0, 0.126147, 0, 0.565046, 7.13081, 15.0132, 22.9133 )
-script = null
 
 [node name="drawer14" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 0.50322, -0.0719184, -0.490514, 0.0126705, -0.99581, 0.0515868, -0.864066, -0.0564866, -0.284912, 5.57804, 15.2567, 28.3314 )
-script = null
 
 [node name="drawer16" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 0.569596, 0.361094, 13.8091, 24.4378 )
-script = null
 
 [node name="drawer10" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.311821, 0, -0.541197, 0, 1, 0, 0.950141, 0, -0.177612, 12.8906, 11.83, 27.4625 )
-script = null
 
 [node name="drawer13" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.311821, 0, -0.541197, 0, 1, 0, 0.950141, 0, -0.177612, 12.8906, 15.0301, 27.4625 )
-script = null
 
 [node name="drawer7" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( 0.990859, -2.26267e-08, 0.07684, -1.10281e-08, -1, -4.93979e-08, 0.134903, 8.44439e-08, -0.564389, 22.112, 21.234, 17.8017 )
-script = null
 
 [node name="sofa" parent="Furniture" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6385, 11.9911, -26.3771 )

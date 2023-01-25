@@ -299,7 +299,7 @@ config/windows_native_icon="res://singleEye.ico"
 
 [autoload]
 
-GameData="*res://gameData.gd"
+GameData="*res://Scripts/gameData.gd"
 GlobalNode="*res://globalNode.tscn"
 
 [display]
@@ -317,7 +317,7 @@ version_control_plugin_name="GitAPI"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/RandomAudioNodePlayer/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/randomAudioStreamPlayer/plugin.cfg", "res://addons/zylann.editor_light/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/zylann.editor_light/plugin.cfg" )
 
 [input]
 

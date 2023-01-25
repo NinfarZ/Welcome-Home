@@ -30,21 +30,16 @@ var current_path_idx = 0
 var target = null
 var velocity = Vector3.ZERO
 var threshold = 0.1
-var offset = Vector3(10,10,10)
-var decreaseScale = Vector3(0.01, 0.01, 0.01)
 var invisibleEnemyInview = false
 var gracePeriodOver = false
 var monsterCloseToKill = false
-#var monsterChaseVisible = false
 var monsterWantsToOpenDoor = false
 var door = null
 var lockedDoor = null
 var sanityDrain = 0.015
 
 var canPlaySound = true
-var timesSoundPlayed = 1
 var timeFootstepPlayed = 1
-var teleportingMonster = false
 
 var currentLocation = null
 var monstersToSpawn = null
@@ -52,7 +47,6 @@ var monstersToSpawn = null
 onready var nav = get_parent()
 
 func _ready():
-	#randomize()
 	yield(owner, "ready")
 	target = owner.player
 
@@ -69,32 +63,23 @@ func _physics_process(delta):
 			if path.size() > 0:
 				move_to_target()
 			if currentLocation != null and currentLocation == target.get_current_location():
-				
 				match phase:
 					PHASE1:
 						pass
-					PHASE2:
+					PHASE2, PHASE3:
 						if not $RandomAudioStreamPlayer.playing and canPlaySound:
 							$RandomAudioStreamPlayer.play()
 							$RandomAudioStreamPlayer/TimerAudio.start()
 							canPlaySound = false
-					PHASE3:
-						if not $RandomAudioStreamPlayer.playing and canPlaySound:
-							$RandomAudioStreamPlayer.play()
-							$RandomAudioStreamPlayer/TimerAudio.start()
-							canPlaySound = false
-					
+
 			elif transform.origin.distance_to(target.get_position()) > 15 and not monsterWantsToOpenDoor:
 				
 				match phase:
 					PHASE1:
 						pass
-					PHASE2:
-						playFootStep()
-					PHASE3:
+					PHASE2, PHASE3:
 						playFootStep()
 
-					
 		STOP:
 			pass
 		KILLPLAYER:
@@ -102,35 +87,28 @@ func _physics_process(delta):
 			$body.visible = false
 
 		CHASE:
-			if gracePeriodOver:
+			if not gracePeriodOver:
+				return
 				
-					if path.size() > 0:
-						move_to_target()
-						if not $steps3D.playing:
-							match phase:
-								PHASE1, PHASE2:
-									$steps3D.play()
-								PHASE3:
-									$steps3D.play()
-					if not invisibleEnemyInview:
-						setBodyVisible(true)
-					else:
-						if getDistanceToPlayer() < 10:
-							yield(get_tree().create_timer(0.5),"timeout")
-							setBodyVisible(false)
+			if path.size() > 0:
+				move_to_target()
+				if not $steps3D.playing:
+					match phase:
+						PHASE1, PHASE2:
+							$steps3D.play()
+						PHASE3:
+							$steps3D.play()
+			if not invisibleEnemyInview:
+				setBodyVisible(true)
+			else:
+				if getDistanceToPlayer() < 10:
+					yield(get_tree().create_timer(0.5),"timeout")
+					setBodyVisible(false)
 
 
-					if monsterCloseToKill and $monsterKillDelay.is_stopped():
-						playMonsterGrunt()
-						$monsterKillDelay.start()
-					
-					
-					
-					
-			
-				
-		
-		
+			if monsterCloseToKill and $monsterKillDelay.is_stopped():
+				playMonsterGrunt()
+				$monsterKillDelay.start()
 
 func move_to_target():
 	
@@ -146,19 +124,19 @@ func move_to_target():
 		move_and_slide(velocity, Vector3.UP)
 
 func get_target_path(target_pos):
-	#get_simple_path()
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	current_path_idx = 0
 
 func playFootStep():
-	if not $steps3D.playing and timeFootstepPlayed > 0:
-		var randomNumber = RNGTools.pick([1,0])
-		#print("random number is " + str(randomNumber))
-		if randomNumber == 1:
-			#print("sound is playing!")
-			$steps3D.play()
-			timeFootstepPlayed -= 1
-			yield(get_tree().create_timer(1.0),"timeout")
+	if $steps3D.playing:
+		return
+	if timeFootstepPlayed <= 0:
+		return
+	var randomNumber = RNGTools.pick([1,0])
+	if randomNumber == 1:
+		$steps3D.play()
+		timeFootstepPlayed -= 1
+		yield(get_tree().create_timer(1.0),"timeout")
 	
 
 func setSanityDrain(newValue):
@@ -172,8 +150,6 @@ func setStateStop():
 
 func setStateFollow():
 	state = FOLLOWPLAYER
-	#$body.visible = false
-	#monsterChaseVisible = false
 	setBodyVisible(false)
 	gracePeriodOver = false
 
@@ -182,23 +158,15 @@ func setStateKillplayer():
 
 func setStateChase():
 	state = CHASE
-	#$body.visible = true
 	if not gracePeriodOver and $chaseGracePeriod.is_stopped():
 		$chaseGracePeriod.start()
-	print("timer start chase")
 
 func getState():
 	return state
 
-func isMonsterActive(value):
+func setMonsterActive(value):
 	set_physics_process(value)
 
-func monsterIsVisibleForMoment():
-	if not invisibleEnemyInview:
-		setBodyVisible(true)
-	else:
-		yield(get_tree().create_timer(0.5),"timeout")
-		setBodyVisible(false)
 
 func getDistanceToPlayer():
 	return transform.origin.distance_to(target.get_position())
@@ -277,7 +245,6 @@ func setSpeedIncrease(newSpeed):
 	speed = newSpeed
 	minSpeed = newSpeed 
 	maxSpeed = newSpeed + 2
-	#speed += increase -- old version
 
 func setMonsterDoorTimer(newTime):
 	$openDoorTimer.wait_time = newTime
@@ -289,9 +256,6 @@ func _on_VisibilityNotifier_camera_entered(camera):
 func _on_VisibilityNotifier_camera_exited(camera):
 	invisibleEnemyInview = false
 	
-
-
-
 
 #audio just finished playing, so it's on cooldown
 func _on_RandomAudioStreamPlayer_finished():
@@ -310,15 +274,11 @@ func get_current_monstersToSpawn():
 	return monstersToSpawn
 
 func lookAtPlayer():
-	$body.look_at(target.get_position(), Vector3.UP) #+ Vector3(0,1,0)
+	$body.look_at(target.get_position(), Vector3.UP) 
 	$body.rotate_object_local(Vector3(0,1,0), 3.14)
-	#head.rotation.x = clamp(head.rotation.x, deg2rad(-60), deg2rad(60))
-	#head.rotation.z = clamp(head.rotation.z, deg2rad(-10), deg2rad(10))
 	$body.rotation.x = clamp($body.rotation.x, deg2rad(0), deg2rad(0))
 	
 	
-	
-
 
 func _on_steps3D_finished():
 	yield(get_tree().create_timer(5.0), "timeout")
@@ -329,16 +289,10 @@ func _on_running3D_finished():
 	get_tree().call_group("gameMaster", "fade_out")
 	get_tree().call_group("gameMaster", "endGame")
 	
-
-
 func _on_locationSensor_area_entered(area):
 	if area.is_in_group("location"):
 		monstersToSpawn = "monster" + area.name
 		currentLocation = area.name
-
-	
-	
-	
 
 
 func setMonsterSpawner(setSpawner):
@@ -384,14 +338,6 @@ func _on_locationSensor_body_entered(body):
 		if $openDoorTimer.is_stopped():
 			$openDoorTimer.start()
 
-func teleportSomewhere():
-	if getDistanceToPlayer() < 10:
-		return
-	if RNGTools.randi_range(0, 100) <= 15 and not currentLocation in ["bathroom1", "bathroom2", "wardrobe"]:
-		var positionToMove = getClosestPositionToTarget()
-		moveToPosition(positionToMove)
-			
-
 
 func _on_locationSensor_body_exited(body):
 	$openDoorTimer.stop()
@@ -399,46 +345,40 @@ func _on_locationSensor_body_exited(body):
 	door = null
 	
 
-
 func _on_chaseGracePeriod_timeout():
 	gracePeriodOver = true
-	#monsterChaseVisible = true
-
 
 func _on_openDoorTimer_timeout():
 	monsterWantsToOpenDoor = true
 
-
-func _on_bodyVisibility_area_entered(area):
-#	if area.is_in_group("playerViewCone"):
-#		setBodyVisible(false)
-	pass
-		#emit_signal("playerViewConeDetected", false)
-	
 func moveToPosition(position):
 	self.transform.origin = position.transform.origin
 
-#checks if the monster is locked in locked room. I so, move monster to another position
+#checks if the monster is locked in locked room. If so, move monster to another position
 func isMonsterLockedInside(currentDoor):
 	lockedDoor = currentDoor
-	if state == FOLLOWPLAYER and currentLocation:
-		if currentDoor.is_in_group(currentLocation):
-			var positionList = positions.get_children()
-			var i = 0
-			while i < len(positionList):
-				if currentDoor.is_in_group(positionList[i].name):
-					positionList.erase(positionList[i])
-				else:
-					i += 1
-			moveToPosition(RNGTools.pick(positionList))
+	
+	if not currentLocation:
+		return
+	if not state == FOLLOWPLAYER:
+		return
+		
+	if not currentDoor.is_in_group(currentLocation):
+		return
+		
+	var positionList = positions.get_children()
+	var i = 0
+	while i < len(positionList):
+		if currentDoor.is_in_group(positionList[i].name):
+			positionList.erase(positionList[i])
+		else:
+			i += 1
+	moveToPosition(RNGTools.pick(positionList))
 
 
 func _on_bodyVisibility_body_entered(body):
 	if body.is_in_group("player"): 
 		monsterCloseToKill = true
-		
-			
-
 
 func _on_monsterKillDelay_timeout():
 	if state == CHASE:

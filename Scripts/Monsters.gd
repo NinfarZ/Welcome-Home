@@ -1,8 +1,5 @@
 extends Spatial
 
-#States for if the monster is active and staring at target, 
-#or if a target is not yet picked
-
 enum {
 	IDLE
 	SEARCHING
@@ -29,8 +26,6 @@ var rngCreepyBehavior = null
 var monsterCanMakeSound = true
 var spawnChance = 25
 
-var playerStaringAtMonster = false
-
 var cooldownValues = [5, 10]
 
 
@@ -45,10 +40,10 @@ func _ready():
 		monster.connect("monsterOutOfRange", self, "_removeMonsterOutOfRange")
 		monster.connect("monsterShouldDespawn", self, "_stopMonsterStalking")
 	invisibleMonster.setBodyVisible(false)
-	#invisibleMonster.connect("playerViewConeDetected", self, "setMonsterActive")
+
 	randomize()
 
-#TO DO: Make it so monster can disappear as soon as the timer is down. No need to move out of view of the monster
+
 func _physics_process(delta):
 	
 	match state:
@@ -56,7 +51,6 @@ func _physics_process(delta):
 			pass
 			
 		SEARCHING:
-		
 			invisibleMonster.setStateFollow()
 			if monstersInRange != []:
 				for monster in monstersInRange:
@@ -84,41 +78,16 @@ func _physics_process(delta):
 				currentMonster.playerLooksAtMonster()
 				state = ANGER
 			
-#			elif currentMonster.isCrouchMonster and not player.getIsUnderFurniture():
-#				get_parent().get_node("TimerMonsterSwitch").stop()
-#				despawnMonster(currentMonster)
-#
-#				state = COOLDOWN
-#
-#			elif not currentMonster.isMonsterInPlayerLocation():
-#				get_parent().get_node("TimerMonsterSwitch").stop()
-#				despawnMonster(currentMonster)
-#
-#				state = COOLDOWN
-#
-#			#if the player is away from the monster's view cone, it despawns
-#			elif not currentMonster.isPlayerInViewcone():
-#				despawnMonster(currentMonster)
-#
-#				get_parent().get_node("TimerMonsterSwitch").stop()
-#
-#				state = COOLDOWN
-#
-#			elif player.getIsInSpotlight():
-#				despawnMonster(currentMonster)
-#				get_parent().get_node("TimerMonsterSwitch").stop()
-#				state = COOLDOWN
 					
 			elif monsterCanDespawn:
 				if not currentMonster.isInView():
 					print("monster cooldown over so can despawn")
 					despawnMonster(currentMonster)
 					monsterCanDespawn = false
-					#get_parent().get_node("TimerMonsterCooldown").start()
+
 					setStateCooldown()
 			
 		ANGER:
-			#incrementDifficulty()
 			currentMonster.flickerFace(RNGTools.pick([1,2]))
 			currentMonster.makeCreepySound(RNGTools.pick([1,2]))
 			get_tree().call_group("sanityBar", "drainSanity", 2.2)
@@ -129,17 +98,13 @@ func _physics_process(delta):
 			
 			get_tree().call_group("sanityBar", "isPlayerDead")
 			
-			
-			
 			state = CHANGING
 		KILL:
 			currentMonster.killPlayer()
-			#print("player has been killed")
 		
 		COOLDOWN:
 			if get_parent().get_node("TimerMonsterCooldown").is_stopped():
 				get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(cooldownValues[0], cooldownValues[1])
-				#print(get_parent().get_node("TimerMonsterCooldown").wait_time)
 				get_parent().get_node("TimerMonsterCooldown").start()
 				rngCreepyBehavior = RNGTools.pick([1,0])
 			#monster creeps around. Not dangerous but creepy
@@ -180,10 +145,7 @@ func _physics_process(delta):
 			get_parent().get_node("TimerMonsterCooldown").stop()
 			get_parent().get_node("TimerMonsterSwitch").stop()
 			
-			
-			
-		
-		
+
 
 func add_monster_to_list(monster):
 	if not monster in validMonsters:
@@ -193,48 +155,28 @@ func remove_monster_from_list(monster):
 	if monster in validMonsters:
 		validMonsters.erase(monster)
 
-#checks if player is in range
-func player_in_range(raycast):
-	if raycast != null:
-		if raycast.get_collider().name == "AreaPlayer":
-			return true
-		return false
 
-#picks a random monster from those that are currently in range
-func pickRandomMonster():
-	var chosenMonster
-	
-
-	chosenMonster = RNGTools.pick(validMonsters)
-
-	return chosenMonster
-	
 func createSpawnableMonsterList(monster, distance):
 	if not monster.isCanSpawn():
 		return
-		#monster.enableMonster(true)
 	if monster == lastMonster:
 		return
 	if monster.getDistanceFromPlayer() <= distance:
 		return
 	if not monster.is_in_group(invisibleMonster.get_current_monstersToSpawn()):
 		return
-	if monster.isMonsterPositionedToSpawn(): #and monster.isMonsterInPlayerLocation()
+	if monster.isMonsterPositionedToSpawn(): 
 		add_monster_to_list(monster)
-		
 	else:
 		remove_monster_from_list(monster)
-		#monster.enableMonster(false)
+
 
 func _on_TimerMonsterSwitch_timeout():
-	#print("timer ran out!")
 	monsterCanDespawn = true
 
 
 func spawnMonster(chosenMonster):
-	#if RNGTools.randi_range(-10,10) < 0:
 	chosenMonster.set_state_active()
-	#get_node(chosenMonster).makeCreepySound()
 	lastMonster = currentMonster
 	if RNGTools.pick([1,0]) == 1 and monsterCanMakeSound:
 		chosenMonster.makeCreepySound(1)
@@ -243,15 +185,12 @@ func spawnMonster(chosenMonster):
 
 
 
-
 func despawnMonster(chosenMonster):
 	if chosenMonster != null:
 		chosenMonster.set_state_hiding()
-	#invisibleMonster.setStateFollow()
 		validMonsters = []
 
 
-	
 
 func changeDifficulty(newSpeed, newTime, newSpawnChance):
 	get_parent().get_node("TimerMonsterSwitch").wait_time = newTime
@@ -260,20 +199,8 @@ func changeDifficulty(newSpeed, newTime, newSpawnChance):
 
 
 func cooldown(minValue, maxValue):
-	#get_parent().get_node("TimerMonsterCooldown").wait_time = RNGTools.randi_range(minValue, maxValue)
 	cooldownValues = [minValue, maxValue]
 	
-
-
-#func _on_monsterSpawner_area_entered(area):
-#	#print("there are monsters here")
-#	pass
-#
-#
-#func _on_monsterSpawner_area_exited(area):
-#	validMonsters = []
-#	despawnMonster(currentMonster)
-
 
 func _on_TimerMonsterCooldown_timeout():
 	despawnMonster(currentMonster)
